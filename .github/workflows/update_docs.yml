@@ -1,0 +1,78 @@
+name: Update ST Docs
+
+# Trigger on schedule 
+on:
+  schedule:
+    - cron: '0 0 * * *' # (Daily at midnight UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-knowledge-base:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout your repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Source Docs (SillyTavern)
+        uses: actions/checkout@v4
+        with:
+          repository: SillyTavern/SillyTavern-Docs
+          path: temp_source
+
+      - name: Process Docs
+        run: |
+          # 1. Set up directories
+          mkdir -p staging
+          
+          echo "Processing Markdown files..."
+          
+          # 2. Flatten and Rename
+          find temp_source -type f -name "*.md" | while read -r file; do
+              clean_path="${file#temp_source/}"
+              flat_name="${clean_path//\//_}"
+              cp "$file" "staging/SillyTavern_$flat_name"
+          done
+          # 3. Sanitize .md files
+          cd staging
+          
+          # Remove Redirect Stubs
+          grep -rl "This page has been moved to" . | xargs -r rm
+          
+          # Remove Front Matter
+          find . -type f -name "*.md" -exec sed -i '1{/^---/!q;};1,/^---/d' {} +
+          
+          # Remove Admonitions tags (!!! and :::)
+          find . -type f -name "*.md" -exec sed -i '/^!!!/d; /^:::/d' {} +
+          
+          # Remove Images
+          find . -type f -name "*.md" -exec sed -i -E 's/!\[[^]]*\]\([^)]*\)//g' {} +
+          
+          # Unwrap Links
+          find . -type f -name "*.md" -exec sed -i -E 's/\[([^]]*)\]\([^)]*\)/\1/g' {} +
+          
+          cd ..
+          
+          # 4. Move to final location
+          # Clean old SillyTavern-Docs-RAG dir to ensure deleted files upstream are removed downstream
+          rm -rf SillyTavern-Docs-RAG
+          mkdir SillyTavern-Docs-RAG
+          mv staging/* SillyTavern-Docs-RAG/
+          rm -rf staging temp_source
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          
+          git add SillyTavern-Docs-RAG/
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes detected. Workflow finished."
+          else
+            git commit -m "Auto-update: Synced with upstream SillyTavern-Docs"
+            git push
+          fi
