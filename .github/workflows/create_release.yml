@@ -1,0 +1,63 @@
+name: Publish Release
+
+# Trigger this ONLY when changes are pushed (merged) to main
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Need history to find the commit message
+
+      - name: Setup Variables
+        id: vars
+        run: |
+          # 1. Generate Date string (e.g. Jan-13-2026)
+          DATE_STR=$(date +'%b-%d-%Y')
+          echo "DATE=$DATE_STR" >> $GITHUB_OUTPUT
+          
+          # 2. Define Zip Name
+          # Result: SillyTavern-Docs_RAG_Jan-13-2026.zip
+          echo "ZIP_NAME=SillyTavern-Docs_RAG_${DATE_STR}.zip" >> $GITHUB_OUTPUT
+
+      - name: Extract Release Notes
+        id: notes
+        run: |
+          # Find the last commit that has "Source Commit" in it (our Sync commit)
+          # and extract its Body (%b) which contains the Review Copy.
+          NOTES=$(git log --grep="Source Commit:" -1 --pretty=%b)
+          
+          # Handle multiline text for GitHub Actions
+          echo "BODY<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create ZIP Archive
+        run: |
+          zip -r ${{ steps.vars.outputs.ZIP_NAME }} docs/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          # Tag: release-Jan-13-2026
+          tag_name: release-${{ steps.vars.outputs.DATE }}
+          # Title: Docs Update: Jan 13, 2026
+          name: Docs Update: ${{ steps.vars.outputs.DATE }}
+          # Body: The extracted "Review Copy" text
+          body: |
+            ${{ steps.notes.outputs.BODY }}
+          files: |
+            ${{ steps.vars.outputs.ZIP_NAME }}
+          draft: false
+          prerelease: false
