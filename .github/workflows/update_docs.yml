@@ -116,7 +116,7 @@ jobs:
             # -m 1: The Title (e.g., "Sync: Docs Update 2026-01-13")
             # -m 2: The Body (The full upstream commit message)
             # -m 3: The Footer (Source hash)
-            git commit -m "Sync: Docs Update $DATE" -m "$UPSTREAM_MSG" -m "Source Commit: $UPSTREAM_HASH"
+            git commit -m "Sync: Docs Update $DATE" -m "$UPSTREAM_MSG" -m "Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
             
             # Push to staging
             git push origin staging
