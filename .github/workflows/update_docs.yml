@@ -122,3 +122,31 @@ jobs:
             # Push to staging
             git push origin staging
           fi
+
+      - name: Create Pull Request
+        if: success() # Only run if the previous steps worked
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UPSTREAM_MSG: ${{ steps.upstream_info.outputs.MSG }}
+          UPSTREAM_HASH: ${{ steps.upstream_info.outputs.HASH }}
+        run: |
+          # Check if a PR from staging to main already exists
+          existing_pr=$(gh pr list --base main --head staging --json url --jq '.[0].url')
+          
+          if [ -n "$existing_pr" ]; then
+            echo "A PR already exists: $existing_pr"
+            # Optional: Comment on existing PR to say it was updated?
+            # gh pr comment "$existing_pr" --body "Docs updated again with commit $UPSTREAM_HASH"
+          else
+            echo "Creating a new Pull Request..."
+            DATE=$(date +'%Y-%m-%d')
+            
+            # Create the PR
+            gh pr create \
+              --base main \
+              --head staging \
+              --title "Sync: Docs Update $DATE" \
+              --body "$UPSTREAM_MSG
+              
+              Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
+          fi
