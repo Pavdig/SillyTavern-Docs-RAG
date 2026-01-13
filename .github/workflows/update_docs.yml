@@ -123,8 +123,8 @@ jobs:
             git push origin staging
           fi
 
-      - name: Create Pull Request
-        if: success() # Only run if the previous steps worked
+      - name: Create or Update Pull Request
+        if: success()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_MSG: ${{ steps.upstream_info.outputs.MSG }}
@@ -134,14 +134,23 @@ jobs:
           existing_pr=$(gh pr list --base main --head staging --json url --jq '.[0].url')
           
           if [ -n "$existing_pr" ]; then
-            echo "A PR already exists: $existing_pr"
-            # Optional: Comment on existing PR to say it was updated?
-            # gh pr comment "$existing_pr" --body "Docs updated again with commit $UPSTREAM_HASH"
+            echo "A PR already exists. Posting an update comment..."
+            
+            # Post a comment on the existing PR with the new changelog
+            gh pr comment "$existing_pr" --body "🚀 **Update Incoming!**
+            
+            The source documentation has changed again while this PR was open.
+            I have automatically updated the files in this PR.
+            
+            **New Source Commit:** $UPSTREAM_HASH
+            
+            **Changelog:**
+            $UPSTREAM_MSG"
+            
           else
             echo "Creating a new Pull Request..."
             DATE=$(date +'%Y-%m-%d')
             
-            # Create the PR
             gh pr create \
               --base main \
               --head staging \
