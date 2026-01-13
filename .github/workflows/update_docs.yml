@@ -123,7 +123,6 @@ jobs:
           fi
 
       - name: Create or Update Pull Request
-        # Only run if previous steps succeeded AND we actually pushed changes
         if: success() && steps.push_to_staging.outputs.HAS_CHANGES == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -136,13 +135,12 @@ jobs:
           if [ -n "$existing_pr" ]; then
             echo "A PR already exists. Posting an update comment..."
             
-            # Post a comment on the existing PR with the new changelog
             gh pr comment "$existing_pr" --body "🚀 **Update Incoming!**
             
             The source documentation has changed again while this PR was open.
             I have automatically updated the files in this PR.
             
-            **New Source Commit:** $UPSTREAM_HASH
+            **New Source Commit:** https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH
             
             **Changelog:**
             $UPSTREAM_MSG"
@@ -151,10 +149,14 @@ jobs:
             echo "Creating a new Pull Request..."
             DATE=$(date +'%Y-%m-%d')
             
+            # Create the PR with Emoji Labels
             gh pr create \
               --base main \
               --head staging \
               --title "Sync: Docs Update $DATE" \
+              --label "🤖 Bot" \
+              --label "📚 Documentation" \
+              --label "🔄 Sync" \
               --body "$UPSTREAM_MSG
               
               Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
