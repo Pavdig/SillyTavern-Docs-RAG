@@ -1,12 +1,13 @@
 name: Publish Release
 
-# Trigger this ONLY when changes are pushed (merged) to main
+# Trigger on push to main OR manually button click
 on:
   push:
     branches:
       - main
     paths:
       - 'docs/**'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -28,15 +29,18 @@ jobs:
           echo "DATE=$DATE_STR" >> $GITHUB_OUTPUT
           
           # 2. Define Zip Name
-          # Result: SillyTavern-Docs_RAG_Jan-13-2026.zip
           echo "ZIP_NAME=SillyTavern-Docs_RAG_${DATE_STR}.zip" >> $GITHUB_OUTPUT
 
       - name: Extract Release Notes
         id: notes
         run: |
-          # Find the last commit that has "Source Commit" in it (our Sync commit)
-          # and extract its Body (%b) which contains the Review Copy.
-          NOTES=$(git log --grep="Source Commit:" -1 --pretty=%b)
+          # Find the last commit that has "Source Commit" in it
+          NOTES=$(git log --grep="Source Commit:" -1 --pretty=%b) || true
+          
+          # If no sync commit is found (e.g. manual trigger on a plain commit), use a default message
+          if [ -z "$NOTES" ]; then
+            NOTES="Manual release triggered via GitHub Actions."
+          fi
           
           # Handle multiline text for GitHub Actions
           echo "BODY<<EOF" >> $GITHUB_OUTPUT
@@ -52,9 +56,10 @@ jobs:
         with:
           # Tag: release-Jan-13-2026
           tag_name: release-${{ steps.vars.outputs.DATE }}
-          # Title: Docs Update: Jan 13, 2026
+          
+          # Title: Quoted to prevent YAML syntax errors with colons
           name: "Docs Update: ${{ steps.vars.outputs.DATE }}"
-          # Body: The extracted "Review Copy" text
+          
           body: |
             ${{ steps.notes.outputs.BODY }}
           files: |
