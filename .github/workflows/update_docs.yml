@@ -1,9 +1,8 @@
-name: Update ST Docs
+name: Update ST Docs to Staging
 
-# Trigger on schedule 
 on:
   schedule:
-    - cron: '0 0 * * *' # (Daily at midnight UTC)
+    - cron: '0 * * * *' # (Runs every hour)
   workflow_dispatch:
 
 permissions:
@@ -16,6 +15,8 @@ jobs:
     steps:
       - name: Checkout your repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history to switch branches
 
       - name: Checkout Source Docs (SillyTavern)
         uses: actions/checkout@v4
@@ -23,10 +24,27 @@ jobs:
           repository: SillyTavern/SillyTavern-Docs
           path: temp_source
 
+      - name: Extract Upstream Commit Info
+        id: upstream_info
+        run: |
+          cd temp_source
+          # Get the short hash
+          SHORT_HASH=$(git rev-parse --short HEAD)
+          echo "HASH=$SHORT_HASH" >> $GITHUB_OUTPUT
+          
+          # Get the full commit message (Subject + Body) for the "Review Copy"
+          # Special syntax to handle multiline strings in GitHub Actions
+          {
+            echo 'MSG<<EOF'
+            git log -1 --pretty=%B
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
+          cd ..
+
       - name: Process Docs
         run: |
-          # 1. Set up directories
-          mkdir -p staging
+          # 1. Set up temporary staging directory
+          mkdir -p processed_temp
           
           echo "Processing Markdown files..."
           
@@ -34,10 +52,11 @@ jobs:
           find temp_source -type f -name "*.md" | while read -r file; do
               clean_path="${file#temp_source/}"
               flat_name="${clean_path//\//_}"
-              cp "$file" "staging/SillyTavern_$flat_name"
+              cp "$file" "processed_temp/SillyTavern_$flat_name"
           done
+
           # 3. Sanitize .md files
-          cd staging
+          cd processed_temp
           
           # Remove Redirect Stubs
           grep -rl "This page has been moved to" . | xargs -r rm
@@ -45,7 +64,7 @@ jobs:
           # Remove Front Matter
           find . -type f -name "*.md" -exec sed -i '1{/^---/!q;};1,/^---/d' {} +
           
-          # Remove Admonitions tags (!!! and :::)
+          # Remove Admonitions tags
           find . -type f -name "*.md" -exec sed -i '/^!!!/d; /^:::/d' {} +
           
           # Remove Images
@@ -56,23 +75,40 @@ jobs:
           
           cd ..
           
-          # 4. Move to final location
-          # Clean old SillyTavern-Docs-RAG dir to ensure deleted files upstream are removed downstream
-          rm -rf SillyTavern-Docs-RAG
-          mkdir SillyTavern-Docs-RAG
-          mv staging/* SillyTavern-Docs-RAG/
-          rm -rf staging temp_source
-      - name: Commit and Push changes
+      - name: Push to Staging Branch
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
           
-          git add SillyTavern-Docs-RAG/
-          
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
-            echo "No changes detected. Workflow finished."
+          # Switch to staging branch
+          # We use 'origin/staging' to track the remote if it exists
+          if git ls-remote --exit-code --heads origin staging; then
+            echo "Staging branch exists, switching..."
+            git checkout staging
+            git pull origin staging
           else
-            git commit -m "Auto-update: Synced with upstream SillyTavern-Docs"
-            git push
+            echo "Creating new staging branch..."
+            git checkout -b staging
+          fi
+          
+          # Clean old docs folder in the STAGING branch
+          rm -rf docs
+          mkdir docs
+          
+          # Move new files from our temp folder to the docs folder
+          mv processed_temp/* docs/
+          rm -rf processed_temp temp_source
+          
+          # Stage changes
+          git add docs/
+          
+          # Check for changes and commit
+          if git diff --staged --quiet; then
+            echo "No changes detected from upstream. Workflow finished."
+          else
+            # Commit using the upstream message ("Review Copy")
+            git commit -m "Sync: ${{ steps.upstream_info.outputs.MSG }}" -m "Source Commit: ${{ steps.upstream_info.outputs.HASH }}"
+            
+            # Push to staging
+            git push origin staging
           fi
