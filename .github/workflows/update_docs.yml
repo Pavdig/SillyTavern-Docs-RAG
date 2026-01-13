@@ -77,8 +77,8 @@ jobs:
           cd ..
           
       - name: Push to Staging Branch
+        id: push_to_staging
         env:
-          # We pass these as environment variables to safely handle special characters/quotes
           UPSTREAM_MSG: ${{ steps.upstream_info.outputs.MSG }}
           UPSTREAM_HASH: ${{ steps.upstream_info.outputs.HASH }}
         run: |
@@ -95,11 +95,11 @@ jobs:
             git checkout -b staging
           fi
           
-          # Clean old docs folder in the STAGING branch
+          # Clean old docs folder
           rm -rf docs
           mkdir docs
           
-          # Move new files from our temp folder to the docs folder
+          # Move new files
           mv processed_temp/* docs/
           rm -rf processed_temp temp_source
           
@@ -109,22 +109,22 @@ jobs:
           # Check for changes and commit
           if git diff --staged --quiet; then
             echo "No changes detected from upstream. Workflow finished."
+            echo "HAS_CHANGES=false" >> $GITHUB_OUTPUT
           else
-            # Get current date for the clean title
+            # Get current date
             DATE=$(date +'%Y-%m-%d')
             
-            # Commit with a clean title and move details to the body
-            # -m 1: The Title (e.g., "Sync: Docs Update 2026-01-13")
-            # -m 2: The Body (The full upstream commit message)
-            # -m 3: The Footer (Source hash)
+            # Commit
             git commit -m "Sync: Docs Update $DATE" -m "$UPSTREAM_MSG" -m "Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
             
-            # Push to staging
+            # Push
             git push origin staging
+            echo "HAS_CHANGES=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Create or Update Pull Request
-        if: success()
+        # Only run if previous steps succeeded AND we actually pushed changes
+        if: success() && steps.push_to_staging.outputs.HAS_CHANGES == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UPSTREAM_MSG: ${{ steps.upstream_info.outputs.MSG }}
