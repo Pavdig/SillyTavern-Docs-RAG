@@ -76,12 +76,15 @@ jobs:
           cd ..
           
       - name: Push to Staging Branch
+        env:
+          # We pass these as environment variables to safely handle special characters/quotes
+          UPSTREAM_MSG: ${{ steps.upstream_info.outputs.MSG }}
+          UPSTREAM_HASH: ${{ steps.upstream_info.outputs.HASH }}
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
           
-          # Switch to staging branch
-          # We use 'origin/staging' to track the remote if it exists
+          # Switch to staging branch (create if it doesn't exist)
           if git ls-remote --exit-code --heads origin staging; then
             echo "Staging branch exists, switching..."
             git checkout staging
@@ -106,8 +109,14 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes detected from upstream. Workflow finished."
           else
-            # Commit using the upstream message ("Review Copy")
-            git commit -m "Sync: ${{ steps.upstream_info.outputs.MSG }}" -m "Source Commit: ${{ steps.upstream_info.outputs.HASH }}"
+            # Get current date for the clean title
+            DATE=$(date +'%Y-%m-%d')
+            
+            # Commit with a clean title and move details to the body
+            # -m 1: The Title (e.g., "Sync: Docs Update 2026-01-13")
+            # -m 2: The Body (The full upstream commit message)
+            # -m 3: The Footer (Source hash)
+            git commit -m "Sync: Docs Update $DATE" -m "$UPSTREAM_MSG" -m "Source Commit: $UPSTREAM_HASH"
             
             # Push to staging
             git push origin staging
