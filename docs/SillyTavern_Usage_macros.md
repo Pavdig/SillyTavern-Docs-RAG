@@ -405,9 +405,9 @@ The following operators can be used with variable shorthands. Each operator foll
 | `--`     | Decrement   | `{{.counter--}}`       | Decrements by 1, returns new value                     |
 | `+=`     | Add               | `{{.score += 10}}`     | Adds to variable (numeric or string concatenation), returns nothing |
 | `-=`     | Subtract     | `{{.health -= 5}}`     | Subtracts from variable (numeric only), returns nothing |
-| `\|\|`   | Logical Or | `{{.name \|\| Guest}}` | Returns fallback if variable is falsy                  |
+| `||`   | Logical Or | `{{.name || Guest}}` | Returns fallback if variable is falsy                  |
 | `??`     | Nullish Coalescing | `{{.name ?? Guest}}` | Returns fallback only if variable is undefined |
-| `\|\|=`  | Logical Or Assign | `{{.name \|\|= Guest}}` | Sets value if variable is falsy, returns the new value |
+| `||=`  | Logical Or Assign | `{{.name ||= Guest}}` | Sets value if variable is falsy, returns the new value |
 | `??=`    | Nullish Coalescing Assign | `{{.name ??= Guest}}` | Sets value only if variable is undefined, returns the new value |
 | `==`     | Equals         | `{{.status == active}}`| Compares values, returns `"true"` or `"false"`         |
 | `!=`     | Not Equals | `{{.status != active}}`| Compares values, returns `"true"` if not equal         |
