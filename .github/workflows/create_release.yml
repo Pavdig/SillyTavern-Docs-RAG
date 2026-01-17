@@ -1,5 +1,4 @@
 name: Publish Release
-
 # Trigger on push to main OR manually button click
 on:
   push:
@@ -8,10 +7,8 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -66,3 +63,14 @@ jobs:
             ${{ steps.vars.outputs.ZIP_NAME }}
           draft: false
           prerelease: false
+
+      - name: Cleanup Sync Branch
+        if: always() # Run even if release fails (optional, remove if you only want it on success)
+        run: |
+          # Check if the branch exists remotely
+          if git ls-remote --exit-code --heads origin docs-sync; then
+            echo "Deleting docs-sync branch..."
+            git push origin --delete docs-sync
+          else
+            echo "Branch docs-sync not found. It may have been deleted already."
+          fi

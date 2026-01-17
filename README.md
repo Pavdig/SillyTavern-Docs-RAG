@@ -24,10 +24,10 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
     *   Images and relative links (keeping anchor text)
 
 ### 2. The Update Cycle (CI/CD)
-1.  **Check:** The bot checks the official docs for changes ever hour.
-2.  **Stage:** If updates are found, they are processed and pushed to the `staging` branch.
+1.  **Check:** The bot checks the official docs for changes every hour.
+2.  **Sync:** If updates are found, they are processed and pushed to a temporary `docs-sync` branch.
 3.  **Notify:** A **Pull Request** is automatically opened (or updated) with the changelog.
-4.  **Release:** When the PR is merged into `main`, a GitHub Release is automatically published with a date-stamped ZIP file.
+4.  **Release:** When the PR is merged into `main`, a GitHub Release is automatically published with a date-stamped ZIP file, and the temporary branch is cleaned up.
 
 ## 📂 Usage for RAG
 
