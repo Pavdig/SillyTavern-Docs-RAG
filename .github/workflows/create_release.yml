@@ -21,11 +21,28 @@ jobs:
       - name: Setup Variables
         id: vars
         run: |
-          # 1. Generate Date string (e.g. Jan-13-2026)
-          DATE_STR=$(date +'%b-%d-%Y')
-          echo "DATE=$DATE_STR" >> $GITHUB_OUTPUT
+          # 1. Get today's base date (e.g., Jan-24-2026)
+          BASE_DATE=$(date +'%b-%d-%Y')
+          TAG_PREFIX="release-${BASE_DATE}"
           
-          # 2. Define Zip Name
+          # 2. Check if a release for today already exists
+          if git rev-parse "$TAG_PREFIX" >/dev/null 2>&1; then
+            # If the base tag exists, find the next "update-X" number
+            CTR=2
+            while git rev-parse "${TAG_PREFIX}-update-${CTR}" >/dev/null 2>&1; do
+              CTR=$((CTR+1))
+            done
+            # Set the new date string with the suffix
+            DATE_STR="${BASE_DATE}-update-${CTR}"
+          else
+            # First release of the day (no suffix)
+            DATE_STR="${BASE_DATE}"
+          fi
+          
+          echo "Final Version String: $DATE_STR"
+          
+          # 3. Export to GitHub Outputs
+          echo "DATE=$DATE_STR" >> $GITHUB_OUTPUT
           echo "ZIP_NAME=SillyTavern-Docs_RAG_${DATE_STR}.zip" >> $GITHUB_OUTPUT
 
       - name: Extract Release Notes
