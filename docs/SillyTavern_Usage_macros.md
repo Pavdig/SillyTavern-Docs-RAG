@@ -10,7 +10,24 @@ Macros are dynamic placeholders that get replaced with actual values when text i
 SillyTavern provides built-in documentation for all available macros:
 
 - **Slash command**: Type `/? macros` in the chat input to display a list of all registered macros with their descriptions.
-- **Autocomplete**: Type `{{` during slash commands autocomplete in the input field to get suggestions for available macros.
+- **Autocomplete**: See Macro Autocomplete below for details on getting suggestions while typing.
+
+### Macro Autocomplete
+
+Macro autocomplete provides suggestions for available macros as you type. It works in all text fields that support macros throughout SillyTavern.
+
+Type `{{` to start autocomplete for macros, showing available macros and their arguments, potential Macro Flags, Variable Shorthands, and more.
+
+**Where autocomplete appears by default:**
+
+- Chat user input box
+- Expanded editor (full-screen text editing, opened via the 'Expand' button next to text fields)
+- Prompt manager editor
+
+**Triggering autocomplete in other fields:**
+
+- Press **Ctrl+Space** in any macro-supporting text field to open the autocomplete popup
+- Enable **Settings → AutoComplete Settings → Show in all macro fields** to have autocomplete appear automatically in all macro fields
 
 ## Basic Syntax
 
@@ -205,7 +222,7 @@ The condition can be:
 
 - A macro name (resolved automatically if no arguments are required)
 - Any value from a nested macro like `{{getvar::flag}}`
-- A variable shorthand like `.myFlag` or `$globalFlag` (see Variable Shorthand Syntax)
+- A variable shorthand like `.myFlag` or `$globalFlag` (see Variable Shorthands)
 - Any text you want (that will implicitly resolve to truthy or falsy based on its content)
 
 Falsy values: empty string, `false`, `0`, `off`, `no`.
@@ -224,7 +241,7 @@ Variable shorthands provide a concise way to check variable values in conditions
 {{ /if }}
 ```
 
-See Variable Shorthand Syntax for more details on shorthand notation.
+See Variable Shorthands for more details on shorthand notation.
 
 ### Inverted Condition
 
@@ -304,7 +321,7 @@ Whitespace is allowed between flags and the macro name:
 ### Flags-like prefix operators
 
 Variable shorthand syntax uses prefix operators (`.` and `$`) which behave similarly to flags but are not flags themselves.  
-See the Variable Shorthand Syntax section for details.
+See the Variable Shorthands section for details.
 
 ### Preserve Whitespace Flag
 
@@ -347,7 +364,7 @@ To display literal curly braces without macro resolution, escape them with backs
 
 This outputs `{{notAMacro}}` as plain text.
 
-## Variable Shorthand Syntax
+## Variable Shorthands
 
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
@@ -411,6 +428,10 @@ The following operators can be used with variable shorthands. Each operator foll
 | `??=`    | Nullish Coalescing Assign | `{{.name ??= Guest}}` | Sets value only if variable is undefined, returns the new value |
 | `==`     | Equals         | `{{.status == active}}`| Compares values, returns `"true"` or `"false"`         |
 | `!=`     | Not Equals | `{{.status != active}}`| Compares values, returns `"true"` if not equal         |
+| `>`      | Greater Than | `{{.score > 50}}` | Returns `"true"` if variable is greater than value     |
+| `>=`     | Greater Than or Equal | `{{.level >= 10}}` | Returns `"true"` if variable is greater than or equal to value |
+| `<`      | Less Than   | `{{.health < 20}}`     | Returns `"true"` if variable is less than value        |
+| `<=`     | Less Than or Equal | `{{.health <= 0}}` | Returns `"true"` if variable is less than or equal to value |
 
 #### Get Variable
 
@@ -564,6 +585,74 @@ Useful in `{{if}}` conditions:
 
 ```txt
 {{if {{.status != disabled}} }}Feature enabled{{/if}}
+```
+
+#### Greater Than
+
+Use `>` to check if a variable's numeric value is greater than another value:
+
+```txt
+{{.score > 50}}        // Returns "true" if .score is greater than 50
+{{$level > 5}}         // Returns "true" if $level is greater than 5
+```
+
+Performs a numeric comparison and returns the literal string `"true"` or `"false"`.
+
+Useful in `{{if}}` conditions:
+
+```txt
+{{if {{.score > 100}} }}High score!{{/if}}
+```
+
+#### Greater Than or Equal
+
+Use `>=` to check if a variable's numeric value is greater than or equal to another value:
+
+```txt
+{{.level >= 10}}       // Returns "true" if .level is at least 10
+{{$points >= 100}}     // Returns "true" if $points is 100 or more
+```
+
+Performs a numeric comparison and returns the literal string `"true"` or `"false"`.
+
+Useful in `{{if}}` conditions:
+
+```txt
+{{if {{$level >= 10}} }}Unlocked advanced features{{/if}}
+```
+
+#### Less Than
+
+Use `<` to check if a variable's numeric value is less than another value:
+
+```txt
+{{.health < 20}}       // Returns "true" if .health is below 20
+{{$timer < 0}}         // Returns "true" if $timer is negative
+```
+
+Performs a numeric comparison and returns the literal string `"true"` or `"false"`.
+
+Useful in `{{if}}` conditions:
+
+```txt
+{{if {{.health < 20}} }}Low health warning!{{/if}}
+```
+
+#### Less Than or Equal
+
+Use `<=` to check if a variable's numeric value is less than or equal to another value:
+
+```txt
+{{.health <= 0}}       // Returns "true" if .health is 0 or below
+{{$attempts <= 3}}     // Returns "true" if $attempts is 3 or fewer
+```
+
+Performs a numeric comparison and returns the literal string `"true"` or `"false"`.
+
+Useful in `{{if}}` conditions:
+
+```txt
+{{if {{.health <= 0}} }}Game over{{/if}}
 ```
 
 ## Legacy Syntax
