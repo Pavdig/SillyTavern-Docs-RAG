@@ -9,7 +9,7 @@ The goal is to create a "flat" and clean set of Markdown files optimized for ing
 
 Go to the **[Releases Page](https://github.com/Pavdig/SillyTavern-Docs-RAG/releases)** to download the latest RAG-ready ZIP package.
 
-## 🚀 How it Works
+## ⚙️ How it Works
 
 The automation pipeline runs on a schedule to ensure this repo stays in sync with SillyTavern documentation development.
 
@@ -29,12 +29,12 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
 3.  **Notify:** A **Pull Request** is automatically opened (or updated) with the changelog.
 4.  **Release:** When the PR is merged into `main`, a GitHub Release is automatically published with a date-stamped ZIP file, and the temporary branch is cleaned up.
 
-## 📂 Usage for RAG
+## 🛠️ Usage for RAG
 
 1.  Download the latest `.zip` from **Releases**.
 2.  Extract the files.
-3.  Upload them to your RAG Knowledge Base (e.g., Open WebUI "Knowledge").
+3.  Upload them to your RAG Knowledge Base (e.g., Open WebUI `Knowledge`).
 
-## 📝 Credits
+## 🎖️ Credits
 
-*   Original Documentation: [SillyTavern Team](https://github.com/SillyTavern/SillyTavern-Docs)
+*   [Original Documentation](https://github.com/SillyTavern/SillyTavern-Docs): [SillyTavern Team](https://github.com/SillyTavern)
