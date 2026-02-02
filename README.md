@@ -1,4 +1,4 @@
-![Update Status](https://github.com/Pavdig/SillyTavern-Docs-RAG/actions/workflows/update_docs.yml/badge.svg)
+![Update Status](https://github.com/Pavdig/SillyTavern-Docs-RAG/actions/workflows/update_docs_cloud.yml/badge.svg)
 # SillyTavern Documentation (RAG-Ready)
 
 This repository hosts an automated pipeline that mirrors, processes, and sanitizes the official [SillyTavern Documentation](https://github.com/SillyTavern/SillyTavern-Docs). 
