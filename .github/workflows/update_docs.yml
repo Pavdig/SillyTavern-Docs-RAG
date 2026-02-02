@@ -11,7 +11,7 @@ permissions:
   pull-requests: write
 jobs:
   update-knowledge-base:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted # ubuntu-latest
     
     steps:
       - name: Checkout your repo
