@@ -1,4 +1,4 @@
-name: Update ST Docs
+name: Update ST Docs (Local runner)
 on:
   schedule:
     - cron: '0 * * * *' # (Runs every hour)
