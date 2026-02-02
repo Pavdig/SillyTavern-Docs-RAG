@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Need history to find the commit message
+          fetch-depth: 0
 
       - name: Setup Variables
         id: vars
@@ -70,10 +70,7 @@ jobs:
         with:
           # Tag: release-Jan-13-2026
           tag_name: release-${{ steps.vars.outputs.DATE }}
-          
-          # Title: Quoted to prevent YAML syntax errors with colons
           name: "Docs Update: ${{ steps.vars.outputs.DATE }}"
-          
           body: |
             ${{ steps.notes.outputs.BODY }}
           files: |
@@ -84,7 +81,6 @@ jobs:
       - name: Cleanup Sync Branch
         if: always() # Run even if release fails (optional, remove if you only want it on success)
         run: |
-          # Check if the branch exists remotely
           if git ls-remote --exit-code --heads origin docs-sync; then
             echo "Deleting docs-sync branch..."
             git push origin --delete docs-sync
