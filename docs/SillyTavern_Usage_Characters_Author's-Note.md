@@ -11,6 +11,7 @@ The Author's Note can be found in the Options menu on the left side of the chat 
 
 | Options Menu                          | Author's Note Panel                    |
 |---------------------------------------|----------------------------------------|
+|  |  |
 
 ## Configuring Author's Notes
 

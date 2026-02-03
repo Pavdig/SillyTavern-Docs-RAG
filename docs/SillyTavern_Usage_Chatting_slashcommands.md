@@ -1,9 +1,11 @@
 
 # Slash commands
 
+!!!warning
 **This is not an exhaustive list as it is updated rarely.**
 
 For the most up-to-date list of commands that will work in your instance, use the `/help slash` chat command in any SillyTavern chat.
+!!!
 
 - `/help` – displays the help message
 - `/api` - switches to a different API

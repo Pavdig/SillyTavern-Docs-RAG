@@ -1,7 +1,9 @@
 
 # talkinghead
 
+!!!warning
 **THE SUPPORT FOR TALKGINHEAD WAS DROPPED IN SILLYTAVERN 1.12.13. THIS PAGE IS KEPT FOR HISTORICAL PURPOSES.**
+!!!
 
 ### What is it?
 
@@ -47,7 +49,7 @@ The character's hands should be below and far from the head.
 The head of the character should roughly be contained in the 128 x 128 box in the middle of the top half of the image.
 The alpha channels of all pixels that do not belong to the character (i.e., background pixels) must be 0.
 
-Input Constraints
+![Input Constraints](/static/input_spec.png)
 
 ### ADVANCED SECTION
 

@@ -3,8 +3,9 @@
 
 Instruct Mode allows you to adjust the prompting for instruction-following models trained on various prompt formats, such as Alpaca, ChatML, Llama2, etc.
 
-Applies to: Text Completion APIs
-For equivalent settings in Chat Completion APIs, use [Prompt Manager](SillyTavern_prompt-manager.md).
+!!! Applies to: Text Completion APIs
+For equivalent settings in Chat Completion APIs, use [Prompt Manager](prompt-manager.md).
+!!!
 
 ## API support
 
@@ -22,7 +23,7 @@ A chosen instruct template must match the expectations of an actual model that i
 
 This is usually reflected in a model card on HuggingFace, and some even provide SillyTavern-compatible JSON files.
 
-Example: NeverSleep/Noromaid-13b-v0.1.1 (https://huggingface.co/NeverSleep/Noromaid-13b-v0.1.1#prompt-template-custom-format-or-alpaca)
+Example: [NeverSleep/Noromaid-13b-v0.1.1](https://huggingface.co/NeverSleep/Noromaid-13b-v0.1.1#prompt-template-custom-format-or-alpaca)
 
 ### Chat Completion API (OpenAI, Claude, etc)
 
@@ -42,8 +43,9 @@ User: { Write a happy song about Nintendo Switch. }
 
 ### System Prompt
 
-Recent change
-The System Prompt is now a separate entity. See the [Advanced Formatting](SillyTavern_advancedformatting.md) page for more details.
+!!!warning Recent change
+The System Prompt is now a separate entity. See the [Advanced Formatting](advancedformatting.md#system-prompt) page for more details.
+!!!
 
 ### Templates
 
@@ -81,8 +83,9 @@ The following options are available:
 
 ### Sequences: Story String Wrapping
 
-Recent change
+!!!warning Recent change
 System Prompt wrapping has been removed and replaced with Story String wrapping.
+!!!
 
 Define how the Story String will be wrapped when the Position is set to "Default (top of context)"
 
@@ -138,13 +141,17 @@ Various advanced configurations for finer tuning of the prompt building
 
 Inserted before the first Assistant's message.
 
+!!!info
 Only the first message of the **chat history** counts, not the message that actually goes into the prompt first!
+!!!
 
 #### Last Assistant Prefix
 
 Inserted before the last Assistant's message or as a last prompt line when generating an AI reply.
 
+!!!info
 Not used when generating text in a background (e.g. Stable Diffusion prompts or Summaries). System Instruction Prefix or Regular Assistant Prefix will be used instead.
+!!!
 
 #### System Instruction Prefix
 

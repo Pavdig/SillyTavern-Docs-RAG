@@ -1,13 +1,17 @@
 
 # User Settings
 
-**[UI Customization](SillyTavern_uicustomization.md)**
+:::callout
+**[UI Customization](uicustomization.md)**
 
 Change the theme, look and feel of the chat interface to suit your preferences.
+:::
 
-**[Visual Novel mode](SillyTavern_Visual-Novel.md)**
+:::callout
+**[Visual Novel mode](Visual-Novel.md)**
 
 Chat to characters with sprites, like in visual novels such as Doki Doki Literature Club and other famous VN games.
+:::
 
 ## General Settings
 
@@ -20,7 +24,7 @@ SillyTavern's user interface is available in multiple languages. The language se
 * **English**: Forces English UI regardless of system settings
 * Other languages available through the dropdown
 
-Note: This setting only affects the user interface text. For AI conversation translation, please use the [Chat Translation](SillyTavern_.._extensions_Translation.md) extension.
+Note: This setting only affects the user interface text. For AI conversation translation, please use the [Chat Translation](../../extensions/Translation.md) extension.
 
 ### Software Version
 
@@ -29,11 +33,11 @@ Your current version of SillyTavern is displayed in the top-right corner. This i
 * Ensuring compatibility with extensions
 * Determining if updates are available
 
-To update SillyTavern to the latest version, please refer to the Updating documentation.
+To update SillyTavern to the latest version, please refer to the [Updating](/Installation/Updating) documentation.
 
 ### Account Management
 
-Control your SillyTavern user account, back up your settings and user data, and manage user roles and permissions in [multi-user mode](SillyTavern_Administration_multi-user.md).
+Control your SillyTavern user account, back up your settings and user data, and manage user roles and permissions in [multi-user mode](/Administration/multi-user.md).
 
 #### <i class="fa-fw fa-solid fa-user-shield"></i> Account
 
@@ -42,7 +46,7 @@ In the Account dialog, you can view and edit your profile information, change yo
 **Profile Information**
 
 * Display name (editable via pencil icon)
-* User avatar (can also be changed using [Personas](SillyTavern_Usage_personas.md))
+* User avatar (can also be changed using [Personas](/Usage/personas.md))
 * Account handle
 * User role
 * Account creation date
@@ -62,9 +66,10 @@ Critical account operations that should be used with caution:
 
 #### <i class="fa-fw fa-solid fa-user-tie"></i> Admin Panel
 
-Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)
+!!! Applies to: [multi-user mode](/Administration/multi-user.md)
 
 Multi-account features require `enableUserAccounts` to be set to true in config.yaml. 
+!!!
 
 Select **Manage Users** to view and manage existing user accounts.
 
@@ -103,7 +108,8 @@ Creating a new user automatically generates a subfolder in the /data/ directory 
 
 #### <i class="fa-fw fa-solid fa-right-from-bracket"></i> Logout
 
-Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)
+!!! Applies to: [multi-user mode](/Administration/multi-user.md)
+!!!
 
 Sign out of your current session.
 
@@ -118,11 +124,11 @@ A convenient search bar that helps you quickly find specific settings:
 
 Change the appearance of the chat interface to suit your preferences.
 
-For more information on the settings in this section of <i class="fa-fw fa-solid fa-user-gear" title="User Settings icon"></i> **User Settings**, see [UI Customization](SillyTavern_uicustomization.md).
+For more information on the settings in this section of <i class="fa-fw fa-solid fa-user-gear" title="User Settings icon"></i> **User Settings**, see [UI Customization](uicustomization.md#ui-theme).
 
 ## Character Handling
 
-* **Char List Subheader**: Choose what additional information to display under character names in the [<i class="fa-fw fa-solid fa-address-card" title="Characters icon"></i> Characters](SillyTavern_Usage_Characters_characterdesign.md) list:
+* **Char List Subheader**: Choose what additional information to display under character names in the [<i class="fa-fw fa-solid fa-address-card" title="Characters icon"></i> Characters](/Usage/Characters/characterdesign.md) list:
     - Character Version
     - Created by
 * **Import Card Tags**: Controls how tags are handled when importing character cards:
@@ -140,10 +146,10 @@ For more information on the settings in this section of <i class="fa-fw fa-solid
 ## Miscellaneous
 
 * **Reload Chat**: Reloads and redraws the current chat.
-* **Debug Menu**: Access debugging options.
+* **[Debug Menu](#debug-menu)**: Access debugging options.
 * **Smooth Streaming**: Smoothens streamed generation by showing the text letter by letter. Includes speed control slider. To exclude reasoning blocks from smooth streaming, enable "Exclude 'Thinking...'" option.
 * **Stream Fade-In**: Applies a fade-in effect to streamed text. Can be used with or without Smooth Streaming.
-* **[Message Sound](SillyTavern_uicustomization.md)**: Plays a sound when message generation completes.
+* **[Message Sound](uicustomization.md#message-sound)**: Plays a sound when message generation completes.
     - **Background Sound Only**: Only plays sounds when browser tab is unfocused.
 * **Relaxed API URLs**: Reduces formatting requirements for API URLs.
 * **Lorebook Import Dialog**: Shows import dialog for World Info/Lorebook when importing characters with embedded lore.
@@ -166,7 +172,7 @@ Controls how messages are loaded and displayed in the chat interface. These sett
     - Always include examples
     - Never include examples
 * **Image Swipe Behavior** (controls swipe actions for images in gallery style):
-    - Generate new: Allows generating new images with the [Image Generation](SillyTavern_extensions_Stable-Diffusion.md) extension
+    - Generate new: Allows generating new images with the [Image Generation](/extensions/Stable-Diffusion.md) extension
     - Roll over: Cycles through existing images, wrapping around at the ends
 
 ### Input & Response Controls
@@ -200,9 +206,9 @@ Automatically reject and regenerate AI messages based on configurable criteria.
 
 Automatically continues a response if the model stopped before reaching a certain length.
 
-This lets your AI write a long response in multiple parts, so that you can have a short [response length setting](SillyTavern_Usage_Common-Settings.md) while still getting long replies. 
+This lets your AI write a long response in multiple parts, so that you can have a short [response length setting](/Usage/Common-Settings.md#response-tokens) while still getting long replies. 
 
-It will not make the AI write more than it would have otherwise. Asking the AI to continue a message that it considers "finished" does not usually work. See [How to make the AI write more?](SillyTavern_Usage_faq.md) for other ideas.
+It will not make the AI write more than it would have otherwise. Asking the AI to continue a message that it considers "finished" does not usually work. See [How to make the AI write more?](/Usage/faq.md#how-to-make-the-ai-write-more) for other ideas.
 
 * **Enable Auto-continue**: Master toggle for automatic continuation
 * **Allow for Chat Completion APIs**: Enables auto-continue functionality for Chat Completion API endpoints
@@ -223,7 +229,7 @@ Controls how messages are formatted and what content is displayed.
 ### Prompt Inspection and Debugging
 
 * **Log prompts to console**: Output prompts to browser console
-* **Request token probabilities**: Request token probabilities for AI responses from the API. Where available, these can be viewed in <i class="fa-solid fa-bars" title="Burger Menu icon"></i> [Token Probabilities](SillyTavern_.._Usage_Chatting_index.md).
+* **Request token probabilities**: Request token probabilities for AI responses from the API. Where available, these can be viewed in <i class="fa-solid fa-bars" title="Burger Menu icon"></i> [Token Probabilities](../../Usage/Chatting/index.md#token-probabilities-panel).
 
 ### AutoComplete
 
@@ -236,31 +242,32 @@ Controls how messages are formatted and what content is displayed.
 
 ## STscript Settings
 
-Configuration options for the [STscript parser](SillyTavern_For_Contributors_st-script.md).
+Configuration options for the [STscript parser](/For_Contributors/st-script.md#parser-flags).
 
 ### STRICT_ESCAPING
 
 * Pipes don't need to be escaped in quoted values.
 * A backslash in front of a symbol can be escaped to provide the literal backslash followed by the functional symbol.
 
-See [Strict Escaping](SillyTavern_For_Contributors_st-script.md) for more information.
+See [Strict Escaping](/For_Contributors/st-script.md#strict-escaping) for more information.
 
 ### REPLACE_GETVAR
 
 Helps to avoid double-substitutions when the variable values contain text that could be interpreted as macros.
 
-See [Replace Variable Macros](SillyTavern_For_Contributors_st-script.md) for more information.
+See [Replace Variable Macros](/For_Contributors/st-script.md#replace-variable-macros) for more information.
 
 ## Clean-Up Menu
 
 The Clean-Up menu provides a data maintenance tool that helps you identify and remove unnecessary files from your SillyTavern installation. This feature helps keep your data directory organized and can free up significant disk space.
 
-warning "Important Warning"
+!!! warning "Important Warning"
 The Clean-up tool will permanently delete files. **This action cannot be undone!**
 
 Manual uploads to the `/data/user/files/` and `/data/user/images/` directories will be deleted if they are not associated with chat messages or Data Bank entries.
 
 If unsure, make a backup of your data before using the Clean-up menu.
+!!!
 
 ### How to Use Clean-Up
 
@@ -333,9 +340,10 @@ The Clean-Up tool scans for loose files into the following categories:
 
 ## Debug menu
 
-These functions are intended for advanced users only.
+!!!warning These functions are intended for advanced users only.
 
 Do not use them unless you fully understand their consequences.
+!!!
 
 The Debug Menu provides functionality for troubleshooting, maintenance, and development purposes. These functions should be used with caution as they can significantly impact your SillyTavern installation.
 

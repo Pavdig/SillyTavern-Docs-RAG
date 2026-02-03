@@ -3,8 +3,9 @@
 
 SillyTavern features a Welcome Screen that can greet you with a designated "Assistant" character. This screen appears when you launch SillyTavern without an active chat or after you close your last chat session.
 
-Note
+!!! Note
 If you don't see a Welcome Screen on app startup, make sure the "Auto-Load Last Chat" option is disabled in the "Chat/Message Handling" section of the **<i class="fa-solid fa-user-cog"></i> User Settings** panel. If this option is enabled, SillyTavern will automatically load your last chat instead of showing the Welcome Screen.
+!!!
 
 ## The Welcome Screen
 
@@ -22,8 +23,9 @@ When no chat is active, the Welcome Screen provides several useful elements:
 
 ## Temporary Chat
 
-Note
+!!! Note
 Due to a technical limitation, the Temporary Chat feature will not use your customized Welcome Page Assistant. It will always start an empty chat without any additional prompts or character information.
+!!!
 
 The Temporary Chat button allows you to quickly start a new chat session without saving it to your chat history. This is useful for testing or casual conversations without cluttering your saved chats. This chat will be deleted as soon as you close it or switch to another chat.
 

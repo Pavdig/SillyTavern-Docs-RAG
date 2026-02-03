@@ -9,11 +9,11 @@ reason, so you'll get a good idea of how to fix your own missing translations.
 
 In the second half, we look at
 
-- how i18n works in SillyTavern,
-- writing translations and code to use them,
-- debug functions to find missing translations,
-- adding a new language,
-- and contributing your changes.
+- [how i18n works](#how-translations-work) in SillyTavern,
+- [writing translations](#language-files) and code to use them,
+- debug functions to [find missing translations](#finding-missing-translations),
+- adding a [new language](#adding-a-new-language),
+- and [contributing your changes](#contributing).
 
 If you're developing an extension or modifying the core code, write your HTML and JavaScript with i18n in mind. This way
 your work is ready for other people to translate it into their language.
@@ -26,16 +26,18 @@ Nobody knows 15 languages by themselves. We work together to make SillyTavern ac
 
 ## Let's fix some missing translations!
 
+!!!info
 All 3 of these issues required code changes to fix. If you're adding a new translation, you might not need to touch
 the code at all. Just add the translation to the JSON file. It just so happens that somebody recently added a large number
 of missing translations to the Chinese (Traditional) JSON file, so the remaining issues were all in the code. In other locales
 there are plenty of missing translations you can fix without touching the code.
+!!!
 
 ### `Generate Image`
 
 The text "Generate Image" is untranslated in the Chinese (Traditional) locale. Why?
 
-generate-image-pre.png
+![generate-image-pre.png](../static/i18n/generate-image-pre.png)
 
 Right-click on the element and inspect it. You'll see the HTML:
 
@@ -66,7 +68,7 @@ Where is its `data-i18n` attribute? It's missing! Let's add it. We find it in th
 
 We are in luck, that string `Generate Image` is in many of the language files, including in Chinese (Traditional).
 
-generate-image-lang.png
+![generate-image-lang.png](../static/i18n/generate-image-lang.png)
 
 ```json
 {
@@ -92,13 +94,13 @@ Why isn't it showing up? We have to wire the element up correctly:
 
 Now it works! Reload the page and see.
 
-generate-image-post.png
+![generate-image-post.png](../static/i18n/generate-image-post.png)
 
 But while we have the HTML open, what's with `Stop Image Generation` just under it? The HTML doesn't look right.
 
 If we generate an image and then open the wand menu while it's generating, we see untranslated text.
 
-stop-generating-image-pre.png
+![stop-generating-image-pre.png](../static/i18n/stop-generating-image-pre.png)
 
 First fix the HTML:
 
@@ -140,13 +142,13 @@ After some discussion with Claude, we're actually going to go with the following
 - Simplified Chinese: "Stop Image Generation": "中止图像生成"
 - Japanese: "Stop Image Generation": "画像生成を停止"
 
-stop-generating-post-2.png
+![stop-generating-post-2.png](../static/i18n/stop-generating-post-2.png)
 
 ### `Generate Caption`
 
 "Generate Caption" is untranslated in the Chinese (Traditional) locale. Let's fix it!
 
-generate-image-post.png
+![generate-image-post.png](../static/i18n/generate-image-post.png)
 
 Where is it? Inspect the element.
 
@@ -194,7 +196,7 @@ We will use the following translations:
 - Simplified Chinese: "Generate Caption": "生成图片说明"
 - Japanese: "Generate Caption": "画像説明を生成"
 
-generate-caption-post.png
+![generate-caption-post.png](../static/i18n/generate-caption-post.png)
 
 ### `Inspect Prompts`
 
@@ -263,7 +265,7 @@ We will merge those into the JSON files.
 }
 ```
 
-toggle-prompt-inspection-post-tt.png
+![toggle-prompt-inspection-post-tt.png](../static/i18n/toggle-prompt-inspection-post-tt.png)
 
 A pity about that tooltip. The problem is that the code doesn't use
 the `t` function.
@@ -303,7 +305,7 @@ repo: https://github.com/SillyTavern/Extension-PromptInspector/pull/1
 
 The translations will be added to the main SillyTavern repo. https://github.com/SillyTavern/SillyTavern/pull/3198
 
-start-inspecting-post.png
+![start-inspecting-post.png](../static/i18n/start-inspecting-post.png)
 
 ## Language files
 
@@ -518,7 +520,7 @@ The console will show a table of missing translations with:
 
 Reapplies the currently selected locale to the page
 
-Neither of these tools are perfect
+!!!warning Neither of these tools are perfect
 
 - they don't catch missing translations in JavaScript code
 - they don't catch missing data-i18n attributes in HTML, they just catch untranslated keys

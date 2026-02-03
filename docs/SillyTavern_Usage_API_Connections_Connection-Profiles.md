@@ -13,29 +13,30 @@ Connection Profiles store the following selections.
 
 ### Common
 
-* [API type, model and the server URL](SillyTavern_Usage_API_Connections_index.md)
-* [Secret Key](SillyTavern_Usage_faq.md)
-* [Settings preset](SillyTavern_Usage_Common-Settings.md)
-* [Start Reply With](SillyTavern_Usage_Prompts_advancedformatting.md) (can be explicitly empty)
-* [Custom Stopping Strings](SillyTavern_Usage_Prompts_advancedformatting.md) (can be explicitly empty)
-* [Reasoning Formatting](SillyTavern_Usage_Prompts_reasoning.md)
+* [API type, model and the server URL](/Usage/API_Connections/index.md)
+* [Secret Key](/Usage/faq.md#where-are-my-api-keys-stored-why-cant-i-see-them)
+* [Settings preset](/Usage/Common-Settings.md)
+* [Start Reply With](/Usage/Prompts/advancedformatting.md#start-reply-with) (can be explicitly empty)
+* [Custom Stopping Strings](/Usage/Prompts/advancedformatting.md#custom-stopping-strings) (can be explicitly empty)
+* [Reasoning Formatting](/Usage/Prompts/reasoning.md#configuration)
 
 ### Text Completion APIs
 
-* [System Prompt and its state](SillyTavern_Usage_Prompts_advancedformatting.md)
-* [Instruct Mode state and template](SillyTavern_Usage_Prompts_instructmode.md)
-* [Context Template](SillyTavern_Usage_Prompts_advancedformatting.md)
-* [Tokenizer](SillyTavern_Usage_Prompts_advancedformatting.md)
+* [System Prompt and its state](/Usage/Prompts/advancedformatting.md#system-prompt)
+* [Instruct Mode state and template](/Usage/Prompts/instructmode.md)
+* [Context Template](/Usage/Prompts/advancedformatting.md#context-template)
+* [Tokenizer](/Usage/Prompts/advancedformatting.md#tokenizer)
 
 ### Chat Completion APIs
 
-* [Prompt Post-Processing](SillyTavern_Usage_API_Connections_openai.md)
+* [Prompt Post-Processing](/Usage/API_Connections/openai.md#prompt-post-processing)
 * Proxy preset
 
 ## Managing Connection Profiles
 
-Note
+!!!info Note
 Profiles only save the selection in dropdown fields, without knowing anything about the underlying settings. This means that you will lose unsaved changes by switching to a different profile. To prevent this, make sure to update all presets and templates if you don't want to lose ephemeral changes.
+!!!
 
 * To save a profile, set all the required settings and click the "Create" button. Then review the settings and provide a name for the profile. **A name should be unique.**
 * To view the detailed information about a chosen profile, click on the "Information" button. Click again to hide the details.

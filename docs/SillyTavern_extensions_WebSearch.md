@@ -3,8 +3,9 @@
 
 Adds web search results to LLM prompts.
 
-Note
-Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
+!!! Note
+Some [Chat Completion](/Usage/API_Connections/openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
+!!!
 
 ## Available sources
 
@@ -12,7 +13,7 @@ Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources prov
 
 Requires an official server plugin to be installed and enabled.
 
-See SillyTavern-WebSearch-Selenium (https://github.com/SillyTavern/SillyTavern-WebSearch-Selenium) for more details.
+See [SillyTavern-WebSearch-Selenium](https://github.com/SillyTavern/SillyTavern-WebSearch-Selenium) for more details.
 
 Supports Google and DuckDuckGo engines.
 
@@ -87,7 +88,7 @@ Docs: <https://docs.z.ai/api-reference/tools/web-search>
 
 ### Search Activation
 
-1. Use function tool - uses [function calling](SillyTavern_For_Contributors_Function-Calling.md) to activate search or scrape web pages. Must use a supported Chat Completion API and be enabled in the AI Response settings. **Disables all other activation methods when engaged.**
+1. Use function tool - uses [function calling](/For_Contributors/Function-Calling.md) to activate search or scrape web pages. Must use a supported Chat Completion API and be enabled in the AI Response settings. **Disables all other activation methods when engaged.**
 2. Use Backticks - enables search activation using words encased in single backticks.
 3. Use Trigger Phrases - enables search activation using trigger phrases.
 4. Regular expressions - provide a JS-flavored regex to match the user message. If the regex matches, the search with a given query will be triggered. Search query supports `{{macros}}` and $1-syntax to reference the matched group. Example: `/what is happening in (.*)/i` regex for search query `news in $1` will match a message containing `what is happening in New York` and trigger the search with the query `news in New York`.
@@ -109,7 +110,9 @@ Docs: <https://docs.z.ai/api-reference/tools/web-search>
 Search results from the latest query will stay included in the prompt until the next valid query is found.
 If you want to ask additional questions without accidentally triggering the search, start your message with a period.
 
+!!!info
 Web Search function tool always overrides other triggers if enabled and available.
+!!!
 
 Priority of triggers (if multiple are enabled):
 
@@ -119,7 +122,7 @@ Priority of triggers (if multiple are enabled):
 
 To discard all previous queries from processing, start the user message with an exclamation mark, for example, a user message `!Now let's talk about...` will discard this and every message above it.
 
-This extension also provides a `/websearch` slash command to use in STscript. More info here: [STscript Language Reference](SillyTavern_For_Contributors_st-script.md)
+This extension also provides a `/websearch` slash command to use in STscript. More info here: [STscript Language Reference](/For_Contributors/st-script.md#extension-commands)
 
 ```stscript
 /websearch (links=on|off snippets=on|off [query]) – performs a web search query. Use named arguments to specify what to return - page snippets (default: on), full parsed pages (default: off) or both.

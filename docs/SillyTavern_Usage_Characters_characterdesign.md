@@ -1,7 +1,9 @@
 
 # Character Design
 
+!!!tip
 Character Name is the only required field. You can leave the rest empty and still use the character in chats.
+!!!
 
 ## Character Description
 
@@ -43,7 +45,7 @@ This is because every AI model has a limit to the amount of context it can proce
 
 This is the information that gets sent to the AI each time you ask it to generate a response. SillyTavern automatically calculates the best way to allocate the available context tokens before sending the information to the AI model.
 
-Read more about how the context is built in the [Prompts](SillyTavern_Usage_Prompts_index.md) section.
+Read more about how the context is built in the [Prompts](/Usage/Prompts/index.md) section.
 
 ### What are a Character's 'Permanent Tokens'?
 
@@ -89,18 +91,24 @@ Click the **<i class="fa-solid fa-star"></i> Add to Favorites** button to mark t
 
 ## Advanced Definitions
 
+!!!info
 The following fields are hidden by default. To access and edit them, you need to click on the **<i class="fa-solid fa-book"></i> Advanced Definitions** button on the menu bar of the character definition page.
+!!!
 
 ### Prompt Overrides
 
-* **Main Prompt**: If the "Prefer Char. Prompt" user setting is enabled, any text you put here will override the [main/system prompt](SillyTavern_Usage_Prompts_index.md) for the character.
-* **Post-History Instructions**: If the "Prefer Char. Instructions" user setting is enabled, any text you put here will be used as the [post-history instructions](SillyTavern_Usage_Prompts_index.md) for the character.
+* **Main Prompt**: If the "Prefer Char. Prompt" user setting is enabled, any text you put here will override the [main/system prompt](/Usage/Prompts/index.md#main-prompt-system-prompt) for the character.
+* **Post-History Instructions**: If the "Prefer Char. Instructions" user setting is enabled, any text you put here will be used as the [post-history instructions](/Usage/Prompts/index.md#post-history-instructions) for the character.
 
+!!!tip
 Insert `{{original}}` into either box to include the respective default prompt from system settings in a designated place.
+!!!
 
 ### Creator's Metadata
 
+!!!info
 Not used for prompt building, but provides additional metadata about the character.
+!!!
 
 * **Created by**: The name of the character's creator. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.
 * **Character Version**: The version of the character. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.
@@ -124,7 +132,7 @@ A text to be used as an in-chat prompt injection for the character at a specific
 
 ### Talkativeness
 
-Determines the probability of the character's response being triggered in group chats when using a [Natural](SillyTavern_Usage_Characters_groupchats.md) activation order. Ranges from 0% to 100%, with 50% being the default value.
+Determines the probability of the character's response being triggered in group chats when using a [Natural](/Usage/Characters/groupchats.md#natural-order) activation order. Ranges from 0% to 100%, with 50% being the default value.
 
 ### Examples of dialogue
 

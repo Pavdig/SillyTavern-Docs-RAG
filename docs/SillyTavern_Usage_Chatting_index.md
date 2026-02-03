@@ -1,38 +1,40 @@
 
 # Chatting
 
-When you are [connected to an API](SillyTavern_Usage_API_Connections_index.md), send messages to the AI by typing in the chat bar at the bottom of the screen. Then click <i class="fa-solid fa-paper-plane"></i> **Send** or press Enter. 
-Chat bar
+When you are [connected to an API](/Usage/API_Connections/index.md), send messages to the AI by typing in the chat bar at the bottom of the screen. Then click <i class="fa-solid fa-paper-plane"></i> **Send** or press Enter. 
+![Chat bar](/static/chatbox.png)
 
 The AI will respond with a message that continues the conversation.
 
-Chat message
+![Chat message](/static/chatmessage.png)
 
 You can now:
 
 * **Send another message**
 * **Swipe the response**: Click the <i class="fa-solid fa-chevron-right"></i> **Swipe** button on the message to generate a different response.
-* **Edit the message**: Click the <i class="fa-solid fa-pencil"></i> **Edit** button on any message to edit the message content.
-* **Message actions**: Click the <i class="fa-solid fa-ellipsis"></i> **Message actions** button on a message for more message options like [translation](SillyTavern_.._extensions_Translation.md), image generation, and story branching.
-* **Chat options**: Click the <i class="fa-solid fa-bars"></i> **Options** button next to the chat bar for more chat options like author's notes and chat file management.
+* **Edit the message**: Click the <i class="fa-solid fa-pencil"></i> **Edit** button on any message to [edit the message content](#edit-message-content).
+* **Message actions**: Click the <i class="fa-solid fa-ellipsis"></i> **Message actions** button on a message for more [message options](#message-actions-panel) like [translation](../../extensions/Translation.md), image generation, and story branching.
+* **Chat options**: Click the <i class="fa-solid fa-bars"></i> **Options** button next to the chat bar for more [chat options](#chat-options-panel) like author's notes and chat file management.
 
-Edit and swipe
+!!! Edit and swipe
 If you wish you'd said something different, you can edit your message and then swipe the AI's response to get a new one.
+!!!
 
-Keyboard shortcuts
-You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` [slash command](SillyTavern_Usage_Chatting_slashcommands.md) in the chat or check the [HotKeys](SillyTavern_Usage_Chatting_hotkeys.md) page.
+!!! Keyboard shortcuts
+You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` [slash command](/Usage/Chatting/slashcommands.md) in the chat or check the [HotKeys](/Usage/Chatting/hotkeys.md) page.
+!!!
 
 ## Message actions panel
 
 Manage individual chat messages via the ellipsis (•••) button on the message.
 
-To display these options for all messages in your chats, enable the [Expand Message Actions](SillyTavern_Usage_User_Settings_uicustomization.md) setting in your user settings.
+To display these options for all messages in your chats, enable the [Expand Message Actions](/Usage/User_Settings/uicustomization.md#theme-toggles) setting in your user settings.
 
 ### Core Functions
 
 * <i class="fa-solid fa-language"></i> **Translate**: Convert message to different language
-* <i class="fa-solid fa-paintbrush"></i> **Generate Image**: [Create an image](SillyTavern_extensions_Stable-Diffusion.md) from message content
-* <i class="fa-solid fa-bullhorn"></i> **Narrate**: [Text-to-speech](SillyTavern_extensions_TTS.md) conversion
+* <i class="fa-solid fa-paintbrush"></i> **Generate Image**: [Create an image](/extensions/Stable-Diffusion.md) from message content
+* <i class="fa-solid fa-bullhorn"></i> **Narrate**: [Text-to-speech](/extensions/TTS.md) conversion
 * <i class="fa-solid fa-square-poll-horizontal"></i> **Prompt**: View the generation prompt and token usage
 
 ### Message Visibility
@@ -42,7 +44,7 @@ To display these options for all messages in your chats, enable the [Expand Mess
 
 ### Content Management
 
-* <i class="fa-solid fa-paperclip"></i> **Embed**: [Attach files or images](SillyTavern_Usage_Characters_data-bank.md)
+* <i class="fa-solid fa-paperclip"></i> **Embed**: [Attach files or images](/Usage/Characters/data-bank.md#about-documents)
 * <i class="fa-solid fa-flag-checkered"></i> **Checkpoint**: Create story checkpoint
 * <i class="fa-solid fa-flag"></i> **Checkpoint Navigation**: Click to open checkpoint chat, Shift+Click to update
   existing checkpoint
@@ -80,24 +82,24 @@ the chat interface.
 ### Display Controls
 
 * <i class="fa-lg fa-solid fa-times"></i> **Close chat**: Exit current chat session
-* <i class="fa-lg fa-solid fa-cog"></i> **Toggle Panels**: Show/hide [interface panels](SillyTavern_Usage_index.md)
+* <i class="fa-lg fa-solid fa-cog"></i> **Toggle Panels**: Show/hide [interface panels](/Usage/index.md#control-panels)
 
 ### Generation Settings
 
-* <i class="fa-lg fa-solid fa-note-sticky"></i> **[Author's Note](SillyTavern_Usage_Characters_Author's-Note.md)**: Custom context instructions
-* <i class="fa-lg fa-solid fa-scale-balanced"></i> **[CFG Scale](SillyTavern_Usage_Prompts_CFG.md)**: Adjust response creativity
-* <i class="fa-lg fa-solid fa-pie-chart"></i> **Token Probabilities**: View token generation stats
+* <i class="fa-lg fa-solid fa-note-sticky"></i> **[Author's Note](/Usage/Characters/Author's-Note.md)**: Custom context instructions
+* <i class="fa-lg fa-solid fa-scale-balanced"></i> **[CFG Scale](/Usage/Prompts/CFG.md)**: Adjust response creativity
+* <i class="fa-lg fa-solid fa-pie-chart"></i> **[Token Probabilities](#token-probabilities-panel)**: View token generation stats
 
 ### Chat Navigation
 
 * <i class="fa-lg fa-solid fa-left-long"></i> **Back to parent chat**: Return to main conversation
 * <i class="fa-lg fa-solid fa-flag"></i> **Save checkpoint**: Create story checkpoint
-* <i class="fa-lg fa-solid fa-people-arrows"></i> **Convert to group**: Transform into [group chat](SillyTavern_Usage_Characters_groupchats.md)
+* <i class="fa-lg fa-solid fa-people-arrows"></i> **Convert to group**: Transform into [group chat](/Usage/Characters/groupchats.md)
 
 ### Chat Management
 
 * <i class="fa-lg fa-solid fa-comments"></i> **Start new chat**: Begin fresh conversation
-* <i class="fa-lg fa-solid fa-address-book"></i> **Manage chat files**: [Chat file operations](SillyTavern_Usage_Characters_chatfilemanagement.md) such as import, export, and renaming
+* <i class="fa-lg fa-solid fa-address-book"></i> **Manage chat files**: [Chat file operations](/Usage/Characters/chatfilemanagement.md) such as import, export, and renaming
 
 ### Message Controls
 
@@ -114,13 +116,13 @@ The Token Probabilities panel lets you look into the AI's sampling process for t
 
 To open it, click the <i class="fa-solid fa-pie-chart"></i> **Token Probabilities** button in the <i class="fa-solid fa-bars" title="Burger Menu icon"></i> **Chat Options** panel.
 
-Example message{ width=500}
+![Example message](/static/token-probs/fling-msg.png){ width=500}
 
-Token probabilities display for example message{ width=500}
+![Token probabilities display for example message](/static/token-probs/fling-probs.png){ width=500}
 
 When you click any token (word, punctuation, or formatting character) in the generated text, the panel displays alternative tokens the AI considered at that position, along with their probability scores. This gives you insight into the AI's "thought process" and shows other directions the response could have taken. Looking at these alternatives can help you understand whether there were several likely options or a single clear choice.
 
-Alternative tokens and probabilities{ width=500}
+![Alternative tokens and probabilities](/static/token-probs/fling-probs-logprob.png){ width=500}
 
 If you see a token that you think the AI should have chosen differently, choose an alternative and the message will regenerate from that point forward, potentially giving you a different response.
 
@@ -158,7 +160,7 @@ Holding Ctrl while clicking a token in the gray portion will retain the gray por
 
 ### Availability
 
-You must select **Request token probabilities** in [User Settings](SillyTavern_Usage_User_Settings_index.md) to enable this feature.
+You must select **Request token probabilities** in [User Settings](/Usage/User_Settings/index.md#chatmessage-handling) to enable this feature.
 
 Token probabilities are only available for the most recent message, and are not saved to the chat. If token probability information is no longer available for a message, the panel will display a message indicating this.
 
