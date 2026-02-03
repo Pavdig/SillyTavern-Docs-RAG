@@ -20,11 +20,11 @@ To import Character.AI chats and bots, use the CAI Tools browser extension: http
 
 Other programs and tools that you can import chats from include:
 
-* TavernAI (original): 
-* Text Generation WebUI (oobabooga): 
-* Agnai: 
-* KoboldAI Lite: 
-* RisuAI: 
+* TavernAI (original): <https://github.com/TavernAI/TavernAI>
+* Text Generation WebUI (oobabooga): <https://github.com/oobabooga/text-generation-webui>
+* Agnai: <https://github.com/agnaistic/agnai>
+* KoboldAI Lite: <https://github.com/LostRuins/lite.koboldai.net>
+* RisuAI: <https://github.com/kwaroran/RisuAI>
 
 ## Export as .jsonl
 

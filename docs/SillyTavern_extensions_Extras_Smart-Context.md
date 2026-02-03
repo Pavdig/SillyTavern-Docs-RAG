@@ -34,7 +34,7 @@ ERROR: Could not build wheels for hnswlib, which is required to install pyprojec
 
 Installing chromadb package requires one of the following:
 
-- Have Visual C++ build tools installed: 
+- Have Visual C++ build tools installed: <https://visualstudio.microsoft.com/visual-cpp-build-tools/>
 - Installing hnswlib from conda: `conda install -c conda-forge hnswlib`
 
 ***

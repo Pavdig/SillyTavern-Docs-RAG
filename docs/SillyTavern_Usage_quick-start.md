@@ -41,7 +41,7 @@ Follow the [Installation Guide](SillyTavern_Installation_index.md) to install an
 ### Get access to OpenAI
 
 1. Sign up to OpenAI.
-2. Go to 
+2. Go to <https://platform.openai.com>
 3. Click your account icon in the top right, then View API Keys.
 4. Click "Create new secret key". Copy it somewhere immediately. **DO NOT SHARE THIS KEY. WHOEVER HAS IT CAN USE YOUR ACCOUNT TO USE GPT AT YOUR EXPENSE.**
 

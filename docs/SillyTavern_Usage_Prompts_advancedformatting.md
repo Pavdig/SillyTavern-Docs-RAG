@@ -23,9 +23,9 @@ You can restore the default templates to their original state. This can be done 
 
 ### UI Reset
 
-1. Open the ** Advanced Formatting** menu.
+1. Open the **<i class="fa-solid fa-font"></i> Advanced Formatting** menu.
 2. Pick the template you want to reset.
-3. Click the ** Restore current template** button.
+3. Click the **<i class="fa-solid fa-recycle"></i> Restore current template** button.
 4. Confirm the action when prompted.
 
 ### Manual Reset
@@ -44,7 +44,7 @@ Not applicable to Chat Completion APIs as they use a different prompt builder.
 
 Some Text Completion sources provide an ability to automatically choose templates recommended by the model author. This works by comparing a hash of the chat template defined in the model's `tokenizer_config.json` file with one of the default SillyTavern templates.
 
-1. ** Derive templates** option must be enabled in the ** Advanced Formatting** menu. This can be applied to Context, Instruct, or both.
+1. **<i class="fa-solid fa-bolt"></i> Derive templates** option must be enabled in the **<i class="fa-solid fa-font"></i> Advanced Formatting** menu. This can be applied to Context, Instruct, or both.
 2. A supported backend must be chosen as a Text Completion source. Currently only llama.cpp and KoboldCpp support deriving templates.
 3. The model must correctly report its metadata when the connection to the API is established. If this didn't work, try updating the backend to the latest version.
 4. The reported chat template hash must match the one of the known SillyTavern templates (https://github.com/SillyTavern/SillyTavern/blob/release/public/scripts/chat-templates.js). This only covers default templates, such as Llama 3, Gemma 2, Mistral V7, etc.
@@ -102,7 +102,7 @@ By default, the Start Reply With prefix won't be shown in the resulting message.
 Prefills the last line of the prompt, forcing the model to continue from that point. This is useful for enforcing content, such as nudging toward the [Model Reasoning](SillyTavern_Usage_Prompts_reasoning.md) with the defined prefix:
 
 ```txt
-
+<think>
 Sure!
 ```
 

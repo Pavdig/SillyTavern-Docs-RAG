@@ -16,17 +16,17 @@ The image captioning extension is built-in to SillyTavern and does not need to b
 ## Quick start
 
 1. Set up:
-    - Open the **Image Captioning** panel in the ** Extensions** panel
+    - Open the **Image Captioning** panel in the **<i class="fa-solid fa-cubes"></i> Extensions** panel
     - Choose a captioning source (most likely "Local" or "Multimodal")
-    - For "Multimodal" ensure you've set up the connection in the ** API Connections** tab
+    - For "Multimodal" ensure you've set up the connection in the **<i class="fa-solid fa-plug"></i> API Connections** tab
 2. Generate a caption:
-    - Choose "**Generate Caption**" from the ** Extensions** popup menu
+    - Choose "**Generate Caption**" from the **<i class="fa-solid fa-magic-wand-sparkles"></i> Extensions** popup menu
     - Select an image file when prompted
     - Wait for the caption to be generated
 3. Review and send:
     - The captioned image will be inserted into your message
     - See the caption using the image tooltip
-    - Click ** Send** to see what your character thinks of the image!
+    - Click **<i class="fa-solid fa-paper-plane"></i> Send** to see what your character thinks of the image!
 
 ## Panel controls
 
@@ -35,6 +35,7 @@ The image captioning extension is built-in to SillyTavern and does not need to b
 Choose the source for image captioning. Supported options:
 
 | Source                           | Description                                                                                                                                                                                                  |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Multimodal | **Cloud**: OpenAI, Anthropic, Google, MistralAI, and others. **Local**: Ollama, llama.cpp, KoboldCpp, Text Generation WebUI, and vLLM. Supports custom prompts so you can ask your images questions. |
 | Local           | Uses transformers.js (https://huggingface.co/docs/transformers.js/en/index) running locally inside your SillyTavern server. Zero setup!                                                                     |
 | Horde                            | Uses the AI Horde (https://aihorde.net/) network, a crowdsourced distributed network of image generation models. Nothing to download, configure, or pay for. Variable response times.                       |
@@ -55,10 +56,10 @@ Choose the source for image captioning. Supported options:
 
 All the ways to caption images in SillyTavern:
 
-* Choose "**Generate Caption**" from the ** Extensions** popup menu and select an image file when prompted
-* Click the  **Caption** icon at the top of an image already in a message
+* Choose "**Generate Caption**" from the **<i class="fa-solid fa-magic-wand-sparkles"></i> Extensions** popup menu and select an image file when prompted
+* Click the <i class="fa-solid fa-envelope-open-text"></i> **Caption** icon at the top of an image already in a message
 * Paste an image directly into the chat input with auto-captioning enabled
-* Attach an image file to a message using the  **Embed File or Image** button in the actions of a message.
+* Attach an image file to a message using the <i class="fa-solid fa-paperclip"></i> **Embed File or Image** button in the actions of a message.
 * Send a message with an embedded image
 * Use the `/caption` slash command
 
@@ -145,7 +146,7 @@ You can use any model that supports image captioning (`VisionEncoderDecoderModel
 API keys and endpoint URLs for captioning sources are managed in the [API Connections](SillyTavern_Usage_API_Connections_index.md) panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
 
 Set it up in the API Connections panel first
-One last time: configure the API key/address/port in ** API Connections** and use the connection in Captioning.
+One last time: configure the API key/address/port in **<i class="fa-solid fa-plug"></i> API Connections** and use the connection in Captioning.
 
 You can still use Claude for chats and Google AI Studio for image captioning, or whatever. Just set them *both* up in the 'API Connections' tab first. Then flip your Chat Completion source to Claude and your Captioning source to Google AI Studio.
 
@@ -165,6 +166,7 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 * "I want to complain when it doesn't work": ~~Extras~~
 
 | API Provider                      | Description                                                                                                                                                                   |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AI/ML API                         | Cloud, paid, various GPT, Claude, and Gemini models with vision capabilities                                                                                                  |
 | Chutes                            | Cloud, various models with vision capabilities                                                                                                                                |
 | Claude                            | Cloud, paid, all Claude models with vision capabilities                                                                                                                       |
@@ -193,7 +195,7 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 By default, the Multimodal source uses the primary endpoint configured in the API Connections tab.
 You can also set up a secondary endpoint specifically for multimodal captioning.
 
-- Open the **Image Captioning** panel in the ** Extensions** panel.
+- Open the **Image Captioning** panel in the **<i class="fa-solid fa-cubes"></i> Extensions** panel.
 - Select "Multimodal" as the captioning source and a preferred API provider.
 - Enter a valid URL for the secondary endpoint in the "Secondary captioning endpoint URL" field.
 - Check the "Use secondary URL" box to enable the secondary endpoint.

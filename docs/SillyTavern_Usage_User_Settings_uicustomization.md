@@ -25,6 +25,7 @@ Choose between Circle, Square, Rectangle, or Rounded Square. This setting applie
 #### Chat Style
 
 | Style        | Description                                                                                                                                                    | [Slash command](SillyTavern_For_Contributors_st-script.md) |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
 | **Flat**     | Clean and continuous "chat log" style, a flat canvas for your AI interactions to come to life.                                                                 | `/flat``/default`                                      |
 | **Bubbles**  | "Instant messenger" style with distinct bubbles for each message, delightful rounded corners, and a subtle 3D effect.                                          | `/bubble``/bubbles`                                    |
 | **Document** | Compact, document-like appearance with a text-focused layout. Hides avatars, timestamps, and message control buttons for past messages. | `/single``/story`                                      |
@@ -101,7 +102,7 @@ These switches control various UI features and behaviors. Some options can impro
 
 Allows you to apply custom CSS styles to further customize the appearance of the chat interface.
 
-Use  **Expand** to expand the editor window for better visibility and editing.
+Use <i class="fa-fw fa-solid fa-maximize" title="Expand icon"></i> **Expand** to expand the editor window for better visibility and editing.
 
 If you switch themes, your custom CSS will be replaced by the custom CSS of the new theme. Ensure you save your custom CSS to a theme if you want to keep it when switching themes.
 
@@ -125,13 +126,13 @@ To enable math formulas rendering, use the LaTeX extension (https://github.com/S
 
 Type your formulas in code blocks with `latex` or `asciimath` language identifiers for LaTeX and AsciiMath respectively. The extension uses KaTeX (https://katex.org/) for rendering.
 
-```latex
+<pre><code>```latex
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
 ```
 
 ```asciimath
 int_{-oo}^{oo} e^{-x^2} dx = sqrt{pi}
-```
+```</code></pre>
 
 Deprecation notice
 The legacy `$` and `$$` wrapper syntax is no longer supported. Please use the following regex scripts to polyfill the old syntax:

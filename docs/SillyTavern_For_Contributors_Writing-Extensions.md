@@ -28,15 +28,15 @@ To ensure that all extensions are safe and easy to use, we have a few requiremen
 
 See live examples of simple SillyTavern extensions:
 
-*  - basic extension template. Showcases manifest creation, local script imports, adding a settings UI panel, and persistent extension settings usage.
-*  - a list of all official SillyTavern extensions on GitHub.
+* <https://github.com/city-unit/st-extension-example> - basic extension template. Showcases manifest creation, local script imports, adding a settings UI panel, and persistent extension settings usage.
+* <https://github.com/search?q=topic%3Aextension+org%3ASillyTavern&type=Repositories> - a list of all official SillyTavern extensions on GitHub.
 
 ## Bundling
 
 Extensions can also utilize bundling to isolate themselves from the rest of the modules and use any dependencies from NPM, including UI frameworks like Vue, React, etc.
 
-*  - template repository of an extension using TypeScript and Webpack (no React).
-*  - template repository of a bare-bones extension using React and Webpack.
+* <https://github.com/SillyTavern/Extension-WebpackTemplate> - template repository of an extension using TypeScript and Webpack (no React).
+* <https://github.com/SillyTavern/Extension-ReactTemplate> - template repository of a bare-bones extension using React and Webpack.
 
 To use relative imports from the bundle, you may need to create an import wrapper. Here's an example for Webpack:
 
@@ -46,7 +46,7 @@ To use relative imports from the bundle, you may need to create an import wrappe
  * @param {string} url URL to import from
  * @param {string} what Name of the member to import
  * @param {any} defaultValue Fallback value
- * @returns {Promise} Imported member
+ * @returns {Promise<any>} Imported member
  */
 export async function importFromUrl(url, what, defaultValue = null) {
     try {
@@ -67,7 +67,7 @@ const generateRaw = await importFromUrl('/script.js', 'generateRaw');
 
 ## manifest.json
 
-Every extension must have a folder in `data//extensions` and a `manifest.json` file, which contains metadata about the extension and a path to a JS script file that is the entry point of the extension.
+Every extension must have a folder in `data/<user-handle>/extensions` and a `manifest.json` file, which contains metadata about the extension and a path to a JS script file that is the entry point of the extension.
 
 Downloadable extensions are mounted into the `/scripts/extensions/third-party` folder when serving over HTTP, so relative imports should be used based on that. To ease local development, consider placing your extension repository in the `/scripts/extensions/third-party` folder (the "Install for all users" option).
 
@@ -161,7 +161,7 @@ You can find the full list of exported libraries in the SillyTavern source code 
 ```js
 const { DOMPurify } = SillyTavern.libs;
 
-const sanitizedHtml = DOMPurify.sanitize('"dirty HTML"');
+const sanitizedHtml = DOMPurify.sanitize('<script>"dirty HTML"</script>');
 ```
 
 ### TypeScript notice
@@ -338,7 +338,7 @@ For general information on providing translations, see the [Internationalization
 
 Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.
 
-See the list of supported locales here (`lang` key): 
+See the list of supported locales here (`lang` key): <https://github.com/SillyTavern/SillyTavern/blob/release/public/locales/lang.json>
 
 ### Direct `addLocaleData` call
 
@@ -399,22 +399,22 @@ SlashCommandParser.addCommandObject(SlashCommand.fromProps({ name: 'repeat',
         }),
     ],
     helpString: `
-        
+        <div>
             Repeats the provided text a number of times.
-        
-        
-            Example:
-            
-                
-                    /repeat foo
+        </div>
+        <div>
+            <strong>Example:</strong>
+            <ul>
+                <li>
+                    <pre><code class="language-stscript">/repeat foo</code></pre>
                     returns "foofoofoofoofoo"
-                
-                
-                    /repeat times=3 space=on bar
+                </li>
+                <li>
+                    <pre><code class="language-stscript">/repeat times=3 space=on bar</code></pre>
                     returns "bar bar bar"
-                
-            
-        
+                </li>
+            </ul>
+        </div>
     `,
 }));
 ```
@@ -871,7 +871,7 @@ const results = fuse.search('query');
 
 // Template rendering
 const { Handlebars } = SillyTavern.libs;
-const template = Handlebars.compile('{{name}}');
+const template = Handlebars.compile('<div>{{name}}</div>');
 const html = template({ name: 'Example' });
 
 // Date/time manipulation

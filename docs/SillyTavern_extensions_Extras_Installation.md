@@ -95,8 +95,8 @@ This can cause conflicts if you work with many Python programs that have differe
 
 If this is your first time touching anything Python-related, that should not be a problem.
 
-1. Install Python 3.11: 
-2. Install git: 
+1. Install Python 3.11: <https://www.python.org/downloads/release/python-3115/>
+2. Install git: <https://git-scm.com/downloads>
 3. Open a command prompt window and go to a folder in which you have complete access permissions.
 4. Clone the repo: `git clone https://github.com/SillyTavern/SillyTavern-extras`, hit Enter.
 5. After the clone has finished, type `cd SillyTavern-extras`, hit Enter.
@@ -128,6 +128,7 @@ This would enable Image Captioning, Chat Summary, and live updating Character Ex
 Below is a table that describes each module.
 
 | Name         | Description                                                         |
+|--------------|---------------------------------------------------------------------|
 | `caption`    | Image captioning                                                    |
 | `summarize`  | Text summarization                                                  |
 | `classify`   | Text sentiment classification                                       |
@@ -207,7 +208,7 @@ It requires the installation of an additional package because it's not installed
 
 ### Extras server can't connect to AUTOMATIC1111's Stable Diffusion Web UI
 
-> Could not connect to remote SD backend at ! Disabling SD module...
+> Could not connect to remote SD backend at <http://127.0.0.1:7860>! Disabling SD module...
 
 **Make sure webui-user.bat that you start Stable Diffusion with contains --api command line option in the COMMANDLINE_ARGS variable.**
 
@@ -233,7 +234,7 @@ The extras server can't reconnect to the Stable Diffusion API if it was loaded a
 
 Before installing the ChromaDB module you must first do `one of the following`:
 
-* Install Visual C++ build tools: 
+* Install Visual C++ build tools: <https://visualstudio.microsoft.com/visual-cpp-build-tools/>
 * Install the `hnswlib` package with conda: `conda install -c conda-forge hnswlib`
 
 ---
@@ -273,3 +274,4 @@ Install the requirements using the `requirements-silicon.txt` file instead.
 
 #### ❗ This is UNSUPPORTED
 
+<https://rentry.org/STAI-Termux#downloading-and-running-tai-extras>

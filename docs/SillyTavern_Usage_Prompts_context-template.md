@@ -12,7 +12,7 @@ Edit these settings in the "[Advanced Formatting](SillyTavern_advancedformatting
 
 This field is a template for the prompt preamble (known internally as a story string). This is the main way to add the information defined in [Character Cards](SillyTavern_Usage_Characters_index.md) for text completion and instruct models.
 
-The template supports Handlebars syntax, custom text injections or formatting, and any other [macros](SillyTavern_Usage_Characters_macros.md). See the language reference here: 
+The template supports Handlebars syntax, custom text injections or formatting, and any other [macros](SillyTavern_Usage_Characters_macros.md). See the language reference here: <https://handlebarsjs.com/guide/>
 
 We provide the following parameters to the Handlebars evaluator (wrapped in double curly braces):
 
@@ -31,7 +31,7 @@ We provide the following parameters to the Handlebars evaluator (wrapped in doub
 13. `{{mesExamplesRaw}}`: The character's [Example Dialogues](SillyTavern_Usage_Characters_characterdesign.md) in raw format, without any formatting.
 
 **Important**  
-When using `{{mesExamples}}` in the Story String, set **"Example Messages Behavior"** in the ** User Settings** panel to **"Never include examples"** to avoid duplicating example messages in the prompt.
+When using `{{mesExamples}}` in the Story String, set **"Example Messages Behavior"** in the **<i class="fa-solid fa-user-cog"></i> User Settings** panel to **"Never include examples"** to avoid duplicating example messages in the prompt.
 
 A special `{{trim}}` macro is supported to remove any newlines that surround it. Use it if you want a part of the text to not be separated from the previous line by a newline (_spaces **are not** trimmed_).
 
@@ -70,7 +70,7 @@ The following section only applies when **Instruct Mode** is ON.
 
 ## Example Separator
 
-Used as a block header and a separator between the example dialogue blocks. Any instance of `` tags in the example dialogues will be replaced with the contents of this field.
+Used as a block header and a separator between the example dialogue blocks. Any instance of `<START>` tags in the example dialogues will be replaced with the contents of this field.
 
 ## Chat Start
 

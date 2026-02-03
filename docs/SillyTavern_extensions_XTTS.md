@@ -63,7 +63,7 @@ If you want to use just the CPU inference, drop the last part that starts with `
     ```
     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
     ```
-7. Start the XTTS server on the default host and port: 
+7. Start the XTTS server on the default host and port: <http://localhost:8020>
     ```
     python -m xtts_api_server
     ```
@@ -74,7 +74,7 @@ Don't forget to read the legal notice from Coqui AI very carefully. Lol, I'm kid
 
 1. Open the extensions panel, expand the TTS menu, and pick "XTTSv2" in the provider list.
 2. Choose your text-to-speech language in the Language dropdown (I'll be sad if it's not Polish).
-3. Verify that the provider endpoint points to  and "Available voices" shows a list of your voice samples.
+3. Verify that the provider endpoint points to <http://localhost:8020> and "Available voices" shows a list of your voice samples.
 4. Pick any character and set a mapping between the voice sample and the character.
 If the characters list is empty, hit "Reload" a couple of times.
 5. Configure the rest of the TTS settings according to your preferences.

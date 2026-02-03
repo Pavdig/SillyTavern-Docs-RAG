@@ -10,22 +10,22 @@ let them interact with each other.
 
 ## Character Management Panel
 
-Open the  **Characters** panel from the navbar to access the character
+Open the <i class="fa-solid fa-address-card"></i> **Characters** panel from the navbar to access the character
 list. Click on a character or group to chat with them or edit them, or
-choose  **Create New Character** to add a new character.
+choose <i class="fa-solid fa-user-plus"></i> **Create New Character** to add a new character.
 
 ### Panel Controls
 
-*  **Pin Panel**: Keep panel open while interacting
-*  **Character List**: Return to character list view
+* <i class="fa-solid fa-lock"></i> **Pin Panel**: Keep panel open while interacting
+* <i class="fa-solid fa-list-ul"></i> **Character List**: Return to character list view
 * **HotSwap Bar**: Quick access to favorite characters
 
 ### Character List
 
-*  **Create New Character**: Add a new character
-*  **Import Character**: Load character from file
-*  **External Import**: Import from URL
-*  **Create Group**: Start a new group chat
+* <i class="fa-solid fa-user-plus"></i> **Create New Character**: Add a new character
+* <i class="fa-solid fa-file-import"></i> **Import Character**: Load character from file
+* <i class="fa-solid fa-cloud-arrow-down"></i> **External Import**: Import from URL
+* <i class="fa-solid fa-users-gear"></i> **Create Group**: Start a new group chat
 
 #### Search and sort
 
@@ -39,29 +39,29 @@ choose  **Create New Character** to add a new character.
 
 #### Filter characters by type or tag
 
-*  **Favorites Filter**: Show favorite characters
-*  **Groups Filter**: Show only group chats
-*  **Tags as Folders**: Organize by tag hierarchy
-*  **Manage Tags**: [Tag configuration](SillyTavern_Usage_Characters_Tags.md)
-*  **Tag List**: View all available tags
-*  **Clear Filters**: Reset all filters
+* <i class="fa-solid fa-star"></i> **Favorites Filter**: Show favorite characters
+* <i class="fa-solid fa-users"></i> **Groups Filter**: Show only group chats
+* <i class="fa-solid fa-folder-plus"></i> **Tags as Folders**: Organize by tag hierarchy
+* <i class="fa-solid fa-gear"></i> **Manage Tags**: [Tag configuration](SillyTavern_Usage_Characters_Tags.md)
+* <i class="fa-solid fa-tags"></i> **Tag List**: View all available tags
+* <i class="fa-solid fa-filter-circle-xmark"></i> **Clear Filters**: Reset all filters
 
 ### Character Creation/Edit Panel
 
 * **Avatar Image**: Upload and preview character profile picture
 * **Token Count**: [Token usage](SillyTavern_characterdesign.md) for the character
-*  **Stats**: Chat history and usage statistics
+* <i class="fa-solid fa-ranking-star"></i> **Stats**: Chat history and usage statistics
 * [Tag management](SillyTavern_Usage_Characters_Tags.md)
 
 #### Quick Actions
 
--  Favorite toggle
--  Advanced definitions
--  Character lore
--  Chat lore: link the chat to a [World Info](SillyTavern_Usage_worldinfo.md)
--  Export character
--  Duplicate
--  Delete
+- <i class="fa-solid fa-star"></i> Favorite toggle
+- <i class="fa-solid fa-book"></i> Advanced definitions
+- <i class="fa-solid fa-globe"></i> Character lore
+- <i class="fa-solid fa-passport"></i> Chat lore: link the chat to a [World Info](SillyTavern_Usage_worldinfo.md)
+- <i class="fa-solid fa-file-export"></i> Export character
+- <i class="fa-solid fa-clone"></i> Duplicate
+- <i class="fa-solid fa-skull"></i> Delete
 
 #### Extended Options
 
@@ -83,7 +83,7 @@ choose  **Create New Character** to add a new character.
 
 ### Advanced Definitions Panel
 
-Click on the  **Advanced Definitions** button to access the extended character settings.
+Click on the <i class="fa-solid fa-book"></i> **Advanced Definitions** button to access the extended character settings.
 
 #### Prompt Overrides (Chat Completion/Instruct Mode)
 

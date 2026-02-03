@@ -37,6 +37,7 @@ Start.bat --port 8000 --listen false
 None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
 
 | Option                          | Description                                                          | Type     |
+|---------------------------------|----------------------------------------------------------------------|----------|
 | `--version`                     | Shows the version number                                             | boolean  |
 | `--global`                      | Forces the use of system-wide paths for application data             | boolean  |
 | `--configPath`                  | Overrides the path to the config.yaml file (standalone mode only)    | string   |
@@ -90,6 +91,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ## Data Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `dataRoot` | Root directory for user data storage (standalone mode only) | `./data` | Any valid directory path |
 | `skipContentCheck` | Skip checks for new default content | `false` | `true`, `false` |
 | `enableDownloadableTokenizers` | Enable on-demand tokenizer downloads | `true` | `true`, `false` |
@@ -97,12 +99,14 @@ See more about using environment variables in the Node.js documentation (https:/
 ## Logging Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `logging.minLogLevel` | Minimum log level to display in the terminal | `0` (DEBUG) | (DEBUG = 0, INFO = 1, WARN = 2, ERROR = 3) |
 | `logging.enableAccessLog` | Write server access logs to a file and the console | `true` | `true`, `false` |
 
 ## [Network Configuration](SillyTavern_Administration_remote-connections.md)
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `listen` | Enable listening for incoming connections | `false` | `true`, `false` |
 | `port` | Server listening port | `8000` | Any valid port number (1-65535) |
 | `protocol.ipv4` | Enable listening on the IPv4 protocol | `true` | `true`, `false`, `auto` |
@@ -114,6 +118,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ## SSL Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `ssl.enabled` | Enable SSL/TLS encryption and HTTPS protocol | `false` | `true`, `false` |
 | `ssl.keyPath` | Path to SSL private key (relative to the server directory) | `"./certs/privkey.pem"` | Valid file path |
 | `ssl.certPath` | Path to SSL certificate (relative to the server directory) | `"./certs/cert.pem"` | Valid file path |
@@ -124,6 +129,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ### IP Whitelisting
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `whitelistMode` | Enable IP whitelist filtering | `true` | `true`, `false` |
 | `enableForwardedWhitelist` | Check forwarded headers for whitelisted IPs | `true` | `true`, `false` |
 | `whitelist` | List of allowed IP addresses | `["::1", "127.0.0.1"]` | Array of valid IP addresses |
@@ -132,6 +138,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ### Host Whitelisting
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `hostWhitelist.enabled` | Enable host whitelisting | `false` | `true`, `false` |
 | `hostWhitelist.scan` | Log incoming requests from untrusted hosts | `true` | `true`, `false` |
 | `hostWhitelist.hosts` | List of trusted hostnames | `[]` | Array of valid hostnames |
@@ -141,6 +148,7 @@ See more about using environment variables in the Node.js documentation (https:/
 **DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `allowKeysExposure` | Allow unmasked API key exposure in the UI | `false` | `true`, `false` |
 | `disableCsrfProtection` | Disable CSRF protection (not recommended) | `false` | `true`, `false` |
 | `securityOverride` | Disable startup security checks (not recommended) | `false` | `true`, `false` |
@@ -148,6 +156,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ## [User Authentication](SillyTavern_Administration_multi-user.md)
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `basicAuthMode` | Enable basic authentication | `false` | `true`, `false` |
 | `basicAuthUser.username` | Basic auth username | `"user"` | Any string |
 | `basicAuthUser.password` | Basic auth password | `"password"` | Any string |
@@ -159,17 +168,20 @@ See more about using environment variables in the Node.js documentation (https:/
 ### SSO Auto-Login
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `sso.autheliaAuth` | Enable Authelia-based auto-login. See: [SSO](SillyTavern_Administration_sso.md) | `false` | `true`, `false` |
 | `sso.authentikAuth` | Enable Authentik-based auto-login. See: [SSO](SillyTavern_Administration_sso.md) | `false` | `true`, `false` |
 
 ## Rate Limiting Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `rateLimiting.preferRealIpHeader` | Use the X-Real-IP header instead of the socket IP for rate limiting | `false` | `true`, `false` |
 
 ## Request Proxy Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `requestProxy.enabled` | Enable proxy for outgoing requests | `false` | `true`, `false` |
 | `requestProxy.url` | Proxy server URL | `null` | Valid proxy URL (e.g., `"socks5://username:password@example.com:1080"`) |
 | `requestProxy.bypass` | Hosts to bypass the proxy | `["localhost", "127.0.0.1"]` | Array of hostnames/IPs |
@@ -179,6 +191,7 @@ See more about using environment variables in the Node.js documentation (https:/
 An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
 
 ## Browser Launch Configuration
@@ -186,6 +199,7 @@ An enabled CORS proxy may be required by some extensions. It is not required by 
 > Previously known as "Autorun" settings.
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `browserLaunch.enabled` | Open the browser automatically on server startup | `true` | `true`, `false` |
 | `browserLaunch.browser` | Browser to use for opening the URL | `"default"` | `"default"`, `"chrome"`, `"firefox"`, `"edge"`, `"brave"` |
 | `browserLaunch.hostname` | Override the hostname for browser launch | `"auto"` | `"auto"`, any valid hostname (e.g., `"localhost"`, `"st.example.com"`) |
@@ -195,6 +209,7 @@ An enabled CORS proxy may be required by some extensions. It is not required by 
 ## Performance Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `performance.lazyLoadCharacters` | Lazy-load character data | `true` | `true`, `false` |
 | `performance.useDiskCache` | Enable disk caching for character cards | `true` | `true`, `false` |
 | `performance.memoryCacheCapacity` | Maximum memory cache capacity | `100mb` | Human-readable size (e.g., `100mb`, `1gb`) |
@@ -204,12 +219,14 @@ An enabled CORS proxy may be required by some extensions. It is not required by 
 Requires localhost or a domain with HTTPS, otherwise will not work!
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|------------------|
 | `cacheBuster.enabled` | Clear browser cache on first load or after uploading image files | `false` | `true`, `false` |
 | `cacheBuster.userAgentPattern` | Only clear the cache for user agents matching the specified regex pattern. Example: `'firefox'` (case-insensitive). | `''` | Any valid regex string |
 
 ## Thumbnailing Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `thumbnails.enabled` | Enable thumbnail generation | `true` | `true`, `false` |
 | `thumbnails.quality` | JPEG thumbnail quality | `95` | 0-100 |
 | `thumbnails.format` | Image format for thumbnails | `jpg` | `jpg`, `png` |
@@ -220,6 +237,7 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 ## Backup Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `backups.chat.enabled` | Enable automatic chat backups | `true` | `true`, `false` |
 | `backups.chat.checkIntegrity` | Verify integrity of chat files before saving | `true` | `true`, `false` |
 | `backups.common.numberOfBackups` | Number of backups to keep | `50` | Any positive integer |
@@ -229,6 +247,7 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 ## [Extensions Configuration](SillyTavern_extensions_index.md)
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `extensions.enabled` | Enable UI extensions | `true` | `true`, `false` |
 | `extensions.autoUpdate` | Auto-update extensions (if enabled by the extension manifest) | `true` | `true`, `false` |
 | `extensions.models.autoDownload` | Enable automatic model downloads | `true` | `true`, `false` |
@@ -241,6 +260,7 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 ## [Server Plugins](SillyTavern_For_Contributors_Server-Plugins.md)
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `enableServerPlugins` | Enable server-side plugins | `false` | `true`, `false` |
 | `enableServerPluginsAutoUpdate` | Attempt to automatically update server plugins on startup | `true` | `true`, `false` |
 
@@ -249,6 +269,7 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 ### OpenAI Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `promptPlaceholder` | Default message for empty prompts | `"[Start a new chat]"` | Any string |
 | `openai.randomizeUserId` | Randomize the user ID for API calls | `false` | `true`, `false` |
 | `openai.captionSystemPrompt` | System message for caption completion | `""` | Any string |
@@ -256,11 +277,13 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 ### MistralAI Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `mistral.enablePrefix` | Enable reply prefilling. **The prefix will be echoed in the response** | `false` | `true`, `false` |
 
 ### Ollama Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `ollama.keepAlive` | Model keep-alive duration (seconds) | `-1` | `-1` (indefinite), `0` (immediate unload), positive integer |
 | `ollama.batchSize` | Controls the "num_batch" (batch size) parameter of the generation request | `-1` | `-1` (model default), positive integer |
 
@@ -273,6 +296,7 @@ Use with caution and only when the prompt prefix is static and doesn't change be
 See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `claude.enableSystemPromptCache` | Enable system prompt caching | `false` | `true`, `false` |
 | `claude.cachingAtDepth` | Enable message history caching | `-1` | `-1` (disabled), `0` or positive integer |
 | `claude.extendedTTL` | Use 1h TTL instead of the default 5m. Note that this also increases the cost of the request. | `false` | `true`, `false` |
@@ -280,11 +304,13 @@ See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/promp
 ### Google Gemini Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `gemini.apiVersion` | API endpoint version (AI Studio only) | `v1beta` | `v1beta`, `v1alpha` |
 | `gemini.enableSystemPromptCache` | Enables caching of the system prompt (OpenRouter only) | `false` | `true`, `false` |
-| `gemini.image.personGeneration` | See:  | `allow_adult` | `dont_allow`, `allow_adult`, `allow_all` |
+| `gemini.image.personGeneration` | See: <https://ai.google.dev/gemini-api/docs/imagen#imagen-configuration> | `allow_adult` | `dont_allow`, `allow_adult`, `allow_all` |
 
 ### DeepL Configuration
 
 | Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
 | `deepl.formality` | Translation formality level | `"default"` | `"default"`, `"more"`, `"less"`, `"prefer_more"`, `"prefer_less"` |

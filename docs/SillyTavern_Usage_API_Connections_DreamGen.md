@@ -1,7 +1,7 @@
 
 # DreamGen
 
-DreamGen is an app and an API for AI-powered role-playing and story-writing. They have a free tier, as well as a paid subscription that allows unlimited monthly access to their high-quality in-house text generation models made specifically for the purpose of steerable AI role-playing and story-writing. Create an account to get started: .
+DreamGen is an app and an API for AI-powered role-playing and story-writing. They have a free tier, as well as a paid subscription that allows unlimited monthly access to their high-quality in-house text generation models made specifically for the purpose of steerable AI role-playing and story-writing. Create an account to get started: <https://dreamgen.com/>.
 
 The (free) credits reset at the start of each calendar month. See pricing (https://dreamgen.com/pricing) to see the credit cost for each model and usage (https://dreamgen.com/account/usage) to see your remaining credits.
 
@@ -64,18 +64,18 @@ You can set the `Last Assistant Prefix` in your formatting presets.
 For long messages:
 
 ```txt
-user
+<|start_header_id|>user<|end_header_id|>
 
-The next message is from {{char}} and is at least 100 words longwriter character {{char}}
+The next message is from {{char}} and is at least 100 words long<|eot_id|><|start_header_id|>writer character {{char}}<|end_header_id|>
 
 ```
 
 For short messages:
 
 ```txt
-user
+<|start_header_id|>user<|end_header_id|>
 
-The next message is from {{char}} and is at most 50 words longwriter character {{char}}
+The next message is from {{char}} and is at most 50 words long<|eot_id|><|start_header_id|>writer character {{char}}<|end_header_id|>
 
 ```
 
@@ -88,6 +88,7 @@ You can also include writing style description in your card or system prompt, e.
 ```txt
 ## Style
 
+<your description>
 ```
 
 See the "Style" documentation (https://v2.dreamgen.com/docs/scenario-editor#style) to learn more and see some examples.

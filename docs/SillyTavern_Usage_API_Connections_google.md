@@ -46,16 +46,16 @@ You can create a service account by following these steps:
 
 Before your key can work, the API must be enabled for your project.
 
-1. Go to the Google Cloud Console: 
+1. Go to the Google Cloud Console: <https://console.cloud.google.com/>
 2. Make sure the correct project is selected in the top bar.
-3. Navigate to the Vertex AI API page: 
+3. Navigate to the Vertex AI API page: <https://console.cloud.google.com/apis/library/aiplatform.googleapis.com>
 4. If it's not already enabled, click the "Enable" button.
 
 #### Step 2: Create the Service Account
 
 This is the identity that will be used to access the Vertex AI API.
 
-1. In the Google Cloud Console, navigate to the "Service Accounts" page. You can search for it in the top search bar or use this direct link: 
+1. In the Google Cloud Console, navigate to the "Service Accounts" page. You can search for it in the top search bar or use this direct link: <https://console.cloud.google.com/iam-admin/serviceaccounts>
 2. Select your GCP project and click "+ CREATE SERVICE ACCOUNT".
 3. Service account name: Give it a descriptive name, like `my-vertex-ai-client`.
 4. Click "CREATE AND CONTINUE".

@@ -9,7 +9,7 @@ This VRAM Calculator (https://huggingface.co/spaces/NyxKrage/LLM-Model-VRAM-Calc
 
 This guide assumes you're using Windows.
 
-* Download the latest release: 
+* Download the latest release: <https://github.com/LostRuins/koboldcpp/releases>
 * Launch KoboldCpp. You may see a pop-up from Microsoft Defender, click `Run Anyway`.
 * As of version 1.58, KoboldCpp should look like this:
 

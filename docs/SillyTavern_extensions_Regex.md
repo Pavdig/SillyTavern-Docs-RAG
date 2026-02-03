@@ -21,7 +21,7 @@ The Regex extension lets the user automatically detect specific patterns in a st
 
 Regex is a built-in extension of SillyTavern, so no additional setup is required.
 
-You may find its settings in the ** Extensions** panel.
+You may find its settings in the **<i class="fa-solid fa-cubes"></i> Extensions** panel.
 
 ## Common Use Cases
 
@@ -130,6 +130,6 @@ If both are selected, the script will function as normal in all ways EXCEPT it w
 
 While RegEx is commonly used as a simple Find/Replace tool, it can also be used in more complex ways.
 
-For example the 'Replace With' box could include a set of CSS rules and HTML to add a specific styled HTML element into your chat whenever a certain word is found. This will require the `Show  in responses` box to be unchecked in the User Settings panel.
+For example the 'Replace With' box could include a set of CSS rules and HTML to add a specific styled HTML element into your chat whenever a certain word is found. This will require the `Show <tags> in responses` box to be unchecked in the User Settings panel.
 
 The script can also be set to never trigger during normal use, but could instead be triggered via slash command as part of a logic check inside an STscript. The 'Replace With' box would include a unique value the script recognizes to indicate if a logic check is true or false. This expands the utility of RegEx to the full capabilities of all slash commands, allowing for truly unlimited levels of control and automation based on the contents of the chat.

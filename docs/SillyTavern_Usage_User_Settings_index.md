@@ -35,7 +35,7 @@ To update SillyTavern to the latest version, please refer to the Updating docume
 
 Control your SillyTavern user account, back up your settings and user data, and manage user roles and permissions in [multi-user mode](SillyTavern_Administration_multi-user.md).
 
-####  Account
+#### <i class="fa-fw fa-solid fa-user-shield"></i> Account
 
 In the Account dialog, you can view and edit your profile information, change your password, and manage account settings.
 
@@ -60,7 +60,7 @@ Critical account operations that should be used with caution:
 * **Reset Settings**: Restore all settings to factory defaults
 * **Reset Everything**: Complete account wipe and factory reset
 
-####  Admin Panel
+#### <i class="fa-fw fa-solid fa-user-tie"></i> Admin Panel
 
 Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)
 
@@ -78,17 +78,17 @@ Select **Manage Users** to view and manage existing user accounts.
 
 ##### Account Controls
 
--  Edit display name
--  Enable account
--  Disable account
--  Promote to admin
--  Demote to regular user
+- <i class="fa-fw fa-solid fa-pencil"></i> Edit display name
+- <i class="fa-fw fa-solid fa-check"></i> Enable account
+- <i class="fa-fw fa-solid fa-ban"></i> Disable account
+- <i class="fa-fw fa-solid fa-arrow-up"></i> Promote to admin
+- <i class="fa-fw fa-solid fa-arrow-down"></i> Demote to regular user
 
 ##### Management Actions
 
--  Download user data backup
--  Change user password
--  Delete account
+- <i class="fa-fw fa-solid fa-download"></i> Download user data backup
+- <i class="fa-fw fa-solid fa-key"></i> Change user password
+- <i class="fa-fw fa-solid fa-trash"></i> Delete account
 
 ##### New User
 
@@ -101,7 +101,7 @@ Select **New User** to create a new user account.
 
 Creating a new user automatically generates a subfolder in the /data/ directory using the user's handle as the folder name.
 
-####  Logout
+#### <i class="fa-fw fa-solid fa-right-from-bracket"></i> Logout
 
 Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)
 
@@ -118,11 +118,11 @@ A convenient search bar that helps you quickly find specific settings:
 
 Change the appearance of the chat interface to suit your preferences.
 
-For more information on the settings in this section of  **User Settings**, see [UI Customization](SillyTavern_uicustomization.md).
+For more information on the settings in this section of <i class="fa-fw fa-solid fa-user-gear" title="User Settings icon"></i> **User Settings**, see [UI Customization](SillyTavern_uicustomization.md).
 
 ## Character Handling
 
-* **Char List Subheader**: Choose what additional information to display under character names in the [ Characters](SillyTavern_Usage_Characters_characterdesign.md) list:
+* **Char List Subheader**: Choose what additional information to display under character names in the [<i class="fa-fw fa-solid fa-address-card" title="Characters icon"></i> Characters](SillyTavern_Usage_Characters_characterdesign.md) list:
     - Character Version
     - Created by
 * **Import Card Tags**: Controls how tags are handled when importing character cards:
@@ -151,7 +151,7 @@ For more information on the settings in this section of  **User Settings**, see 
 * **Markdown Hotkeys**: Enables keyboard shortcuts for markdown formatting.
 * **Restore User Input**: Preserves unsaved user input when page is refreshed.
 * **MovingUI**: Allows repositioning UI elements by dragging (PC only).
-    -  **Reset** button to restore default positions
+    - <i class="fa-solid fa-recycle" title="Reset icon"></i> **Reset** button to restore default positions
     - Preset system for saving/loading UI layouts
 
 ## Chat/Message Handling
@@ -223,7 +223,7 @@ Controls how messages are formatted and what content is displayed.
 ### Prompt Inspection and Debugging
 
 * **Log prompts to console**: Output prompts to browser console
-* **Request token probabilities**: Request token probabilities for AI responses from the API. Where available, these can be viewed in  [Token Probabilities](SillyTavern_.._Usage_Chatting_index.md).
+* **Request token probabilities**: Request token probabilities for AI responses from the API. Where available, these can be viewed in <i class="fa-solid fa-bars" title="Burger Menu icon"></i> [Token Probabilities](SillyTavern_.._Usage_Chatting_index.md).
 
 ### AutoComplete
 
@@ -278,56 +278,56 @@ The Clean-Up tool scans for loose files into the following categories:
 #### Files
 
 * **What it finds**: Files that are not associated with chat messages or Data Bank entries
-* **Location**: `/data//user/files/`
+* **Location**: `/data/<user-handle>/user/files/`
 * **Risk**: ⚠️ **WILL DELETE MANUAL UPLOADS** that aren't referenced in chats
 * **When to clean**: Safe to delete if you don't need unreferenced files
 
 #### Images
 
 * **What it finds**: Images that are not associated with chat messages
-* **Location**: `/data//user/images/`
+* **Location**: `/data/<user-handle>/user/images/`
 * **Risk**: ⚠️ **WILL DELETE MANUAL UPLOADS** that aren't referenced in chats
 * **When to clean**: Safe to delete if you don't need unreferenced images
 
 #### Chats
 
 * **What it finds**: Chat files associated with deleted characters
-* **Location**: `data//chats/`
+* **Location**: `data/<user-handle>/chats/`
 * **Risk**: ⚠️ **Orphaned chats will be permanently lost**
 * **When to clean**: Safe to delete if you've intentionally deleted characters and no longer need their chat histories
 
 #### Group Chats
 
 * **What it finds**: Chat files associated with deleted groups
-* **Location**: `data//group chats/`
+* **Location**: `data/<user-handle>/group chats/`
 * **Risk**: ⚠️ **Orphaned group chats will be permanently lost**
 * **When to clean**: Safe to delete if you've intentionally deleted groups and no longer need their chat histories
 
 #### Avatar Thumbnails
 
 * **What it finds**: Thumbnails for avatars of missing or deleted characters
-* **Location**: `data//thumbnails/avatar`
+* **Location**: `data/<user-handle>/thumbnails/avatar`
 * **Risk**: ✅ **Safe to delete** - thumbnails are automatically regenerated when needed
 * **When to clean**: Always safe to clean, helps free up space
 
 #### Background Thumbnails
 
 * **What it finds**: Thumbnails for missing or deleted backgrounds
-* **Location**: `data//thumbnails/bg`
+* **Location**: `data/<user-handle>/thumbnails/bg`
 * **Risk**: ✅ **Safe to delete** - thumbnails are automatically regenerated when needed
 * **When to clean**: Always safe to clean, helps free up space
 
 #### Chat Backups
 
 * **What it finds**: Automatically generated chat backups
-* **Location**: `data//backups/chat_*`
+* **Location**: `data/<user-handle>/backups/chat_*`
 * **Risk**: ⚠️ **Backup files will be permanently lost**
 * **When to clean**: Consider keeping recent backups, but older ones can be safely deleted
 
 #### Settings Backups
 
 * **What it finds**: Automatically generated settings backups
-* **Location**: `data//backups/settings_*`
+* **Location**: `data/<user-handle>/backups/settings_*`
 * **Risk**: ⚠️ **Settings backup files will be permanently lost**
 * **When to clean**: Consider keeping recent backups, but older ones can be safely deleted
 

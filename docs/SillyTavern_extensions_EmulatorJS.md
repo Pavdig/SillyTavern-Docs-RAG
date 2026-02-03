@@ -68,4 +68,4 @@ Still doesn't work? Send us your browser debug console logs (press F12).
 
 ## Credits
 
-- EmulatorJS engine (GPLv3): 
+- EmulatorJS engine (GPLv3): <https://github.com/EmulatorJS/EmulatorJS>

@@ -26,6 +26,7 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 ## Supported sources
 
 | Source                                                                                            | Remarks                                                                                         |
+|:--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
 | AI.ML API (https://aimlapi.com/)                                                                 | Cloud, paid                                                                                     |
 | Black Forest Labs (https://bfl.ai/)                                                              | Cloud, paid                                                                                     |
 | Chutes (https://chutes.ai/)                                                                      | Cloud                                                                                           |
@@ -52,6 +53,7 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 ## Generation modes
 
 | Wand menu item     | Slash command argument | Description                                    | Remarks                               |
+|:-------------------|:-----------------------|:-----------------------------------------------|:--------------------------------------|
 | "Yourself"         | `you`                  | A full-body portrait of the current character. | -                                     | 
 | "Your Face"        | `face`                 | A close-up portrait of the current character.  | Forces a portrait aspect ratio.       |
 | "Me"               | `me`                   | A portrait of the user persona.                | -                                     |
@@ -179,7 +181,7 @@ Example: `bad quality, watermark`.
 ## Character-specific prompt prefix
 
 Pro Tip
-If supported by the generation source, you can also use LoRAs/embeddings here, for example: ``.
+If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
 
 Any characteristics that describe the currently selected character. Will be added after a common prefix.
 
@@ -235,14 +237,14 @@ If you are using SwarmUI (https://github.com/mcmonkeyprojects/SwarmUI), the defa
 managed ComfyUI server (https://github.com/mcmonkeyprojects/SwarmUI/blob/master/src/BuiltinExtensions/ComfyUIBackend/README.md) is `7821`, 
 20 ports higher than the default port for SwarmUI.
 
-After entering the URL, choose  **Connect** to validate and establish a connection. The ComfyUI server must be accessible from the SillyTavern host machine.
+After entering the URL, choose <i class="fa-solid fa-check"></i> **Connect** to validate and establish a connection. The ComfyUI server must be accessible from the SillyTavern host machine.
  
 #### ComfyUI RunPod Setup
 
 * You'll need a RunPod account and to add some money to it. You can probably expect around 2 cents per image for Qwen image generation on an RTX 4090 though YMMV. $5 in credits should last a while.
-*  is a flux1 dev configuration that you can use to create your own serverless endpoint.
+* <https://console.runpod.io/hub/runpod-workers/worker-comfyui> is a flux1 dev configuration that you can use to create your own serverless endpoint.
   * There is information there on creating your own configuration if you want to use a different model or add LoRAs.
-* Create an API key for access to the serverless endpoint: 
+* Create an API key for access to the serverless endpoint: <https://console.runpod.io/user/settings>
 
 * In ST, select **ComfyUI** as the **Source** and **RunPod Serverless Endpoint** as the **Server Type**.
 * Set the **ComfyUI RunPod URL** to the URL of your endpoint.
@@ -266,9 +268,9 @@ Select a ComfyUI workflow from the dropdown menu. Two default workflows are prov
 
 Use the following buttons to manage your workflows:
 
--  **Open workflow editor** to view and modify the selected workflow.
--  **Create new workflow** to create a new workflow with a custom name.
--  **Delete workflow** to remove the selected workflow.
+- <i class="fa-solid fa-pen-to-square"></i> **Open workflow editor** to view and modify the selected workflow.
+- <i class="fa-solid fa-plus"></i> **Create new workflow** to create a new workflow with a custom name.
+- <i class="fa-solid fa-trash-can"></i> **Delete workflow** to remove the selected workflow.
 
 ### Workflow Editor
 
@@ -514,7 +516,7 @@ Read all the general information on this page so you're familiar with the image 
 #### Loading LoRAs
 
 Use a LoRA tag loader node (such as Load LoRA Tag (https://github.com/badjeff/comfyui_lora_tag_loader)) to load any LoRAs specified in the prompt. 
-Now you can add as many LoRAs as you like to your prompt with tags like ``, and they will be loaded into your workflow. 
+Now you can add as many LoRAs as you like to your prompt with tags like `<lora:CroissantStyle:0.8>`, and they will be loaded into your workflow. 
 This will also make the "pro-tip" of using LoRAs in character-specific prompt prefixes work with ComfyUI.
 
 #### Setting workflow values from styles or slash-commands

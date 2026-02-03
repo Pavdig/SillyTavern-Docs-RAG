@@ -25,25 +25,25 @@ Character message translated from English to Chinese using 'Translate Message/�
 
 All the ways to translate chat messages:
 
-** Translate Chat** button in the **
+**<i class="fa-solid fa-language"></i> Translate Chat** button in the **<i class="fa-solid fa-magic-wand-sparkles"></i>
 Extensions** menu
 
 - Translates the entire chat history at once
 
-** Translate Input** button in the **
+**<i class="fa-solid fa-keyboard"></i> Translate Input** button in the **<i class="fa-solid fa-magic-wand-sparkles"></i>
 Extensions** menu
 
 - Translates just the current input text
 - Useful before sending a message
 
-** Translate Message** icon in the ** Message
+**<i class="fa-solid fa-language"></i> Translate Message** icon in the **<i class="fa-solid fa-ellipsis"></i> Message
 Actions**
 toolbar of any message
 
 - Click to translate just that message
 - Click again to revert to original text
 
-**Auto-mode** configuration in the **Chat Translation** drawer of the **
+**Auto-mode** configuration in the **Chat Translation** drawer of the **<i class="fa-solid fa-cubes"></i>
 Extensions** panel
 
 - Automatically translates user inputs, AI responses, or both
@@ -54,14 +54,14 @@ Extensions** panel
 
 ## Configuration
 
-Configuration options are available in the **Chat Translation** drawer of the **
+Configuration options are available in the **Chat Translation** drawer of the **<i class="fa-solid fa-cubes"></i>
 Extensions** panel.
 
 #### Provider
 
 - Choose your preferred translation service
-- Click the ** API Key** icon, if it appears, to enter an API key
-- Click the ** Custom URL** icon, if it appears, to enter a custom API URL
+- Click the **<i class="fa-solid fa-key"></i> API Key** icon, if it appears, to enter an API key
+- Click the **<i class="fa-solid fa-link"></i> Custom URL** icon, if it appears, to enter a custom API URL
 
 #### Target Language
 
@@ -78,7 +78,7 @@ Configure automatic translation behavior.
 
 #### Clear Translations
 
-The ** Clear Translations** button removes all translations from messages in the
+The **<i class="fa-solid fa-trash-can"></i> Clear Translations** button removes all translations from messages in the
 current chat. The original messages are preserved.
 
 ### Configuration Example: Chinese to English Chatting
@@ -100,17 +100,18 @@ explicit source language selection.
 ## Translation providers
 
 **:icon-cloud:** Cloud-based
-**** Local, custom URL
-**** Requires API key
+**<i class="fa-solid fa-link"></i>** Local, custom URL
+**<i class="fa-solid fa-key"></i>** Requires API key
 
 | Provider                                                            | Location                                                                      | Features                                                                                               |
-| Libre Translate (https://libretranslate.com/)                      | :icon-cloud:   | Self-hosted (AGPL-3.0) alternative to proprietary translation services, with cloud-hosted Pro tier     | 
+|---------------------------------------------------------------------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| Libre Translate (https://libretranslate.com/)                      | :icon-cloud: <i class="fa-solid fa-key"></i> <i class="fa-solid fa-link"></i> | Self-hosted (AGPL-3.0) alternative to proprietary translation services, with cloud-hosted Pro tier     | 
 | Google Translate (https://cloud.google.com/translate)              | :icon-cloud:                                                                  | Widely used, supports many languages, good accuracy                                                    |
-| Lingva Translate (https://lingva.ml/)                              |                                               | Alternative front-end for Google Translate, open source (AGPL-3.0), privacy-focused                    |
-| DeepL (https://www.deepl.com/)                                     | :icon-cloud:                                   | High-quality translations, especially for European languages                                           |
-| DeepLX (https://github.com/OwO-Network/DeepLX)                     |                                               | Self-hosted DeepL proxy, open source (MIT), free but proxying DeepL Pro requires DeepL API key         |
+| Lingva Translate (https://lingva.ml/)                              | <i class="fa-solid fa-link"></i>                                              | Alternative front-end for Google Translate, open source (AGPL-3.0), privacy-focused                    |
+| DeepL (https://www.deepl.com/)                                     | :icon-cloud: <i class="fa-solid fa-key"></i>                                  | High-quality translations, especially for European languages                                           |
+| DeepLX (https://github.com/OwO-Network/DeepLX)                     | <i class="fa-solid fa-link"></i>                                              | Self-hosted DeepL proxy, open source (MIT), free but proxying DeepL Pro requires DeepL API key         |
 | Bing Translator (https://www.bing.com/translator)                  | :icon-cloud:                                                                  | Microsoft's translation service, integrates with Azure services                                        |
-| OneRing Translator (https://github.com/janvarev/OneRingTranslator) |                                               | Self-hosted front-end to Google Translate and other providers, privacy-focused, open source (AGPL-3.0) |
+| OneRing Translator (https://github.com/janvarev/OneRingTranslator) | <i class="fa-solid fa-link"></i>                                              | Self-hosted front-end to Google Translate and other providers, privacy-focused, open source (AGPL-3.0) |
 | Yandex Translate (https://translate.yandex.com/)                   | :icon-cloud:                                                                  | Good for Russian and Eastern European languages                                                        |
 
 ### DeepL-specific configuration
@@ -148,16 +149,16 @@ configured target language and show both translations in a popup. This example u
 to gather user input:
 
 ```shell
-/input default="Hello, world!" Sample text | 
+/input default="Hello, world!" <span data-i18n="Test Message">Sample text</span> | 
 /let key=input ||
-/buttons labels=["zh-CN", "zh-TW", "es", "hu", "en"] Language | 
+/buttons labels=["zh-CN", "zh-TW", "es", "hu", "en"] <span data-i18n="UI Language">Language</span> | 
 /let key=lang ||
 /translate target={{var::lang}} {{var::input}} | /let key=tx_target | 
 /translate | /let key=tx_orig ||
 /echo escapeHtml=false cssClass=wider_dialogue_popup
-Test message: {{var::input}} 
-Output ({{var::lang}}): {{var::tx_target}} 
-Output (target language): {{var::tx_orig}} 
+<b data-i18n="Test Message">Test message</b>: {{var::input}} 
+<b data-i18n="Output">Output</b> ({{var::lang}}): {{var::tx_target}} 
+<b data-i18n="Output">Output</b> (<span data-i18n="ext_translate_target_lang">target language</span>): {{var::tx_orig}} 
 ```
 
 This is useful for checking the quality of a translation into a language that you don't speak, before writing it
@@ -169,6 +170,7 @@ Popup, 'My hovercraft is full of eels/我的氣墊船裡裝滿了鰻魚/My hover
 The UI controls are shown in the current locale, independent of the configured target language.
 
 | `/input`                                                                                        | `/buttons`                                                                          |
+|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | Input dialog, '发送测试消息/Send Test Message' | Buttons dialog, '语言/Language' |
 
 Popup, '我的氣墊船裡裝滿了鰻魚/My hovercraft is full of eels', zh-TW -> en -> zh-TW

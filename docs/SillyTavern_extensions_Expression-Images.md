@@ -11,12 +11,12 @@ Expression images can automatically change based on a classification, adjusting 
 
 1. Open the Extensions Panel and expand the 'Character Expressions' section. If you have the character chat open, you will see a grid of image placeholders.
 Expression Drawer
-2. Click the 'Upload image' button at the top left of each image in the grid, and select the image you want to apply to that emotion. This will save the image with the correct filename inside the `/data//characters/(character_name_here)/` folder.
+2. Click the 'Upload image' button at the top left of each image in the grid, and select the image you want to apply to that emotion. This will save the image with the correct filename inside the `/data/<user-handle>/characters/(character_name_here)/` folder.
 3. Repeat this for all expressions you want to assign an image to.
 
 ### Importing an Expression images ZIP file
 
-Using the ' Upload sprite pack (ZIP)' button, you can import a zip file that contains a collection of expression images, and those images will automatically be added to the correct folder for your **currently selected character**. The ZIP file must contain all images in a flat structure (no subfolders) and correctly named files. Importing a zip will not automatically rename any images to make them match the emotions.
+Using the '<i class="fa-solid fa-file-zipper"></i> Upload sprite pack (ZIP)' button, you can import a zip file that contains a collection of expression images, and those images will automatically be added to the correct folder for your **currently selected character**. The ZIP file must contain all images in a flat structure (no subfolders) and correctly named files. Importing a zip will not automatically rename any images to make them match the emotions.
 
 ## Change Expressions Manually
 
@@ -45,7 +45,7 @@ To use the 6-option classification model, change the value of `extensions.models
 
 ### Setup Instructions (with LLM)
 
-1. Connect to any of the supported and properly configured APIs via ** API Connections**.
+1. Connect to any of the supported and properly configured APIs via **<i class="fa-solid fa-plug"></i> API Connections**.
 2. Import the expression images the same way as mentioned above.
 3. Select "Main API" in the classification source dropdown.
 4. Optionally, configure the classification instruction prompt.
@@ -135,9 +135,9 @@ Folder overrides can also be used to define different sprite sets (outfits, etc.
 
 ### How to set an override
 
-1. Create a folder in the `/data//characters` with any name and put images there, e.g. `/data//characters/Boris`.
+1. Create a folder in the `/data/<user-handle>/characters` with any name and put images there, e.g. `/data/<user-handle>/characters/Boris`.
 2. Open the chat with the character whose sprites you'd like to override.
 3. Enter the name of the override folder into the "Sprite Folder Override" input and click "Submit".
 4. The Sprites list will reload and the "Sprite set" indicator should show the override folder.
 5. Alternatively, you can use the `/costume` slash command to achieve the same result: `/costume Boris`.
-6. By prepending a backslash to the override folder name, it will resolve to a subfolder in the current character sprites folder, e.g. `/costume \tracksuit` for the character named Boris will resolve to the `/data//characters/Boris/tracksuit` folder.
+6. By prepending a backslash to the override folder name, it will resolve to a subfolder in the current character sprites folder, e.g. `/costume \tracksuit` for the character named Boris will resolve to the `/data/<user-handle>/characters/Boris/tracksuit` folder.

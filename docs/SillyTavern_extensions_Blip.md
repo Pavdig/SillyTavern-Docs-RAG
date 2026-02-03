@@ -55,7 +55,7 @@ You can save a profile for each character:
 5. **Blip origin: file**:
    - Choose a file in the list.
    - You can get official ST blip assets from the assets extension menu.
-   - Or put file directly into: `\SillyTavern\data\\assets\blip`.
+   - Or put file directly into: `\SillyTavern\data\<user-handle>\assets\blip`.
    - Enable the checkbox to force to wait entire file is played before playing again if needed.
 
 Thank you for following this guide! Your SillyTavern experience is now enriched with text animation and blip voices.

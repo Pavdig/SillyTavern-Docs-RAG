@@ -37,7 +37,7 @@ Remember, you want to run the largest, least quantized model that can fit in you
 
 ## Downloading an LLM
 
-To get started, you will need to download an LLM. The most common place to find and download LLMs is on HuggingFace. There are thousands of models available. A good way to find GGUF models is to check bartowski's account page: . If you don't want GGUF, he links the original model page where you might find other formats for that same model.
+To get started, you will need to download an LLM. The most common place to find and download LLMs is on HuggingFace. There are thousands of models available. A good way to find GGUF models is to check bartowski's account page: <https://huggingface.co/bartowski>. If you don't want GGUF, he links the original model page where you might find other formats for that same model.
 
 On a given model's page, you will find a whole bunch of files. 
 
@@ -49,7 +49,7 @@ On a given model's page, you will find a whole bunch of files.
 
 We will use the Kunoichi-DPO-v2-7B model for the rest of this guide. It's an excellent model based on Mistral 7B, that only requires 7GB RAM, and punches far above its weight. Note: Kunoichi uses Alpaca prompting.
 
-* Go to 
+* Go to <https://huggingface.co/brittlewis12/Kunoichi-DPO-v2-7B-GGUF>
 * Click 'Files and versions'. You will see a listing of several files. These are all the same model but offered in different quantization options. Click the file 'kunoichi-dpo-v2-7b.Q6_K.gguf', which gives us a 6-bit quantization.
 * Click the 'download' button. Your download should start.
 
@@ -70,7 +70,7 @@ With the LLM now on your PC, we need to download a tool that will act as a middl
 
 This guide covers both options, you only need one.
 
-If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\** instead of **http://127.0.0.1:\**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
+If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<port\>** instead of **http://127.0.0.1:\<port\>**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
 
 ### Downloading and using KoboldCpp (No installation required, GGUF models)
 
@@ -81,7 +81,7 @@ At the time of writing the newest CUDA version they list is cu12 which will work
 4. Click Launch, if everything goes well a new webpage will open with KoboldAI Lite where you can test if everything works correctly.
 5. Open SillyTavern and click API Connections (2nd button in the top bar)
 6. Set API to Text Completion and the API Type to KoboldCpp.
-7. Set server URL to  or the link that KoboldCpp gave you in case it is not running on the same system (You can activate KoboldCpp's Remote Tunnel mode to obtain a link that can be accessed from anywhere).
+7. Set server URL to <http://127.0.0.1:5001/> or the link that KoboldCpp gave you in case it is not running on the same system (You can activate KoboldCpp's Remote Tunnel mode to obtain a link that can be accessed from anywhere).
 8. Click Connect. It should connect successfully and detect kunoichi-dpo-v2-7b.Q6_K.gguf as the model.
 9. Chat with a character to test that it works.
 
@@ -97,18 +97,18 @@ Depending on how you have installed Oobabooga, the file paths can be slightly di
 
 Here's a more correct/dummy proof installation procedure:
 
-1. git clone  (or download their repo as a .zip in your browser, then extract it)
+1. git clone <https://github.com/oobabooga/text-generation-webui> (or download their repo as a .zip in your browser, then extract it)
 2. Run `start_windows.bat` or whatever your OS is
 3. When asked, select your GPU type. Even if you intend to use GGUF/CPU, if your GPU is in the list, select it now, because it will give you the option to use a speed optimization later called GPU sharding (without having to reinstall from scratch). If you have no gaming-grade dGPU (NVIDIA, AMD), select None.
 4. Wait for the installation to finish
 5. Place kunoichi-dpo-v2-7b.Q6_K.gguf in `text-generation-webui/user_data/models`
 6. Open `text-generation-webui/user_data/CMD_FLAGS.txt`, delete everything inside and write: `--api`
 7. Restart Oobabooga
-8. Visit . Does it load a FastAPI page? If not, you messed up somewhere.
+8. Visit <http://127.0.0.1:5000/docs>. Does it load a FastAPI page? If not, you messed up somewhere.
 
 ### Loading our model in Oobabooga
 
-1. Open  in your browser
+1. Open <http://127.0.0.1:7860/> in your browser
 2. Click the Model tab
 3. In the dropdown, select our Kunoichi DPO v2  model. It should have automatically selected the llama.cpp loader.
 4. (Optional) We mentioned 'GPU offload' several times earlier: that's the n-gpu-layers setting on this page. If you want to use it, set a value before loading the model. As a basic reference, setting it to 30 uses just under 6GB VRAM for 13B and lower models. (it varies with model architecture and size)
@@ -119,7 +119,7 @@ Here's a more correct/dummy proof installation procedure:
 1. Click API Connections (2nd button in the top bar)
 2. Set API to Text Completion
 3. Set API Type to Default (Oobabooga)
-4. Set server URL to 
+4. Set server URL to <http://127.0.0.1:5000/>
 5. Click Connect. It should connect successfully and detect kunoichi-dpo-v2-7b.Q6_K.gguf as the model.
 6. Chat with a character to test that it works
 

@@ -66,7 +66,7 @@ The following fields are being combined:
 
 When 'Join character cards' is selected, all respective fields of the characters are being joined together. This means that in the resulting prompt all character descriptions will be joined to one big blob of text. If you want those fields to be separated, you can define a prefix and/or suffix.
 
-These options support normal macros and will also replace \{\{char\}\} with the relevant characters's name and \ with the name of the part (e.g.: description, personality, scenario, etc.)
+These options support normal macros and will also replace \{\{char\}\} with the relevant characters's name and \<FIELDNAME\> with the name of the part (e.g.: description, personality, scenario, etc.)
 
 ## Other Group Chat menu options
 

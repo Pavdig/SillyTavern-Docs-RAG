@@ -140,6 +140,6 @@ Now you can use the following commands:
 
 The guides linked below are not maintained by the SillyTavern team.
 
-- SillyTavern in Termux guide by ArroganceComplex#2659: 
-- Accessing Termux files with Material Files: 
-- Prevent Termux process deep sleep: 
+- SillyTavern in Termux guide by ArroganceComplex#2659: <https://rentry.org/STAI-Termux>
+- Accessing Termux files with Material Files: <https://www.learntermux.tech/2020/10/Termux-File-Manager.html>
+- Prevent Termux process deep sleep: <https://wiki.termux.com/wiki/Termux-wake-lock>

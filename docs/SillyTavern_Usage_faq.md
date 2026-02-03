@@ -47,7 +47,7 @@ Pros:
 
 Cons:
 
-* They are not as capable as SOTA models (i.e., they write worse dialog, are less creative, etc).
+* They are not as capable as <abbr title="State of the art">SOTA</abbr> models (i.e., they write worse dialog, are less creative, etc).
 * Running local models requires a GPU with at least 6GB VRAM.
 
 If you are interested in using these, refer to the dedicated guide here: [How To Use A Self-Hosted Model](SillyTavern_Usage_API_Connections_self-hosted.md).

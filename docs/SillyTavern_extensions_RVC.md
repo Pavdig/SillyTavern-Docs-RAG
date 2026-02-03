@@ -24,9 +24,9 @@ Make sure you have `ffmpeg` binary in your PATH environment variable. This tool 
 
 **Windows**:
 
-* Use the Toolbox in SillyTavern Launcher script to install ffmpeg automatically: 
-* Or download the build here: 
-* How to modify PATH variable: 
+* Use the Toolbox in SillyTavern Launcher script to install ffmpeg automatically: <https://github.com/SillyTavern/SillyTavern-Launcher>
+* Or download the build here: <https://www.gyan.dev/ffmpeg/builds/>
+* How to modify PATH variable: <https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/>
 * To test whether you did things correctly, open a command prompt and run ```ffmpeg```. It should print the ffmpeg version and info.
 
 **Linux**:

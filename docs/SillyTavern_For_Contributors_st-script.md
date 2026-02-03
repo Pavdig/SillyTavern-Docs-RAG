@@ -25,6 +25,7 @@ To run your first script, open any SillyTavern chat and type the following into 
 ```
 
 | Hello World |
+|-------------------------------------------------|
 
 You should see the message in the toast on top of the screen. Now let's break it down bit by bit.
 
@@ -56,10 +57,11 @@ Now let's add a little bit of interactivity to the script. We will accept the in
 2. Because `/echo` already has an unnamed argument that sets the template for the output, we use the `{{pipe}}` macro to specify a place where the pipe value will be rendered.
 
 | Slim Shady Input | Slim Shady Output |
+|-----------------------------------------------------|-------------------------------------------------------|
 
 ### Other input/output commands
 
-- `/popup (text)` — shows a blocking popup, supports lite HTML formatting, e.g: `/popup I'm red!`.
+- `/popup (text)` — shows a blocking popup, supports lite HTML formatting, e.g: `/popup <font color=red>I'm red!</font>`.
 - `/setinput (text)` — replaces the contents of the user input bar with the provided text.
 - `/speak voice="name" (text)` — narrates the text using the selected TTS engine and the character name from the voice map, e.g. `/speak name="Donald Duck" Quack!`.
 - `/buttons labels=["a","b"] (text)` — shows a blocking popup with the specified text and button labels. `labels` must be a JSON-serialized array of strings or a variable name containing such an array. Returns the clicked button label into the pipe or empty string if canceled. The text supports lite HTML formatting.
@@ -651,10 +653,11 @@ The generated text is then passed through the pipe to the next command and can b
 
 ```stscript
 /genraw Write a funny message from Cthulhu about taking over the world. Use emojis. |
-/popup Cthulhu says:{{pipe}}
+/popup <h3>Cthulhu says:</h3><div>{{pipe}}</div>
 ```
 
 | Cthulhu Says |
+|---------------------------------------------------|
 
 or to insert the generated message as a response from your character:
 
@@ -776,6 +779,7 @@ World Info (also known as Lorebook) is a highly utilitarian tool for dynamically
 ### Valid entry fields
 
 | Field              | UI element        | Value type      |
+|:-------------------|:------------------|:----------------|
 | `content`          | Content           | String          |
 | `comment`          | Title / Memo      | String          |
 | `key`              | Primary Keywords  | List of strings |
@@ -985,7 +989,11 @@ Quick Replies is a built-in SillyTavern extension that provides an easy way to s
 
 In order to get started, enable open the extensions panel (stacked blocks icon), and expand the Quick Replies menu.
 
+<div style="display:flex;justify-content:center">
+
 Quick Reply
+
+</div>
 
 **Quick Replies are disabled by default, you need to enable them first.** Then you will see a bar appearing above your chat input bar.
 
@@ -1015,6 +1023,7 @@ Every click increments the variable `clicks` by one and displays a different mes
 Open the modal menu by clicking the `⋮` button for the created command.
 
 | Automatic execution |
+|---------------------------------------------------------|
 
 In this menu you can do the following:
 
@@ -1055,6 +1064,7 @@ A basic debugger exists inside the expanded Quick Reply editor. Set breakpoints 
 ```
 
 | QR Editor Debugger |
+|--------------------------------------------------------|
 
 ### Calling procedures
 

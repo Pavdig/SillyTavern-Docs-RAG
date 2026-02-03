@@ -4,7 +4,7 @@
 Adds web search results to LLM prompts.
 
 Note
-Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the ** AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
+Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
 
 ## Available sources
 
@@ -26,7 +26,7 @@ Supports Google and DuckDuckGo engines.
 
 Requires an API key.
 
-Get the key here: 
+Get the key here: <https://serpapi.com/dashboard>
 
 ### SearXNG
 
@@ -34,33 +34,33 @@ Requires a SearXNG instance URL (either private or public). Uses HTML format for
 
 SearXNG preferences string: obtained from SearXNG - preferences - COOKIES - Copy preferences hash
 
-Learn more: 
+Learn more: <https://docs.searxng.org/>
 
 ### Tavily AI
 
 Requires an API key.
 
-Get the key here: 
+Get the key here: <https://app.tavily.com/>
 
 ### KoboldCpp
 
 KoboldCpp URL must be provided in Text Completion API settings. KoboldCpp version must be >= 1.81.1 and WebSearch module must be enabled on startup: enable Network => Enable WebSearch in the GUI launcher or add `--websearch` to the command line.
 
-See: 
+See: <https://github.com/LostRuins/koboldcpp/releases/tag/v1.81.1>
 
 ### Serper
 
 Requires an API key.
 
-Get the key here: 
+Get the key here: <https://serper.dev/>
 
 ### Z.AI
 
 Requires an API key, set it in the Chat Completion API settings first. Not compatible with the Coding API subscription!
 
-Get the key here: 
+Get the key here: <https://z.ai/manage-apikey/apikey-list/>
 
-Docs: 
+Docs: <https://docs.z.ai/api-reference/tools/web-search>
 
 ## How to use
 

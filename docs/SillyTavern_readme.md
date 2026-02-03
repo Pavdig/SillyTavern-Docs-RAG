@@ -10,6 +10,7 @@ SillyTavern is a passion project brought to you by a dedicated community of LLM 
 ## Screenshots
 
 |   API Connection    |  Chat UI   |
+|:--------------------------------------------------------------------------:|:-----------------------------------------------------------------:|
 | Advanced Formatting | World Info |
 
 ## Installation Requirements

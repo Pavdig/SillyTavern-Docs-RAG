@@ -46,9 +46,9 @@ For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik
     cd /
     sudo mkdir docker && cd docker
     ```
-6. Execute `chown`, replacing __ with your Linux username to set the permissions in the docker folder.
+6. Execute `chown`, replacing _<USER>_ with your Linux username to set the permissions in the docker folder.
     ```sh
-    sudo chown -R : .
+    sudo chown -R <USER>:<USER> .
     ```
 7. Make a folder inside the _docker_ folder, that being `secrets` and inside _secrets_ being `cloudflare`.
     ```sh

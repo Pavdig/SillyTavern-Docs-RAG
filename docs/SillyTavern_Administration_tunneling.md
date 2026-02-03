@@ -47,7 +47,7 @@ Tailscale is a VPN provider enabling a secure remote connection to your PC. An o
 Now whenever you want to use SillyTavern from anywhere all you have to do is:
 
 * Have Tailscale turned on on both the PC hosting SillyTavern and your device that wants to use it remotely.
-* Open a browser on the device that wants to connect and go to `http://:8000/`
+* Open a browser on the device that wants to connect and go to `http://<machine name of PC running st>:8000/`
 
 ### 5. Sharing SillyTavern instance with a friend (optional)
 
