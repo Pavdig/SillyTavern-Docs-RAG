@@ -1,4 +1,4 @@
-name: Update ST Docs (Cloud runner)
+name: Update ST Docs
 on:
   schedule:
     - cron: '0 * * * *' # (Runs every hour)
@@ -14,38 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Give Local Runner a Head Start
-        run: |
-          echo "Waiting 90 seconds to see if Local Runner handles this..."
-          sleep 90
       - name: Checkout your repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # Check if the 'docs-sync' branch was updated in the last 2 minutes.
-      # If the Local runner just finished, this step will detect it and stop early.
-      - name: Check for Recent Updates
-        id: check_recent
-        run: |
-          git fetch origin docs-sync:docs-sync || true
-          # Get timestamp of last commit on docs-sync (if branch exists)
-          if git rev-parse --verify docs-sync >/dev/null 2>&1; then
-            LAST_COMMIT=$(git log -1 --format=%ct docs-sync)
-            NOW=$(date +%s)
-            DIFF=$((NOW - LAST_COMMIT))
-            echo "Last update was $DIFF seconds ago."
-            # If updated less than 3 minutes ago (180s), assume Local Runner did it.
-            if [ "$DIFF" -lt 180 ]; then
-              echo "✅ Local Runner already updated the docs recently. Exiting."
-              echo "SKIP_WORKFLOW=true" >> $GITHUB_ENV
-            else
-              echo "⚠️ No recent updates found. Proceeding with Cloud Fallback."
-              echo "SKIP_WORKFLOW=false" >> $GITHUB_ENV
-            fi
-          else
-            echo "Branch docs-sync does not exist yet. Proceeding."
-            echo "SKIP_WORKFLOW=false" >> $GITHUB_ENV
-          fi
       - name: Checkout Source Docs (SillyTavern-Docs)
         uses: actions/checkout@v4
         with:
