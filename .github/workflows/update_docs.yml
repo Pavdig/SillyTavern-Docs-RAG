@@ -45,7 +45,7 @@ jobs:
           echo "Running Python Sanitizer..."
           
           # 2. Run the Logic
-            python3 -c "
+          python3 -c "
           import re
           import os
           
@@ -57,7 +57,7 @@ jobs:
               'note', 'abstract', 'info', 'tip', 'success', 'question', 
               'warning', 'failure', 'danger', 'bug', 'example', 'quote', 'callout'
           ]
-          
+
           def replace_link(match, file_path):
               text = match.group(1)
               url = match.group(2)
@@ -72,7 +72,7 @@ jobs:
                   if url.startswith('/') or url.startswith('\\\\'):
                       abs_path = os.path.normpath(os.path.join(ROOT_DIR, url.lstrip('/\\\\')))
                   else:
-                  abs_path = os.path.normpath(os.path.join(current_dir, url))
+                      abs_path = os.path.normpath(os.path.join(current_dir, url))
                   
                   rel_path = os.path.relpath(abs_path, ROOT_DIR)
               except ValueError:
@@ -93,9 +93,9 @@ jobs:
                   return f'[{text}](SillyTavern_{flat_name})'
               
               return text
-          
+
           def replace_image(match):
-              return '' # Remove images to save tokens
+              return '' 
 
           def replace_admonition(match):
               content = match.group(1).strip()
@@ -107,7 +107,6 @@ jobs:
                   
               if not content: return ''
 
-              # If content is a Table or Code Block, do not bold it
               if content.startswith('|') or content.startswith('\`\`\`'):
                   return f'\n{content}\n'
 
@@ -121,11 +120,11 @@ jobs:
                   if not filename.endswith('.md'): continue
                   
                   file_path = os.path.join(root, filename)
-
-          try:
-              with open(file_path, 'r', encoding='utf-8') as f:
-                  content = f.read()
-              
+                  
+                  try:
+                      with open(file_path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                      
                       # Skip Redirect Stubs
                       if 'This page has been moved to' in content: continue
 
@@ -133,22 +132,22 @@ jobs:
                       content = re.sub(r'^---\n.*?\n---\n', '', content, flags=re.DOTALL)
 
                       # Apply Regex
-              content = re.sub(r'!\[((?:[^][]+|\[[^][]*\])*)\]\s*\(([^)]*)\)', replace_image, content)
+                      content = re.sub(r'!\[((?:[^][]+|\[[^][]*\])*)\]\s*\(([^)]*)\)', replace_image, content)
                       content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', lambda m: replace_link(m, file_path), content)
                       content = re.sub(r'^\s*(?:!!!|:::)\s*(.*)$', replace_admonition, content, flags=re.MULTILINE)
-                      content = re.sub(r'^\s*\|[\s|]+\|\s*$', '', content, flags=re.MULTILINE) # Ghost Tables
+                      content = re.sub(r'^\s*\|[\s|]+\|\s*$', '', content, flags=re.MULTILINE)
                       content = re.sub(r'<br\s*\/?>', '', content, flags=re.IGNORECASE)
-                      content = re.sub(r'\n{3,}', '\n\n', content) # Whitespace
+                      content = re.sub(r'\n{3,}', '\n\n', content)
 
                       # Determine Output Filename
                       rel_path = os.path.relpath(file_path, SOURCE_DIR)
                       flat_name = rel_path.replace(os.sep, '_')
                       out_path = os.path.join(OUTPUT_DIR, f'SillyTavern_{flat_name}')
-
+                      
                       with open(out_path, 'w', encoding='utf-8') as f:
-                  f.write(content)
+                          f.write(content)
                       count += 1
-          except Exception as e:
+                  except Exception as e:
                       print(f'Error on {filename}: {e}')
           
           print(f'Processed {count} files.')
