@@ -41,19 +41,114 @@ jobs:
 
       - name: Process Docs
         run: |
-          # 1. Set up temporary directory
+          # 1. Prepare working directory (Copy source to work_dir to sanitize IN PLACE)
+          # We need to preserve folder structure for relative link resolution
+          cp -r temp_source work_dir
           mkdir -p processed_temp
           
-          echo "Processing Markdown files..."
+          echo "Sanitizing Markdown files..."
           
-          # 2. Flatten and Rename
-          find temp_source -type f -name "*.md" | while read -r file; do
-              clean_path="${file#temp_source/}"
+          # 2. Sanitize In-Place (Python)
+          # We pass the root directory so the script can calculate flattened paths correctly
+          find work_dir -type f -name "*.md" | while read -r file; do
+            python3 -c "
+          import re
+          import sys
+          import os
+          
+          # Arguments: 1=Current File Path, 2=Root Work Directory
+          file_path = sys.argv[1]
+          root_dir = sys.argv[2]
+          
+          def replace_link(match):
+              text = match.group(1)
+              url = match.group(2)
+              
+              # Ignore external links
+              if url.startswith('http') or url.startswith('www'):
+                  return f'{text} ({url})'
+              
+              # Remove anchors and query strings
+              url = url.split('#')[0].split('?')[0]
+              
+              # RESOLVE RELATIVE PATHS
+              # 1. Get directory of current file
+              current_dir = os.path.dirname(file_path)
+              # 2. Resolve absolute path (ignoring ../ if it goes out of root)
+              try:
+                  abs_path = os.path.normpath(os.path.join(current_dir, url))
+                  # 3. Calculate path relative to the root_dir (e.g. Administration/config.yaml)
+                  rel_path = os.path.relpath(abs_path, root_dir)
+              except ValueError:
+                  return text 
+
+              if rel_path.startswith('..'):
+                  return text # Pointing outside doc root
+              
+              # 4. Flatten the relative path (Administration/config.yaml -> Administration_config.yaml)
+              flat_name = rel_path.replace(os.sep, '_')
+              
+              # Ensure we point to the markdown version for internal linking
+              # If the original link was config.yaml, we assume it maps to ...config-yaml.md
+              # (Simple heuristic: replace .yaml with .md for links, or just keep original ext if md)
+              if flat_name.endswith('.yaml'):
+                  flat_name = flat_name.replace('.yaml', '-yaml.md')
+              
+              if flat_name and (flat_name.endswith('.md') or flat_name.endswith('.json')):
+                  return f'[{text}](SillyTavern_{flat_name})'
+              
+              return text
+          
+          def replace_image(match):
+              alt_text = match.group(1)
+              url = match.group(2)
+              # If URL is an image, discard it.
+              if re.search(r'\.(png|jpg|jpeg|gif|webp|svg)$', url, re.IGNORECASE):
+                  return ''
+              # If Alt Text looks like a filename, discard it.
+              if re.search(r'\.(png|jpg|jpeg|gif|webp|svg)$', alt_text, re.IGNORECASE):
+                  return ''
+              return alt_text
+
+          def replace_admonition(match):
+              # Regex now captures content in Group 1
+              content = match.group(1)
+              return content.strip() if content else ''
+
+          try:
+              with open(file_path, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              
+              # 1. Handle Images: Check URL AND Alt Text
+              # Regex handles balanced brackets for complex alt text
+              content = re.sub(r'!\[((?:[^][]+|\[[^][]*\])*)\]\s*\(([^)]*)\)', replace_image, content)
+              
+              # 2. Handle Links
+              content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', replace_link, content)
+              
+              # 3. Handle Admonitions
+              # Matches !!! or ::: followed by optional type, optional content
+              # ^\s* matches start of line with indent
+              # (?:[a-zA-Z]+)? matches 'warning' or 'callout'
+              # (?:[ ]+(.*))? matches ' "Title"' or nothing
+              content = re.sub(r'^\s*(?:!!!|:::)\s*(?:[a-zA-Z]+)?(?:[ ]+(.*))?$', replace_admonition, content, flags=re.MULTILINE)
+
+              with open(file_path, 'w', encoding='utf-8') as f:
+                  f.write(content)
+          except Exception as e:
+              print(f'Error processing {file_path}: {e}')
+          " "$file" "work_dir"
+          done
+          
+          # 3. Flatten and Move to processed_temp
+          # Now that files are sanitized and links rewritten, we just move them.
+          find work_dir -type f -name "*.md" | while read -r file; do
+              clean_path="${file#work_dir/}"
               flat_name="${clean_path//\//_}"
               cp "$file" "processed_temp/SillyTavern_$flat_name"
           done
           
-          # 3. Sanitize .md files
+          # 4. Final Cleanup (Sed)
           cd processed_temp
           
           # Remove Redirect Stubs
@@ -62,65 +157,8 @@ jobs:
           # Remove YAML Front Matter
           find . -type f -name "*.md" -exec sed -i '1{/^---/!q;};1,/^---/d' {} +
           
-          # Clean up "Ghost" Table rows (Only pipes and spaces)
+          # Clean up "Ghost" Table rows
           find . -type f -name "*.md" -exec sed -i -E '/^\|[[:space:]|]*\|$/d' {} +
-          
-          # Advanced Sanitization (Python)
-          find . -type f -name "*.md" | while read -r file; do
-            python3 -c "
-          import re
-          import sys
-          
-          filename = sys.argv[1]
-          
-          def replace_link(match):
-              text = match.group(1)
-              url = match.group(2)
-              # Ignore external links
-              if url.startswith('http') or url.startswith('www'):
-                  return f'{text} ({url})'
-              # Flatten internal links
-              url = url.split('#')[0]
-              clean_url = re.sub(r'^(\.|\.\.)?/', '', url)
-              flat_name = clean_url.replace('/', '_')
-              if flat_name and flat_name.endswith('.md'):
-                  return f'[{text}](SillyTavern_{flat_name})'
-              return text
-          
-          def replace_image(match):
-              alt_text = match.group(1)
-              # If alt text looks like a filename (e.g. image.png), discard it
-              if re.search(r'\.(png|jpg|jpeg|gif|webp|svg)$', alt_text, re.IGNORECASE):
-                  return ''
-              return alt_text
-
-          def replace_admonition(match):
-              # Capture content after !!!type or !!! type
-              # Since using non-capturing groups (?:) for prefix, content is Group 1
-              content = match.group(1)
-              return content if content else ''
-
-          try:
-              with open(filename, 'r', encoding='utf-8') as f:
-                  content = f.read()
-              
-              # 1. Handle Images: ![Alt](url) -> Alt
-              # Regex updated to handle optional spaces \s* and ensure it matches full syntax
-              content = re.sub(r'!\[([^]]*)\]\s*\(([^)]*)\)', replace_image, content)
-              
-              # 2. Handle Links: [Text](url) -> [Text](SillyTavern_...)
-              content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', replace_link, content)
-              
-              # 3. Handle Admonitions: !!! type "Title" -> Title
-              # Regex updated to handle optional space between !!! and type
-              content = re.sub(r'^(?:!!!|:::)\s*(?:[a-zA-Z]+)?\s*(.*)$', replace_admonition, content, flags=re.MULTILINE)
-
-              with open(filename, 'w', encoding='utf-8') as f:
-                  f.write(content)
-          except Exception as e:
-              print(f'Error processing {filename}: {e}')
-          " "$file"
-          done
           
           # Remove <br> tags
           find . -type f -name "*.md" -exec sed -i -E 's/<br\s*\/?>//gi' {} +
@@ -131,6 +169,7 @@ jobs:
           done
           
           cd ..
+          rm -rf work_dir
 
       - name: Push to Sync Branch
         id: push_to_sync
@@ -142,7 +181,6 @@ jobs:
           git config user.name 'GitHub Actions Bot'
           git config user.email 'actions@github.com'
           
-          # Switch to sync branch (create if it doesn't exist)
           if git ls-remote --exit-code --heads origin $TARGET_BRANCH; then
             echo "Branch $TARGET_BRANCH exists, switching..."
             git checkout $TARGET_BRANCH
@@ -152,29 +190,19 @@ jobs:
             git checkout -b $TARGET_BRANCH
           fi
 
-          # Clean old docs folder
           rm -rf docs
           mkdir docs
-          
-          # Move new files
           mv processed_temp/* docs/
           rm -rf processed_temp temp_source
           
-          # Stage changes
           git add docs/
           
-          # Check for changes and commit
           if git diff --staged --quiet; then
             echo "No changes. Workflow finished."
             echo "HAS_CHANGES=false" >> $GITHUB_OUTPUT
           else
-            # Get current date
             DATE=$(date +'%Y-%m-%d')
-            
-            # Commit
             git commit -m "Sync: Docs Update $DATE" -m "$UPSTREAM_MSG" -m "Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
-            
-            # Push
             git push origin $TARGET_BRANCH
             echo "HAS_CHANGES=true" >> $GITHUB_OUTPUT
           fi
@@ -187,7 +215,6 @@ jobs:
           UPSTREAM_HASH: ${{ steps.upstream_info.outputs.HASH }}
           TARGET_BRANCH: docs-sync
         run: |
-          # Check if a PR from docs-sync to main already exists
           existing_pr=$(gh pr list --base main --head $TARGET_BRANCH --json url --jq '.[0].url')
           
           if [ -n "$existing_pr" ]; then

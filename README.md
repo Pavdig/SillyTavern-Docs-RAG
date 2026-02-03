@@ -30,7 +30,7 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
     *   **Images:** Converted to plain text (Alt Text preserved).
     *   **Ghost Tables:** Empty table artifacts left by images are cleaned up.
     *   **Links:**
-        *   **Internal:** Rewritten to point to the new flattened filenames (e.g., `[Link](SillyTavern_Page.md)`).
+        *   **Internal:** Context-aware rewriting of relative links to match flattened filenames (e.g., `../Installation/Windows.md` -> `SillyTavern_Installation_Windows.md`).
         *   **External:** Preserved as text for readability (e.g., `GitHub (https://...)`).
 
 ### 2. The Update Cycle (CI/CD)
