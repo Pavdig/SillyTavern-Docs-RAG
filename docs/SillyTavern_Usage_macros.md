@@ -1,24 +1,22 @@
 
 # Macros
 
-!!!tip Experimental Macro Engine
+Experimental Macro Engine
 To enable advanced macro processing that supports nesting, stable substitution order, and other improvements, go to **User Settings** > **Chat/Message Handling** and enable the **Experimental Macro Engine** option.
-!!!
-
-Macros are dynamic placeholders that get replaced with actual values when text is processed. They are used throughout SillyTavern in prompts, character cards, lorebooks, Quick Replies, and more.
+are dynamic placeholders that get replaced with actual values when text is processed. They are used throughout SillyTavern in prompts, character cards, lorebooks, Quick Replies, and more.
 
 ## Finding Available Macros
 
 SillyTavern provides built-in documentation for all available macros:
 
 - **Slash command**: Type `/? macros` in the chat input to display a list of all registered macros with their descriptions.
-- **Autocomplete**: See [Macro Autocomplete](#macro-autocomplete) below for details on getting suggestions while typing.
+- **Autocomplete**: See Macro Autocomplete below for details on getting suggestions while typing.
 
 ### Macro Autocomplete
 
 Macro autocomplete provides suggestions for available macros as you type. It works in all text fields that support macros throughout SillyTavern.
 
-Type `{{` to start autocomplete for macros, showing available macros and their arguments, potential [Macro Flags](#macro-flags), [Variable Shorthands](#variable-shorthands), and more.
+Type `{{` to start autocomplete for macros, showing available macros and their arguments, potential Macro Flags, Variable Shorthands, and more.
 
 **Where autocomplete appears by default:**
 
@@ -140,11 +138,9 @@ The condition itself is a macro that retrieves a variable value.
 
 ## Scoped Macros
 
-!!!warning Staging Feature
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-!!!
-
-Any macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.
+macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.
 
 ### Scoped Syntax
 
@@ -203,15 +199,13 @@ This allows clean formatting:
 
 Produces `# Heading\nSome content here` (without the leading spaces).
 
-To preserve all whitespace including leading/trailing newlines, use the `#` flag. See [Macro Flags](#macro-flags) for details.
+To preserve all whitespace including leading/trailing newlines, use the `#` flag. See Macro Flags for details.
 
 ## Conditional Macros
 
-!!!warning Staging Feature
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-!!!
-
-The `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.
+`{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.
 
 ### Simple Condition
 
@@ -228,7 +222,7 @@ The condition can be:
 
 - A macro name (resolved automatically if no arguments are required)
 - Any value from a nested macro like `{{getvar::flag}}`
-- A variable shorthand like `.myFlag` or `$globalFlag` (see [Variable Shorthands](#variable-shorthands))
+- A variable shorthand like `.myFlag` or `$globalFlag` (see Variable Shorthands)
 - Any text you want (that will implicitly resolve to truthy or falsy based on its content)
 
 Falsy values: empty string, `false`, `0`, `off`, `no`.
@@ -247,7 +241,7 @@ Variable shorthands provide a concise way to check variable values in conditions
 {{ /if }}
 ```
 
-See [Variable Shorthands](#variable-shorthands) for more details on shorthand notation.
+See Variable Shorthands for more details on shorthand notation.
 
 ### Inverted Condition
 
@@ -284,11 +278,9 @@ Another example:
 
 ## Macro Flags
 
-!!!warning Staging Feature
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-!!!
-
-Flags are special symbol characters placed between the opening braces and the macro name that modify macro behavior.
+are special symbol characters placed between the opening braces and the macro name that modify macro behavior.
 
 ### Syntax
 
@@ -329,7 +321,7 @@ Whitespace is allowed between flags and the macro name:
 ### Flags-like prefix operators
 
 Variable shorthand syntax uses prefix operators (`.` and `$`) which behave similarly to flags but are not flags themselves.  
-See the [Variable Shorthands](#variable-shorthands) section for details.
+See the Variable Shorthands section for details.
 
 ### Preserve Whitespace Flag
 
@@ -374,11 +366,9 @@ This outputs `{{notAMacro}}` as plain text.
 
 ## Variable Shorthands
 
-!!!warning Staging Feature
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-!!!
-
-Variable shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.
+shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.
 
 ### Variable Shorthands Prefixes
 
@@ -387,7 +377,7 @@ Variable shorthands provide a concise syntax for common variable operations. Use
 | `.`    | Local Variable  | Shorthand for local variable operations. Example: `{{.myvar}}`  |
 | `$`    | Global Variable | Shorthand for global variable operations. Example: `{{$myvar}}` |
 
-These prefix operators have to be placed **immediately before** the variable name, after any optionally appearing [Macro Flags](#macro-flags). They aren't considered macro flags, but more indicators that a variable shorthand is being inserted, instead of a macro by name. The prefix operators are not part of the variable name itself, but rather modifiers that change how the variable is accessed.
+These prefix operators have to be placed **immediately before** the variable name, after any optionally appearing Macro Flags. They aren't considered macro flags, but more indicators that a variable shorthand is being inserted, instead of a macro by name. The prefix operators are not part of the variable name itself, but rather modifiers that change how the variable is accessed.
 
 ### Variable Names
 
@@ -426,22 +416,22 @@ The following operators can be used with variable shorthands. Each operator foll
 
 | Operator | Name                      | Example                | Description                                            |
 | -------- | ------------------------- | ---------------------- | ------------------------------------------------------ |
-| *(none)* | [Get](#get-variable)      | `{{.myvar}}`           | Returns the variable value                             |
-| `=`      | [Set](#set-variable)      | `{{.myvar = value}}`   | Sets the variable to a value, returns nothing         |
-| `++`     | [Increment](#increment)   | `{{.counter++}}`       | Increments by 1, returns new value                     |
-| `--`     | [Decrement](#decrement)   | `{{.counter--}}`       | Decrements by 1, returns new value                     |
-| `+=`     | [Add](#add)               | `{{.score += 10}}`     | Adds to variable (numeric or string concatenation), returns nothing |
-| `-=`     | [Subtract](#subtract)     | `{{.health -= 5}}`     | Subtracts from variable (numeric only), returns nothing |
-| `||`   | [Logical Or](#logical-or) | `{{.name || Guest}}` | Returns fallback if variable is falsy                  |
-| `??`     | [Nullish Coalescing](#nullish-coalescing) | `{{.name ?? Guest}}` | Returns fallback only if variable is undefined |
-| `||=`  | [Logical Or Assign](#logical-or-assign) | `{{.name ||= Guest}}` | Sets value if variable is falsy, returns the new value |
-| `??=`    | [Nullish Coalescing Assign](#nullish-coalescing-assign) | `{{.name ??= Guest}}` | Sets value only if variable is undefined, returns the new value |
-| `==`     | [Equals](#equals)         | `{{.status == active}}`| Compares values, returns `"true"` or `"false"`         |
-| `!=`     | [Not Equals](#not-equals) | `{{.status != active}}`| Compares values, returns `"true"` if not equal         |
-| `>`      | [Greater Than](#greater-than) | `{{.score > 50}}` | Returns `"true"` if variable is greater than value     |
-| `>=`     | [Greater Than or Equal](#greater-than-or-equal) | `{{.level >= 10}}` | Returns `"true"` if variable is greater than or equal to value |
-| `<`      | [Less Than](#less-than)   | `{{.health < 20}}`     | Returns `"true"` if variable is less than value        |
-| `<=`     | [Less Than or Equal](#less-than-or-equal) | `{{.health <= 0}}` | Returns `"true"` if variable is less than or equal to value |
+| *(none)* | Get      | `{{.myvar}}`           | Returns the variable value                             |
+| `=`      | Set      | `{{.myvar = value}}`   | Sets the variable to a value, returns nothing         |
+| `++`     | Increment   | `{{.counter++}}`       | Increments by 1, returns new value                     |
+| `--`     | Decrement   | `{{.counter--}}`       | Decrements by 1, returns new value                     |
+| `+=`     | Add               | `{{.score += 10}}`     | Adds to variable (numeric or string concatenation), returns nothing |
+| `-=`     | Subtract     | `{{.health -= 5}}`     | Subtracts from variable (numeric only), returns nothing |
+| `||`   | Logical Or | `{{.name || Guest}}` | Returns fallback if variable is falsy                  |
+| `??`     | Nullish Coalescing | `{{.name ?? Guest}}` | Returns fallback only if variable is undefined |
+| `||=`  | Logical Or Assign | `{{.name ||= Guest}}` | Sets value if variable is falsy, returns the new value |
+| `??=`    | Nullish Coalescing Assign | `{{.name ??= Guest}}` | Sets value only if variable is undefined, returns the new value |
+| `==`     | Equals         | `{{.status == active}}`| Compares values, returns `"true"` or `"false"`         |
+| `!=`     | Not Equals | `{{.status != active}}`| Compares values, returns `"true"` if not equal         |
+| `>`      | Greater Than | `{{.score > 50}}` | Returns `"true"` if variable is greater than value     |
+| `>=`     | Greater Than or Equal | `{{.level >= 10}}` | Returns `"true"` if variable is greater than or equal to value |
+| `<`      | Less Than   | `{{.health < 20}}`     | Returns `"true"` if variable is less than value        |
+| `<=`     | Less Than or Equal | `{{.health <= 0}}` | Returns `"true"` if variable is less than or equal to value |
 
 #### Get Variable
 
@@ -683,10 +673,7 @@ These are automatically converted to their macro equivalents during processing.
 
 ## Common Macros by Category
 
-!!!tip
 Use `/? macros` for the complete list of available macros and their detailed descriptions.
-!!!
-
 ### Names & Participants
 
 | Macro | Description |

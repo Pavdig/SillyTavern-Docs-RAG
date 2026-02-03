@@ -1,37 +1,29 @@
 
-!!!danger Note
+Note
 This section does **not** refer to OpenAI/Claude reverse proxies. This refers exclusively to **HTTP/HTTPS Reverse Proxies**.
-!!!
+Termux confusing to setup? Are you tired of updating and installing ST on every device you have? Want organization of your chats and characters? Well you are in luck. This guide will _hopefully_ cover how to host SillyTavern on your PC where you can connect from anywhere and chat to your bots on the same PC you use to run AI models!
 
-Is Termux confusing to setup? Are you tired of updating and installing ST on every device you have? Want organization of your chats and characters? Well you are in luck. This guide will _hopefully_ cover how to host SillyTavern on your PC where you can connect from anywhere and chat to your bots on the same PC you use to run AI models!
-
-!!!warning Warning
+Warning
 This guide is **not meant** for beginners. This will be very technical.
-!!!
-
 ## Fair Warning
 
-!!!info For Windows Users
+For Windows Users
 This guide is not for Windows users. We recommend using a Linux VM or WSL2 to follow this guide.
-!!!
-
 !!!info For Linux Users
 You must have prior knowledge of
 
 - Linux console commands
 - DNS Records
 - Public IP addresses
-- [Docker](https://www.docker.com)
+- Docker (https://www.docker.com)
 
-!!!
-
-**You will have to buy a domain for yourself and configure a `CNAME` for your SillyTavern page. We suggest adding or buying the domain on [Cloudflare](https://www.cloudflare.com) as this guide will cover how to do this with Cloudflare itself.**
+**You will have to buy a domain for yourself and configure a `CNAME` for your SillyTavern page. We suggest adding or buying the domain on Cloudflare (https://www.cloudflare.com) as this guide will cover how to do this with Cloudflare itself.**
 
 ## Installation
 
 ### Linux (Bare-Metal SillyTavern)
 
-For Linux, we will reverse proxying SillyTavern through [Traefik](https://traefik.io/traefik/). There are other options such as _NGINX_ or _Caddy_, but for this guide, we will use Traefik as it is what we use ourselves.
+For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik.io/traefik/). There are other options such as _NGINX_ or _Caddy_, but for this guide, we will use Traefik as it is what we use ourselves.
 
 1. Get the private IP of your computer using `ifconfig` or from your router.
    !!!info Tip
@@ -41,11 +33,11 @@ For Linux, we will reverse proxying SillyTavern through [Traefik](https://traefi
    !!!info About Public IPs
    Most residential/home networks use **Dynamic IPs** which are renewed after months of use. If you have a dynamic IP, use either DDClient or remember to check and change your public IP ever so often on the Cloudflare Dashboard.
    !!!
-3. Install Docker by following the Docker installation guide [here](https://docs.docker.com/engine/install/).
+3. Install Docker by following the Docker installation guide here (https://docs.docker.com/engine/install/).
    !!!danger Note
    **Do not** install Docker Desktop.
    !!!
-4. Follow the steps in **Manage Docker as a non-root user** in the Docker post-installation guide [here](https://docs.docker.com/engine/install/linux-postinstall/).
+4. Follow the steps in **Manage Docker as a non-root user** in the Docker post-installation guide here (https://docs.docker.com/engine/install/linux-postinstall/).
 5. Go to your root folder in Linux and make a new folder named `docker`.
     ```sh
     cd /
@@ -233,10 +225,8 @@ For Linux, we will reverse proxying SillyTavern through [Traefik](https://traefi
 
 ### Linux (Docker SillyTavern)
 
-!!!warning Note
+Note
 Do note that we run SillyTavern on bare-metal over Docker. This is a rough idea of what we would do on Docker with other Docker containers we tend to use with ST.
-!!!
-
 1. Follow Steps 1-11 of **Linux (Bare-Metal SillyTavern)**.
 2. Login to Cloudflare and click on your Domain, followed by **Get your API token**.
 3. Click on _Create Token_ then _Create Custom Token_ and make sure you give your token the following permissions.
@@ -352,4 +342,4 @@ Do note that we run SillyTavern on bare-metal over Docker. This is a rough idea 
 
 ## Updating your Cloudflare DNS
 
-[**DDClient**](https://ddclient.net/) allows you to sync your public IP to Cloudflare in the situation that your ISP changes it, allowing you to continue accessing your ST instance as if nothing ever happened.
+**DDClient** (https://ddclient.net/) allows you to sync your public IP to Cloudflare in the situation that your ISP changes it, allowing you to continue accessing your ST instance as if nothing ever happened.

@@ -3,10 +3,10 @@
 
 Follow the installation guide for your platform:
 
-* [Windows](/Installation/Windows.md)
-* [Linux and Mac](/Installation/LinuxMacOS.md)
-* [Android](/Installation/Android.md)
-* [Docker](/Installation/Docker.md)
+* [Windows](SillyTavern_Installation_Windows.md)
+* [Linux and Mac](SillyTavern_Installation_LinuxMacOS.md)
+* [Android](SillyTavern_Installation_Android.md)
+* [Docker](SillyTavern_Installation_Docker.md)
 
 ## Branches
 
@@ -22,10 +22,7 @@ There are two modes of running SillyTavern that differ in how they handle the co
 * **Standalone mode** (default) - uses the `config.yaml` file and `data` directory in the server directory. All data will be constrained to the installation path. This is the recommended mode for most users.
 * **Global mode** - uses the system-wide paths for configuration and data. This is useful for installing SillyTavern as a package or when you want to share the same configuration and data across multiple installations.
 
-!!!info
-Installations made by using the [official npm package](https://www.npmjs.com/package/sillytavern) (e.g. `npx sillytavern@latest`) will run in global mode by default.
-!!!
-
+Installations made by using the official npm package (https://www.npmjs.com/package/sillytavern) (e.g. `npx sillytavern@latest`) will run in global mode by default.
 ### Data paths
 
 **Standalone mode** paths are relative to the SillyTavern installation directory:
@@ -41,10 +38,7 @@ Installations made by using the [official npm package](https://www.npmjs.com/pac
 
 ### How to run in global mode
 
-!!!warning
-`dataRoot` and `configPath` can't be overridden with [CLI arguments](../Administration/config-yaml.md#command-line-arguments) or [config.yaml](../Administration/config-yaml.md) when running in global mode.
-!!!
-
+`dataRoot` and `configPath` can't be overridden with [CLI arguments](SillyTavern_Administration_config-yaml.md) or [config.yaml](SillyTavern_Administration_config-yaml.md) when running in global mode.
 1. Pass the `--global` argument to the server startup command (e.g. `node server.js --global`).
 2. Pass the `--global` argument to the shell startup script (e.g. `Start.bat --global` or `./start.sh --global`).
 3. Use the `start:global` script in the `package.json` file (e.g. `npm run start:global`).

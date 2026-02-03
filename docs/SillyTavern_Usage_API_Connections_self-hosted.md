@@ -1,10 +1,7 @@
 
 # Self-hosted AI models
 
-!!!warning
-This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the [SillyTavern documentation repository](https://github.com/SillyTavern/SillyTavern-Docs).
-!!!
-
+This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the SillyTavern documentation repository (https://github.com/SillyTavern/SillyTavern-Docs).
 ## Intro
 
 This guide aims to help you get set up using SillyTavern with a local AI running on your PC (we'll start using the proper terminology from now on and call it an LLM). Read it before bothering people with tech support questions.
@@ -28,14 +25,14 @@ This is a complex subject, so I'll stick to the essentials and generalize.
 * There are different sizes of models, named based on the number of parameters they were trained with. You will see names like 7B, 13B, 30B, 70B, etc. You can think of these as the brain size of the model. A 13B model will be more capable than the 7B from the same family of models: they were trained on the same data, but the bigger brain can retain the knowledge better and think more coherently. Bigger models also require more VRAM/RAM.
 * There are several degrees of quantization (8-bit, 5-bit, 4-bit, etc). The lower you go, the more the model degrades, but the lower the hardware requirements. So even on bad hardware, you might be able to run a 4-bit version of your desired model. There's even 3-bit and 2-bit quantization but at this point, you're beating a dead horse. There's also a further quantization subtypes named k_s, k_m, k_l, etc. k_m is better than k_s but requires more resources.
 * The context size (how long your conversation can become without the model dropping parts of it) also affects VRAM/RAM requirements. Thankfully, this is a configurable setting, allowing you to use a smaller context to reduce VRAM/RAM requirements. (Note: the context size of Llama2-based models is 4k. Mistral is advertised as 8k, but it's 4k in practice.)
-* Sometime in 2023, NVIDIA changed their GPU driver so that if you need more VRAM than your GPU has, instead of the task crashing, it will begin using regular RAM as a fallback. This will ruin the writing speed of the LLM, but the model will still work and give the same quality of output. Thankfully, this behavior [can be disabled](https://nvidia.custhelp.com/app/answers/detail/a_id/5490).
+* Sometime in 2023, NVIDIA changed their GPU driver so that if you need more VRAM than your GPU has, instead of the task crashing, it will begin using regular RAM as a fallback. This will ruin the writing speed of the LLM, but the model will still work and give the same quality of output. Thankfully, this behavior can be disabled (https://nvidia.custhelp.com/app/answers/detail/a_id/5490).
 
 Given all of the above, the hardware requirements and performance vary completely depending on the family of model, the type of model, the size of the model, the quantization method, etc.
 
 #### Model size calculator
-You can use [Nyx's Model Size Calculator](https://huggingface.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator) to determine how much RAM/VRAM you need.
+You can use Nyx's Model Size Calculator (https://huggingface.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator) to determine how much RAM/VRAM you need.
 
-Remember, you want to run the largest, least quantized model that can fit in your memory, i.e. without causing [disk swapping](https://serverfault.com/a/48487).
+Remember, you want to run the largest, least quantized model that can fit in your memory, i.e. without causing disk swapping (https://serverfault.com/a/48487).
 
 ## Downloading an LLM
 
@@ -72,10 +69,7 @@ With the LLM now on your PC, we need to download a tool that will act as a middl
 
 This guide covers both options, you only need one.
 
-!!!warning
 If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<port\>** instead of **http://127.0.0.1:\<port\>**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
-!!!
-
 ### Downloading and using KoboldCpp (No installation required, GGUF models)
 
 1. Visit https://koboldai.org/cpp where you will see the latest version with various files you can download.
@@ -97,11 +91,8 @@ At the time of writing the newest CUDA version they list is cu12 which will work
 
 ### Installing Oobabooga
 
-!!!note
 Depending on how you have installed Oobabooga, the file paths can be slightly different; i.e. `/text-generation-webui/user_data` if you installed via git clone, and `/text-generation-webui-main/user_data` if you used the .zip method.  
-!!!
-
-Here's a more correct/dummy proof installation procedure:
+'s a more correct/dummy proof installation procedure:
 
 1. git clone <https://github.com/oobabooga/text-generation-webui> (or download their repo as a .zip in your browser, then extract it)
 2. Run `start_windows.bat` or whatever your OS is

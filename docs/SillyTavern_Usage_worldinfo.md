@@ -15,12 +15,12 @@ The SillyTavern engine activates and seamlessly integrates the appropriate lore 
 
 * The World Info engine is a very powerful prompt management tool. Don't fixate on adding character lore alone, feel free to experiment.
 * Activation keywords, titles, and other information that is not in the **Content** field is not inserted into context, so each World Info entry should have a comprehensive, standalone description.
-* To create rich and detailed world lore, entries can be interlinked and reference one another by using recursive activation. See more on [Recursion](#recursive-scanning) below.
+* To create rich and detailed world lore, entries can be interlinked and reference one another by using recursive activation. See more on Recursion below.
 * SillyTavern offers flexible context budgeting for inserted background information. To conserve prompt tokens, it is advisable to keep entry contents concise.
 
 ## Further reading
 
-* [World Info Encyclopedia](https://rentry.co/world-info-encyclopedia): Exhaustive in-depth guide to World Info and Lorebooks. By kingbri, Alicat, Trappu.
+* World Info Encyclopedia (https://rentry.co/world-info-encyclopedia): Exhaustive in-depth guide to World Info and Lorebooks. By kingbri, Alicat, Trappu.
 
 ## Character Lore
 
@@ -50,7 +50,7 @@ Entries from the Global World Info Info would be included first by their Inserti
 
 #### Key
 
-A list of keywords that trigger the activation of a World Info entry. Keys are not case-sensitive by default (this is [configurable](#case-sensitive-keys)).
+A list of keywords that trigger the activation of a World Info entry. Keys are not case-sensitive by default (this is configurable).
 
 ##### Regular Expression (Regex) as Keys
 
@@ -64,7 +64,7 @@ An entry/instruction that should be inserted, when char is doing a weather-relat
 /(?:{{char}}|he|she) (?:is talking about|is noticing|is checking whether|observes) (?:the )?(rainy weather|heavy wind|it is going to rain|cloudy sky)/i
 ```
 
-For more information on Regex syntax and possibilities: [Regular expressions - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
+For more information on Regex syntax and possibilities: Regular expressions - JavaScript | MDN (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
 
 ###### Advanced Regex Per-Message Matching
 
@@ -92,7 +92,7 @@ Supports logic for AND ANY, NOT ANY, or NOT ALL
 3. NOT ANY = Activates the entry only if the primary key and None of the optional filter keys are in scanned context.
 4. NOT ALL = Prevents activation of the entry despite primary key trigger, if all of the optional filters are in scanned context.
 
-These keys also support [regex](#regular-expression-regex-as-keys).
+These keys also support regex.
 
 #### Entry Content
 
@@ -114,7 +114,7 @@ Numeric value. Defines a priority of the entry if multiple were activated at onc
   * ⚙️ - as a system role message
   * 👤 - as a user role message
   * 🤖 - as an assistant role message
-* **Outlet:** World Info entry is not injected automatically. Instead, its content is stored under a named outlet so you can decide exactly where it appears in the prompt by calling it with the [`{{outlet::Name}}` macro](#outlet-name).
+* **Outlet:** World Info entry is not injected automatically. Instead, its content is stored under a named outlet so you can decide exactly where it appears in the prompt by calling it with the `{{outlet::Name}}` macro.
 
 Example Message entries will be formatted according to the prompt-building settings: Instruct Mode or Chat Completion prompt manager. They also follow the Example Messages Behavior rules: being gradually pushed out on full context, always kept, or disabled altogether.
 
@@ -124,7 +124,7 @@ If your Author's Note is disabled (Insertion Frequency = 0), World Info entries 
 
 When the **Outlet** insertion position is selected, an additional **Outlet Name** field becomes available for the entry. The name that you provide here groups entries together and defines the token that you will use to pull them into the prompt manually.
 
-Use the `{{outlet::YourName}}` macro in the [Prompt Manager](./Prompts/prompt-manager.md) or [Advanced Formatting](./Prompts/advancedformatting.md) prompt fields. When the prompt is built, the macro is replaced with the combined content of every World Info entry that shares the same outlet name, separated by newlines, sorted by their [Insertion Order](#insertion-order) value.
+Use the `{{outlet::YourName}}` macro in the [Prompt Manager](SillyTavern_Prompts_prompt-manager.md) or [Advanced Formatting](SillyTavern_Prompts_advancedformatting.md) prompt fields. When the prompt is built, the macro is replaced with the combined content of every World Info entry that shares the same outlet name, separated by newlines, sorted by their Insertion Order value.
 
 If an outlet entry is missing a name it will be skipped during generation, so make sure to fill in the field. Outlet names support autocomplete based on the names you have already used to make it easy to reuse consistent labels.
 
@@ -132,7 +132,7 @@ If an outlet entry is missing a name it will be skipped during generation, so ma
 
 * Placing outlet macros inside World Info entries is not supported and will not work. This conflicts with the evaluation order of World Info and may lead to infinite loops.
 * Nesting outlets is not supported. You cannot place an outlet macro inside another outlet's content. Same as above, this may lead to infinite loops.
-* Character card fields (Description, Personality, Scenario, etc.) cannot expand outlets. Those fields are parsed early so they can act as [additional matching sources](#additional-matching-sources) for World Info triggers, which means outlets are not available when their text is processed. Use another macro-aware field if you need to place outlet content in the prompt body instead.
+* Character card fields (Description, Personality, Scenario, etc.) cannot expand outlets. Those fields are parsed early so they can act as additional matching sources for World Info triggers, which means outlets are not available when their text is processed. Use another macro-aware field if you need to place outlet content in the prompt body instead.
 * The Author's Note editor also cannot resolve outlets. To place outlet content around the Author's Note, assign the entries to **Top of AN** or **Bottom of AN** insertion positions instead of relying on the macro.
 * Outlet names are case-sensitive. The `{{outlet::}}` macro must use exactly the same capitalization as the entry's **Outlet Name**, otherwise no content is returned.
 * Leading or trailing spaces in an outlet name are ignored when you call the macro, so names saved with extra whitespace will not match. Avoid padding names so they can be resolved correctly.
@@ -172,7 +172,7 @@ A single entry can be part of multiple inclusion groups if they are defined as a
 
 #### Prioritize Inclusion
 
-To provide more control over which entries are activated via [Inclusion Group](/Usage/worldinfo.md#inclusion-group), you can use the 'Prioritize Inclusion' setting. This option allows you to specify deterministically which entry to choose instead of randomly rolling Group Weight chances.
+To provide more control over which entries are activated via [Inclusion Group](SillyTavern_Usage_worldinfo.md), you can use the 'Prioritize Inclusion' setting. This option allows you to specify deterministically which entry to choose instead of randomly rolling Group Weight chances.
 
 If multiple entries having the same group label and this setting turned on were activated, the one with the highest 'Order' value will be selected. This is useful for creating fallback sequences via inclusion groups. For example to prioritize low-depth entries with more emphasis, or to choose a specific instruction on setting the scene over another if both are valid.
 
@@ -199,9 +199,9 @@ The input `sing me a song` can activate either entry (both activated 2 keys), bu
 
 #### Automation ID
 
-Allows to integrate World Info entries with [STscripts](/For_Contributors/st-script.md) from Quick Replies extension. If both the quick reply command and the WI entry have the same Automation ID, the command will be executed automatically when the entry with a matching ID is activated.
+Allows to integrate World Info entries with [STscripts](SillyTavern_For_Contributors_st-script.md) from Quick Replies extension. If both the quick reply command and the WI entry have the same Automation ID, the command will be executed automatically when the entry with a matching ID is activated.
 
-Automations are executed in the order they are triggered, adhering to your designated sorting strategy, combining the [Character Lore Insertion Strategy](#character-lore-insertion-strategy) with the 'Priority' sorting. Which leads to [Blue Circle](#strategy) entries processed first, followed by others in their specified 'Order'. Recursively triggered entries will be processed after in the same order.
+Automations are executed in the order they are triggered, adhering to your designated sorting strategy, combining the Character Lore Insertion Strategy with the 'Priority' sorting. Which leads to Blue Circle entries processed first, followed by others in their specified 'Order'. Recursively triggered entries will be processed after in the same order.
 
 The script command will run only once if multiple entries with the same Automation ID are activated.
 
@@ -220,12 +220,9 @@ The generation types for which this World Info entry can be activated. If nothin
 * **Impersonate:** When the Impersonate button is pressed.
 * **Swipe:** When the generation is triggered by swiping.
 * **Regenerate:** When the Regenerate button is pressed in solo chats.
-* **Quiet:** Background generation requests, usually triggered by [extensions](/extensions/index.md) or [STscript](/For_Contributors/st-script.md) commands.
+* **Quiet:** Background generation requests, usually triggered by [extensions](SillyTavern_extensions_index.md) or [STscript](SillyTavern_For_Contributors_st-script.md) commands.
 
-!!!
-The "Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen [Group reply strategy](/Usage/Characters/groupchats.md#reply-order-strategies).
-!!!
-
+"Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen [Group reply strategy](SillyTavern_Usage_Characters_groupchats.md).
 #### Additional matching sources
 
 By default World Info Entries are matched only against content from the current conversation. These options allow you to match the entry against different character information that does not show up in the chat, or even persona information. This is useful when you want to have a wide range of entries that are to be used between several characters but don't want to have to manage large lists of tags, or don't want to have to update character filter lists every time you create a new one. This also allows you to match entries based on the persona you have active.
@@ -247,7 +244,7 @@ To enable and use this, the following prerequisites need to be met:
 2. The "Enable for World Info" checkbox is ticked in the Vector Storage extension settings.
 3. Either the World Info entries that are allowed for keyless matching have the "Vectorized" (🔗) status or the "Enabled for all entries" option is checked in the Vector Storage settings.
 
-The choice of the vectorization model in the extension and the theoretical meaning behind the term "embeddings" won't be covered here. Check out the [Data Bank](/Usage/Characters/data-bank.md#vector-storage) guide if you require more info on this topic.
+The choice of the vectorization model in the extension and the theoretical meaning behind the term "embeddings" won't be covered here. Check out the [Data Bank](SillyTavern_Usage_Characters_data-bank.md) guide if you require more info on this topic.
 
 Vector Storage matching adheres to this set of rules:
 
@@ -256,10 +253,8 @@ Vector Storage matching adheres to this set of rules:
 * The "Scan Depth" setting from Activation Settings or entry overrides is not used. The Vector Storage "Query messages" value is utilized instead to get the text to match against. This allows for a configuration like "Scan Depth" set to 0, so no regular keyword matches will be made, but entries still can be activated by vectors.
 * A "Vectorized" status is only an additional marker. The entry would still behave like a normal, enabled, non-constant record that will be activated by keywords if they are set. Remove the keywords if you want them to be activated only by vectors.
 
-!!!info Note
+Note
 Since the retrieval quality depends entirely on the outputs of the embedding model, it's impossible to predict exactly what entries will be inserted. If you want deterministic and predictable results, stick to keyword matching.
-!!!
-
 ## Timed Effects
 
 Usually, World Info evaluation is stateless, meaning that the result of the evaluation is the same, only depending on the current chat context. However, with the introduction of Timed Effects, you can create entries that have an activation delay, stay active after being triggered, or can't be triggered after the activation.

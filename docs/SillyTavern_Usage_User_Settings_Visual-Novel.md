@@ -9,37 +9,30 @@ Visual Novel Mode is a special screen layout in SillyTavern that allows you to c
 
 Visual Novel Mode comes built in with SillyTavern and can be toggle by going to *User Settings* (User Settings Icon) and checking **Visual Novel Mode** below *No Text Shadows*.
 
-![User Settings](/static/vn/vn-mode-toggle.png)
+User Settings
 
 ### Disabling Visual Novel Mode
 
 Disabling Visual Novel Mode is the same steps as enabling it. Untoggle Visual Novel Mode and you should be back to the normal chat screen itself.
 
-!!!warning Regarding VN Mode with VN Extensions
+Regarding VN Mode with VN Extensions
 Some extensions (like the Prome VN Extension) will toggle 'Visual Novel Mode' on if you use their own respective VN modes. Enabling/Disabling VN Mode from the *User Settings* menu will also affect these extensions as well.
-!!!
-
 ## The Visual Novel UI
 
-![VN Display](/static/vn/vn-display.png)
+VN Display
 
 In Visual Novel Mode, the UI is altered slightly in order to accommodate character sprites (or the character card image) which is shown in the center. In a group chat with multiple characters however, the character sprites will spread themselves out, accommodating for each other as shown below.
 
-![Group VN Display](/static/vn/group-vn-display.png)
+Group VN Display
 
 ### VN Mode with MovingUI
 
-!!!info
 To toggle MovingUI, go to *User Settings* and check on **MovingUI**. Do note that this feature **only** works on Desktops.
-!!!
+**MovingUI** is enabled in *User Settings*, the sprites (or character card image) can be moved around if you wish to move them around or place them in a more specific area on the screen.
 
-If **MovingUI** is enabled in *User Settings*, the sprites (or character card image) can be moved around if you wish to move them around or place them in a more specific area on the screen.
-
-!!!warning Regarding Sprite Sizes
+Regarding Sprite Sizes
 If the size of your character sprites are relatively big it will be a challenge to try and move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath a existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
-!!!
-
-![Group VN Display (MovingUI)](/static/vn/vn-group-display-movingui.png)
+VN Display (MovingUI)
 
 ## Obtaining Character Sprites
 
@@ -57,7 +50,7 @@ Obtaining character sprites can be done by browsing the internet for existing sp
     !!! Character Card Images with the Prome Visual Novel Extension
     With the Prome Visual Novel Extension 1.0.6+, there is a feature called `Emulate Character Card as Sprite` that allows you to have a group chat with both sprite and non-sprite characters by using their character card as a sprite in chat.
 
-    ![Character Card Group Chat](/static/vn/extensions/prome/card-emulation.png)
+    Character Card Group Chat
     !!!
 
 ## VN Extensions
@@ -68,10 +61,10 @@ The Prome Visual Novel Extension is an endorsed third-party extension from Brony
 
 |                              Letterbox Mode                              |                          Traditional VN Mode                           |
 |:------------------------------------------------------------------------:|:----------------------------------------------------------------------:|
-| ![Horizontal Letterbox Mode](/static/vn/extensions/prome/horizontal.png) | ![Traditional VN Mode](/static/vn/extensions/prome/single-message.png) |
+| Horizontal Letterbox Mode | Traditional VN Mode |
 
 |                 Hide Sheld (Message Box)                  |                      Focus Mode (w/ Darken Sprites)                      |
 |:---------------------------------------------------------:|:------------------------------------------------------------------------:|
-| ![Sheld Hide](/static/vn/extensions/prome/sheld_hide.png) | ![Focus Mode w/ Darken Sprites](/static/vn/extensions/prome/defocus.png) |
+| Sheld Hide | Focus Mode w/ Darken Sprites |
 
-To install the Prome Visual Novel Extension, you can either install by going to `Download Extensions & Assets` and finding *Prome Visual Novel Extension*, or follow the installation instructions on the [Prome Visual Novel Extension](https://github.com/Bronya-Rand/Prome-VN-Extension?tab=readme-ov-file#installation-and-usage) Github page. Adjusting Prome's settings can be found either in *Extensions* -> **Prome (Visual Novel Extension)** or via the 🪄 (Wand) menu.
+To install the Prome Visual Novel Extension, you can either install by going to `Download Extensions & Assets` and finding *Prome Visual Novel Extension*, or follow the installation instructions on the Prome Visual Novel Extension (https://github.com/Bronya-Rand/Prome-VN-Extension?tab=readme-ov-file#installation-and-usage) Github page. Adjusting Prome's settings can be found either in *Extensions* -> **Prome (Visual Novel Extension)** or via the 🪄 (Wand) menu.

@@ -3,22 +3,19 @@
 
 This page contains instructions for installing SillyTavern Extras on your local device.
 
-!!! Discontinued
 The Extras project was discontinued in April 2024 and won't receive any new updates or modules. The vast majority of modules are available natively in the main SillyTavern application. You may still install and use it but don't expect to get immediate support if you face any issues.
-!!!
+installation of Extras can be difficult or impossible on your OS (especially Termux).
 
-Local installation of Extras can be difficult or impossible on your OS (especially Termux).
-
-## Use the [Official Extras Colab](https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
+## Use the Official Extras Colab (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
 
 * Simple to setup
 * Free to use
 * No Colab GPU credits required (use the `use_cpu` options)
-* See the [Colab Guide Page](/extensions/Extras/Installation.md#running-extras-in-colab) for details.
+* See the [Colab Guide Page](SillyTavern_extensions_Extras_Installation.md) for details.
 
 ### Running Extras in Colab
 
-* Open the [Official Extras Colab](https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
+* Open the Official Extras Colab (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
 * Select the desired "Extra" options
 * select `use_cpu` to run Extras without requiring GPU credit
   * this will make Stable Diffusion slower, but everything else will run normally
@@ -44,11 +41,11 @@ Local installation of Extras can be difficult or impossible on your OS (especial
 
 This method is recommended because Conda makes a 'virtual environment' for the Extras requirement packages to live inside, so they do not affect your system-wide Python setup.
 
-1. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+1. Install Miniconda (https://docs.conda.io/en/latest/miniconda.html)
 
-    _(Important!) Read [how to use Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)_
+    _(Important!) Read how to use Conda (https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)_
 
-2. Install [git](https://git-scm.com/downloads)
+2. Install git (https://git-scm.com/downloads)
 
     _(Chads who installed SillyTavern with git to begin with can skip this step!)_
     
@@ -82,7 +79,7 @@ This method is recommended because Conda makes a 'virtual environment' for the E
    * `pip install -r requirements-rvc.txt` - for real-time voice cloning
    * `pip install -r requirements-coqui.txt` - for Coqui TTS (not recommended)
 
-    See the [Common Problems](/extensions/Extras/Installation.md#extras-install-common-problems) page if you get errors at this step!
+    See the [Common Problems](SillyTavern_extensions_Extras_Installation.md) page if you get errors at this step!
 
 9. See below 'Running Extras After Install'
 
@@ -134,8 +131,8 @@ Below is a table that describes each module.
 | `summarize`  | Text summarization                                                  |
 | `classify`   | Text sentiment classification                                       |
 | `sd`         | Stable Diffusion image generation                                   |
-| `silero-tts` | [Silero TTS server](https://github.com/ouoertheo/silero-api-server) |
-| `edge-tts`   | [Microsoft Edge TTS client](https://github.com/rany2/edge-tts)      |
+| `silero-tts` | Silero TTS server (https://github.com/ouoertheo/silero-api-server) |
+| `edge-tts`   | Microsoft Edge TTS client (https://github.com/rany2/edge-tts)      |
 | `chromadb`   | Vector storage server                                               |
 | `coqui-tts`  | Coqui TTS                                                           |
 | `rvc`        | Real-time voice cloning                                             |
@@ -215,7 +212,7 @@ It requires the installation of an additional package because it's not installed
 
 Find and replace that line in your "webui-user.bat": `set COMMANDLINE_ARGS=--api`
 
-![How it should look](/static/extensions/sd-user.png)
+How it should look
 
 If the API mode is disabled for SD Web UI, the Extras server won't be able to make a connection and you won't be able to generate images!
 
@@ -253,7 +250,7 @@ Install the requirements using the `requirements-silicon.txt` file instead.
 ### Missing modules?
 
 * You must specify a list of module names in your Python command line, with the `--enable-modules` modifier.
-* See [Modules](/extensions/Extras/Installation.md#decide-which-module-to-use) section.
+* See [Modules](SillyTavern_extensions_Extras_Installation.md) section.
 
 ---
 

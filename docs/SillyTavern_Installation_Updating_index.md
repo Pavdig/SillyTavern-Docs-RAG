@@ -3,11 +3,9 @@
 
 Find your OS below and follow the instructions to update ST.
 
-!!! For installation instructions, see the [Installation](/Installation/index.md) page.
+installation instructions, see the [Installation](SillyTavern_Installation_index.md) page.
 
 This guide assumes you have already installed and run SillyTavern at least once.
-!!!
-
 ----
 
 ## Linux/Termux or MacOS
@@ -30,7 +28,7 @@ If that fails, come back here and continue reading.
 
 We always recommend users install using 'git'. Here's why:
 
-When you have installed via `git clone`, all you have to do to update is type `git pull` [in a command line in the ST folder](https://www.google.com/search?q=how+to+open+command+prompt+in+a+folder).
+When you have installed via `git clone`, all you have to do to update is type `git pull` in a command line in the ST folder (https://www.google.com/search?q=how+to+open+command+prompt+in+a+folder).
 Alternatively, if the command prompt gives you problems (and you have GitHub Desktop installed), you can use the `Repository` menu and select `Pull`.
 
 The updates are applied automatically and safely.
@@ -41,7 +39,7 @@ You have chosen a wise path.
 
 Since your installation was done via Zip, you will need to make a new install using git.
 
-Thankfully we have [instructions](/Installation/Windows.md) on how to do so.
+Thankfully we have [instructions](SillyTavern_Installation_Windows.md) on how to do so.
 
 Once you have used git to install a NEW SillyTavern into a DIFFERENT folder, come back to this page and proceed to **Step 4** of the 'Zip Update' instructions below.
 
@@ -157,7 +155,7 @@ If everything goes smoothly, docker should start redownloading the image, and yo
 ### Common Update Problems
 #### I use Docker and all my data is gone after the update!
 
-You must follow the [Migration guide for Docker containers](/Installation/Updating/ST-1.12.0-Migration-Guide.md#containerized-docker-installs)
+You must follow the [Migration guide for Docker containers](SillyTavern_Installation_Updating_ST-1.12.0-Migration-Guide.md)
  to update volume mappings for the new data model introduced in 1.12.0
 
 #### Permission denied when running docker commands

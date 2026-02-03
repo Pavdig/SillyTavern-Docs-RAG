@@ -1,15 +1,13 @@
 
 # Smart Context
 
-## **THIS EXTENSION IS NO LONGER MAINTAINED AND NOT RECOMMENDED TO USE. CONSIDER [CHAT VECTORIZATION](/extensions/Chat-vectorization.md) AS A POSSIBLE ALTERNATIVE.**
+## **THIS EXTENSION IS NO LONGER MAINTAINED AND NOT RECOMMENDED TO USE. CONSIDER [CHAT VECTORIZATION](SillyTavern_extensions_Chat-vectorization.md) AS A POSSIBLE ALTERNATIVE.**
 
-!!!warning Disclaimer
+Disclaimer
 The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
-!!!
-
 ### What is it?
 
-Smart Context is a SillyTavern extension that uses the [ChromaDB library](https://www.trychroma.com) to give your AI characters access to information that exists outside the normal chat history context limit.
+Smart Context is a SillyTavern extension that uses the ChromaDB library (https://www.trychroma.com) to give your AI characters access to information that exists outside the normal chat history context limit.
 
 ### How is that useful?
 
@@ -23,7 +21,7 @@ Smart Context automatically takes the entire history of the chat file and puts i
 
 1. Update SillyTavern to at least version 1.10.6.
 2. Install the "Smart Context" extension from the "Download Extensions & Assets" menu in the Extensions panel (stacked blocks icon).
-3. Install or Update [Extras](https://github.com/SillyTavern/SillyTavern-extras) to the latest version. Alternatively, use the [Colab notebook](https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb).
+3. Install or Update Extras (https://github.com/SillyTavern/SillyTavern-extras) to the latest version. Alternatively, use the Colab notebook (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb).
 4. *Local installs only:* Install requirements-complete.txt for Extras (even if you did it once before in a prior install).
 5. Run Extras with the chromadb module enabled: `python server.py --enable-modules=chromadb`
 
@@ -43,9 +41,9 @@ Installing chromadb package requires one of the following:
 ### Configuration
 
 Once Smart Context is enabled, you should configure it in the SillyTavern UI.
-Smart Context configuration can be done from within the Extensions menu ![STExtensionMenuIcon](/static/extensions/menu-icon.png)
+Smart Context configuration can be done from within the Extensions menu STExtensionMenuIcon
 
-![Smart Context Config Panel](/static/extensions/smart-context.png)
+Smart Context Config Panel
 
 There are 4 main concepts to be aware of:
 

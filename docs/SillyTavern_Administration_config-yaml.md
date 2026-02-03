@@ -1,16 +1,14 @@
 
 # Configuration File
 
-!!!warning Disclaimer
+Disclaimer
 
-This documentation may be obsolete, incomplete, or incorrect. Please refer to the [default config.yaml](https://github.com/SillyTavern/SillyTavern/blob/release/default/config.yaml) in your installation for the most up-to-date list of settings.
+This documentation may be obsolete, incomplete, or incorrect. Please refer to the default config.yaml (https://github.com/SillyTavern/SillyTavern/blob/release/default/config.yaml) in your installation for the most up-to-date list of settings.
 
 **WARNING: DO NOT EDIT THE DEFAULT CONFIG DIRECTLY. THIS WON'T HAVE ANY POSITIVE EFFECT. EDIT ITS COPY IN THE REPOSITORY ROOT INSTEAD.**
-!!!
+`config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after [completing the installation](SillyTavern_Installation_index.md). It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
 
-`config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after [completing the installation](/Installation/index.md). It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
-
-New settings that are added upstream are automatically populated with default values when you run `npm install` (specifically, the `post-install.js` script) after [updating the repository](/Installation/Updating/index.md). You can then modify these settings as needed.
+New settings that are added upstream are automatically populated with default values when you run `npm install` (specifically, the `post-install.js` script) after [updating the repository](SillyTavern_Installation_Updating_index.md). You can then modify these settings as needed.
 
 For nested settings, dot notation is used to indicate the hierarchy. For example, `protocol.ipv6: false` refers to the `ipv6` setting under the `protocol` section with a value of `false`.
 
@@ -21,7 +19,7 @@ protocol:
 
 ## Command-Line Arguments
 
-You can pass command-line arguments when starting the SillyTavern server to override some settings in [config.yaml](../Administration/config-yaml.md).
+You can pass command-line arguments when starting the SillyTavern server to override some settings in [config.yaml](SillyTavern_Administration_config-yaml.md).
 
 ### Examples
 
@@ -35,10 +33,7 @@ Start.bat --port 8000 --listen false
 
 ### Supported arguments
 
-!!!tip
 None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
-!!!
-
 | Option                          | Description                                                          | Type     |
 |---------------------------------|----------------------------------------------------------------------|----------|
 | `--version`                     | Shows the version number                                             | boolean  |
@@ -75,11 +70,8 @@ The environment variables should be prefixed with `SILLYTAVERN_` and use upperca
 
 The nested settings should be separated by underscores. For example, `protocol.ipv6` can be overridden with the `SILLYTAVERN_PROTOCOL_IPV6` environment variable.
 
-!!!warning
 Configurations that expect arrays or objects should be JSON-stringified. For example, to override the `whitelist` setting with the `SILLYTAVERN_WHITELIST` environment variable, you should set it as a JSON string: `SILLYTAVERN_WHITELIST='["127.0.0.1", "::1"]'`.
-!!!
-
-If you are using Node.js v20 or later, you can also store environment variables in a `.env` file and pass it to the server with the `--env-file` flag. For example, to use the `.env` file located in the repository root, you can start the server with the following command:
+you are using Node.js v20 or later, you can also store environment variables in a `.env` file and pass it to the server with the `--env-file` flag. For example, to use the `.env` file located in the repository root, you can start the server with the following command:
 
 ```bash
 node --env-file=.env server.js
@@ -91,7 +83,7 @@ Alternatively, pass the environment variables directly via the command line:
 SILLYTAVERN_LISTEN=true SILLYTAVERN_PORT=8000 node server.js
 ```
 
-See more about using environment variables in the [Node.js documentation](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs).
+See more about using environment variables in the Node.js documentation (https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs).
 
 ## Data Configuration
 
@@ -108,7 +100,7 @@ See more about using environment variables in the [Node.js documentation](https:
 | `logging.minLogLevel` | Minimum log level to display in the terminal | `0` (DEBUG) | (DEBUG = 0, INFO = 1, WARN = 2, ERROR = 3) |
 | `logging.enableAccessLog` | Write server access logs to a file and the console | `true` | `true`, `false` |
 
-## [Network Configuration](/Administration/remote-connections.md)
+## [Network Configuration](SillyTavern_Administration_remote-connections.md)
 
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
@@ -150,17 +142,14 @@ See more about using environment variables in the [Node.js documentation](https:
 
 ### Security Overrides
 
-!!!danger
 **DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
-!!!
-
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `allowKeysExposure` | Allow unmasked API key exposure in the UI | `false` | `true`, `false` |
 | `disableCsrfProtection` | Disable CSRF protection (not recommended) | `false` | `true`, `false` |
 | `securityOverride` | Disable startup security checks (not recommended) | `false` | `true`, `false` |
 
-## [User Authentication](/Administration/multi-user.md)
+## [User Authentication](SillyTavern_Administration_multi-user.md)
 
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
@@ -176,8 +165,8 @@ See more about using environment variables in the [Node.js documentation](https:
 
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
-| `sso.autheliaAuth` | Enable Authelia-based auto-login. See: [SSO](/Administration/sso.md) | `false` | `true`, `false` |
-| `sso.authentikAuth` | Enable Authentik-based auto-login. See: [SSO](/Administration/sso.md) | `false` | `true`, `false` |
+| `sso.autheliaAuth` | Enable Authelia-based auto-login. See: [SSO](SillyTavern_Administration_sso.md) | `false` | `true`, `false` |
+| `sso.authentikAuth` | Enable Authentik-based auto-login. See: [SSO](SillyTavern_Administration_sso.md) | `false` | `true`, `false` |
 
 ## Rate Limiting Configuration
 
@@ -195,10 +184,7 @@ See more about using environment variables in the [Node.js documentation](https:
 
 ## CORS Proxy Configuration
 
-!!!
-An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
-!!!
-
+enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
@@ -225,10 +211,7 @@ An enabled CORS proxy may be required by some extensions. It is not required by 
 
 ## Cache Buster Configuration
 
-!!!warning
 Requires localhost or a domain with HTTPS, otherwise will not work!
-!!!
-
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `cacheBuster.enabled` | Clear browser cache on first load or after uploading image files | `false` | `true`, `false` |
@@ -255,7 +238,7 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 | `backups.chat.throttleInterval` | Backup throttle interval (ms) | `10000` | Any positive integer |
 | `backups.chat.maxTotalBackups` | Maximum total chat backups to keep | `-1` | Any positive integer or -1 |
 
-## [Extensions Configuration](/extensions/index.md)
+## [Extensions Configuration](SillyTavern_extensions_index.md)
 
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
@@ -268,14 +251,14 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 | `extensions.models.speechToText` | HuggingFace model ID for speech-to-text | `"Xenova/whisper-small"` | Valid model ID |
 | `extensions.models.textToSpeech` | HuggingFace model ID for text-to-speech | `"Xenova/speecht5_tts"` | Valid model ID |
 
-## [Server Plugins](/For_Contributors/Server-Plugins.md)
+## [Server Plugins](SillyTavern_For_Contributors_Server-Plugins.md)
 
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `enableServerPlugins` | Enable server-side plugins | `false` | `true`, `false` |
 | `enableServerPluginsAutoUpdate` | Attempt to automatically update server plugins on startup | `true` | `true`, `false` |
 
-## [API Integration Settings](/Usage/API_Connections/index.md)
+## [API Integration Settings](SillyTavern_Usage_API_Connections_index.md)
 
 ### OpenAI Configuration
 
@@ -300,13 +283,11 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ### Claude Configuration
 
-!!!warning **IMPORTANT!**
+**IMPORTANT!**
 
 Use with caution and only when the prompt prefix is static and doesn't change between requests. \{\{random\}\} macro, lorebooks, vectors, summaries, etc. will likely invalidate the cache and you'll just waste money on cache misses. The provider may have a minimum prompt size requirement for caching. Behavior may be unpredictable and no guarantees can or will be made, please review the API documentation.
 
-See: [Prompt Caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
-!!!
-
+See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `claude.enableSystemPromptCache` | Enable system prompt caching | `false` | `true`, `false` |

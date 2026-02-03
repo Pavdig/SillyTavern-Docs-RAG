@@ -5,10 +5,7 @@
 
 A persona in SillyTavern is the identity you use to participate in chats — essentially a combination of your display name, avatar, and optional descriptive text. Personas allow you to easily switch roles or "characters" you speak as, without having to manually update your username/avatar each time.
 
-!!!
 **Note:** Legacy user avatars/names that weren't tied to a persona have been removed. Existing data will be migrated to personas. If no name was specified, the persona will be named "[Unnamed Persona]".
-!!!
-
 ## How to Create a Persona?
 
 1. Open the **Persona Management** panel (<i class="fa-solid fa-face-smile"></i> button in the top menu).
@@ -21,13 +18,10 @@ A persona in SillyTavern is the identity you use to participate in chats — ess
 
 Personas can also be created by converting any existing character. Simply open the character, select "More..." and click "Convert to Persona". A persona with the same name and description will be created. Other character card fields like Scenario or Personality will not be used. The character will not be deleted.
 
-!!! Note
 Since `{{user}}` and `{{char}}` macros have opposite meanings when used in Persona and Character descriptions, you'll be prompted to swap them if the converted description contains either of them.
-!!!
-
 ## Persona Description
 
-Each persona can store a custom text description — mental and physical traits, age, occupation, or any personal details. These can also include template macros such as `{{char}}` or `{{user}}` (see [Macros](/Usage/Characters/macros.md)).
+Each persona can store a custom text description — mental and physical traits, age, occupation, or any personal details. These can also include template macros such as `{{char}}` or `{{user}}` (see [Macros](SillyTavern_Usage_Characters_macros.md)).
 
 Where your persona description is injected into the AI prompt depends on the **Position** setting in the Persona Management panel:
 
@@ -135,9 +129,8 @@ All settings under the **Current Persona** are saved per-persona. A few global s
 4. **Character link popups**: If multiple personas are linked to the same character, you'll get a popup to pick which persona each time you open the chat. This is a handy way to have a small selection of personas to choose from for specific characters.
 5. **Backups**: You can back up your entire persona list (names, character connections, descriptions) with the **Backup** button in Persona Management, and restore it later if needed.
 
-!!!tip Backup Remarks
+Backup Remarks
 
 - Images and chat connections are not saved together with personas and will not be backed up via this.
 - These backups are not designed to be shared, as they contain internal links.
 
-!!!

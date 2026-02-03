@@ -9,11 +9,8 @@ In language models, reasoning (also known as model thinking) refers to a chain-o
 
 ## Configuration
 
-!!!
-Most reasoning-related settings can be configured in the "Reasoning" section of **<i class="fa-solid fa-font"></i> Advanced Formatting** panel.
-!!!
-
-Reasoning blocks appear in the chat as collapsible message sections. They can be added manually, automatically by the backend, or through response parsing (see below).
+reasoning-related settings can be configured in the "Reasoning" section of **<i class="fa-solid fa-font"></i> Advanced Formatting** panel.
+blocks appear in the chat as collapsible message sections. They can be added manually, automatically by the backend, or through response parsing (see below).
 
 By default, reasoning blocks are collapsed to save space. Click a block to expand and view its contents. You can set blocks to expand automatically by enabling **Auto-Expand** in the reasoning settings.
 
@@ -55,14 +52,11 @@ Supported sources:
 - Chutes
 - NanoGPT
 
-!!!
-For **most** sources, "Request model reasoning" does not determine whether a model does reasoning as it can't be disabled. If the backend and model support explicitly requesting disabled reasoning, the setting will do so. Otherwise, the model will always reason.
-!!!
+**most** sources, "Request model reasoning" does not determine whether a model does reasoning as it can't be disabled. If the backend and model support explicitly requesting disabled reasoning, the setting will do so. Otherwise, the model will always reason.
+-specific notes:
 
-Provider-specific notes:
-
-- Claude and Google (2.5 Flash) allow thinking mode to be toggled; see [Reasoning Effort](#reasoning-effort).
-- Reasoning can be disabled for Z.AI (GLM). The setting maps the to `thinking.type` parameter, see the [documentation](https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking). It does not support "Reasoning Effort".
+- Claude and Google (2.5 Flash) allow thinking mode to be toggled; see Reasoning Effort.
+- Reasoning can be disabled for Z.AI (GLM). The setting maps the to `thinking.type` parameter, see the documentation (https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking). It does not support "Reasoning Effort".
 
 ### By Parsing
 
@@ -84,10 +78,7 @@ This is the main content.
 
 By default, recognized reasoning block contents are not sent back to the model. To include reasoning in prompts, enable "Add to Prompts" in the **<i class="fa-solid fa-font"></i> Advanced Formatting** panel. Reasoning content will be wrapped in configured Prefix and Suffix sequences and separated by a Separator from the main context. The Max Additions numeric setting controls how many reasoning blocks can be included, counting from the end of the prompt.
 
-!!!
-Most model providers do not recommend sending CoT back to the model in multi-turn conversations.
-!!!
-
+model providers do not recommend sending CoT back to the model in multi-turn conversations.
 ### Continuing from Reasoning
 
 A special case when the reasoning can be sent back to the model without having the "Add to Prompts" toggle enabled is when the generation is continued (e.g. by pressing "Continue" from the **<i class="fa-solid fa-bars"></i> Options** menu), but the message being continued contains only the reasoning without an actual content. This gives the model an opportunity to finish an incomplete reasoning and start generating the main content. The prompt will be sent as follows:
@@ -99,7 +90,7 @@ Incomplete reasoning...
 
 ## Regex Scripts
 
-Regular expression scripts from the [Regex extension](/extensions/Regex.md) can be applied to the contents of reasoning blocks. Check "Reasoning" in the "Affects" section of the script editor to target reasoning blocks specifically.
+Regular expression scripts from the [Regex extension](SillyTavern_extensions_Regex.md) can be applied to the contents of reasoning blocks. Check "Reasoning" in the "Affects" section of the script editor to target reasoning blocks specifically.
 
 Different ephemerality options affect reasoning blocks in the following ways:
 
