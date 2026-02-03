@@ -24,10 +24,14 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
 *   **Flatten Structure:** Converts nested folders into flat filenames to preserve context for the AI.
     *   *Example:* `SillyTavern-Docs/Installation/Windows.md` → `SillyTavern_Installation_Windows.md`
 *   **Sanitize Content:** Removes noise that confuses LLMs:
-    *   Redirect stubs
-    *   YAML front matter (metadata headers)
-    *   Docusaurus-specific tags (admonitions like `!!!warning`)
-    *   Images and relative links (keeping anchor text)
+    *   **Redirect stubs:** Files that just say "Page moved" are removed.
+    *   **Front Matter:** Metadata headers (`---`) are stripped.
+    *   **Admonitions:** Tags like `!!!warning` are stripped, but **titles and text are preserved**.
+    *   **Images:** Converted to plain text (Alt Text preserved).
+    *   **Ghost Tables:** Empty table artifacts left by images are cleaned up.
+    *   **Links:**
+        *   **Internal:** Rewritten to point to the new flattened filenames (e.g., `[Link](SillyTavern_Page.md)`).
+        *   **External:** Preserved as text for readability (e.g., `GitHub (https://...)`).
 
 ### 2. The Update Cycle (CI/CD)
 1.  **Check:** The bot checks the official docs for changes every hour.

@@ -47,6 +47,7 @@ jobs:
           echo "Processing Markdown files..."
           
           # 2. Flatten and Rename
+          # Copy files from nested folders to flat "SillyTavern_Folder_File.md"
           find temp_source -type f -name "*.md" | while read -r file; do
               clean_path="${file#temp_source/}"
               flat_name="${clean_path//\//_}"
@@ -59,17 +60,68 @@ jobs:
           # Remove Redirect Stubs
           grep -rl "This page has been moved to" . | xargs -r rm
           
-          # Remove Front Matter
+          # Remove YAML Front Matter (Metadata headers)
           find . -type f -name "*.md" -exec sed -i '1{/^---/!q;};1,/^---/d' {} +
           
-          # Remove Admonitions tags
-          find . -type f -name "*.md" -exec sed -i '/^!!!/d; /^:::/d' {} +
+          # Handle Admonitions (Preserve Titles)
+          # Strips the !!!warning tags but keeps the text "Regarding Docker..."
+          find . -type f -name "*.md" -exec sed -i -E 's/^(!!!|:::)[^ ]*[ ]?//g' {} +
           
-          # Remove Images
-          find . -type f -name "*.md" -exec sed -i -E 's/!\[[^]]*\]\([^)]*\)//g' {} +
+          # Handle Images (Preserve Alt Text)
+          # Converts ![Alt Text](img.png) to just "Alt Text"
+          find . -type f -name "*.md" -exec sed -i -E 's/!\[([^]]*)\]\([^)]*\)/\1/g' {} +
           
-          # Unwrap Links
-          find . -type f -name "*.md" -exec sed -i -E 's/\[([^]]*)\]\([^)]*\)/\1/g' {} +
+          # Clean up "Ghost" Table rows (leftover from deleted images)
+          find . -type f -name "*.md" -exec sed -i -E '/^\|[ :|#-]*\|$/d' {} +
+          
+          # Smart Link Handling (Python)
+          # Rewrites internal links to match flattened filenames, protects external links
+          find . -type f -name "*.md" | while read -r file; do
+            python3 -c "
+          import re
+          import sys
+          
+          # Get filename from bash argument to safely handle quotes/spaces
+          filename = sys.argv[1]
+          
+          def replace_link(match):
+              text = match.group(1)
+              url = match.group(2)
+              
+              # Ignore external links (http/www) - Keep them readable
+              if url.startswith('http') or url.startswith('www'):
+                  return f'{text} ({url})'
+              
+              # Process internal links
+              url = url.split('#')[0] # Remove anchors
+              clean_url = re.sub(r'^(\.|\.\.)?/', '', url) # Remove ./ or ../
+              flat_name = clean_url.replace('/', '_') # Flatten path
+              
+              # If it looks like a markdown file, point to the flattened version
+              if flat_name and flat_name.endswith('.md'):
+                  return f'[{text}](SillyTavern_{flat_name})'
+              
+              # Fallback: Just keep the text
+              return text
+          
+          try:
+              with open(filename, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              new_content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', replace_link, content)
+              with open(filename, 'w', encoding='utf-8') as f:
+                  f.write(new_content)
+          except Exception as e:
+              print(f'Error processing {filename}: {e}')
+          " "$file"
+          done
+          
+          # Remove HTML tags
+          find . -type f -name "*.md" -exec sed -i -E 's/<[^>]+>//g' {} +
+          
+          # Squeeze Whitespace (max 2 newlines)
+          find . -type f -name "*.md" | while read -r file; do
+              cat -s "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"
+          done
           
           cd ..
 
