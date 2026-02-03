@@ -37,6 +37,7 @@ npm run start -- --dataRoot="/Users/harry/ST-Data"
 
 The default data root path is `./data`, which means the `data` directory in SillyTavern's repository.
 
+Note
 The data root path should be either a **full absolute** or a **full relative** path. You _can't_ use path shortcuts like `~` or `%APP_DATA%`, as these are resolved by a shell, not the operating system.
 
 ### Migration
@@ -68,6 +69,7 @@ volumes:
 
 **Step 3.** Rebuild the container and start it up.
 
+Note
 Soft links between the `/public` directory and the `config` volume are no longer needed and are not built into the Docker container!
 
 #### What to migrate?
@@ -75,7 +77,6 @@ Soft links between the `/public` directory and the `config` volume are no longer
 The following files and directories are subject to the data migration. Assuming the default configuration, the before and after paths are provided in the table below.
 
 | Before                                 | After                                |
-|----------------------------------------|--------------------------------------|
 | /secrets.json                          | /data/default-user/secrets.json      |
 | /thumbnails                            | /data/default-user/thumbnails        |
 | /vectors                               | /data/default-user/vectors           |
@@ -104,4 +105,4 @@ The following files and directories are subject to the data migration. Assuming 
 
 1.12.0 adds a (completely optional) ability to create a multi-user setup on the same server, allowing multiple users to use their own fully isolated SillyTavern instances even at the same time. User accounts can also be password-protected for an additional layer of privacy.
 
-Please refer to the Users documentation for more information.
+Please refer to the [Users](SillyTavern_Administration_multi-user.md) documentation for more information.

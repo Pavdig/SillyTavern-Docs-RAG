@@ -1,7 +1,7 @@
 
 # Self-hosted AI models
 
-This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the SillyTavern documentation repository.
+This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the SillyTavern documentation repository (https://github.com/SillyTavern/SillyTavern-Docs).
 
 ## Intro
 
@@ -26,18 +26,18 @@ This is a complex subject, so I'll stick to the essentials and generalize.
 * There are different sizes of models, named based on the number of parameters they were trained with. You will see names like 7B, 13B, 30B, 70B, etc. You can think of these as the brain size of the model. A 13B model will be more capable than the 7B from the same family of models: they were trained on the same data, but the bigger brain can retain the knowledge better and think more coherently. Bigger models also require more VRAM/RAM.
 * There are several degrees of quantization (8-bit, 5-bit, 4-bit, etc). The lower you go, the more the model degrades, but the lower the hardware requirements. So even on bad hardware, you might be able to run a 4-bit version of your desired model. There's even 3-bit and 2-bit quantization but at this point, you're beating a dead horse. There's also a further quantization subtypes named k_s, k_m, k_l, etc. k_m is better than k_s but requires more resources.
 * The context size (how long your conversation can become without the model dropping parts of it) also affects VRAM/RAM requirements. Thankfully, this is a configurable setting, allowing you to use a smaller context to reduce VRAM/RAM requirements. (Note: the context size of Llama2-based models is 4k. Mistral is advertised as 8k, but it's 4k in practice.)
-* Sometime in 2023, NVIDIA changed their GPU driver so that if you need more VRAM than your GPU has, instead of the task crashing, it will begin using regular RAM as a fallback. This will ruin the writing speed of the LLM, but the model will still work and give the same quality of output. Thankfully, this behavior can be disabled.
+* Sometime in 2023, NVIDIA changed their GPU driver so that if you need more VRAM than your GPU has, instead of the task crashing, it will begin using regular RAM as a fallback. This will ruin the writing speed of the LLM, but the model will still work and give the same quality of output. Thankfully, this behavior can be disabled (https://nvidia.custhelp.com/app/answers/detail/a_id/5490).
 
 Given all of the above, the hardware requirements and performance vary completely depending on the family of model, the type of model, the size of the model, the quantization method, etc.
 
 #### Model size calculator
-You can use Nyx's Model Size Calculator to determine how much RAM/VRAM you need.
+You can use Nyx's Model Size Calculator (https://huggingface.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator) to determine how much RAM/VRAM you need.
 
-Remember, you want to run the largest, least quantized model that can fit in your memory, i.e. without causing disk swapping.
+Remember, you want to run the largest, least quantized model that can fit in your memory, i.e. without causing disk swapping (https://serverfault.com/a/48487).
 
 ## Downloading an LLM
 
-To get started, you will need to download an LLM. The most common place to find and download LLMs is on HuggingFace. There are thousands of models available. A good way to find GGUF models is to check bartowski's account page: <https://huggingface.co/bartowski>. If you don't want GGUF, he links the original model page where you might find other formats for that same model.
+To get started, you will need to download an LLM. The most common place to find and download LLMs is on HuggingFace. There are thousands of models available. A good way to find GGUF models is to check bartowski's account page: . If you don't want GGUF, he links the original model page where you might find other formats for that same model.
 
 On a given model's page, you will find a whole bunch of files. 
 
@@ -49,7 +49,7 @@ On a given model's page, you will find a whole bunch of files.
 
 We will use the Kunoichi-DPO-v2-7B model for the rest of this guide. It's an excellent model based on Mistral 7B, that only requires 7GB RAM, and punches far above its weight. Note: Kunoichi uses Alpaca prompting.
 
-* Go to <https://huggingface.co/brittlewis12/Kunoichi-DPO-v2-7B-GGUF>
+* Go to 
 * Click 'Files and versions'. You will see a listing of several files. These are all the same model but offered in different quantization options. Click the file 'kunoichi-dpo-v2-7b.Q6_K.gguf', which gives us a 6-bit quantization.
 * Click the 'download' button. Your download should start.
 
@@ -70,7 +70,7 @@ With the LLM now on your PC, we need to download a tool that will act as a middl
 
 This guide covers both options, you only need one.
 
-If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<port\>** instead of **http://127.0.0.1:\<port\>**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
+If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\** instead of **http://127.0.0.1:\**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
 
 ### Downloading and using KoboldCpp (No installation required, GGUF models)
 
@@ -81,7 +81,7 @@ At the time of writing the newest CUDA version they list is cu12 which will work
 4. Click Launch, if everything goes well a new webpage will open with KoboldAI Lite where you can test if everything works correctly.
 5. Open SillyTavern and click API Connections (2nd button in the top bar)
 6. Set API to Text Completion and the API Type to KoboldCpp.
-7. Set server URL to <http://127.0.0.1:5001/> or the link that KoboldCpp gave you in case it is not running on the same system (You can activate KoboldCpp's Remote Tunnel mode to obtain a link that can be accessed from anywhere).
+7. Set server URL to  or the link that KoboldCpp gave you in case it is not running on the same system (You can activate KoboldCpp's Remote Tunnel mode to obtain a link that can be accessed from anywhere).
 8. Click Connect. It should connect successfully and detect kunoichi-dpo-v2-7b.Q6_K.gguf as the model.
 9. Chat with a character to test that it works.
 
@@ -97,30 +97,29 @@ Depending on how you have installed Oobabooga, the file paths can be slightly di
 
 Here's a more correct/dummy proof installation procedure:
 
-1. git clone <https://github.com/oobabooga/text-generation-webui> (or download their repo as a .zip in your browser, then extract it)
+1. git clone  (or download their repo as a .zip in your browser, then extract it)
 2. Run `start_windows.bat` or whatever your OS is
 3. When asked, select your GPU type. Even if you intend to use GGUF/CPU, if your GPU is in the list, select it now, because it will give you the option to use a speed optimization later called GPU sharding (without having to reinstall from scratch). If you have no gaming-grade dGPU (NVIDIA, AMD), select None.
 4. Wait for the installation to finish
 5. Place kunoichi-dpo-v2-7b.Q6_K.gguf in `text-generation-webui/user_data/models`
 6. Open `text-generation-webui/user_data/CMD_FLAGS.txt`, delete everything inside and write: `--api`
 7. Restart Oobabooga
-8. Visit <http://127.0.0.1:5000/docs>. Does it load a FastAPI page? If not, you messed up somewhere.
+8. Visit . Does it load a FastAPI page? If not, you messed up somewhere.
 
 ### Loading our model in Oobabooga
 
-1. Open <http://127.0.0.1:7860/> in your browser
+1. Open  in your browser
 2. Click the Model tab
 3. In the dropdown, select our Kunoichi DPO v2  model. It should have automatically selected the llama.cpp loader.
 4. (Optional) We mentioned 'GPU offload' several times earlier: that's the n-gpu-layers setting on this page. If you want to use it, set a value before loading the model. As a basic reference, setting it to 30 uses just under 6GB VRAM for 13B and lower models. (it varies with model architecture and size)
 5. Click Load
-
 
 ### Configuring SillyTavern to talk to Oobabooga
 
 1. Click API Connections (2nd button in the top bar)
 2. Set API to Text Completion
 3. Set API Type to Default (Oobabooga)
-4. Set server URL to <http://127.0.0.1:5000/>
+4. Set server URL to 
 5. Click Connect. It should connect successfully and detect kunoichi-dpo-v2-7b.Q6_K.gguf as the model.
 6. Chat with a character to test that it works
 

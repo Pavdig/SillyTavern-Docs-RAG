@@ -11,21 +11,21 @@ Before you begin, ensure you've met the following prerequisites:
 
 2. **Extension Installation**: Install the "Live2D" extension from the "Download Extensions & Assets" menu in the Extensions panel (represented by the stacked blocks icon).
 
-3. **Model Folder Placement**: Place your Live2D model folders into the `/data/<user-handle>/assets/live2d` directory. A properly organized `live2d` assets folder might look like this:
+3. **Model Folder Placement**: Place your Live2D model folders into the `/data//assets/live2d` directory. A properly organized `live2d` assets folder might look like this:
 
-    
+    Asset folder example
 
     - A Live2D model folder should include all necessary components for the Live2D model, such as expressions, motions, textures, sounds, and settings files. Notably the `***.model.json` file must be at the root of the Live2D model folder for the model to be detected by the extension. In this example the `shizuku` live2d model folder may look like this:
 
-    
+    Live2d model folder example
 
-    - Note: Models can also be placed in character-specific folders, such as `/data/<user-handle>/characters/Shizuku/live2d/`. However, models in character folders will only be accessible for that specific character.
+    - Note: Models can also be placed in character-specific folders, such as `/data//characters/Shizuku/live2d/`. However, models in character folders will only be accessible for that specific character.
 
 ## Extension Settings
 
 The Live2D extension offers various settings to customize the behavior of your animated model. Here are the key settings:
 
-
+UI global settings
 
 ### Global Settings
 
@@ -39,7 +39,6 @@ The Live2D extension offers various settings to customize the behavior of your a
 
 3. **Auto-send Interaction**:
    - Enable this checkbox to automatically trigger character interactions when you click on areas with mapped messages (refer to the hit areas section for details).
-
 
 ## Debug Settings
 
@@ -69,7 +68,7 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Model Selection
 
-
+UI model list
 
 1. **Refresh Button**:
    - Click the refresh button if your Live2D model does not appear in the list.
@@ -84,7 +83,7 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Model Settings
 
-
+UI model settings
 
 1. **Model Scale**:
    - Use the slider to adjust the size of the model, making it larger or smaller.
@@ -95,7 +94,6 @@ These settings allow you to manage characters and assign Live2D models to them.
 3. **Model Center Y Offset**:
    - Use the slider to adjust the vertical position of the model relative to the window center.
 
-
 ### Remarks
 - The settings are saved and carry over different chats.
 - You can also drag the model with your mouse, and those settings will be updated and saved.
@@ -103,7 +101,7 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Model Talk
 
-
+UI model talk
 
 1. **Param mouth open Y id**
     - Select from the list the ID of the parameter corresponding to the model's mouth Y value. Not all models have one, and names may vary from model to model. Usually something like "PARAM_MOUTH_OPEN_Y" or "ParamMouthOpenY". Check the model when selecting an element from the list; it will try to run the speak animation. If the mouth moves, you got it!
@@ -119,7 +117,7 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Model Animations
 
-
+UI model animations
 
 1. **Starter animation**
     - Select an expression and motion from the lists that will play when starting a chat with the character. You can also add a delay during which the model will be invisible if you need to hide the character for some time to achieve a perfect effect.
@@ -135,14 +133,13 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Hit areas mapping
 
-
+UI model mapping
 
 1. **Default click animation**
     - Select an expression and motion from the list that will play when you click on the model. You can also set a message that will be sent as a user message.
 
 2. **Hit areas**
     - If the model has hit areas, they will be listed, and you can assign an animation/message to each of them.
-
 
 ### Remarks
 - Some models have no hit areas, but the default click is detected for all.
@@ -152,7 +149,7 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Classified Expressions Mapping
 
-
+UI model classify
 
 1. **Requirements**
     - Requires the use of the classify expression extension; otherwise, it will fall back to the default animation.

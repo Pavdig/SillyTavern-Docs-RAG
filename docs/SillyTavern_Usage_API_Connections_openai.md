@@ -3,6 +3,7 @@
 
 ## Source-specific instructions
 
+**Important!**
 Most API platforms allow you to view the generated API key only once, at the time of its creation. If you lose it, you will need to generate a new key. Make sure to keep it safe!
 
 ### OpenAI
@@ -11,8 +12,8 @@ Use OpenAI's developer platform to access various OpenAI models, including gpt-4
 
 **How to get an API key:**
 
-1. Go to OpenAI and sign in.
-2. Use "View API keys" option to create a new API key.
+1. Go to OpenAI (https://platform.openai.com/) and sign in.
+2. Use "View API keys (https://platform.openai.com/account/api-keys)" option to create a new API key.
 
 ### Claude
 
@@ -20,8 +21,8 @@ Claude is a family of AI models developed by Anthropic. You can access Claude mo
 
 **How to get an API key:**
 
-1. Go to Anthropic Console and sign in.
-2. Use the "Get API Key" section to create a new API key.
+1. Go to Anthropic Console (https://console.anthropic.com/) and sign in.
+2. Use the "Get API Key (https://console.anthropic.com/settings/keys)" section to create a new API key.
 
 ### Mistral AI
 
@@ -29,9 +30,9 @@ Mistral AI is a team developing both open and proprietary models with high scien
 
 **How to get an API key:**
 
-1. The first step is to create an account on La Plateforme.
-2. Once that's done, you can choose a plan and set up your payment information or opt for the Free Tier.
-3. Next, you can create your API key. You may need to wait a couple of minutes before the key becomes valid!
+1. The first step is to create an account on La Plateforme (https://console.mistral.ai/).
+2. Once that's done, you can choose a plan (https://console.mistral.ai/billing/plans) and set up your payment information or opt for the Free Tier.
+3. Next, you can create your API key (https://console.mistral.ai/api-keys/). You may need to wait a couple of minutes before the key becomes valid!
 
 ### DeepSeek
 
@@ -39,8 +40,8 @@ DeepSeek Platform provides access to the latest DeepSeek models through an API. 
 
 **How to get an API key:**
 
-1. Sign up on the DeepSeek Platform.
-2. After signing up and topping up your account, you can create an API key in the "API keys" section.
+1. Sign up on the DeepSeek Platform (https://platform.deepseek.com/).
+2. After signing up and topping up your account, you can create an API key in the "API keys (https://platform.deepseek.com/api_keys)" section.
 
 ### AI21
 
@@ -48,7 +49,7 @@ AI21 Labs offers a range of AI models, including their flagship Jamba series. Yo
 
 **How to get an API key:**
 
-1. Go to AI21 Studio and sign in.
+1. Go to AI21 Studio (https://studio.ai21.com/) and sign in.
 2. Navigate to the "Settings => API Keys" section to create a new API key.
 
 ### Cohere
@@ -57,20 +58,20 @@ Cohere provides a suite of AI models for various tasks, including text generatio
 
 **How to get an API key:**
 
-1. Go to Cohere and sign in.
-2. Navigate to the "API Keys" section in your account settings to create a new API key.
+1. Go to Cohere (https://cohere.com/) and sign in.
+2. Navigate to the "API Keys (https://dashboard.cohere.com/api-keys)" section in your account settings to create a new API key.
 
 ### Perplexity
 
 Perplexity AI offers access to online-enabled Sonar models through their API for real-time research and information retrieval.
 
-Official Getting Started guide: Perplexity Quickstart
+Official Getting Started guide: Perplexity Quickstart (https://docs.perplexity.ai/getting-started/quickstart)
 
 **How to get an API key:**
 
-1. Go to Perplexity and sign in.
-2. Go to the "API billing" section to purchase credits for API usage.
-3. Navigate to the "API keys" section in the settings to create a new API key.
+1. Go to Perplexity (https://perplexity.ai/) and sign in.
+2. Go to the "API billing (https://www.perplexity.ai/account/api/billing)" section to purchase credits for API usage.
+3. Navigate to the "API keys (https://www.perplexity.ai/account/api/keys)" section in the settings to create a new API key.
 
 ### Fireworks AI
 
@@ -78,8 +79,8 @@ Fireworks AI is a high-performance platform that provides fast, cost-effective a
 
 **How to get an API key:**
 
-1. Go to Fireworks AI and create an account or sign in.
-2. Navigate to the API Keys page in your account settings.
+1. Go to Fireworks AI (https://fireworks.ai/) and create an account or sign in.
+2. Navigate to the API Keys page (https://app.fireworks.ai/settings/users/api-keys) in your account settings.
 3. Click "Create API key" and provide a descriptive name (e.g., "SillyTavern").
 
 ## Electron Hub
@@ -88,7 +89,7 @@ Electron Hub is a unified OpenAI-compatible platform that provides access to mod
 
 **How to get an API key:**
 
-1. Create an account at Electron Hub.
+1. Create an account at Electron Hub (https://playground.electronhub.ai/console).
 2. Generate an API key from the **Console → API Keys** page.
 
 ## Custom OpenAI-compatible endpoint
@@ -96,7 +97,7 @@ Electron Hub is a unified OpenAI-compatible platform that provides access to mod
 It is important to note that we do not provide support for possible issues that you may have!
 We do not guarantee compatibility with every possible API endpoint!
 
-If you intend to use this feature to use a local endpoint, like TabbyAPI, Oobabooga, Aphrodite, or any like those, you might want to check out the built-in compatibility for those instead. The custom endpoint feature is mainly intended for use with other services and programs that expose an OpenAI-compatible API Chat Completion endpoint.
+If you intend to use this feature to use a local endpoint, like TabbyAPI, Oobabooga, Aphrodite, or any like those, you might want to check out the [built-in compatibility for those](SillyTavern_Usage_API_Connections_index.md) instead. The custom endpoint feature is mainly intended for use with other services and programs that expose an OpenAI-compatible API Chat Completion endpoint.
 
 Most Text Completion APIs support far greater customization options than OpenAI's standards allow for. These greater customization options, such as the Min-P sampler, may be worthwhile for SillyTavern users to check out, which can greatly improve the quality of generations.
 
@@ -104,9 +105,9 @@ You can configure an alternative endpoint for the Chat Completions backend. This
 
 Examples of compatible backends include:
 
-* LM Studio
-* LiteLLM
-* LocalAI
+* LM Studio (https://lmstudio.ai/)
+* LiteLLM (https://www.litellm.ai/)
+* LocalAI (https://localai.io/)
 
 ### Connecting
 

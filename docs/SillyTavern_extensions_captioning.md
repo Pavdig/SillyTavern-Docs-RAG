@@ -16,17 +16,17 @@ The image captioning extension is built-in to SillyTavern and does not need to b
 ## Quick start
 
 1. Set up:
-    - Open the **Image Captioning** panel in the **<i class="fa-solid fa-cubes"></i> Extensions** panel
+    - Open the **Image Captioning** panel in the ** Extensions** panel
     - Choose a captioning source (most likely "Local" or "Multimodal")
-    - For "Multimodal" ensure you've set up the connection in the **<i class="fa-solid fa-plug"></i> API Connections** tab
+    - For "Multimodal" ensure you've set up the connection in the ** API Connections** tab
 2. Generate a caption:
-    - Choose "**Generate Caption**" from the **<i class="fa-solid fa-magic-wand-sparkles"></i> Extensions** popup menu
+    - Choose "**Generate Caption**" from the ** Extensions** popup menu
     - Select an image file when prompted
     - Wait for the caption to be generated
 3. Review and send:
     - The captioned image will be inserted into your message
     - See the caption using the image tooltip
-    - Click **<i class="fa-solid fa-paper-plane"></i> Send** to see what your character thinks of the image!
+    - Click ** Send** to see what your character thinks of the image!
 
 ## Panel controls
 
@@ -35,10 +35,9 @@ The image captioning extension is built-in to SillyTavern and does not need to b
 Choose the source for image captioning. Supported options:
 
 | Source                           | Description                                                                                                                                                                                                  |
-|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Multimodal | **Cloud**: OpenAI, Anthropic, Google, MistralAI, and others. <br>**Local**: Ollama, llama.cpp, KoboldCpp, Text Generation WebUI, and vLLM. <br>Supports custom prompts so you can ask your images questions. |
-| Local           | Uses transformers.js running locally inside your SillyTavern server. Zero setup!                                                                     |
-| Horde                            | Uses the AI Horde network, a crowdsourced distributed network of image generation models. Nothing to download, configure, or pay for. Variable response times.                       |
+| Multimodal | **Cloud**: OpenAI, Anthropic, Google, MistralAI, and others. **Local**: Ollama, llama.cpp, KoboldCpp, Text Generation WebUI, and vLLM. Supports custom prompts so you can ask your images questions. |
+| Local           | Uses transformers.js (https://huggingface.co/docs/transformers.js/en/index) running locally inside your SillyTavern server. Zero setup!                                                                     |
+| Horde                            | Uses the AI Horde (https://aihorde.net/) network, a crowdsourced distributed network of image generation models. Nothing to download, configure, or pay for. Variable response times.                       |
 | Extras                           | The Extras project was discontinued in April 2024 and is not maintained or supported.                                                                                                                        |
 
 ### Caption Configuration
@@ -56,10 +55,10 @@ Choose the source for image captioning. Supported options:
 
 All the ways to caption images in SillyTavern:
 
-* Choose "**Generate Caption**" from the **<i class="fa-solid fa-magic-wand-sparkles"></i> Extensions** popup menu and select an image file when prompted
-* Click the <i class="fa-solid fa-envelope-open-text"></i> **Caption** icon at the top of an image already in a message
+* Choose "**Generate Caption**" from the ** Extensions** popup menu and select an image file when prompted
+* Click the  **Caption** icon at the top of an image already in a message
 * Paste an image directly into the chat input with auto-captioning enabled
-* Attach an image file to a message using the <i class="fa-solid fa-paperclip"></i> **Embed File or Image** button in the actions of a message.
+* Attach an image file to a message using the  **Embed File or Image** button in the actions of a message.
 * Send a message with an embedded image
 * Use the `/caption` slash command
 
@@ -89,7 +88,6 @@ The generated (and optionally edited) caption will be automatically inserted int
 ```
 [BaronVonUser sends Seraphina a picture that contains: ...]
 ```
-
 
 ## Slash Command: /caption
 The extension provides a `/caption` slash command to use in the chatbox or in scripts. 
@@ -125,7 +123,7 @@ Caption an image from message #5 without sending a new message:
 /caption mesId=5 quiet=true
 ```
 
-Caption an image from message #10 with a custom prompt then generate a new image based on the caption:
+Caption an image from message #10 with a custom prompt then [generate a new image](SillyTavern_extensions_Stable-Diffusion.md) based on the caption:
 
 ```
 /caption mesId=10 Describe this image using comma-separated keywords | /imagine 
@@ -133,7 +131,7 @@ Caption an image from message #10 with a custom prompt then generate a new image
 
 ## Local source
 
-You can change the model in config.yaml. The key is called `extensions.models.captioning`. Enter the Hugging Face model ID you want to use. The default is `Xenova/vit-gpt2-image-captioning`. 
+You can change the model in [config.yaml](SillyTavern_Administration_config-yaml.md). The key is called `extensions.models.captioning`. Enter the Hugging Face model ID you want to use. The default is `Xenova/vit-gpt2-image-captioning`. 
 
 You can use any model that supports image captioning (`VisionEncoderDecoderModel` or "image-to-text" pipeline). The model needs be to compatible with the transformers.js library. That is, it needs ONNX weights. Look for models with the `ONNX` and `image-to-text` tags, or that have a folder called `onnx` full of `.onnx` files. 
 
@@ -144,9 +142,10 @@ You can use any model that supports image captioning (`VisionEncoderDecoderModel
 - **Model**: Choose the model for image captioning. Options vary based on the selected API.
 - **Allow reverse proxy**: Toggle to allow using a reverse proxy if defined and valid (OpenAI, Anthropic, Google, Mistral, xAI)
 
-API keys and endpoint URLs for captioning sources are managed in the API Connections panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
+API keys and endpoint URLs for captioning sources are managed in the [API Connections](SillyTavern_Usage_API_Connections_index.md) panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
 
-One last time: configure the API key/address/port in **<i class="fa-solid fa-plug"></i> API Connections** and use the connection in Captioning.
+Set it up in the API Connections panel first
+One last time: configure the API key/address/port in ** API Connections** and use the connection in Captioning.
 
 You can still use Claude for chats and Google AI Studio for image captioning, or whatever. Just set them *both* up in the 'API Connections' tab first. Then flip your Chat Completion source to Claude and your Captioning source to Google AI Studio.
 
@@ -166,7 +165,6 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 * "I want to complain when it doesn't work": ~~Extras~~
 
 | API Provider                      | Description                                                                                                                                                                   |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AI/ML API                         | Cloud, paid, various GPT, Claude, and Gemini models with vision capabilities                                                                                                  |
 | Chutes                            | Cloud, various models with vision capabilities                                                                                                                                |
 | Claude                            | Cloud, paid, all Claude models with vision capabilities                                                                                                                       |
@@ -181,7 +179,7 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 | MistralAI                         | Cloud, paid, pixtral-large, pixtral-12B, magistral, mistral-large, etc.                                                                                                       |
 | Moonshot AI                       | Cloud, paid, moonshot-vision                                                                                                                                                  |
 | NanoGPT                           | Cloud, paid, various GPT/Claude/Google models with vision capabilities                                                                                                        |
-| Ollama                            | Local, can switch between available models and download additional vision models within Captioning after configuring in API Connections |
+| Ollama                            | Local, can switch between available models and download additional vision models (https://ollama.com/search?c=vision) within Captioning after configuring in API Connections |
 | OpenAI                            | Cloud, paid, GPT-4 Vision, 4-turbo, 4o, 4o-mini                                                                                                                               |
 | OpenRouter                        | Cloud, paid (maybe free options), many models, pick from what's available within Captioning after configuring in API connections                                              |
 | Pollinations                      | Cloud, free                                                                                                                                                                   |
@@ -195,7 +193,7 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 By default, the Multimodal source uses the primary endpoint configured in the API Connections tab.
 You can also set up a secondary endpoint specifically for multimodal captioning.
 
-- Open the **Image Captioning** panel in the **<i class="fa-solid fa-cubes"></i> Extensions** panel.
+- Open the **Image Captioning** panel in the ** Extensions** panel.
 - Select "Multimodal" as the captioning source and a preferred API provider.
 - Enter a valid URL for the secondary endpoint in the "Secondary captioning endpoint URL" field.
 - Check the "Use secondary URL" box to enable the secondary endpoint.
@@ -214,7 +212,7 @@ This is only supported by the following APIs:
 
 #### KoboldCpp
 
-For general information on installing and using KoboldCpp, see the KoboldCpp documentation.
+For general information on installing and using KoboldCpp (https://github.com/LostRuins/koboldcpp), see the KoboldCpp documentation (https://github.com/LostRuins/koboldcpp/wiki).
 
 To use KoboldCpp for multimodal captioning:
 
@@ -222,7 +220,7 @@ To use KoboldCpp for multimodal captioning:
 * also get the multimodal projections for the model. These weights allow the model to understand how the text and image parts of the input relate to each other.
 * load the model and projections in the KoboldCpp launch GUI or command line interface.
 
-The original and classic local multimodal model is LLaVA. GGUF-format files for the model and projections are available from Mozilla/llava-v1.5-7b-llamafile. To load them from the command line, set the model and projections with the `--model` and `--mmproj` flags. For example:
+The original and classic local multimodal model is LLaVA. GGUF-format files for the model and projections are available from Mozilla/llava-v1.5-7b-llamafile (https://huggingface.co/Mozilla/llava-v1.5-7b-llamafile). To load them from the command line, set the model and projections with the `--model` and `--mmproj` flags. For example:
 
 ```shell
 ./koboldcpp \
@@ -231,6 +229,6 @@ The original and classic local multimodal model is LLaVA. GGUF-format files for 
 ... other flags ...
 ```
 
-Some LLaVA finetunes you can try: xtuner/llava-llama-3-8b-v1_1-gguf, xtuner/llava-phi-3-mini-gguf.
+Some LLaVA finetunes you can try: xtuner/llava-llama-3-8b-v1_1-gguf (https://huggingface.co/xtuner/llava-llama-3-8b-v1_1-gguf), xtuner/llava-phi-3-mini-gguf (https://huggingface.co/xtuner/llava-phi-3-mini-gguf).
 
-You can use multimodal projections for the base model that your particular finetune was built from. Projections for some common base models are available from koboldcpp/mmproj.
+You can use multimodal projections for the base model that your particular finetune was built from. Projections for some common base models are available from koboldcpp/mmproj (https://huggingface.co/koboldcpp/mmproj/tree/main).

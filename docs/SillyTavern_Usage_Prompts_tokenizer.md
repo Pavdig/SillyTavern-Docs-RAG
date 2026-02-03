@@ -29,8 +29,8 @@ If you get inaccurate results or wish to experiment, you can set an _override to
 
 Chat Completion APIs **(non-overridable)**:
 
-1. OpenAI: model-dependant tokenizer via tiktoken.
-2. Claude: model-dependant tokenizer via WebTokenizers.
+1. OpenAI: model-dependant tokenizer via tiktoken (https://github.com/openai/tiktoken).
+2. Claude: model-dependant tokenizer via WebTokenizers (https://github.com/mlc-ai/tokenizers-cpp).
 3. OpenRouter: Llama, Mistral, Gemma, Yi tokenizers for their respective models.
 4. Google AI Studio: Gemma tokenizer.
 5. AI21 API: Jamba tokenizer (requires a one-time download).
@@ -50,12 +50,13 @@ These tokenizers are not included in the default installation due to their size 
 
 If you don't want to use internet downloads, the opt-out option exists in config.yaml: `enableDownloadableTokenizers`. Set to `false` to disable downloads.
 
-You can also download tokenizers manually from the SillyTavern-Tokenizers repository. Download the JSON files and put them in the `_cache` subdirectory of your data root, the path is `./data/_cache` by default. Create the `_cache` directory if it doesn't exist. After that, restart the SillyTavern server to re-initialize tokenizers.
+You can also download tokenizers manually from the SillyTavern-Tokenizers (https://github.com/SillyTavern/SillyTavern-Tokenizers) repository. Download the JSON files and put them in the `_cache` subdirectory of your data root, the path is `./data/_cache` by default. Create the `_cache` directory if it doesn't exist. After that, restart the SillyTavern server to re-initialize tokenizers.
 
 If the required tokenizer model is not cached and downloads are disabled, a fallback tokenizer (Llama 3) will be used for counting.
 
 ### Token Padding
 
+Applies to: Text Completion APIs
 SillyTavern will always use the matching tokenizer for Chat Completion models, so there is no need for token padding.
 
 Unless SillyTavern uses a tokenizer provided by the remote backend API that runs the model, all token counts assumed during prompt generation are estimated based on the selected tokenizer type.

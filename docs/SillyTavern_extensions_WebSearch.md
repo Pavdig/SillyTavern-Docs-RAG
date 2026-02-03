@@ -3,7 +3,8 @@
 
 Adds web search results to LLM prompts.
 
-Some Chat Completion sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
+Note
+Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the ** AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
 
 ## Available sources
 
@@ -11,7 +12,7 @@ Some Chat Completion sources provide built-in web search functionality. In this 
 
 Requires an official server plugin to be installed and enabled.
 
-See SillyTavern-WebSearch-Selenium for more details.
+See SillyTavern-WebSearch-Selenium (https://github.com/SillyTavern/SillyTavern-WebSearch-Selenium) for more details.
 
 Supports Google and DuckDuckGo engines.
 
@@ -25,7 +26,7 @@ Supports Google and DuckDuckGo engines.
 
 Requires an API key.
 
-Get the key here: <https://serpapi.com/dashboard>
+Get the key here: 
 
 ### SearXNG
 
@@ -33,33 +34,33 @@ Requires a SearXNG instance URL (either private or public). Uses HTML format for
 
 SearXNG preferences string: obtained from SearXNG - preferences - COOKIES - Copy preferences hash
 
-Learn more: <https://docs.searxng.org/>
+Learn more: 
 
 ### Tavily AI
 
 Requires an API key.
 
-Get the key here: <https://app.tavily.com/>
+Get the key here: 
 
 ### KoboldCpp
 
 KoboldCpp URL must be provided in Text Completion API settings. KoboldCpp version must be >= 1.81.1 and WebSearch module must be enabled on startup: enable Network => Enable WebSearch in the GUI launcher or add `--websearch` to the command line.
 
-See: <https://github.com/LostRuins/koboldcpp/releases/tag/v1.81.1>
+See: 
 
 ### Serper
 
 Requires an API key.
 
-Get the key here: <https://serper.dev/>
+Get the key here: 
 
 ### Z.AI
 
 Requires an API key, set it in the Chat Completion API settings first. Not compatible with the Coding API subscription!
 
-Get the key here: <https://z.ai/manage-apikey/apikey-list/>
+Get the key here: 
 
-Docs: <https://docs.z.ai/api-reference/tools/web-search>
+Docs: 
 
 ## How to use
 
@@ -86,7 +87,7 @@ Docs: <https://docs.z.ai/api-reference/tools/web-search>
 
 ### Search Activation
 
-1. Use function tool - uses function calling to activate search or scrape web pages. Must use a supported Chat Completion API and be enabled in the AI Response settings. **Disables all other activation methods when engaged.**
+1. Use function tool - uses [function calling](SillyTavern_For_Contributors_Function-Calling.md) to activate search or scrape web pages. Must use a supported Chat Completion API and be enabled in the AI Response settings. **Disables all other activation methods when engaged.**
 2. Use Backticks - enables search activation using words encased in single backticks.
 3. Use Trigger Phrases - enables search activation using trigger phrases.
 4. Regular expressions - provide a JS-flavored regex to match the user message. If the regex matches, the search with a given query will be triggered. Search query supports `{{macros}}` and $1-syntax to reference the matched group. Example: `/what is happening in (.*)/i` regex for search query `news in $1` will match a message containing `what is happening in New York` and trigger the search with the query `news in New York`.
@@ -118,7 +119,7 @@ Priority of triggers (if multiple are enabled):
 
 To discard all previous queries from processing, start the user message with an exclamation mark, for example, a user message `!Now let's talk about...` will discard this and every message above it.
 
-This extension also provides a `/websearch` slash command to use in STscript. More info here: STscript Language Reference
+This extension also provides a `/websearch` slash command to use in STscript. More info here: [STscript Language Reference](SillyTavern_For_Contributors_st-script.md)
 
 ```stscript
 /websearch (links=on|off snippets=on|off [query]) – performs a web search query. Use named arguments to specify what to return - page snippets (default: on), full parsed pages (default: off) or both.

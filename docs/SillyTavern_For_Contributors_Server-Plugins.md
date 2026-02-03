@@ -5,9 +5,10 @@ These plugins allow for adding functionality that is impossible to achieve using
 
 Plugins are contained in the `plugins` directory of SillyTavern and are loaded on server startup, but *only* if `enableServerPlugins` is set to `true` in the `config.yaml` file.
 
+Warning
  **Server Plugins are not sandboxed. This means they can potentially gain access to your entire file system, or introduce a wide range of security vulnerabilities in a way that normal UI extensions cannot. Only install server plugins from developers you trust!**
 
-For a list of all official server plugins, see the GitHub organization list: <https://github.com/search?q=topic%3Aplugin+org%3ASillyTavern&type=Repositories>
+For a list of all official server plugins, see the GitHub organization list: 
 
 ## Types of plugins
 
@@ -31,8 +32,8 @@ interface PluginInfo {
 }
 
 interface Plugin {
-    init: (router: Router) => Promise<void>;
-    exit: () => Promise<void>;
+    init: (router: Router) => Promise;
+    exit: () => Promise;
     info: PluginInfo;
 }
 ```
@@ -43,7 +44,7 @@ See below for a "Hello world!" plugin example:
 /**
  * Initialize plugin.
  * @param {import('express').Router} router Express router
- * @returns {Promise<any>} Promise that resolves when plugin is initialized
+ * @returns {Promise} Promise that resolves when plugin is initialized
  */
 async function init(router) {
     // Do initialization here...
@@ -80,10 +81,10 @@ You can load a plugin from a subdirectory in the `plugins` directory in one of t
 
 A resulting file must export an `init` function and an `info` object with the same requirements as for individual files.
 
-Example of a directory plugin (with an `index.js` file): <https://github.com/SillyTavern/SillyTavern-DiscordRichPresence-Server>
+Example of a directory plugin (with an `index.js` file): 
 
 ### Bundling
 
 It is preferable to use a bundler (such as Webpack or Browserify) that will package all the requirements into one file. Make sure to set "Node" as a build target.
 
-Template repository for plugins using Webpack and TypeScript: <https://github.com/SillyTavern/Plugin-WebpackTemplate>
+Template repository for plugins using Webpack and TypeScript: 

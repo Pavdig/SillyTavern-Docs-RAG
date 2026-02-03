@@ -1,6 +1,7 @@
 
 # Macros
 
+Experimental Macro Engine
 To enable advanced macro processing that supports nesting, stable substitution order, and other improvements, go to **User Settings** > **Chat/Message Handling** and enable the **Experimental Macro Engine** option.
 
 Macros are dynamic placeholders that get replaced with actual values when text is processed. They are used throughout SillyTavern in prompts, character cards, lorebooks, Quick Replies, and more.
@@ -138,6 +139,7 @@ The condition itself is a macro that retrieves a variable value.
 
 ## Scoped Macros
 
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
 Any macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.
@@ -203,6 +205,7 @@ To preserve all whitespace including leading/trailing newlines, use the `#` flag
 
 ## Conditional Macros
 
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
 The `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.
@@ -278,6 +281,7 @@ Another example:
 
 ## Macro Flags
 
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
 Flags are special symbol characters placed between the opening braces and the macro name that modify macro behavior.
@@ -305,14 +309,12 @@ Whitespace is allowed between flags and the macro name:
 ### Implemented Flags
 
 | Flag | Name | Description |
-|------|------|-------------|
 | `/` | Closing Block | Marks a closing tag for scoped macros. Example: `{{/if}}` |
 | `#` | Preserve Whitespace | Prevents automatic trimming of scoped content. |
 
 ### Planned Flags (Not Yet Implemented)
 
 | Flag | Name | Description |
-|------|------|-------------|
 | `!` | Immediate | Resolve this macro before other macros in the same text. |
 | `?` | Delayed | Resolve this macro after other macros in the same text. |
 | `~` | Re-evaluate | Mark this macro for re-evaluation. |
@@ -366,6 +368,7 @@ This outputs `{{notAMacro}}` as plain text.
 
 ## Variable Shorthands
 
+Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
 Variable shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.
@@ -373,7 +376,6 @@ Variable shorthands provide a concise syntax for common variable operations. Use
 ### Variable Shorthands Prefixes
 
 | Prefix | Name            | Description                                                     |
-| ------ | --------------- | --------------------------------------------------------------- |
 | `.`    | Local Variable  | Shorthand for local variable operations. Example: `{{.myvar}}`  |
 | `$`    | Global Variable | Shorthand for global variable operations. Example: `{{$myvar}}` |
 
@@ -415,7 +417,6 @@ Whitespace around operators is allowed:
 The following operators can be used with variable shorthands. Each operator follows the pattern `{{.varName operator value}}` or `{{$varName operator value}}`.
 
 | Operator | Name                      | Example                | Description                                            |
-| -------- | ------------------------- | ---------------------- | ------------------------------------------------------ |
 | *(none)* | Get      | `{{.myvar}}`           | Returns the variable value                             |
 | `=`      | Set      | `{{.myvar = value}}`   | Sets the variable to a value, returns nothing         |
 | `++`     | Increment   | `{{.counter++}}`       | Increments by 1, returns new value                     |
@@ -660,12 +661,11 @@ Useful in `{{if}}` conditions:
 For backwards compatibility, angle bracket markers are still supported:
 
 | Legacy | Equivalent Macro |
-|--------|------------------|
-| `<USER>` | `{{user}}` |
-| `<BOT>` | `{{char}}` |
-| `<CHAR>` | `{{char}}` |
-| `<GROUP>` | `{{group}}` |
-| `<CHARIFNOTGROUP>` | `{{charIfNotGroup}}` |
+| `` | `{{user}}` |
+| `` | `{{char}}` |
+| `` | `{{char}}` |
+| `` | `{{group}}` |
+| `` | `{{charIfNotGroup}}` |
 
 These are automatically converted to their macro equivalents during processing.
 
@@ -678,7 +678,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Names & Participants
 
 | Macro | Description |
-|-------|-------------|
 | `{{user}}` | Current user/persona name |
 | `{{char}}` | Current character name |
 | `{{group}}` | Comma-separated list of group member names (including muted) or character name in solo chats |
@@ -689,7 +688,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Character Card & Persona Fields
 
 | Macro | Description |
-|-------|-------------|
 | `{{description}}` | Character description |
 | `{{personality}}` | Character personality |
 | `{{scenario}}` | Character scenario |
@@ -706,7 +704,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Chat History & Messages
 
 | Macro | Description |
-|-------|-------------|
 | `{{lastMessage}}` | Last message in the chat |
 | `{{lastMessageId}}` | Index of the last message in the chat |
 | `{{lastUserMessage}}` | Last user message in the chat |
@@ -720,7 +717,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Time & Date
 
 | Macro | Description |
-|-------|-------------|
 | `{{time}}` | Current local time |
 | `{{time::UTC±(offset)}}` | Time with UTC offset |
 | `{{date}}` | Current local date in short format |
@@ -734,7 +730,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Variables
 
 | Macro | Description |
-|-------|-------------|
 | `{{getvar::name}}` | Get local variable value |
 | `{{setvar::name::value}}` | Set local variable |
 | `{{addvar::name::value}}` | Add value to local variable (numeric or string append) |
@@ -753,7 +748,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Randomization
 
 | Macro | Description |
-|-------|-------------|
 | `{{random::a::b::c}}` | Random selection (re-rolls each time) |
 | `{{pick::a::b::c}}` | Stable random selection (consistent per chat and position) |
 | `{{roll::1d20}}` | Dice roll using droll syntax |
@@ -761,7 +755,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Runtime State
 
 | Macro | Description |
-|-------|-------------|
 | `{{maxPrompt}}` | Maximum prompt context size |
 | `{{model}}` | Model name for the currently selected API |
 | `{{isMobile}}` | "true" if running in mobile environment, "false" otherwise |
@@ -770,7 +763,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Prompt Templates
 
 | Macro | Description |
-|-------|-------------|
 | `{{systemPrompt}}` | Active system prompt text (optionally overridden by character) |
 | `{{defaultSystemPrompt}}` | Default system prompt |
 | `{{authorsNote}}` | Contents of the Author's Note |
@@ -803,7 +795,6 @@ Use `/? macros` for the complete list of available macros and their detailed des
 ### Utility
 
 | Macro | Description |
-|-------|-------------|
 | `{{newline}}` | Insert newline character |
 | `{{newline::count}}` | Insert multiple newlines |
 | `{{space}}` | Insert space character |

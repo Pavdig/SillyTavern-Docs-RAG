@@ -8,7 +8,7 @@ This extension allows you to play retro console games right from the SillyTavern
 **Prerequisites:**
 
 - Latest release version of SillyTavern.
-- ROM files downloaded from the net. You can find them anywhere.
+- ROM files downloaded from the net. You can find them anywhere (https://archive.org/details/ni-romsets).
 
 **How to install:**
 
@@ -24,7 +24,7 @@ This extension allows you to play retro console games right from the SillyTavern
 - You can customize controls and other settings in the emulator frame after launching the game.
 - Use save/load state functions if you need to take a break.
 
-Check the EmulatorJS docs to see the list of available cores and their requirements: Cores.
+Check the EmulatorJS docs to see the list of available cores and their requirements: Cores (https://emulatorjs.org/docs4devs/cores).
 
 ## Comments mode
 
@@ -32,9 +32,9 @@ With the power of multimodal models, your AI bots can see your gameplay and prov
 
 ### Requirements
 
-1. A browser that supports ImageCapture. Tested on desktop Chrome. Firefox requires to enable it with config. Safari won't work.
+1. A browser that supports ImageCapture (https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture#browser_compatibility). Tested on desktop Chrome. Firefox requires to enable it with config. Safari won't work.
 2. Chat Completion API with image inlining mode is recommended. Check the API documentation to see if the chosen model supports multimodal prompts.
-3. If image inlining is disabled, make sure that the Image Captioning extension is enabled, then select the "Multimodal" captioning source.
+3. If image inlining is disabled, make sure that the [Image Captioning](SillyTavern_captioning.md) extension is enabled, then select the "Multimodal" captioning source.
 
 ### How to enable comments
 
@@ -68,4 +68,4 @@ Still doesn't work? Send us your browser debug console logs (press F12).
 
 ## Credits
 
-- EmulatorJS engine (GPLv3): <https://github.com/EmulatorJS/EmulatorJS>
+- EmulatorJS engine (GPLv3): 

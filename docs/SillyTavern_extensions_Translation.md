@@ -7,43 +7,43 @@ The Chat Translation Extension enables real-time translation of chat messages be
 different languages using various translation providers. It supports both manual and
 automatic translation modes.
 
-
+Character message translated from English to Chinese using 'Translate Message/翻譯訊息' message action button
 
 +++ English
-
+"Translate Chat", "Translate Input"
 +++ 简体中文
-
+"翻译聊天", "翻译输入"
 +++ 繁體中文
-
+"翻譯聊天內容", "翻譯輸入內容"
 +++ 한국어
-
+"채팅 번역하기", "입력 번역하기"
 +++ Русский
-
+"Перевести чат", "Перевести моё сообщение"
 +++
 
 ## Usage
 
 All the ways to translate chat messages:
 
-**<i class="fa-solid fa-language"></i> Translate Chat** button in the **<i class="fa-solid fa-magic-wand-sparkles"></i>
+** Translate Chat** button in the **
 Extensions** menu
 
 - Translates the entire chat history at once
 
-**<i class="fa-solid fa-keyboard"></i> Translate Input** button in the **<i class="fa-solid fa-magic-wand-sparkles"></i>
+** Translate Input** button in the **
 Extensions** menu
 
 - Translates just the current input text
 - Useful before sending a message
 
-**<i class="fa-solid fa-language"></i> Translate Message** icon in the **<i class="fa-solid fa-ellipsis"></i> Message
+** Translate Message** icon in the ** Message
 Actions**
 toolbar of any message
 
 - Click to translate just that message
 - Click again to revert to original text
 
-**Auto-mode** configuration in the **Chat Translation** drawer of the **<i class="fa-solid fa-cubes"></i>
+**Auto-mode** configuration in the **Chat Translation** drawer of the **
 Extensions** panel
 
 - Automatically translates user inputs, AI responses, or both
@@ -54,14 +54,14 @@ Extensions** panel
 
 ## Configuration
 
-Configuration options are available in the **Chat Translation** drawer of the **<i class="fa-solid fa-cubes"></i>
+Configuration options are available in the **Chat Translation** drawer of the **
 Extensions** panel.
 
 #### Provider
 
 - Choose your preferred translation service
-- Click the **<i class="fa-solid fa-key"></i> API Key** icon, if it appears, to enter an API key
-- Click the **<i class="fa-solid fa-link"></i> Custom URL** icon, if it appears, to enter a custom API URL
+- Click the ** API Key** icon, if it appears, to enter an API key
+- Click the ** Custom URL** icon, if it appears, to enter a custom API URL
 
 #### Target Language
 
@@ -78,7 +78,7 @@ Configure automatic translation behavior.
 
 #### Clear Translations
 
-The **<i class="fa-solid fa-trash-can"></i> Clear Translations** button removes all translations from messages in the
+The ** Clear Translations** button removes all translations from messages in the
 current chat. The original messages are preserved.
 
 ### Configuration Example: Chinese to English Chatting
@@ -100,24 +100,23 @@ explicit source language selection.
 ## Translation providers
 
 **:icon-cloud:** Cloud-based
-**<i class="fa-solid fa-link"></i>** Local, custom URL
-**<i class="fa-solid fa-key"></i>** Requires API key
+**** Local, custom URL
+**** Requires API key
 
 | Provider                                                            | Location                                                                      | Features                                                                                               |
-|---------------------------------------------------------------------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| Libre Translate                      | :icon-cloud: <i class="fa-solid fa-key"></i> <i class="fa-solid fa-link"></i> | Self-hosted (AGPL-3.0) alternative to proprietary translation services, with cloud-hosted Pro tier     | 
-| Google Translate              | :icon-cloud:                                                                  | Widely used, supports many languages, good accuracy                                                    |
-| Lingva Translate                              | <i class="fa-solid fa-link"></i>                                              | Alternative front-end for Google Translate, open source (AGPL-3.0), privacy-focused                    |
-| DeepL                                     | :icon-cloud: <i class="fa-solid fa-key"></i>                                  | High-quality translations, especially for European languages                                           |
-| DeepLX                     | <i class="fa-solid fa-link"></i>                                              | Self-hosted DeepL proxy, open source (MIT), free but proxying DeepL Pro requires DeepL API key         |
-| Bing Translator                  | :icon-cloud:                                                                  | Microsoft's translation service, integrates with Azure services                                        |
-| OneRing Translator | <i class="fa-solid fa-link"></i>                                              | Self-hosted front-end to Google Translate and other providers, privacy-focused, open source (AGPL-3.0) |
-| Yandex Translate                   | :icon-cloud:                                                                  | Good for Russian and Eastern European languages                                                        |
+| Libre Translate (https://libretranslate.com/)                      | :icon-cloud:   | Self-hosted (AGPL-3.0) alternative to proprietary translation services, with cloud-hosted Pro tier     | 
+| Google Translate (https://cloud.google.com/translate)              | :icon-cloud:                                                                  | Widely used, supports many languages, good accuracy                                                    |
+| Lingva Translate (https://lingva.ml/)                              |                                               | Alternative front-end for Google Translate, open source (AGPL-3.0), privacy-focused                    |
+| DeepL (https://www.deepl.com/)                                     | :icon-cloud:                                   | High-quality translations, especially for European languages                                           |
+| DeepLX (https://github.com/OwO-Network/DeepLX)                     |                                               | Self-hosted DeepL proxy, open source (MIT), free but proxying DeepL Pro requires DeepL API key         |
+| Bing Translator (https://www.bing.com/translator)                  | :icon-cloud:                                                                  | Microsoft's translation service, integrates with Azure services                                        |
+| OneRing Translator (https://github.com/janvarev/OneRingTranslator) |                                               | Self-hosted front-end to Google Translate and other providers, privacy-focused, open source (AGPL-3.0) |
+| Yandex Translate (https://translate.yandex.com/)                   | :icon-cloud:                                                                  | Good for Russian and Eastern European languages                                                        |
 
 ### DeepL-specific configuration
 
 - Formality levels available for German, French, Italian, Spanish, Dutch, Japanese, and Russian
-- Configure via `deepl.formality` in config.yaml
+- Configure via `deepl.formality` in [config.yaml](SillyTavern_Administration_config-yaml.md)
 
 ## Slash Commands
 
@@ -132,7 +131,7 @@ Translate text to the current target language and show it in a popup:
 /translate Welcome to the Tavern | /echo 
 ```
 
-
+Popup in Chinese (Simplified), '欢迎来到酒馆/Welcome to the Tavern'
 
 Translate text to Spanish and add it to the chat:
 
@@ -140,7 +139,7 @@ Translate text to Spanish and add it to the chat:
 /translate target=es Hello world | /send
 ```
 
-
+User message in Spanish, 'Hola Mundo/Hello world'
 
 ### Testing, pipeline translation, localization
 
@@ -149,37 +148,36 @@ configured target language and show both translations in a popup. This example u
 to gather user input:
 
 ```shell
-/input default="Hello, world!" <span data-i18n="Test Message">Sample text</span> | 
+/input default="Hello, world!" Sample text | 
 /let key=input ||
-/buttons labels=["zh-CN", "zh-TW", "es", "hu", "en"] <span data-i18n="UI Language">Language</span> | 
+/buttons labels=["zh-CN", "zh-TW", "es", "hu", "en"] Language | 
 /let key=lang ||
 /translate target={{var::lang}} {{var::input}} | /let key=tx_target | 
 /translate | /let key=tx_orig ||
 /echo escapeHtml=false cssClass=wider_dialogue_popup
-<b data-i18n="Test Message">Test message</b>: {{var::input}} <br/>
-<b data-i18n="Output">Output</b> ({{var::lang}}): {{var::tx_target}} <br/>
-<b data-i18n="Output">Output</b> (<span data-i18n="ext_translate_target_lang">target language</span>): {{var::tx_orig}} <br/>
+Test message: {{var::input}} 
+Output ({{var::lang}}): {{var::tx_target}} 
+Output (target language): {{var::tx_orig}} 
 ```
 
 This is useful for checking the quality of a translation into a language that you don't speak, before writing it
 somewhere important.
 
-
-
+Popup, 'Welcome to the Tavern/欢迎来到酒馆/welcome to the pub', en, zh-CN, en
+Popup, 'My hovercraft is full of eels/我的氣墊船裡裝滿了鰻魚/My hovercraft is filled with eels', en, zh-TW, en
 
 The UI controls are shown in the current locale, independent of the configured target language.
 
 | `/input`                                                                                        | `/buttons`                                                                          |
-|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|  |  |
+| Input dialog, '发送测试消息/Send Test Message' | Buttons dialog, '语言/Language' |
 
-
+Popup, '我的氣墊船裡裝滿了鰻魚/My hovercraft is full of eels', zh-TW -> en -> zh-TW
 
 Input language detection is relatively effective in the following examples:
 
-
-
-
+Popup, '(My hovercraft is full of eels)/A légpárnás hajóm tele van angolnával/我的氣墊船裡裝滿了鰻魚', zh-TW -> hu -> zh-TW
+Popup, '我的氣墊船裡裝滿了鰻魚/Mi aerodeslizador está lleno de anguilas/My hovercraft is full of eels', zh-TW -> es -> en
+Popup, 'Il mio hovercraft è pieno di anguille/我的气垫船里装满了鳗鱼/My hovercraft is filled with eels', it -> zh-CN -> en
 
 ## Technical Notes
 

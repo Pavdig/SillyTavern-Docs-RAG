@@ -13,27 +13,28 @@ Connection Profiles store the following selections.
 
 ### Common
 
-* API type, model and the server URL
-* Secret Key
-* Settings preset
-* Start Reply With (can be explicitly empty)
-* Custom Stopping Strings (can be explicitly empty)
-* Reasoning Formatting
+* [API type, model and the server URL](SillyTavern_Usage_API_Connections_index.md)
+* [Secret Key](SillyTavern_Usage_faq.md)
+* [Settings preset](SillyTavern_Usage_Common-Settings.md)
+* [Start Reply With](SillyTavern_Usage_Prompts_advancedformatting.md) (can be explicitly empty)
+* [Custom Stopping Strings](SillyTavern_Usage_Prompts_advancedformatting.md) (can be explicitly empty)
+* [Reasoning Formatting](SillyTavern_Usage_Prompts_reasoning.md)
 
 ### Text Completion APIs
 
-* System Prompt and its state
-* Instruct Mode state and template
-* Context Template
-* Tokenizer
+* [System Prompt and its state](SillyTavern_Usage_Prompts_advancedformatting.md)
+* [Instruct Mode state and template](SillyTavern_Usage_Prompts_instructmode.md)
+* [Context Template](SillyTavern_Usage_Prompts_advancedformatting.md)
+* [Tokenizer](SillyTavern_Usage_Prompts_advancedformatting.md)
 
 ### Chat Completion APIs
 
-* Prompt Post-Processing
+* [Prompt Post-Processing](SillyTavern_Usage_API_Connections_openai.md)
 * Proxy preset
 
 ## Managing Connection Profiles
 
+Note
 Profiles only save the selection in dropdown fields, without knowing anything about the underlying settings. This means that you will lose unsaved changes by switching to a different profile. To prevent this, make sure to update all presets and templates if you don't want to lose ephemeral changes.
 
 * To save a profile, set all the required settings and click the "Create" button. Then review the settings and provide a name for the profile. **A name should be unique.**

@@ -5,8 +5,9 @@ Most often this is for people who want to use SillyTavern on their mobile phones
 
 It is also the first step for allowing remote connections from outside the local network.
 
-You should not use port forwarding to expose your ST server to the internet. Instead, use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale. See the VPN and Tunneling guide for more information.
+You should not use port forwarding to expose your ST server to the internet. Instead, use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale. See the [VPN and Tunneling](SillyTavern_tunneling.md) guide for more information.
 
+Disclaimer
 **NEVER HOST ANY INSTANCES TO THE OPEN INTERNET WITHOUT ENSURING PROPER SECURITY MEASURES FIRST.**
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES IN CASES OF UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
@@ -15,6 +16,7 @@ You should not use port forwarding to expose your ST server to the internet. Ins
 
 By default, the ST server only accepts connections from the machine that it's running on (localhost). To allow it to listen for connections from other devices, set the `listen` option in `config.yaml` to `true`.
 
+If you search for `config.yaml` directly in the SillyTavern folder, you may find two files.
 All modifications to `config.yaml` in this document refer to the one in the SillyTavern root directory (/SillyTavern/config.yaml), not `/SillyTavern/default/config.yaml`.
 
 ```yaml
@@ -132,7 +134,7 @@ This allows any device on the local network to connect.
 
 HTTP Basic Authentication does not provide strong security.
 
-There is no rate-limiting to prevent brute-force attacks. If this is a concern, it is recommended to use a reverse proxy with TLS and rate-limiting, and a dedicated authentication service.
+There is no rate-limiting to prevent brute-force attacks. If this is a concern, it is recommended to use a reverse proxy with TLS and rate-limiting, and a dedicated [authentication service](SillyTavern_sso.md).
 
 The server will ask for username and password whenever a client connects via HTTP. **This only works if the Remote connections (listen: true) are enabled.**
 
@@ -174,6 +176,7 @@ hostWhitelist:
 
 To add a host name to a list of trusted hosts, include it in the `hostWhitelist.hosts` section:
 
+Tips
 Do not add `localhost` or IPs (such as `127.0.0.1` or `::1`). These are always considered trusted.
 
 To add a range of hosts, use a leading dot. For example, adding `.trycloudflare.com` will trust `trycloudflare.com` as well as any subdomain like `example.trycloudflare.com`.
@@ -206,7 +209,7 @@ If the ST-hosting device is on the same wifi network, you will use the ST-host's
 
 If you (or someone else) wants to connect to your hosted ST while not being on the same network, you will need the public IP of your ST-hosting device.
 
-* While using the ST-hosting device, access this page and look for for `IPv4`. This is what you would use to connect from the remote device.
+* While using the ST-hosting device, access this page (https://whatismyipaddress.com/) and look for for `IPv4`. This is what you would use to connect from the remote device.
 
 ### Connecting to the ST server
 
@@ -262,13 +265,13 @@ Still unable to connect?
 
 Do not modify the port forwarding settings on your router. This is not necessary for accessing ST within your local network, and can expose your server to the internet.
 
-If you are trying to access your ST server from outside your local network, and it's not working, identify whether the problem is between the remote device and the tunnel/VPN endpoint, or between the tunnel endpoint on the server and the ST service. Otherwise you will spend a lot of time troubleshooting the wrong thing.
+If you are trying to access your ST server from [outside your local network](SillyTavern_remote-connections.md), and it's not working, identify whether the problem is between the remote device and the tunnel/VPN endpoint, or between the tunnel endpoint on the server and the ST service. Otherwise you will spend a lot of time troubleshooting the wrong thing.
 
 ## HTTPS
 
 ### Start SillyTavern with TLS/SSL
 
-SSL can also be configured using the `config.yaml` file: SSL Configuration.
+SSL can also be configured using the `config.yaml` file: [SSL Configuration](SillyTavern_Administration_config-yaml.md).
 
 To encrypt traffic from and to your ST instance, start the server with the `--ssl` flag.
 
@@ -290,7 +293,7 @@ The user you're running SillyTavern with requires read permissions on the certif
 
 ### How to get a certificate
 
-The simplest, quickest way to get a certificate is by using certbot.
+The simplest, quickest way to get a certificate is by using certbot (https://letsencrypt.org/getting-started/).
 
 ### Certificates in Docker
 

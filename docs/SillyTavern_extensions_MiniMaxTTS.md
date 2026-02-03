@@ -12,17 +12,18 @@ This page will teach you how to properly use the MiniMax TTS provider.
 
 ### 1. Create a MiniMax Account
 
-1. Visit the MiniMax website (International)
+1. Visit the MiniMax website (International) (https://www.minimax.io/)
 2. Click "Sign Up" or "Login"
 3. Complete the account registration process
 
+Regional Differences
 MiniMax has separate Chinese and International versions. Please note:
 - The Chinese version does not support voice cloning features
 - The Chinese version only supports the `api.minimax.chat` API host
 
 ### 2. Obtain API Key and Group ID
 
-1. Log into the MiniMax console (International)
+1. Log into the MiniMax console (International) (https://www.minimax.io/platform/user-center/basic-information)
 2. You can find your GroupId on the Basic Information page
 3. Go to Settings → API Keys on the left sidebar to create and obtain your API Key
 
@@ -61,7 +62,7 @@ Adjust the following parameters to customize voice output:
 
 ### 1. Obtaining Voice IDs
 
-1. Access the MiniMax TTS page (International)
+1. Access the MiniMax TTS page (International) (https://www.minimax.io/audio/text-to-speech)
 2. Click "Voice" on the right side to enter the Voice Selection interface
 3. Find the voice you want to use
 4. Click the copy button next to the voice name to copy the Voice ID
@@ -87,7 +88,7 @@ Adjust the following parameters to customize voice output:
 
 ### 2. Obtaining Model IDs
 
-1. Check the model list in the official MiniMax documentation
+1. Check the model list in the official MiniMax documentation (https://www.minimax.io/platform/document/Model?key=684261f14c5738213294faa7)
 2. Or view available custom models in the console
 3. Copy the corresponding Model ID
 

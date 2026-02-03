@@ -81,7 +81,6 @@ Every user data directory has a `content.log` file that lists all files copied f
 ### Recognized content types
 
 | Type                          | Value                |
-|-------------------------------|----------------------|
 | settings.json                 | `'settings'`         |
 | Character card                | `'character'`        |
 | Character sprites             | `'sprites'`          |

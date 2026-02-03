@@ -1,7 +1,7 @@
 
 # NovelAI
 
-NovelAI is a paid subscription service that allows unlimited monthly access to their high-quality in-house text generation, image generation, and text-to-speech models. Register an account here to get started: <https://novelai.net/>
+NovelAI is a paid subscription service that allows unlimited monthly access to their high-quality in-house text generation, image generation, and text-to-speech models. Register an account here to get started: 
 
 You will get only *50 generations* for free to evaluate the model. When the **"Not eligible for this model"** error appears, this means that you've exhausted your trial period and need to subscribe to a paid plan.
 
@@ -10,16 +10,16 @@ You will get only *50 generations* for free to evaluate the model. When the **"N
 To get your NovelAI API key, follow these steps:
 
 1. Select the gear icon at the top of the left sidebar.
-
+Left Sidebar
 
 2. Select "Account" under "User Settings".
-
+User Settings
 
 3. Select "Get Persistent API Token".
-
+Account
 
 4. Select the copy icon to copy your NovelAI API token to the clipboard. 
-
+Persistent API Token
 
 ## Models
 
@@ -29,7 +29,7 @@ Clio has a larger context size on Tablet/scroll tiers, but the strength of Kayra
 
 ## Settings
 
-The files with the settings are here (`SillyTavern/data/<user-handle>/NovelAI Settings`).
+The files with the settings are here (`SillyTavern/data//NovelAI Settings`).
 You can also manually add your own settings files.
 
 ### Response Length
@@ -150,13 +150,9 @@ These methods are recommended because they're present in NovelAI's training data
 
 Here are a couple of example cards, made for NovelAI, that show off different ways of creating cards specifically for NovelAI. The first card, Valka, uses the attributes method for the character description, while Eris, the second card, uses prose descriptions, along with a large amount of example dialogue. 
 
-<div style="display:flex;gap:2em;justify-content:center">
+Valka
 
-
-
-
-
-</div>
+Eris
 
 #### What not to do
 

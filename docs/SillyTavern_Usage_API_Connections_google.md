@@ -9,7 +9,7 @@ AI Studio is the fastest and the most user-friendly way to try out the latest Go
 
 ### Step 1: Create a Google AI Studio Key
 
-1. Go to the Google AI Studio page and sign in with your Google account.
+1. Go to the Google AI Studio (https://aistudio.google.com/apikey) page and sign in with your Google account.
 2. Click on "Get API Key", accept the terms and conditions.
 3. Click "Create API Key" to generate your API key.
 4. Copy the API key to your clipboard.
@@ -46,16 +46,16 @@ You can create a service account by following these steps:
 
 Before your key can work, the API must be enabled for your project.
 
-1. Go to the Google Cloud Console: <https://console.cloud.google.com/>
+1. Go to the Google Cloud Console: 
 2. Make sure the correct project is selected in the top bar.
-3. Navigate to the Vertex AI API page: <https://console.cloud.google.com/apis/library/aiplatform.googleapis.com>
+3. Navigate to the Vertex AI API page: 
 4. If it's not already enabled, click the "Enable" button.
 
 #### Step 2: Create the Service Account
 
 This is the identity that will be used to access the Vertex AI API.
 
-1. In the Google Cloud Console, navigate to the "Service Accounts" page. You can search for it in the top search bar or use this direct link: <https://console.cloud.google.com/iam-admin/serviceaccounts>
+1. In the Google Cloud Console, navigate to the "Service Accounts" page. You can search for it in the top search bar or use this direct link: 
 2. Select your GCP project and click "+ CREATE SERVICE ACCOUNT".
 3. Service account name: Give it a descriptive name, like `my-vertex-ai-client`.
 4. Click "CREATE AND CONTINUE".
@@ -107,7 +107,7 @@ You should now be able to use the Google Vertex AI API with SillyTavern.
 
 Express mode is the quickest way to get started with using Generative AI on Google Cloud. It allows you to use the Gemini API without needing to set up a service account. Instead, you can use an API key directly.
 
-See the official documentation for more details: Vertex AI in express mode overview.
+See the official documentation for more details: Vertex AI in express mode overview (https://cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/overview).
 
 #### Step 1: Ensure your account is eligible for Express Mode
 
@@ -116,7 +116,7 @@ If you have an existing Google Cloud project (including free trials), you can cr
 
 #### Step 2: Active the Vertex AI Express Mode
 
-1. Go to the following web page: Vertex AI Studio.
+1. Go to the following web page: Vertex AI Studio (https://cloud.google.com/generative-ai-studio).
 2. Click on "Try it free".
 3. Accept the terms and conditions and sign in with your Google account.
 4. Choose your country and click "Agree & start free". Wait for the setup to complete.

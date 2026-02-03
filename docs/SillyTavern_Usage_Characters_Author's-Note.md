@@ -10,8 +10,6 @@ Author's Note is a powerful tool for customizing AI responses which inserts a se
 The Author's Note can be found in the Options menu on the left side of the chat input bar.
 
 | Options Menu                          | Author's Note Panel                    |
-|---------------------------------------|----------------------------------------|
-|  |  |
 
 ## Configuring Author's Notes
 

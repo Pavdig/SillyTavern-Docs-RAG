@@ -35,38 +35,35 @@ there are plenty of missing translations you can fix without touching the code.
 
 The text "Generate Image" is untranslated in the Chinese (Traditional) locale. Why?
 
-
+generate-image-pre.png
 
 Right-click on the element and inspect it. You'll see the HTML:
 
 ```html
-<!--rendered HTML-->
-<div class="list-group-item flex-container flexGap5 interactable" id="sd_gen" tabindex="0">
+
     <div data-i18n="[title]Trigger Stable Diffusion" title="觸發 Stable Diffusion"
-         class="fa-solid fa-paintbrush extensionsMenuExtensionButton"></div>
-    <span>Generate Image</span>
-</div>
+         class="fa-solid fa-paintbrush extensionsMenuExtensionButton">
+    Generate Image
+
 ```
 
 Where is its `data-i18n` attribute? It's missing! Let's add it. We find it in the source code:
 
 ```html
-<!--public/scripts/extensions/stable-diffusion/button.html-->
-<div id="sd_gen" class="list-group-item flex-container flexGap5">
+
     <div class="fa-solid fa-paintbrush extensionsMenuExtensionButton" title="Trigger Stable Diffusion"
-         data-i18n="[title]Trigger Stable Diffusion"></div>
-    <span>Generate Image</span>
-</div>
-<div id="sd_stop_gen" class="list-group-item flex-container flexGap5">
+         data-i18n="[title]Trigger Stable Diffusion">
+    Generate Image
+
     <div class="fa-solid fa-circle-stop extensionsMenuExtensionButton" title="Abort current image generation task"
-         data-i18n="[title]Abort current image generation task"></div>
-    <span>Stop Image Generation</span>
-</div>
+         data-i18n="[title]Abort current image generation task">
+    Stop Image Generation
+
 ```
 
 We are in luck, that string `Generate Image` is in many of the language files, including in Chinese (Traditional).
 
-
+generate-image-lang.png
 
 ```json
 {
@@ -77,43 +74,39 @@ We are in luck, that string `Generate Image` is in many of the language files, i
 Why isn't it showing up? We have to wire the element up correctly:
 
 ```html
-<!--public/scripts/extensions/stable-diffusion/button.html-->
-<div id="sd_gen" class="list-group-item flex-container flexGap5">
+
     <div class="fa-solid fa-paintbrush extensionsMenuExtensionButton" title="Trigger Stable Diffusion"
-         data-i18n="[title]Trigger Stable Diffusion"></div>
-    <span data-i18n="Generate Image">Generate Image</span>
-</div>
-<div id="sd_stop_gen" class="list-group-item flex-container flexGap5">
+         data-i18n="[title]Trigger Stable Diffusion">
+    Generate Image
+
     <div class="fa-solid fa-circle-stop extensionsMenuExtensionButton" title="Abort current image generation task"
-         data-i18n="[title]Abort current image generation task"></div>
-    <span>Stop Image Generation</span>
-</div>
+         data-i18n="[title]Abort current image generation task">
+    Stop Image Generation
+
 ```
 
 Now it works! Reload the page and see.
 
-
+generate-image-post.png
 
 But while we have the HTML open, what's with `Stop Image Generation` just under it? The HTML doesn't look right.
 
 If we generate an image and then open the wand menu while it's generating, we see untranslated text.
 
-
+stop-generating-image-pre.png
 
 First fix the HTML:
 
 ```html
-<!--public/scripts/extensions/stable-diffusion/button.html-->
-<div id="sd_gen" class="list-group-item flex-container flexGap5">
+
     <div class="fa-solid fa-paintbrush extensionsMenuExtensionButton" title="Trigger Stable Diffusion"
-         data-i18n="[title]Trigger Stable Diffusion"></div>
-    <span data-i18n="Generate Image">Generate Image</span>
-</div>
-<div id="sd_stop_gen" class="list-group-item flex-container flexGap5">
+         data-i18n="[title]Trigger Stable Diffusion">
+    Generate Image
+
     <div class="fa-solid fa-circle-stop extensionsMenuExtensionButton" title="Abort current image generation task"
-         data-i18n="[title]Abort current image generation task"></div>
-    <span data-i18n="Stop Image Generation">Stop Image Generation</span>
-</div>
+         data-i18n="[title]Abort current image generation task">
+    Stop Image Generation
+
 ```
 
 This isn't enough to fix the issue. There are no translations for "Stop Image Generation" in the Chinese (Traditional)
@@ -140,22 +133,21 @@ After some discussion with Claude, we're actually going to go with the following
 - Simplified Chinese: "Stop Image Generation": "中止图像生成"
 - Japanese: "Stop Image Generation": "画像生成を停止"
 
-
+stop-generating-post-2.png
 
 ### `Generate Caption`
 
 "Generate Caption" is untranslated in the Chinese (Traditional) locale. Let's fix it!
 
-
+generate-image-post.png
 
 Where is it? Inspect the element.
 
 ```html
-<!--rendered HTML-->
-<div id="send_picture" class="list-group-item flex-container flexGap5 interactable" tabindex="0">
-    <div class="fa-solid fa-image extensionsMenuExtensionButton"></div>
+
+    
     Generate Caption
-</div>
+
 ```
 
 Turns out that this HTML is produced by JavaScript. Let's find the source code.
@@ -163,10 +155,10 @@ Turns out that this HTML is produced by JavaScript. Let's find the source code.
 ```js
 // public/scripts/extensions/caption/index.js
 const sendButton = $(`
-        <div id="send_picture" class="list-group-item flex-container flexGap5">
-            <div class="fa-solid fa-image extensionsMenuExtensionButton"></div>
+        
+            
             Generate Caption
-        </div>`);
+        `);
 ```
 
 We will first have to fix the code:
@@ -174,10 +166,10 @@ We will first have to fix the code:
 ```js
 // public/scripts/extensions/caption/index.js
 const sendButton = $(`
-        <div id="send_picture" class="list-group-item flex-container flexGap5">
-            <div class="fa-solid fa-image extensionsMenuExtensionButton"></div>
-            <span data-i18n="Generate Caption">Generate Caption</span>
-        </div>`);
+        
+            
+            Generate Caption
+        `);
 ``` 
 
 There are also no translations for "Generate Caption" in the Chinese (Traditional) file. Let's add it!
@@ -194,7 +186,7 @@ We will use the following translations:
 - Simplified Chinese: "Generate Caption": "生成图片说明"
 - Japanese: "Generate Caption": "画像説明を生成"
 
-
+generate-caption-post.png
 
 ### `Inspect Prompts`
 
@@ -263,7 +255,7 @@ We will merge those into the JSON files.
 }
 ```
 
-
+toggle-prompt-inspection-post-tt.png
 
 A pity about that tooltip. The problem is that the code doesn't use
 the `t` function.
@@ -303,7 +295,7 @@ repo: https://github.com/SillyTavern/Extension-PromptInspector/pull/1
 
 The translations will be added to the main SillyTavern repo. https://github.com/SillyTavern/SillyTavern/pull/3198
 
-
+start-inspecting-post.png
 
 ## Language files
 
@@ -330,7 +322,7 @@ There are two ways translations are used in the application:
 
 1. **HTML Elements**: Using `data-i18n` attributes
    ```html
-   <div data-i18n="some_key">Default Text</div>
+   Default Text
    ```
    The default text in the HTML will be replaced with the translated text if available.
 
@@ -348,7 +340,7 @@ this:
 For simple text content:
 
 ```html
-<span data-i18n="Role:">Role:</span>
+Role:
 ```
 
 ```json
@@ -366,7 +358,7 @@ To translate an attribute like a title or placeholder:
 ```html
 <a class="menu_button fa-chain fa-solid fa-fw"
    title="Insert prompt"
-   data-i18n="[title]Insert prompt"></a>
+   data-i18n="[title]Insert prompt">
 ```
 
 ```json
@@ -385,9 +377,9 @@ a fallback if the translation is missing. Most notably, there is no translation 
 Here is an example of using a unique identifier `no_items_text` as the key, rather than the English text:
 
 ```html
-<!--suppress HtmlUnknownAttribute -->
+
 <div class="openai_logit_bias_list" no_items_text="No items"
-     data-i18n="[no_items_text]openai_logit_bias_no_items"></div>
+     data-i18n="[no_items_text]openai_logit_bias_no_items">
 ```
 
 ```json
@@ -406,7 +398,7 @@ translating both the element's text content and its title attribute:
      title="Get your OpenRouter API token using OAuth flow. You will be redirected to openrouter.ai"
      data-i18n="Authorize;[title]Get your OpenRouter API token using OAuth flow. You will be redirected to openrouter.ai">
     Authorize
-</div>
+
 ```
 
 ```json
@@ -427,12 +419,12 @@ Note that both the `title` attribute and the element's text content are provided
 You can also translate multiple attributes:
 
 ```html
-<!--suppress HtmlUnknownAttribute -->
+
 <textarea id="send_textarea" name="text" class="mdHotkeys"
           data-i18n="[no_connection_text]Not connected to API!;[connected_text]Type a message, or /? for help"
           placeholder="Not connected to API!"
           no_connection_text="Not connected to API!"
-          connected_text="Type a message, or /? for help"></textarea>
+          connected_text="Type a message, or /? for help">
 ```
 
 The corresponding translations in your language file would look like:
@@ -501,7 +493,7 @@ Features:
 
 ### Inbuilt debug functions
 
-These are under <i class="fa-fw fa-solid fa-user-cog"></i> **User Settings** > **Debug Menu**.
+These are under  **User Settings** > **Debug Menu**.
 
 #### Get missing translations
 
@@ -518,6 +510,7 @@ The console will show a table of missing translations with:
 
 Reapplies the currently selected locale to the page
 
+Neither of these tools are perfect
 
 - they don't catch missing translations in JavaScript code
 - they don't catch missing data-i18n attributes in HTML, they just catch untranslated keys

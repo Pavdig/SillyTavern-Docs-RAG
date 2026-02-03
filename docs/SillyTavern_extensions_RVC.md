@@ -11,8 +11,8 @@ RVC is NOT TTS: it's more like speech-to-speech. It takes an audio clip as its i
 
 SillyTavern's RVC supports several API sources that perform audio conversion:
 
-* rvc-python
-* SillyTavern Extras (deprecated)
+* rvc-python (https://github.com/daswer123/rvc-python)
+* SillyTavern Extras (https://github.com/SillyTavern/SillyTavern-Extras) (deprecated)
 
 ### Common prerequisites
 
@@ -24,9 +24,9 @@ Make sure you have `ffmpeg` binary in your PATH environment variable. This tool 
 
 **Windows**:
 
-* Use the Toolbox in SillyTavern Launcher script to install ffmpeg automatically: <https://github.com/SillyTavern/SillyTavern-Launcher>
-* Or download the build here: <https://www.gyan.dev/ffmpeg/builds/>
-* How to modify PATH variable: <https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/>
+* Use the Toolbox in SillyTavern Launcher script to install ffmpeg automatically: 
+* Or download the build here: 
+* How to modify PATH variable: 
 * To test whether you did things correctly, open a command prompt and run ```ffmpeg```. It should print the ffmpeg version and info.
 
 **Linux**:
@@ -44,7 +44,7 @@ sudo dnf install ffmpeg
 
 **macOS**:
 
-Install ffmpeg using Homebrew:
+Install ffmpeg using Homebrew (https://brew.sh/):
 
 ```shell
 brew install ffmpeg
@@ -75,18 +75,18 @@ In the extension settings, choose an RVC source to use. Then proceed to the sour
 
 #### 1. Install the package
 
-Follow the installation instructions from the GitHub page: rvc-python Installation. It is recommended to follow CUDA installation instructions if you have an Nvidia GPU.
+Follow the installation instructions from the GitHub page: rvc-python Installation (https://github.com/daswer123/rvc-python?tab=readme-ov-file#installation). It is recommended to follow CUDA installation instructions if you have an Nvidia GPU.
 
 If you're experiencing problems when installing on Windows (e.g. building fairseq step fails), make sure the following software is installed on your PC:
 
-* Windows 10 SDK
-* Visual Studio Build Tools 2022
+* Windows 10 SDK (https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/)
+* Visual Studio Build Tools 2022 (https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022)
 
 #### 2. Prepare the models
 
 Create a directory for storing RVC models. By default it is named `rvc_models` and is picked up from your current directory when starting up the server. Every model is a subfolder (its name will be visible in the UI) that should contain `.pth` (required) and `.index` (optional) files.
 
-Read more: rvc-python Model Management
+Read more: rvc-python Model Management (https://github.com/daswer123/rvc-python?tab=readme-ov-file#model-management)
 
 #### 3. Start the API server
 

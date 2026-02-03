@@ -24,11 +24,10 @@ Choose between Circle, Square, Rectangle, or Rounded Square. This setting applie
 
 #### Chat Style
 
-| Style        | Description                                                                                                                                                    | Slash command |
-|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| **Flat**     | Clean and continuous "chat log" style, a flat canvas for your AI interactions to come to life.                                                                 | `/flat`<br>`/default`                                      |
-| **Bubbles**  | "Instant messenger" style with distinct bubbles for each message, delightful rounded corners, and a subtle 3D effect.                                          | `/bubble`<br>`/bubbles`                                    |
-| **Document** | Compact, document-like appearance with a text-focused layout. Hides avatars, timestamps, and message control buttons for past messages. | `/single`<br>`/story`                                      |
+| Style        | Description                                                                                                                                                    | [Slash command](SillyTavern_For_Contributors_st-script.md) |
+| **Flat**     | Clean and continuous "chat log" style, a flat canvas for your AI interactions to come to life.                                                                 | `/flat``/default`                                      |
+| **Bubbles**  | "Instant messenger" style with distinct bubbles for each message, delightful rounded corners, and a subtle 3D effect.                                          | `/bubble``/bubbles`                                    |
+| **Document** | Compact, document-like appearance with a text-focused layout. Hides avatars, timestamps, and message control buttons for past messages. | `/single``/story`                                      |
 
 ### Notifications
 
@@ -81,7 +80,7 @@ These switches control various UI features and behaviors. Some options can impro
 * **Reduced Motion**: Disable animations and transitions
 * **No Blur Effect**: Remove background blur for better performance
 * **No Text Shadows**: Disable text shadow effects
-* **Visual Novel mode**: Compact chat with background sprite
+* **[Visual Novel mode](SillyTavern_Visual-Novel.md)**: Compact chat with background sprite
 * **Expand Message Actions**: Always show full message context menu
 * **Zen Sliders**: Simplified parameter controls
 * **Mad Lab Mode**: Unrestricted parameter ranges
@@ -102,11 +101,11 @@ These switches control various UI features and behaviors. Some options can impro
 
 Allows you to apply custom CSS styles to further customize the appearance of the chat interface.
 
-Use <i class="fa-fw fa-solid fa-maximize" title="Expand icon"></i> **Expand** to expand the editor window for better visibility and editing.
+Use  **Expand** to expand the editor window for better visibility and editing.
 
 If you switch themes, your custom CSS will be replaced by the custom CSS of the new theme. Ensure you save your custom CSS to a theme if you want to keep it when switching themes.
 
-If you use a lot of custom CSS, or want to use the same custom CSS with several themes, the unofficial CSS Snippets extension can help you manage and organize your custom CSS.
+If you use a lot of custom CSS, or want to use the same custom CSS with several themes, the unofficial CSS Snippets extension (https://github.com/LenAnderson/SillyTavern-CssSnippets) can help you manage and organize your custom CSS.
 
 ---
 
@@ -118,23 +117,25 @@ To play your own custom sound on receiving a new message from bot, replace the f
 
 Plays at 80% volume.
 
-If the "Background Sound Only" option is enabled, the sound plays only if SillyTavern window is **unfocused**.
+If the "[Background Sound Only](SillyTavern_index.md)" option is enabled, the sound plays only if SillyTavern window is **unfocused**.
 
 ## Formulas Rendering
 
-To enable math formulas rendering, use the LaTeX extension. To get the extension, you need to install it via the "Download Extensions & Assets" menu in SillyTavern.
+To enable math formulas rendering, use the LaTeX extension (https://github.com/SillyTavern/Extension-LaTeX). To get the extension, you need to install it via the "Download Extensions & Assets" menu in SillyTavern.
 
-Type your formulas in code blocks with `latex` or `asciimath` language identifiers for LaTeX and AsciiMath respectively. The extension uses KaTeX for rendering.
+Type your formulas in code blocks with `latex` or `asciimath` language identifiers for LaTeX and AsciiMath respectively. The extension uses KaTeX (https://katex.org/) for rendering.
 
-<pre><code>```latex
+```latex
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
 ```
 
 ```asciimath
 int_{-oo}^{oo} e^{-x^2} dx = sqrt{pi}
-```</code></pre>
+```
 
+Deprecation notice
 The legacy `$` and `$$` wrapper syntax is no longer supported. Please use the following regex scripts to polyfill the old syntax:
 
-* $$ - LaTeX
-* $ - AsciiMath
+* $$ - LaTeX (https://github.com/SillyTavern/Extension-LaTeX/raw/refs/heads/main/assets/$$_-_latex.json)
+* $ - AsciiMath (https://github.com/SillyTavern/Extension-LaTeX/raw/refs/heads/main/assets/$_-_asciimath.json)
+

@@ -3,27 +3,28 @@
 
 This page describes the ways you can manage your AI chat files.
 
+Note
 Some of these options are available in the "Manage chat files" dialog that opens from the bottom left options menu.
 
 ## Solo Chats vs Group Chats
 
 The simplest way to use a character card is a Solo chat; just click on their card and start chatting.
 
-Once you have a few character cards, you can also use the "Create New Chat Group" button to create a group chat including multiple characters which will then interact with each other and you.
+Once you have a few character cards, you can also use the "Create New Chat Group" button to create a [group chat](SillyTavern_Usage_Characters_groupchats.md) including multiple characters which will then interact with each other and you.
 
 ## Chat import
 
 **Import chats from Character.AI into SillyTavern.**
 
-To import Character.AI chats and bots, use the CAI Tools browser extension: https://github.com/irsat000/CAI-Tools.
+To import Character.AI chats and bots, use the CAI Tools browser extension: https://github.com/irsat000/CAI-Tools (https://github.com/irsat000/CAI-Tools).
 
 Other programs and tools that you can import chats from include:
 
-* TavernAI (original): <https://github.com/TavernAI/TavernAI>
-* Text Generation WebUI (oobabooga): <https://github.com/oobabooga/text-generation-webui>
-* Agnai: <https://github.com/agnaistic/agnai>
-* KoboldAI Lite: <https://github.com/LostRuins/lite.koboldai.net>
-* RisuAI: <https://github.com/kwaroran/RisuAI>
+* TavernAI (original): 
+* Text Generation WebUI (oobabooga): 
+* Agnai: 
+* KoboldAI Lite: 
+* RisuAI: 
 
 ## Export as .jsonl
 

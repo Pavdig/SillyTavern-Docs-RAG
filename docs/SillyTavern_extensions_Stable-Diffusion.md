@@ -26,34 +26,32 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 ## Supported sources
 
 | Source                                                                                            | Remarks                                                                                         |
-|:--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
-| AI.ML API                                                                 | Cloud, paid                                                                                     |
-| Black Forest Labs                                                              | Cloud, paid                                                                                     |
-| Chutes                                                                      | Cloud                                                                                           |
-| ComfyUI                                              | Local, open source (GPL3), free of charge, see ComfyUI Configuration. |
-| Draw Things                                                             | Local, Mac/iOS, free of charge                                                                  |
-| Electron Hub                                                           | Cloud, paid                                                                                     |
-| FAL.AI                                                                         | Cloud, paid                                                                                     |
-| Google AI Studio / Google Vertex AI | Cloud, paid. Imagen model series. AI Studio supports less models.                       |
-| HuggingFace Serverless                         | Cloud, free of charge                                                                           |
-| NanoGPT                                                                  | Cloud, paid                                                                                     |
-| NovelAI Diffusion                                                         | Cloud, requires an active subscription                                                          |
-| OpenAI                                                            | Cloud, paid                                                                                     |
-| OpenRouter                                                              | Cloud                                                                                           |
-| Pollinations                                                          | Cloud, open source (MIT), free of charge                                                        |
-| SD.Next / vladmandic                                   | Local, open source (AGPL3), free of charge                                                      |
-| SillyTavern Extras                           | Deprecated, not recommended                                                                     |
-| Stability AI                                                    | Cloud, paid                                                                                     |
-| Stable Diffusion WebUI / AUTOMATIC1111 | Local, open source (AGPL3), free of charge                                                      |
-| Stable Horde                                                          | Cloud, open source (AGPL3), free of charge                                                      |
-| TogetherAI                        | Cloud                                                                                           |
-| x.AI                                                                             | Cloud, paid                                                                                     |
-| Z.AI                                                                             | Cloud, paid                                                                                     |
+| AI.ML API (https://aimlapi.com/)                                                                 | Cloud, paid                                                                                     |
+| Black Forest Labs (https://bfl.ai/)                                                              | Cloud, paid                                                                                     |
+| Chutes (https://chutes.ai/)                                                                      | Cloud                                                                                           |
+| ComfyUI (https://github.com/comfyanonymous/ComfyUI)                                              | Local, open source (GPL3), free of charge, see ComfyUI Configuration. |
+| Draw Things (https://drawthings.ai/)                                                             | Local, Mac/iOS, free of charge                                                                  |
+| Electron Hub (https://electronhub.ai/)                                                           | Cloud, paid                                                                                     |
+| FAL.AI (https://fal.ai/)                                                                         | Cloud, paid                                                                                     |
+| Google AI Studio (https://aistudio.google.com/) / Google Vertex AI (https://cloud.google.com/vertex-ai) | Cloud, paid. Imagen model series. AI Studio supports less models.                       |
+| HuggingFace Serverless (https://huggingface.co/docs/api-inference/index)                         | Cloud, free of charge                                                                           |
+| NanoGPT (https://nano-gpt.com/)                                                                  | Cloud, paid                                                                                     |
+| NovelAI Diffusion (https://novelai.net/)                                                         | Cloud, requires an active subscription                                                          |
+| OpenAI (https://platform.openai.com/)                                                            | Cloud, paid                                                                                     |
+| OpenRouter (https://openrouter.ai/)                                                              | Cloud                                                                                           |
+| Pollinations (https://pollinations.ai/)                                                          | Cloud, open source (MIT), free of charge                                                        |
+| SD.Next / vladmandic (https://github.com/vladmandic/automatic)                                   | Local, open source (AGPL3), free of charge                                                      |
+| SillyTavern Extras (https://github.com/SillyTavern/SillyTavern-Extras)                           | Deprecated, not recommended                                                                     |
+| Stability AI (https://platform.stability.ai/)                                                    | Cloud, paid                                                                                     |
+| Stable Diffusion WebUI / AUTOMATIC1111 (https://github.com/AUTOMATIC1111/stable-diffusion-webui) | Local, open source (AGPL3), free of charge                                                      |
+| Stable Horde (https://stablehorde.net/)                                                          | Cloud, open source (AGPL3), free of charge                                                      |
+| TogetherAI (https://docs.together.ai/docs/serverless-models#image-models)                        | Cloud                                                                                           |
+| x.AI (https://x.ai/)                                                                             | Cloud, paid                                                                                     |
+| Z.AI (https://z.ai/)                                                                             | Cloud, paid                                                                                     |
 
 ## Generation modes
 
 | Wand menu item     | Slash command argument | Description                                    | Remarks                               |
-|:-------------------|:-----------------------|:-----------------------------------------------|:--------------------------------------|
 | "Yourself"         | `you`                  | A full-body portrait of the current character. | -                                     | 
 | "Your Face"        | `face`                 | A close-up portrait of the current character.  | Forces a portrait aspect ratio.       |
 | "Me"               | `me`                   | A portrait of the user persona.                | -                                     |
@@ -100,7 +98,7 @@ You can avoid posting a generated image into the chat by passing a `quiet=true` 
 The example below will send the generated image using Markdown as a user persona.
 
 ```stscript
-/sd quiet=true me | /send Here's a picture of me: 
+/sd quiet=true me | /send Here's a picture of me: my portrait
 ```
 
 ### Image swipes
@@ -119,7 +117,7 @@ Allow to edit the automatically generated prompts manually before sending them t
 
 ### Use function tool
 
-Uses function calling to automatically detect the intention to generate an image.
+Uses [function calling](SillyTavern_extensions_Stable-Diffusion.md) to automatically detect the intention to generate an image.
 
 **Requirements:**
 
@@ -165,6 +163,7 @@ Snap image generation requests with a forced aspect ratio (portraits, background
 
 ## Common prompt prefix
 
+Pro Tip
 Use `{prompt}` macro to specify where exactly the generated prompt will be inserted.
 
 Added before every generated or free-mode prompt. Commonly used for setting the overall style of the picture.
@@ -179,7 +178,8 @@ Example: `bad quality, watermark`.
 
 ## Character-specific prompt prefix
 
-If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
+Pro Tip
+If supported by the generation source, you can also use LoRAs/embeddings here, for example: ``.
 
 Any characteristics that describe the currently selected character. Will be added after a common prefix.
 
@@ -191,6 +191,7 @@ Limitations:
 1. Works only in 1-to-1 chats. Will not be used in groups.
 2. Won't be used for backgrounds and free mode generations.
 
+Note
 To force include a character prefix into a free mode prompt, use the `{{charPrefix}}` macro anywhere in the prompt.
 
 If you want to share the prefixes with others, tick the "Shareable" checkbox. This will save them with the character data, rather than your local settings. 
@@ -212,7 +213,7 @@ A text message can be customized by changing the "Chat Message Template" under I
 
 ## ComfyUI Configuration
 
-ComfyUI is a fast and very flexible option for image generation. 
+ComfyUI (https://github.com/comfyanonymous/ComfyUI) is a fast and very flexible option for image generation. 
 
 If you're familiar with ComfyUI, the tl;dr is: make your workflow in ComfyUI, download it **in API format**, and paste it into the SillyTavern ComfyUI Workflow Editor. ST will submit your workflow to ComfyUI's API and you will get an image in your chat. But with great power comes great responsibility, and the main responsibility is inserting placeholders in your workflow JSON so you can change settings from SillyTavern.
 
@@ -225,23 +226,23 @@ This panel allows you to configure and manage your ComfyUI integration with Sill
 #### Server Type
 
 * Standard Server is when you call ComfyUI directly whether on your local machine or hosted elsewhere.
-* RunPod Serverless Endpoint is for running ComfyUI through RunPod's serverless API. Serverless can be a good option for remote generation as you can get the same control over workflows as a standard server but can take advantage of more powerful hosted GPUs and only be charged when you're actively generating images. The majority of the usage is the same. Differences from standard server setup and behavior is described below.
+* RunPod Serverless Endpoint is for running ComfyUI through RunPod's serverless API (https://www.runpod.io/product/serverless). Serverless can be a good option for remote generation as you can get the same control over workflows as a standard server but can take advantage of more powerful hosted GPUs and only be charged when you're actively generating images. The majority of the usage is the same. Differences from standard server setup and behavior is described below.
 
 #### Standard Server setup
 
 Enter the URL of your ComfyUI server in the **ComfyUI URL** input field. The default value is `http://127.0.0.1:8188`. 
-If you are using SwarmUI, the default port for the 
-managed ComfyUI server is `7821`, 
+If you are using SwarmUI (https://github.com/mcmonkeyprojects/SwarmUI), the default port for the 
+managed ComfyUI server (https://github.com/mcmonkeyprojects/SwarmUI/blob/master/src/BuiltinExtensions/ComfyUIBackend/README.md) is `7821`, 
 20 ports higher than the default port for SwarmUI.
 
-After entering the URL, choose <i class="fa-solid fa-check"></i> **Connect** to validate and establish a connection. The ComfyUI server must be accessible from the SillyTavern host machine.
+After entering the URL, choose  **Connect** to validate and establish a connection. The ComfyUI server must be accessible from the SillyTavern host machine.
  
 #### ComfyUI RunPod Setup
 
 * You'll need a RunPod account and to add some money to it. You can probably expect around 2 cents per image for Qwen image generation on an RTX 4090 though YMMV. $5 in credits should last a while.
-* <https://console.runpod.io/hub/runpod-workers/worker-comfyui> is a flux1 dev configuration that you can use to create your own serverless endpoint.
+*  is a flux1 dev configuration that you can use to create your own serverless endpoint.
   * There is information there on creating your own configuration if you want to use a different model or add LoRAs.
-* Create an API key for access to the serverless endpoint: <https://console.runpod.io/user/settings>
+* Create an API key for access to the serverless endpoint: 
 
 * In ST, select **ComfyUI** as the **Source** and **RunPod Serverless Endpoint** as the **Server Type**.
 * Set the **ComfyUI RunPod URL** to the URL of your endpoint.
@@ -253,6 +254,7 @@ After entering the URL, choose <i class="fa-solid fa-check"></i> **Connect** to 
   * Model, samplers, VAE, etc cannot be determined dynamically so your workflow needs to have these hard coded (no `%model%` substitution).
   * Other substitutions should work the same as local.
 
+Note
 The serverless configuration does not currently embed the workflow into the output image. i.e., you won't be able to drag/drop the image into local ComfyUI to see the seed or prompt. This is just a limitation of the RunPod handler and is a capability that could be added on that side.
 
 ### Workflow Management
@@ -264,9 +266,9 @@ Select a ComfyUI workflow from the dropdown menu. Two default workflows are prov
 
 Use the following buttons to manage your workflows:
 
-- <i class="fa-solid fa-pen-to-square"></i> **Open workflow editor** to view and modify the selected workflow.
-- <i class="fa-solid fa-plus"></i> **Create new workflow** to create a new workflow with a custom name.
-- <i class="fa-solid fa-trash-can"></i> **Delete workflow** to remove the selected workflow.
+-  **Open workflow editor** to view and modify the selected workflow.
+-  **Create new workflow** to create a new workflow with a custom name.
+-  **Delete workflow** to remove the selected workflow.
 
 ### Workflow Editor
 
@@ -282,6 +284,7 @@ To add a ComfyUI workflow to the editor, follow these steps:
 4. Paste the downloaded JSON data into the text area.
 5. Replace specific values with placeholders as needed for your use case.
 
+Tips
 You can add the API-format JSON file directly to the `data/default-user/user/workflows` directory in your SillyTavern installation. This will save you from steps 3 and 4.
 
 Retain the original JSON file. If you need to open the workflow again in ComfyUI to make changes, it is much more convenient to edit the original file than the one with all the placeholders.
@@ -324,9 +327,9 @@ Notice that the placeholder is wrapped in double quotes. This is important for t
 
 Sometimes the prompt (or other value) doesn't appear where you might expect. ComfyUI will remove nodes from the API version of the workflow if they are not necessary for the workflow to function in API mode. 
 
-For instance, this workflow uses a LoRA tag loader node with a prompt primitive so the workflow is clearer in UI mode:
+For instance, this workflow uses a LoRA tag loader node (https://github.com/badjeff/comfyui_lora_tag_loader) with a prompt primitive so the workflow is clearer in UI mode:
 
-
+Prompt primitive and LoRA loader
 
 The prompt primitive node will be removed from the API version of the workflow, so you insert the placeholder in the LoraTagLoader node. Find the text "apple tree" in the workflow and replace it with the `%prompt%` placeholder:
 
@@ -384,7 +387,7 @@ An example from the default text-to-image workflow:
 ```
 +++
 
-To load GGUF-quantized UNets, use a UNet Loader (GGUF) node in your workflow, 
+To load GGUF-quantized UNets, use a UNet Loader (GGUF) (https://github.com/city96/ComfyUI-GGUF) node in your workflow, 
 choose a `GGUF` model in the SillyTavern model dropdown, and use the `%model%` placeholder in the node's settings like this:
 
 +++ JSON with placeholder
@@ -413,17 +416,18 @@ choose a `GGUF` model in the SillyTavern model dropdown, and use the `%model%` p
 ```
 +++
 
+If you have model types other than the usual SD checkpoints in ComfyUI
 Stable Diffusion checkpoints, SD UNets, and GGUF-quantized UNets all appear in the Model dropdown.
 Models of one type will not work with workflows/loader nodes expecting another type.
 If you choose an incompatible model type in ST, ComfyUI will report a problem with the loader node.
 
 #### Avatar images
 
-Use the `%user_avatar%` and `%char_avatar%` placeholders to include the user and character avatars in the workflow. These placeholders are replaced with the PNG data of the avatars when the workflow is executed. The image data is encoded in base64 format, so you must decode it in your workflow. A popular choice for this task is the Load image (Base64) node.
+Use the `%user_avatar%` and `%char_avatar%` placeholders to include the user and character avatars in the workflow. These placeholders are replaced with the PNG data of the avatars when the workflow is executed. The image data is encoded in base64 format, so you must decode it in your workflow. A popular choice for this task is the Load image (Base64) (https://github.com/Acly/comfyui-tooling-nodes) node.
 
 In this example, the character avatar is loaded with a `Load Image (Base64)` node. It also uses an Image Resize node to rescale the image to whatever size is specified in the image generation settings:
 
-
+Load image from base64 string and resize
 
 Insert the `%char_avatar%`, `%width%`, and `%height%` placeholders into the JSON for the Load Image (Base64) and Image Resize nodes:
 
@@ -509,8 +513,8 @@ Read all the general information on this page so you're familiar with the image 
 
 #### Loading LoRAs
 
-Use a LoRA tag loader node (such as Load LoRA Tag) to load any LoRAs specified in the prompt. 
-Now you can add as many LoRAs as you like to your prompt with tags like `<lora:CroissantStyle:0.8>`, and they will be loaded into your workflow. 
+Use a LoRA tag loader node (such as Load LoRA Tag (https://github.com/badjeff/comfyui_lora_tag_loader)) to load any LoRAs specified in the prompt. 
+Now you can add as many LoRAs as you like to your prompt with tags like ``, and they will be loaded into your workflow. 
 This will also make the "pro-tip" of using LoRAs in character-specific prompt prefixes work with ComfyUI.
 
 #### Setting workflow values from styles or slash-commands

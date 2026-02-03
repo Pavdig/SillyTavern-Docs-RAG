@@ -3,22 +3,23 @@
 
 UI extensions expand SillyTavern's functionality by hooking into its events and API. They run in a browser context and have practically unrestricted access to the DOM, JavaScript APIs, and the SillyTavern context. Extensions can modify the UI, call internal APIs, and interact with chat data. This guide explains how to create your own extensions (JavaScript knowledge is required).
 
-Go here: Extensions.
+Just want to install extensions?
+Go here: [Extensions](SillyTavern_extensions_index.md).
 
-To extend the functionality of the Node.js server, see the Server Plugins page.
+To extend the functionality of the Node.js server, see the [Server Plugins](SillyTavern_Server-Plugins.md) page.
 
 **Can't write JavaScript?**
 
-* Consider STscript as a simpler alternative to writing a full-fledged extension.
-* Go through the MDN Course and come back when you're done.
+* Consider [STscript](SillyTavern_st-script.md) as a simpler alternative to writing a full-fledged extension.
+* Go through the MDN Course (https://developer.mozilla.org/en-US/docs/Learn/JavaScript) and come back when you're done.
 
 ## Extension submissions
 
-Want to contribute your extensions to the official content repository? Contact us!
+Want to contribute your extensions to the official content repository (https://github.com/SillyTavern/SillyTavern-Content)? Contact us!
 
 To ensure that all extensions are safe and easy to use, we have a few requirements:
 
-1. Your extension must be open-source and have a libre license (see Choose a License). If you are unsure, AGPLv3 is a good choice.
+1. Your extension must be open-source and have a libre license (see Choose a License (https://choosealicense.com/licenses/)). If you are unsure, AGPLv3 is a good choice.
 2. Extensions must be compatible with the latest release version of SillyTavern. Please be ready to update your extension if something in the core changes.
 3. Extensions must be well-documented. This includes a README file with installation instructions, usage examples, and a list of features.
 4. Extensions that have a server plugin requirement to function will not be accepted.
@@ -27,15 +28,15 @@ To ensure that all extensions are safe and easy to use, we have a few requiremen
 
 See live examples of simple SillyTavern extensions:
 
-* <https://github.com/city-unit/st-extension-example> - basic extension template. Showcases manifest creation, local script imports, adding a settings UI panel, and persistent extension settings usage.
-* <https://github.com/search?q=topic%3Aextension+org%3ASillyTavern&type=Repositories> - a list of all official SillyTavern extensions on GitHub.
+*  - basic extension template. Showcases manifest creation, local script imports, adding a settings UI panel, and persistent extension settings usage.
+*  - a list of all official SillyTavern extensions on GitHub.
 
 ## Bundling
 
 Extensions can also utilize bundling to isolate themselves from the rest of the modules and use any dependencies from NPM, including UI frameworks like Vue, React, etc.
 
-* <https://github.com/SillyTavern/Extension-WebpackTemplate> - template repository of an extension using TypeScript and Webpack (no React).
-* <https://github.com/SillyTavern/Extension-ReactTemplate> - template repository of a bare-bones extension using React and Webpack.
+*  - template repository of an extension using TypeScript and Webpack (no React).
+*  - template repository of a bare-bones extension using React and Webpack.
 
 To use relative imports from the bundle, you may need to create an import wrapper. Here's an example for Webpack:
 
@@ -45,7 +46,7 @@ To use relative imports from the bundle, you may need to create an import wrappe
  * @param {string} url URL to import from
  * @param {string} what Name of the member to import
  * @param {any} defaultValue Fallback value
- * @returns {Promise<any>} Imported member
+ * @returns {Promise} Imported member
  */
 export async function importFromUrl(url, what, defaultValue = null) {
     try {
@@ -66,7 +67,7 @@ const generateRaw = await importFromUrl('/script.js', 'generateRaw');
 
 ## manifest.json
 
-Every extension must have a folder in `data/<user-handle>/extensions` and a `manifest.json` file, which contains metadata about the extension and a path to a JS script file that is the entry point of the extension.
+Every extension must have a folder in `data//extensions` and a `manifest.json` file, which contains metadata about the extension and a path to a JS script file that is the entry point of the extension.
 
 Downloadable extensions are mounted into the `/scripts/extensions/third-party` folder when serving over HTTP, so relative imports should be used based on that. To ease local development, consider placing your extension repository in the `/scripts/extensions/third-party` folder (the "Install for all users" option).
 
@@ -137,7 +138,7 @@ context.groupId; // ID of the current group
 // And many more...
 ```
 
-You can find the full list of available properties and functions in the SillyTavern source code.
+You can find the full list of available properties and functions in the SillyTavern source code (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/st-context.js).
 
 If you're missing any of the functions/properties in `getContext`, please get in touch with the developers or send us a pull request!
 
@@ -145,22 +146,22 @@ If you're missing any of the functions/properties in `getContext`, please get in
 
 Most of the npm libraries used internally by the SillyTavern frontend are shared in the `libs` property of the `SillyTavern` global object.
 
-* `lodash` - Utility library. Docs.
-* `localforage` - Browser storage library. Docs.
-* `Fuse` - Fuzzy search library. Docs.
-* `DOMPurify` - HTML sanitization library. Docs.
-* `Handlebars` - Templating library. Docs.
-* `moment` - Date/time manipulation library. Docs.
-* `showdown` - Markdown converter library. Docs.
+* `lodash` - Utility library. Docs (https://lodash.com/).
+* `localforage` - Browser storage library. Docs (https://localforage.github.io/localForage/).
+* `Fuse` - Fuzzy search library. Docs (https://www.fusejs.io/).
+* `DOMPurify` - HTML sanitization library. Docs (https://github.com/cure53/DOMPurify).
+* `Handlebars` - Templating library. Docs (https://handlebarsjs.com/).
+* `moment` - Date/time manipulation library. Docs (http://momentjs.com/).
+* `showdown` - Markdown converter library. Docs (https://showdownjs.com/).
 
-You can find the full list of exported libraries in the SillyTavern source code.
+You can find the full list of exported libraries in the SillyTavern source code (https://github.com/SillyTavern/SillyTavern/blob/staging/public/lib.js).
 
 **Example:** Using the DOMPurify library.
 
 ```js
 const { DOMPurify } = SillyTavern.libs;
 
-const sanitizedHtml = DOMPurify.sanitize('<script>"dirty HTML"</script>');
+const sanitizedHtml = DOMPurify.sanitize('"dirty HTML"');
 ```
 
 ### TypeScript notice
@@ -272,12 +273,13 @@ The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen
 
 ### Character cards
 
-SillyTavern fully supports Character Cards V2 Specification, which allows to store arbitrary data in the character card JSON data.
+SillyTavern fully supports Character Cards V2 Specification (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md), which allows to store arbitrary data in the character card JSON data.
 
 This is useful for extensions that need to store additional data associated with the character and make it shareable when exporting the character card.
 
-To write data to the character card extensions data field, use the `writeExtensionField` function from the `getContext()` function. This function takes a character ID, a string key, and a value to write. The value must be JSON-serializable.
+To write data to the character card extensions (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md#extensions) data field, use the `writeExtensionField` function from the `getContext()` function. This function takes a character ID, a string key, and a value to write. The value must be JSON-serializable.
 
+Weirdness Ahead
 Despite being called `characterId`, it's not a "real" unique identifier but rather an index of the character in the `characters` array.
 
 The index of the current character is provided by the `characterId` property in the context. If you want to write data to the currently selected character, use `SillyTavern.getContext().characterId`. If you need to store data for another character, find the index by searching for the character in the `characters` array.
@@ -332,11 +334,11 @@ The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset i
 
 ## Internationalization
 
-For general information on providing translations, see the Internationalization page.
+For general information on providing translations, see the [Internationalization](SillyTavern_For_Contributors_i18n.md) page.
 
 Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.
 
-See the list of supported locales here (`lang` key): <https://github.com/SillyTavern/SillyTavern/blob/release/public/locales/lang.json>
+See the list of supported locales here (`lang` key): 
 
 ### Direct `addLocaleData` call
 
@@ -397,27 +399,27 @@ SlashCommandParser.addCommandObject(SlashCommand.fromProps({ name: 'repeat',
         }),
     ],
     helpString: `
-        <div>
+        
             Repeats the provided text a number of times.
-        </div>
-        <div>
-            <strong>Example:</strong>
-            <ul>
-                <li>
-                    <pre><code class="language-stscript">/repeat foo</code></pre>
+        
+        
+            Example:
+            
+                
+                    /repeat foo
                     returns "foofoofoofoofoo"
-                </li>
-                <li>
-                    <pre><code class="language-stscript">/repeat times=3 space=on bar</code></pre>
+                
+                
+                    /repeat times=3 space=on bar
                     returns "bar bar bar"
-                </li>
-            </ul>
-        </div>
+                
+            
+        
     `,
 }));
 ```
 
-All registered commands can be used in STscript in any possible way.
+All registered commands can be used in [STscript](SillyTavern_For_Contributors_st-script.md) in any possible way.
 
 ## Events
 
@@ -449,8 +451,9 @@ The main event types are:
 * `GENERATION_ENDED`: the generation has been completed or has errored out.
 * `SETTINGS_UPDATED`: the application settings have been updated.
 
-The rest can be found in the source.
+The rest can be found in the source (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/events.js).
 
+Event data
 The way each event passes its data to the listener is not uniform. Some events don't emit any data; some pass an object or a primitive value. Please refer to the source code where the event is emitted to see what data it passes, or check with the debugger.
 
 ### Emitting events
@@ -569,13 +572,13 @@ const result = await generateRaw({
 
 Currently only supported by the Chat Completion API. The availability varies based on the selected source and model. If the selected model does not support structured outputs, the generation will either fail or will return an empty object (`'{}'`). Check the documentation for the specific API you are using to see if structured outputs are supported.
 
-You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema. This is useful for extensions that require structured data, such as state tracking, data classification, etc.
+You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema (https://json-schema.org/learn). This is useful for extensions that require structured data, such as state tracking, data classification, etc.
 
 To use structured outputs, you must pass a JSON schema object to `generateRaw()` or `generateQuietPrompt()`. The model will then generate a response that matches the schema, and it will be returned as a stringified JSON object.
 
 The outputs are not validated against the schema, you must handle the parsing and validation of the generated output yourself. If the model fails to generate a valid JSON object, the function will return an empty object (`'{}'`).
 
-Zod is a popular library to generate and validate JSON schemas. Its use will not be covered here.
+Zod (https://zod.dev/json-schema) is a popular library to generate and validate JSON schemas. Its use will not be covered here.
 
 ```js
 const { generateRaw, generateQuietPrompt } = SillyTavern.getContext();
@@ -868,7 +871,7 @@ const results = fuse.search('query');
 
 // Template rendering
 const { Handlebars } = SillyTavern.libs;
-const template = Handlebars.compile('<div>{{name}}</div>');
+const template = Handlebars.compile('{{name}}');
 const html = template({ name: 'Example' });
 
 // Date/time manipulation
@@ -876,7 +879,7 @@ const { moment } = SillyTavern.libs;
 const formatted = moment().format('YYYY-MM-DD HH:mm:ss');
 ```
 
-Other available libraries include: `DOMPurify`, `localforage`, `hljs`, `showdown`, `yaml`, and more. Check lib.js for the full list.
+Other available libraries include: `DOMPurify`, `localforage`, `hljs`, `showdown`, `yaml`, and more. Check lib.js (https://github.com/SillyTavern/SillyTavern/blob/release/public/lib.js) for the full list.
 
 **Initialize settings properly**
 

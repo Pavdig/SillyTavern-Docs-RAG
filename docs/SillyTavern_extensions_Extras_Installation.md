@@ -3,20 +3,21 @@
 
 This page contains instructions for installing SillyTavern Extras on your local device.
 
+Discontinued
 The Extras project was discontinued in April 2024 and won't receive any new updates or modules. The vast majority of modules are available natively in the main SillyTavern application. You may still install and use it but don't expect to get immediate support if you face any issues.
 
 Local installation of Extras can be difficult or impossible on your OS (especially Termux).
 
-## Use the Official Extras Colab
+## Use the Official Extras Colab (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
 
 * Simple to setup
 * Free to use
 * No Colab GPU credits required (use the `use_cpu` options)
-* See the Colab Guide Page for details.
+* See the [Colab Guide Page](SillyTavern_extensions_Extras_Installation.md) for details.
 
 ### Running Extras in Colab
 
-* Open the Official Extras Colab
+* Open the Official Extras Colab (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
 * Select the desired "Extra" options
 * select `use_cpu` to run Extras without requiring GPU credit
   * this will make Stable Diffusion slower, but everything else will run normally
@@ -42,11 +43,11 @@ Local installation of Extras can be difficult or impossible on your OS (especial
 
 This method is recommended because Conda makes a 'virtual environment' for the Extras requirement packages to live inside, so they do not affect your system-wide Python setup.
 
-1. Install Miniconda
+1. Install Miniconda (https://docs.conda.io/en/latest/miniconda.html)
 
-    _(Important!) Read how to use Conda_
+    _(Important!) Read how to use Conda (https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)_
 
-2. Install git
+2. Install git (https://git-scm.com/downloads)
 
     _(Chads who installed SillyTavern with git to begin with can skip this step!)_
     
@@ -80,7 +81,7 @@ This method is recommended because Conda makes a 'virtual environment' for the E
    * `pip install -r requirements-rvc.txt` - for real-time voice cloning
    * `pip install -r requirements-coqui.txt` - for Coqui TTS (not recommended)
 
-    See the Common Problems page if you get errors at this step!
+    See the [Common Problems](SillyTavern_extensions_Extras_Installation.md) page if you get errors at this step!
 
 9. See below 'Running Extras After Install'
 
@@ -94,8 +95,8 @@ This can cause conflicts if you work with many Python programs that have differe
 
 If this is your first time touching anything Python-related, that should not be a problem.
 
-1. Install Python 3.11: <https://www.python.org/downloads/release/python-3115/>
-2. Install git: <https://git-scm.com/downloads>
+1. Install Python 3.11: 
+2. Install git: 
 3. Open a command prompt window and go to a folder in which you have complete access permissions.
 4. Clone the repo: `git clone https://github.com/SillyTavern/SillyTavern-extras`, hit Enter.
 5. After the clone has finished, type `cd SillyTavern-extras`, hit Enter.
@@ -127,13 +128,12 @@ This would enable Image Captioning, Chat Summary, and live updating Character Ex
 Below is a table that describes each module.
 
 | Name         | Description                                                         |
-|--------------|---------------------------------------------------------------------|
 | `caption`    | Image captioning                                                    |
 | `summarize`  | Text summarization                                                  |
 | `classify`   | Text sentiment classification                                       |
 | `sd`         | Stable Diffusion image generation                                   |
-| `silero-tts` | Silero TTS server |
-| `edge-tts`   | Microsoft Edge TTS client      |
+| `silero-tts` | Silero TTS server (https://github.com/ouoertheo/silero-api-server) |
+| `edge-tts`   | Microsoft Edge TTS client (https://github.com/rany2/edge-tts)      |
 | `chromadb`   | Vector storage server                                               |
 | `coqui-tts`  | Coqui TTS                                                           |
 | `rvc`        | Real-time voice cloning                                             |
@@ -207,13 +207,13 @@ It requires the installation of an additional package because it's not installed
 
 ### Extras server can't connect to AUTOMATIC1111's Stable Diffusion Web UI
 
-> Could not connect to remote SD backend at <http://127.0.0.1:7860>! Disabling SD module...
+> Could not connect to remote SD backend at ! Disabling SD module...
 
 **Make sure webui-user.bat that you start Stable Diffusion with contains --api command line option in the COMMANDLINE_ARGS variable.**
 
 Find and replace that line in your "webui-user.bat": `set COMMANDLINE_ARGS=--api`
 
-
+How it should look
 
 If the API mode is disabled for SD Web UI, the Extras server won't be able to make a connection and you won't be able to generate images!
 
@@ -233,7 +233,7 @@ The extras server can't reconnect to the Stable Diffusion API if it was loaded a
 
 Before installing the ChromaDB module you must first do `one of the following`:
 
-* Install Visual C++ build tools: <https://visualstudio.microsoft.com/visual-cpp-build-tools/>
+* Install Visual C++ build tools: 
 * Install the `hnswlib` package with conda: `conda install -c conda-forge hnswlib`
 
 ---
@@ -251,7 +251,7 @@ Install the requirements using the `requirements-silicon.txt` file instead.
 ### Missing modules?
 
 * You must specify a list of module names in your Python command line, with the `--enable-modules` modifier.
-* See Modules section.
+* See [Modules](SillyTavern_extensions_Extras_Installation.md) section.
 
 ---
 
@@ -273,4 +273,3 @@ Install the requirements using the `requirements-silicon.txt` file instead.
 
 #### ❗ This is UNSUPPORTED
 
-<https://rentry.org/STAI-Termux#downloading-and-running-tai-extras>

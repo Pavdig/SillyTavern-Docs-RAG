@@ -22,3 +22,4 @@ Server plugins allow adding functionality such as new API endpoints by running c
 **Internationalization (i18n)**
 
 Learn how to translate SillTavern's UI into your language.
+

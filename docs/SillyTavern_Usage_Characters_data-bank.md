@@ -17,6 +17,7 @@ Data Bank stores file attachments, also known as documents. The documents are di
 2. Character attachments - available only for the currently chosen character, including when they are replying in a group. _Attachments are saved locally and are not exported with the character card!_
 3. Chat attachments - available only in the currently open chat. Every character in the chat can pull from it.
 
+Note
 While not formally a part of the data bank, you can attach files even to individual messages. Use the Attach File option from the "Wand" menu, or a paperclip icon in the message actions row.
 
 What can be a document? Practically anything that is representable in plain text form!
@@ -49,11 +50,12 @@ Upload a file from the hard drive of your computer. SillyTavern provides built-i
 
 You can also attach any text files with non-standard extensions, such as JSON, YAML, source codes, etc. If there are no known conversions from the type of a selected file, and the file can't be parsed as a plain text document, the file upload will be rejected, meaning that raw binary files are not allowed.
 
-Importing Microsoft Office (DOCX, PPTX, XLSX) and LibreOffice documents (ODT, ODP, ODS) requires a Server Plugin to be installed and loaded. See the plugin's README page for installation instructions.
+Note
+Importing Microsoft Office (DOCX, PPTX, XLSX) and LibreOffice documents (ODT, ODP, ODS) requires a Server Plugin (https://github.com/SillyTavern/SillyTavern-Office-Parser) to be installed and loaded. See the plugin's README page for installation instructions.
 
 ### Web
 
-Scrape text from a web page by its URL. The HTML document is then processed through the Readability library to extract only usable text.
+Scrape text from a web page by its URL. The HTML document is then processed through the Readability (https://github.com/mozilla/readability) library to extract only usable text.
 
 Some web servers may reject fetch requests, be protected by Cloudflare, or rely heavily on JavaScript to function. If you're facing issues with any particular site, download the page manually through the web browser and attach it using the file uploader.
 
@@ -65,7 +67,8 @@ The script is loaded in the video's default language. Optionally, you can specif
 
 ### Web Search
 
-This source requires to have a Web Search extension installed and properly configured. See the linked page for more details.
+Note
+This source requires to have a [Web Search](SillyTavern_extensions_WebSearch.md) extension installed and properly configured. See the linked page for more details.
 
 Perform a web search and download the text from the search result pages. This is similar to the Web source but fully automated. A chosen search engine will be inherited from the extension settings, so set it up in advance.
 
@@ -73,21 +76,23 @@ To begin, specify the search query, max number of links to be visited, and the o
 
 ### Fandom
 
-This source requires to have a Server Plugin installed and loaded. See the plugin's README page for installation instructions.
+Note
+This source requires to have a Server Plugin (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) installed and loaded. See the plugin's README page for installation instructions.
 
-Scrape articles from a Fandom wiki by its ID or URL. As some wikis are very large, it may be beneficial to limit the scope using the filter regular expression, it will be tested against the article's title. If no filter is provided, then all of the pages are subject to be exported. You may save them either as individual files for every page, or joint into a single document.
+Scrape articles from a Fandom (https://www.fandom.com/) wiki by its ID or URL. As some wikis are very large, it may be beneficial to limit the scope using the filter regular expression, it will be tested against the article's title. If no filter is provided, then all of the pages are subject to be exported. You may save them either as individual files for every page, or joint into a single document.
 
 ### Bronie Parser Extension (Third-Party)
 
-This source comes from a third-party and is **not affiliated** with the SillyTavern team. This source requires you to have Bronya Rand's Bronie Parser Extension installed as well as Server Plugins that require the parser to work.
+Note
+This source comes from a third-party and is **not affiliated** with the SillyTavern team. This source requires you to have Bronya Rand's Bronie Parser Extension (https://github.com/Bronya-Rand/Bronie-Parser-Extension) installed as well as Server Plugins that require the parser to work.
 
-Bronya Rand's Bronie Parser Extension allows the use of third-party scrapers, such as miHoYo/HoYoverse's HoYoLab into SillyTavern, similar to the other data sources.
+Bronya Rand's Bronie Parser Extension allows the use of third-party scrapers, such as miHoYo/HoYoverse's HoYoLab (https://wiki.hoyolab.com) into SillyTavern, similar to the other data sources.
 
 Currently, Bronya Rand's Bronie Parser Extension supports the following:
 
-- miHoYo/HoYoverse's HoYoLab (for Genshin Impact/Honkai: Star Rail) via HoYoWiki-Scraper-TS
+- miHoYo/HoYoverse's HoYoLab (for Genshin Impact/Honkai: Star Rail) via HoYoWiki-Scraper-TS (https://github.com/Bronya-Rand/HoYoWiki-Scraper-TS)
 
-To begin, install Bronya Rand's Bronie Parser Extension by following it's installation guide and install a supported Server Plugin into SillyTavern. Restart SillyTavern and go to the _Data Bank_ menu. Click `+ Add` and you should see that your recently installed scrapers are added into the possible list of sources to obtain information from.
+To begin, install Bronya Rand's Bronie Parser Extension by following it's installation guide (https://github.com/Bronya-Rand/Bronie-Parser-Extension?tab=readme-ov-file#installation) and install a supported Server Plugin into SillyTavern. Restart SillyTavern and go to the _Data Bank_ menu. Click `+ Add` and you should see that your recently installed scrapers are added into the possible list of sources to obtain information from.
 
 ## Vector Storage
 
@@ -97,9 +102,10 @@ To use the documents for RAG, you need to use a compatible extension that will i
 
 Vector Storage, which comes bundled with SillyTavern, is a reference implementation of such an extension. It uses embeddings (also known as vectors) to search for documents that relate to your ongoing chats.
 
+Fun facts
 
 1. Embeddings are arrays of numbers that abstractly represent a piece of text, produced by specialized language models. More similar texts have a shorter distance between their respective vectors.
-2. Vector Storage extension uses the Vectra library to keep track of file embeddings. They are stored in JSON files in the `/vectors` folder of your user data directory. Every document is internally represented by its own index/collection file.
+2. Vector Storage extension uses the Vectra (https://github.com/Stevenic/vectra) library to keep track of file embeddings. They are stored in JSON files in the `/vectors` folder of your user data directory. Every document is internally represented by its own index/collection file.
    !!!
 
 As the Vectors functionality is disabled by default, you need to open the extensions panel ("Stacked Cubes" icon on the top bar), then navigate to the "Vector Storage" section, and tick the "Enabled for files" checkbox under the "File vectorization settings".
@@ -108,18 +114,19 @@ By itself, Vector Storage does not produce any vectors, you need to use a compat
 
 ## Vector Providers
 
+Warning
 Embeddings are only usable when they are retrieved using the same model that generated them. When changing an embedding model or source, the vectors need to be recalculated.
 
 ### Local
 
 These sources are free and unlimited and use your CPU/GPU to calculate embeddings.
 
-1. Local (Transformers) - runs on a Node server. SillyTavern will automatically download a compatible model in ONNX format from HuggingFace. Default model: jina-embeddings-v2-base-en.
-2. WebLLM - requires an extension to be installed and a web browser that supports WebGPU. Runs directly in your browser, can use hardware accelleration. Automatically downloads supported models from HuggingFace. Install the extension from here: <https://github.com/SillyTavern/Extension-WebLLM>.
-3. Ollama - get it from <https://ollama.com/>. Set the API URL in the API connection menu (under Text Completion, default: `http://localhost:11434`). Must download a compatible model first, then set its name in the extension settings. Example model: mxbai-embed-large. Optionally, check an option to keep the model loaded in memory.
-4. llama.cpp server - get it from ggerganov/llama.cpp and run the server executable with `--embedding` flag. Load compatible GGUF embedding models from HuggingFace, for example, nomic-ai/nomic-embed-text-v1.5-GGUF.
-5. vLLM - get it from vllm-project/vllm. Set the API URL and API key in the API connection menu first.
-6. Extras (deprecated) - runs under the Extras API using the SentenceTransformers loader. Default model: all-mpnet-base-v2. This source is not maintained and will be eventually removed in the future.
+1. Local (Transformers) - runs on a Node server. SillyTavern will automatically download a compatible model in ONNX format from HuggingFace. Default model: jina-embeddings-v2-base-en (https://huggingface.co/Cohee/jina-embeddings-v2-base-en).
+2. WebLLM - requires an extension to be installed and a web browser that supports WebGPU (https://caniuse.com/webgpu). Runs directly in your browser, can use hardware accelleration. Automatically downloads supported models from HuggingFace. Install the extension from here: .
+3. Ollama - get it from . Set the API URL in the API connection menu (under Text Completion, default: `http://localhost:11434`). Must download a compatible model first, then set its name in the extension settings. Example model: mxbai-embed-large (https://ollama.com/library/mxbai-embed-large). Optionally, check an option to keep the model loaded in memory.
+4. llama.cpp server - get it from ggerganov/llama.cpp (https://github.com/ggerganov/llama.cpp) and run the server executable with `--embedding` flag. Load compatible GGUF embedding models from HuggingFace, for example, nomic-ai/nomic-embed-text-v1.5-GGUF (https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF).
+5. vLLM - get it from vllm-project/vllm (https://github.com/vllm-project/vllm). Set the API URL and API key in the API connection menu first.
+6. Extras (deprecated) - runs under the Extras API (https://github.com/SillyTavern/SillyTavern-extras) using the SentenceTransformers loader. Default model: all-mpnet-base-v2 (https://huggingface.co/sentence-transformers/all-mpnet-base-v2). This source is not maintained and will be eventually removed in the future.
 
 ### API sources
 
@@ -140,6 +147,7 @@ All these sources require an API key of the respective service and usually have 
 
 After you've selected your embedding provider, don't forget to configure other settings that will define the rules for processing and retrieving documents.
 
+Note
 Splitting, vectorization, and retrieval of information from the attachments take some time. While the initial ingestion of the file may take a while, the RAG search queries are usually fast enough not to create a significant lag.
 
 ### Message attachments
@@ -180,12 +188,13 @@ The following rules apply:
 - Score threshold - adjust to allow culling the retrieval of chunks based on their relevance score (0 - no match at all, 1 - perfect match). Higher values allow for more accurate retrieval and prevent completely random information from entering the context. Sane values are in a range between 0.2 (more loose) and 0.5 (more focused).
 - Chunk boundary - a custom string that will be prioritized when splitting the files into chunks. If not specified, the default is to split by (in order) double line breaks, single line breaks, and spaces between words.
 - Only chunk on custom boundary - if enabled, the chunking will only occur on the specified chunk boundary. Otherwise, the chunking will also occur on the default boundaries.
-- Translate files into English before processing - if enabled, will use the translation API configured in the Chat Translation extension to translate the files into English before processing them. This is useful when using embedding models that only support English text.
+- Translate files into English before processing - if enabled, will use the translation API configured in the [Chat Translation](SillyTavern_extensions_Translation.md) extension to translate the files into English before processing them. This is useful when using embedding models that only support English text.
 - Include in World Info Scanning - check if you want the injected content to activate lore book entries.
 - Vectorize All - forcibly ingests the embeddings for all unprocessed files.
 - Purge Vectors - clears the file embeddings, allowing to recalculate their vectors.
 
-For "Chat vectorization" settings see Chat Vectorization.
+Note
+For "Chat vectorization" settings see [Chat Vectorization](SillyTavern_extensions_Chat-vectorization.md).
 
 ## Conclusion
 

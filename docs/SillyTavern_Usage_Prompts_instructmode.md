@@ -3,7 +3,8 @@
 
 Instruct Mode allows you to adjust the prompting for instruction-following models trained on various prompt formats, such as Alpaca, ChatML, Llama2, etc.
 
-For equivalent settings in Chat Completion APIs, use Prompt Manager.
+Applies to: Text Completion APIs
+For equivalent settings in Chat Completion APIs, use [Prompt Manager](SillyTavern_prompt-manager.md).
 
 ## API support
 
@@ -21,7 +22,7 @@ A chosen instruct template must match the expectations of an actual model that i
 
 This is usually reflected in a model card on HuggingFace, and some even provide SillyTavern-compatible JSON files.
 
-Example: NeverSleep/Noromaid-13b-v0.1.1
+Example: NeverSleep/Noromaid-13b-v0.1.1 (https://huggingface.co/NeverSleep/Noromaid-13b-v0.1.1#prompt-template-custom-format-or-alpaca)
 
 ### Chat Completion API (OpenAI, Claude, etc)
 
@@ -41,7 +42,8 @@ User: { Write a happy song about Nintendo Switch. }
 
 ### System Prompt
 
-The System Prompt is now a separate entity. See the Advanced Formatting page for more details.
+Recent change
+The System Prompt is now a separate entity. See the [Advanced Formatting](SillyTavern_advancedformatting.md) page for more details.
 
 ### Templates
 
@@ -79,6 +81,7 @@ The following options are available:
 
 ### Sequences: Story String Wrapping
 
+Recent change
 System Prompt wrapping has been removed and replaced with Story String wrapping.
 
 Define how the Story String will be wrapped when the Position is set to "Default (top of context)"

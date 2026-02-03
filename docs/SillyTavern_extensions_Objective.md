@@ -18,7 +18,7 @@ Before you begin, ensure you've met the following prerequisites:
 
 Your imagination is the limit, you can give the AI any objective you wish and it will plan out how to achieve it. You can ask it to plan how to slay a demon, rob a temple, throw a lavish party, or even take over the world.
 
-
+Objective Settings Panel
 
 ### Configuration
 
@@ -52,7 +52,6 @@ By default the Objective extension will keep track of all tasks and their respec
 
 The User can also manually create, update, delete, and complete tasks at any time.
 
-
 #### Current Task Selection
 
 The current task will always be the first listed incomplete task. Any manual updates to tasks will trigger a check for what the current task should be. So if you add a task above a bunch of completed tasks, it will be set as the current task. Once it's completed, previously completed tasks will be skipped and the next incomplete task will be selected as 'Current'.
@@ -73,7 +72,7 @@ You can manually toggle the completion status of a task by `clicking the checkbo
 
 If you want to manually trigger the AI to check for task completion, click on the Extras Extension button (the `magic wand` on the right side of the chat input bar) and select `Manual Task Check`.
 
-
+Manual Task Check
 
 #### Manually Add Tasks
 

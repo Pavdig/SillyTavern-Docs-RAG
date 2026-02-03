@@ -3,7 +3,7 @@
 
 It's important to keep your Node.js runtime up to date for security and performance reasons. Below are the steps to update Node.js depending on your operating system.
 
-We recommend using the latest Long Term Support (LTS) version, which you can find on the Node.js official website.
+We recommend using the latest Long Term Support (LTS) version, which you can find on the Node.js official website (https://nodejs.org/en/about/previous-releases).
 
 ## How to check your current Node.js version
 
@@ -21,14 +21,14 @@ If you are using `nvm`:
 1. Open your terminal.
 2. Type in the following command:
 
-**Unix/Linux/macOS:**
+**Unix/Linux/macOS:** (https://github.com/nvm-sh/nvm)
 
 ```bash
 nvm install --lts
 nvm use --lts
 ```
 
-**Windows:**
+**Windows:** (https://github.com/coreybutler/nvm-windows)
 
 ```bash
 nvm install lts
@@ -37,7 +37,7 @@ nvm use lts
 
 ## Windows - Regular Installation
 
-1. Go to the Node.js download page.
+1. Go to the Node.js download page (https://nodejs.org/en/download/).
 2. Download the Windows Installer for the LTS version.
 3. Run the installer and follow the prompts to complete the installation.
 
@@ -70,7 +70,7 @@ Don't forget to accept any prompts that may appear during the update process by 
 
 ## macOS - Regular Installation
 
-1. Go to the Node.js download page.
+1. Go to the Node.js download page (https://nodejs.org/en/download/).
 2. Download the macOS Installer for the LTS version.
 3. Run the `.pkg` file and follow the prompts to complete the installation.
 
@@ -87,7 +87,7 @@ brew upgrade node
 
 The method to update Node.js on Linux depends on your distribution.
 
-But as the version of Node.js in the official repositories may not be the latest, we recommend using the Node Version Manager (nvm) or the NodeSource repository.
+But as the version of Node.js in the official repositories may not be the latest, we recommend using the Node Version Manager (nvm) (https://github.com/nvm-sh/nvm) or the NodeSource repository (https://github.com/nodesource/distributions).
 
 ## Docker
 

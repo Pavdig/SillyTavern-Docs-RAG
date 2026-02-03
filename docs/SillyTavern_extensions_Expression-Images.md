@@ -10,13 +10,13 @@ Expression images can automatically change based on a classification, adjusting 
 ## Adding Character Expression Images
 
 1. Open the Extensions Panel and expand the 'Character Expressions' section. If you have the character chat open, you will see a grid of image placeholders.
-
-2. Click the 'Upload image' button at the top left of each image in the grid, and select the image you want to apply to that emotion. This will save the image with the correct filename inside the `/data/<user-handle>/characters/(character_name_here)/` folder.
+Expression Drawer
+2. Click the 'Upload image' button at the top left of each image in the grid, and select the image you want to apply to that emotion. This will save the image with the correct filename inside the `/data//characters/(character_name_here)/` folder.
 3. Repeat this for all expressions you want to assign an image to.
 
 ### Importing an Expression images ZIP file
 
-Using the '<i class="fa-solid fa-file-zipper"></i> Upload sprite pack (ZIP)' button, you can import a zip file that contains a collection of expression images, and those images will automatically be added to the correct folder for your **currently selected character**. The ZIP file must contain all images in a flat structure (no subfolders) and correctly named files. Importing a zip will not automatically rename any images to make them match the emotions.
+Using the ' Upload sprite pack (ZIP)' button, you can import a zip file that contains a collection of expression images, and those images will automatically be added to the correct folder for your **currently selected character**. The ZIP file must contain all images in a flat structure (no subfolders) and correctly named files. Importing a zip will not automatically rename any images to make them match the emotions.
 
 ## Change Expressions Manually
 
@@ -39,13 +39,13 @@ The `classify` module uses a small 'sentiment parsing' model that runs alongside
 3. This will start a one-time download of the classification model from HuggingFace Hub (about ~100 Mb).
 4. Generate any message to verify that the classification works and the sprite appears. You may also check the server console for debug logs.
 
-Local classification defaults to 28 possible image labels: Cohee/distilbert-base-uncased-go-emotions-onnx
+Local classification defaults to 28 possible image labels: Cohee/distilbert-base-uncased-go-emotions-onnx (https://huggingface.co/Cohee/distilbert-base-uncased-go-emotions-onnx)
 
-To use the 6-option classification model, change the value of `extensions.models.classification` variable in the `config.yaml` file to: Cohee/bert-base-uncased-emotion-onnx
+To use the 6-option classification model, change the value of `extensions.models.classification` variable in the `config.yaml` file to: Cohee/bert-base-uncased-emotion-onnx (https://huggingface.co/Cohee/bert-base-uncased-emotion-onnx)
 
 ### Setup Instructions (with LLM)
 
-1. Connect to any of the supported and properly configured APIs via **<i class="fa-solid fa-plug"></i> API Connections**.
+1. Connect to any of the supported and properly configured APIs via ** API Connections**.
 2. Import the expression images the same way as mentioned above.
 3. Select "Main API" in the classification source dropdown.
 4. Optionally, configure the classification instruction prompt.
@@ -60,7 +60,7 @@ Main LLM source allows to choose how the classification prompt will be built:
 
 ### Setup Instructions (WebLLM)
 
-1. Install the official WebLLM extension.
+1. Install the official WebLLM extension (https://github.com/SillyTavern/Extension-WebLLM).
 2. Import the expression images the same way as mentioned above.
 3. Select "WebLLM" in the classification source dropdown.
 4. Optionally, configure the classification instruction prompt.
@@ -76,9 +76,9 @@ Main LLM source allows to choose how the classification prompt will be built:
 3. Select "Extras" in the classification source dropdown.
 4. The appropriate expression image will display automatically whenever the AI sends you a response.
 
-Extras API uses a classification model with 6 options by default: nateraw/bert-base-uncased-emotion
+Extras API uses a classification model with 6 options by default: nateraw/bert-base-uncased-emotion (https://huggingface.co/nateraw/bert-base-uncased-emotion)
 
-There is also a model with 28 options: joeddav/distilbert-base-uncased-go-emotions-student
+There is also a model with 28 options: joeddav/distilbert-base-uncased-go-emotions-student (https://huggingface.co/joeddav/distilbert-base-uncased-go-emotions-student)
 
 To use this model you need to change your Extras command line to include the following argument (with a space before and after): `--classification-model=joeddav/distilbert-base-uncased-go-emotions-student`
 
@@ -135,9 +135,9 @@ Folder overrides can also be used to define different sprite sets (outfits, etc.
 
 ### How to set an override
 
-1. Create a folder in the `/data/<user-handle>/characters` with any name and put images there, e.g. `/data/<user-handle>/characters/Boris`.
+1. Create a folder in the `/data//characters` with any name and put images there, e.g. `/data//characters/Boris`.
 2. Open the chat with the character whose sprites you'd like to override.
 3. Enter the name of the override folder into the "Sprite Folder Override" input and click "Submit".
 4. The Sprites list will reload and the "Sprite set" indicator should show the override folder.
 5. Alternatively, you can use the `/costume` slash command to achieve the same result: `/costume Boris`.
-6. By prepending a backslash to the override folder name, it will resolve to a subfolder in the current character sprites folder, e.g. `/costume \tracksuit` for the character named Boris will resolve to the `/data/<user-handle>/characters/Boris/tracksuit` folder.
+6. By prepending a backslash to the override folder name, it will resolve to a subfolder in the current character sprites folder, e.g. `/costume \tracksuit` for the character named Boris will resolve to the `/data//characters/Boris/tracksuit` folder.

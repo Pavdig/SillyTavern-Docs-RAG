@@ -47,7 +47,7 @@ The character's hands should be below and far from the head.
 The head of the character should roughly be contained in the 128 x 128 box in the middle of the top half of the image.
 The alpha channels of all pixels that do not belong to the character (i.e., background pixels) must be 0.
 
-
+Input Constraints
 
 ### ADVANCED SECTION
 
@@ -95,7 +95,7 @@ There is only one (lightest) model included, if you want the additional blend mo
           :
       - two_algo_face_body_rotator.pt
 
-The model files are distributed with the Creative Commons Attribution 4.0 International License, which means that you can use them for commercial purposes. However, Pramook Khungurn. Talking Head(?) Anime from a Single Image 3: Now the Body Too. <https://github.com/pkhungurn/talking-head-anime-3-demo>, is the creator.
+The model files are distributed with the Creative Commons Attribution 4.0 International License, which means that you can use them for commercial purposes. However, Pramook Khungurn. Talking Head(?) Anime from a Single Image 3: Now the Body Too. , is the creator.
 
 ### Running the manual_poser Desktop Application
 Open a shell. Change your working directory to the repository's root directory. Then, run:
