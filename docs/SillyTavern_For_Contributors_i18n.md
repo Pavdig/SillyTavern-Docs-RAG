@@ -9,11 +9,11 @@ reason, so you'll get a good idea of how to fix your own missing translations.
 
 In the second half, we look at
 
-- how i18n works in SillyTavern,
-- writing translations and code to use them,
-- debug functions to find missing translations,
-- adding a new language,
-- and contributing your changes.
+- [how i18n works](SillyTavern_For_Contributors.md) in SillyTavern,
+- [writing translations](SillyTavern_For_Contributors.md) and code to use them,
+- debug functions to [find missing translations](SillyTavern_For_Contributors.md),
+- adding a [new language](SillyTavern_For_Contributors.md),
+- and [contributing your changes](SillyTavern_For_Contributors.md).
 
 If you're developing an extension or modifying the core code, write your HTML and JavaScript with i18n in mind. This way
 your work is ready for other people to translate it into their language.
@@ -31,11 +31,9 @@ the code at all. Just add the translation to the JSON file. It just so happens t
 of missing translations to the Chinese (Traditional) JSON file, so the remaining issues were all in the code. In other locales
 there are plenty of missing translations you can fix without touching the code.
 
-### `Generate Image`
+**### `Generate Image`**
 
 The text "Generate Image" is untranslated in the Chinese (Traditional) locale. Why?
-
-
 
 Right-click on the element and inspect it. You'll see the HTML:
 
@@ -66,8 +64,6 @@ Where is its `data-i18n` attribute? It's missing! Let's add it. We find it in th
 
 We are in luck, that string `Generate Image` is in many of the language files, including in Chinese (Traditional).
 
-
-
 ```json
 {
     "Generate Image": "生成图片"
@@ -92,13 +88,9 @@ Why isn't it showing up? We have to wire the element up correctly:
 
 Now it works! Reload the page and see.
 
-
-
 But while we have the HTML open, what's with `Stop Image Generation` just under it? The HTML doesn't look right.
 
 If we generate an image and then open the wand menu while it's generating, we see untranslated text.
-
-
 
 First fix the HTML:
 
@@ -140,13 +132,9 @@ After some discussion with Claude, we're actually going to go with the following
 - Simplified Chinese: "Stop Image Generation": "中止图像生成"
 - Japanese: "Stop Image Generation": "画像生成を停止"
 
-
-
 ### `Generate Caption`
 
 "Generate Caption" is untranslated in the Chinese (Traditional) locale. Let's fix it!
-
-
 
 Where is it? Inspect the element.
 
@@ -193,8 +181,6 @@ We will use the following translations:
 - Traditional Chinese: "Generate Caption": "生成圖片說明"
 - Simplified Chinese: "Generate Caption": "生成图片说明"
 - Japanese: "Generate Caption": "画像説明を生成"
-
-
 
 ### `Inspect Prompts`
 
@@ -263,8 +249,6 @@ We will merge those into the JSON files.
 }
 ```
 
-
-
 A pity about that tooltip. The problem is that the code doesn't use
 the `t` function.
 
@@ -302,8 +286,6 @@ Prompt inspector is a separate extension, so we will PR the code fixes to that
 repo: https://github.com/SillyTavern/Extension-PromptInspector/pull/1
 
 The translations will be added to the main SillyTavern repo. https://github.com/SillyTavern/SillyTavern/pull/3198
-
-
 
 ## Language files
 
@@ -518,13 +500,13 @@ The console will show a table of missing translations with:
 
 Reapplies the currently selected locale to the page
 
+**Neither of these tools are perfect**
 
 - they don't catch missing translations in JavaScript code
 - they don't catch missing data-i18n attributes in HTML, they just catch untranslated keys
 - there are bugs in the code for `getMissingTranslations`: keys should not be prefixed with `[title]` or `[placeholder]`
-  !!!
 
-## Adding a new language
+**## Adding a new language**
 
 To add support for a new language:
 

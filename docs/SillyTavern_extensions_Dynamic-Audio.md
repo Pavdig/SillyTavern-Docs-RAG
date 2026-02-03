@@ -45,7 +45,7 @@ To set up custom music for your characters' emotions, follow these steps:
    - You can import multiple tracks for the same emotion by incrementing the number, e.g., `neutral_1.mp3`, `neutral_2.mp3`.
 
 5. **Default Music Selection**:
-   - When no emotion is detected, a random neutral track will play as the default. Emotions are detected similarly to updating sprites; refer to the expression images documentation for details.
+   - When no emotion is detected, a random neutral track will play as the default. Emotions are detected similarly to updating sprites; refer to the [expression images documentation](SillyTavern_extensions_Expression-Images.md) for details.
 
 ## Changing Default BGM Music
 

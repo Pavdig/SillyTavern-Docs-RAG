@@ -6,10 +6,10 @@ DO NOT RUN START.BAT WITH ADMIN PERMISSIONS
 
 INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CAN NOT RUN NODEJS 18.16
 
-## Installing via Git
+**## Installing via Git**
 
-1. Install NodeJS (latest LTS version is recommended)
-2. Install Git for Windows
+1. Install NodeJS (https://nodejs.org/en) (latest LTS version is recommended)
+2. Install Git for Windows (https://gitforwindows.org/)
 3. Open Windows Explorer (`Win+E`)
 4. Browse to or Create a folder that is not controlled or monitored by Windows. (ex: C:\MySpecialFolder\)
 5. Open a Command Prompt inside that folder by clicking in the 'Address Bar' at the top, typing `cmd`, and pressing Enter.
@@ -33,10 +33,10 @@ INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CAN NOT RUN NODEJS 18.16
     ```
 
 ## Installing via GitHub Desktop
-(This allows git usage **only** in GitHub Desktop, if you want to use `git` on the command line too, you also need to install Git for Windows)
+(This allows git usage **only** in GitHub Desktop, if you want to use `git` on the command line too, you also need to install Git for Windows (https://gitforwindows.org/))
 
-1. Install NodeJS (latest LTS version is recommended)
-2. Install GitHub Desktop
+1. Install NodeJS (https://nodejs.org/en) (latest LTS version is recommended)
+2. Install GitHub Desktop (https://central.github.com/deployments/desktop/desktop/latest/win32)
 3. After installing GitHub Desktop, click on `Clone a repository from the internet....` (Note: You **do NOT need** to create a GitHub account for this step)
   
     
@@ -57,4 +57,4 @@ INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CAN NOT RUN NODEJS 18.16
 
     
 
-9. Connect to any of the supported APIs and start chatting!
+9. Connect to any of the [supported APIs](SillyTavern_Usage_API_Connections_index.md) and start chatting!

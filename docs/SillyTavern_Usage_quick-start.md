@@ -1,17 +1,19 @@
 
 # Quick Start
 
+**light**
+
 I'm clueless. Just spoonfeed me the easiest and fastest way I can start using SillyTavern. -- *Anonymous*
 
-You can get started with SillyTavern in just a few minutes. Here are two easy ways to get started:
+**You can get started with SillyTavern in just a few minutes. Here are two easy ways to get started:**
 
-* You can use AI Horde for free. AI Horde is a community-driven AI service that provides access to a variety of AI models.
+* You can [use AI Horde](SillyTavern_Usage.md) for free. AI Horde is a community-driven AI service that provides access to a variety of AI models.
 
-* If you have an OpenAI account or want to register one, you can use OpenAI.
+* If you have an OpenAI account or want to register one, you can [use OpenAI](SillyTavern_Usage.md).
 
 ## Quick start with AI Horde
 
-1. Follow the Installation Guide to install and start SillyTavern.
+1. Follow the [Installation Guide](SillyTavern_Installation_index.md) to install and start SillyTavern.
 
 2. In SillyTavern's onboarding screen, enter a name for your persona. This name will be used in the chat.
 
@@ -19,7 +21,7 @@ You can get started with SillyTavern in just a few minutes. Here are two easy wa
 3. Click the API Connections button in the top bar.
 
    
-4. Enter an API key for AI Horde. You can use `0000000000` for now, or get a free key from AI Horde.
+4. Enter an API key for AI Horde. You can use `0000000000` for now, or get a free key from AI Horde (https://aihorde.net/).
 
    
 5. Select some AI models to use. Just choose a few from the top. You can always change them later.
@@ -28,7 +30,7 @@ You can get started with SillyTavern in just a few minutes. Here are two easy wa
 6. Close the API Connections window. Enter a message in the chat box at the bottom and press Enter.
 
    
-7. Your AI will respond in a few moments. You can continue chatting with it. Success!
+7. Your AI will respond in a few moments. You can continue [chatting](SillyTavern_Usage_Chatting_index.md) with it. Success!
 
    
 
@@ -36,7 +38,7 @@ You can get started with SillyTavern in just a few minutes. Here are two easy wa
 
 ### Install SillyTavern
 
-Follow the Installation Guide to install and start SillyTavern.
+Follow the [Installation Guide](SillyTavern_Installation_index.md) to install and start SillyTavern.
 
 ### Get access to OpenAI
 

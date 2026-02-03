@@ -5,7 +5,8 @@
 
 For the most up-to-date list of commands that will work in your instance, use the `/help slash` chat command in any SillyTavern chat.
 
-- `/help` – displays the help message
+**- `/help` – displays the help message**
+
 - `/api` - switches to a different API
 - `/sys` - sends a neutral message as a system narrator
 - `/send` - sends a message as the user without triggering the generation

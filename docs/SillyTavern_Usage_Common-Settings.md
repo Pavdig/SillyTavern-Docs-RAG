@@ -113,25 +113,25 @@ Set to 0 to disable.
 
 ### Eta Cutoff
 
-Eta cutoff is the main parameter of the special Eta Sampling technique. In units of 1e-4; a reasonable value is 3. See the paper Truncation Sampling as Language Model Desmoothing by Hewitt et al. (2022) for details.
+Eta cutoff is the main parameter of the special Eta Sampling technique. In units of 1e-4; a reasonable value is 3. See the paper Truncation Sampling as Language Model Desmoothing by Hewitt et al. (2022) (https://arxiv.org/abs/2210.15191) for details.
 
 Set to 0 to disable.
 
 ### DRY Repetition Penalty
 
-DRY penalizes tokens that would extend the end of the input into a sequence that has previously occurred in the input. If you want to allow repeating certain sequences verbatim (e.g. names), you can add them to the sequence breakers list. See the Pull Request here.
+DRY penalizes tokens that would extend the end of the input into a sequence that has previously occurred in the input. If you want to allow repeating certain sequences verbatim (e.g. names), you can add them to the sequence breakers list. See the Pull Request here (https://github.com/oobabooga/text-generation-webui/pull/5677).
 
 Set multiplier to 0 to disable.
 
 ### Exclude Top Choices (XTC)
 
-XTC sampling algorithm removes the most likely tokens from consideration instead of pruning the least likely tokens It removes all except the least likely token meeting a given threshold, with a given probability. This ensures that at least one "viable" choice remains, retaining coherence. See the Pull Request here.
+XTC sampling algorithm removes the most likely tokens from consideration instead of pruning the least likely tokens It removes all except the least likely token meeting a given threshold, with a given probability. This ensures that at least one "viable" choice remains, retaining coherence. See the Pull Request here (https://github.com/oobabooga/text-generation-webui/pull/6335).
 
 Set probability to 0 to disable.
 
 ### Mirostat
 
-Mirostat matches the output perplexity to that of the input, thus avoiding the repetition trap (where, as the autoregressive inference produces text, the perplexity of the output tends toward zero) and the confusion trap (where the perplexity diverges). For details, see the paper Mirostat: A Neural Text Decoding Algorithm that Directly Controls Perplexity by Basu et al. (2020).
+Mirostat matches the output perplexity to that of the input, thus avoiding the repetition trap (where, as the autoregressive inference produces text, the perplexity of the output tends toward zero) and the confusion trap (where the perplexity diverges). For details, see the paper Mirostat: A Neural Text Decoding Algorithm that Directly Controls Perplexity by Basu et al. (2020) (https://arxiv.org/abs/2007.14966).
 
 Mode chooses the Mirostat version.
 

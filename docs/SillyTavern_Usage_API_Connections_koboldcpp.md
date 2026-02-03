@@ -3,7 +3,7 @@
 
 KoboldCpp is a self-contained API for GGML and GGUF models.
 
-This VRAM Calculator by Nyx will tell you approximately how much RAM/VRAM your model requires.
+This VRAM Calculator (https://huggingface.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator) by Nyx will tell you approximately how much RAM/VRAM your model requires.
 
 ## Nvidia GPU Quickstart
 
@@ -12,8 +12,6 @@ This guide assumes you're using Windows.
 * Download the latest release: <https://github.com/LostRuins/koboldcpp/releases>
 * Launch KoboldCpp. You may see a pop-up from Microsoft Defender, click `Run Anyway`.
 * As of version 1.58, KoboldCpp should look like this:
-
-
 
 * Under the `Quick Launch` tab, select the model and your preferred `Context Size`.
 * Select `Use CuBLAS` and make sure the yellow text next to `GPU ID` matches your GPU.
@@ -81,4 +79,4 @@ KoboldCpp is using about 11.5 GB of my 12 GB VRAM. This should perform a lot bet
 
 **Congratulations! You're (actually) done!**
 
-For a more in-depth look at KoboldCpp settings, check out Kalomaze's Simple Llama + SillyTavern Setup Guide.
+For a more in-depth look at KoboldCpp settings, check out Kalomaze's Simple Llama + SillyTavern Setup Guide (https://rentry.org/llama_v2_sillytavern).

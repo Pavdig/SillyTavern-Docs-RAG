@@ -5,7 +5,7 @@
 
 **See the GNU Affero General Public License for more details.**
 
-Original TavernAI 1.2.8 by Humi: MIT License
+Original TavernAI (https://github.com/TavernAI/TavernAI) 1.2.8 by Humi: MIT License
 
 ## Pre-v1.9.0 Contributors
 The git commit history was squashed to the state of release 1.9.0.
@@ -16,4 +16,4 @@ Unfortunately, losing commit history also means losing the code contribution his
 
 Click the image below to see the full list of SillyTavern documentation contributors.
 
-
+[](https://github.com/SillyTavern/SillyTavern-Docs/graphs/contributors)

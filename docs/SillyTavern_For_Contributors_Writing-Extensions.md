@@ -3,22 +3,24 @@
 
 UI extensions expand SillyTavern's functionality by hooking into its events and API. They run in a browser context and have practically unrestricted access to the DOM, JavaScript APIs, and the SillyTavern context. Extensions can modify the UI, call internal APIs, and interact with chat data. This guide explains how to create your own extensions (JavaScript knowledge is required).
 
-Go here: Extensions.
+**Just want to install extensions?**
 
-To extend the functionality of the Node.js server, see the Server Plugins page.
+Go here: [Extensions](SillyTavern_extensions_index.md).
+
+**To extend the functionality of the Node.js server, see the [Server Plugins](SillyTavern_For_Contributors_Server-Plugins.md) page.**
 
 **Can't write JavaScript?**
 
-* Consider STscript as a simpler alternative to writing a full-fledged extension.
-* Go through the MDN Course and come back when you're done.
+* Consider [STscript](SillyTavern_For_Contributors_st-script.md) as a simpler alternative to writing a full-fledged extension.
+* Go through the MDN Course (https://developer.mozilla.org/en-US/docs/Learn/JavaScript) and come back when you're done.
 
 ## Extension submissions
 
-Want to contribute your extensions to the official content repository? Contact us!
+Want to contribute your extensions to the official content repository (https://github.com/SillyTavern/SillyTavern-Content)? Contact us!
 
 To ensure that all extensions are safe and easy to use, we have a few requirements:
 
-1. Your extension must be open-source and have a libre license (see Choose a License). If you are unsure, AGPLv3 is a good choice.
+1. Your extension must be open-source and have a libre license (see Choose a License (https://choosealicense.com/licenses/)). If you are unsure, AGPLv3 is a good choice.
 2. Extensions must be compatible with the latest release version of SillyTavern. Please be ready to update your extension if something in the core changes.
 3. Extensions must be well-documented. This includes a README file with installation instructions, usage examples, and a list of features.
 4. Extensions that have a server plugin requirement to function will not be accepted.
@@ -137,23 +139,23 @@ context.groupId; // ID of the current group
 // And many more...
 ```
 
-You can find the full list of available properties and functions in the SillyTavern source code.
+You can find the full list of available properties and functions in the SillyTavern source code (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/st-context.js).
 
-If you're missing any of the functions/properties in `getContext`, please get in touch with the developers or send us a pull request!
+**If you're missing any of the functions/properties in `getContext`, please get in touch with the developers or send us a pull request!**
 
-### Shared libraries
+**### Shared libraries**
 
 Most of the npm libraries used internally by the SillyTavern frontend are shared in the `libs` property of the `SillyTavern` global object.
 
-* `lodash` - Utility library. Docs.
-* `localforage` - Browser storage library. Docs.
-* `Fuse` - Fuzzy search library. Docs.
-* `DOMPurify` - HTML sanitization library. Docs.
-* `Handlebars` - Templating library. Docs.
-* `moment` - Date/time manipulation library. Docs.
-* `showdown` - Markdown converter library. Docs.
+* `lodash` - Utility library. Docs (https://lodash.com/).
+* `localforage` - Browser storage library. Docs (https://localforage.github.io/localForage/).
+* `Fuse` - Fuzzy search library. Docs (https://www.fusejs.io/).
+* `DOMPurify` - HTML sanitization library. Docs (https://github.com/cure53/DOMPurify).
+* `Handlebars` - Templating library. Docs (https://handlebarsjs.com/).
+* `moment` - Date/time manipulation library. Docs (http://momentjs.com/).
+* `showdown` - Markdown converter library. Docs (https://showdownjs.com/).
 
-You can find the full list of exported libraries in the SillyTavern source code.
+You can find the full list of exported libraries in the SillyTavern source code (https://github.com/SillyTavern/SillyTavern/blob/staging/public/lib.js).
 
 **Example:** Using the DOMPurify library.
 
@@ -187,7 +189,7 @@ declare global {
 
 Using imports from SillyTavern code is unreliable and can break at any time if the internal structure of ST's modules changes. `getContext` provides a more stable API.
 
-Unless you're building a bundled extension, you can import variables and functions from other JS files.
+**Unless you're building a bundled extension, you can import variables and functions from other JS files.**
 
 For example, this code snippet will generate a reply from the currently selected API in the background:
 
@@ -256,6 +258,7 @@ To persist the metadata, use the `saveMetadata()` function, which will save the 
 Do not save the reference to `chatMetadata` in a long-lived variable, as the reference will change when the chat is switched. Always use `SillyTavern.getContext().chatMetadata` to access the current chat metadata.
 
 ```js
+
 const { chatMetadata, saveMetadata } = SillyTavern.getContext();
 
 // Set some metadata for the current chat
@@ -268,15 +271,17 @@ const value = chatMetadata['my_key'];
 await saveMetadata();
 ```
 
-The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen to this event to update your extension's state accordingly. See more in the Listening to events section.
+The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen to this event to update your extension's state accordingly. See more in the [Listening to events](SillyTavern_For_Contributors.md) section.
 
-### Character cards
+**### Character cards**
 
-SillyTavern fully supports Character Cards V2 Specification, which allows to store arbitrary data in the character card JSON data.
+SillyTavern fully supports Character Cards V2 Specification (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md), which allows to store arbitrary data in the character card JSON data.
 
 This is useful for extensions that need to store additional data associated with the character and make it shareable when exporting the character card.
 
-To write data to the character card extensions data field, use the `writeExtensionField` function from the `getContext()` function. This function takes a character ID, a string key, and a value to write. The value must be JSON-serializable.
+To write data to the character card extensions (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md#extensions) data field, use the `writeExtensionField` function from the `getContext()` function. This function takes a character ID, a string key, and a value to write. The value must be JSON-serializable.
+
+**Weirdness Ahead**
 
 Despite being called `characterId`, it's not a "real" unique identifier but rather an index of the character in the `characters` array.
 
@@ -285,6 +290,7 @@ The index of the current character is provided by the `characterId` property in 
 **Caution: `characterId` is `undefined` in group chats or when no character is selected!**
 
 ```js
+
 const { writeExtensionField, characterId } = SillyTavern.getContext();
 
 // Write some data to the character card
@@ -328,13 +334,13 @@ await pm.writePresetExtensionField({ path: 'hello', value: 'world' });
 const value = pm.readPresetExtensionField({ path: 'hello' });
 ```
 
-The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset is changed or the main API is switched, so you can listen to these events to update your extension's state accordingly. See more in the Listening to events section.
+The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset is changed or the main API is switched, so you can listen to these events to update your extension's state accordingly. See more in the [Listening to events](SillyTavern_For_Contributors.md) section.
 
-## Internationalization
+**## Internationalization**
 
-For general information on providing translations, see the Internationalization page.
+**For general information on providing translations, see the [Internationalization](SillyTavern_For_Contributors_i18n.md) page.**
 
-Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.
+**Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.**
 
 See the list of supported locales here (`lang` key): <https://github.com/SillyTavern/SillyTavern/blob/release/public/locales/lang.json>
 
@@ -417,7 +423,7 @@ SlashCommandParser.addCommandObject(SlashCommand.fromProps({ name: 'repeat',
 }));
 ```
 
-All registered commands can be used in STscript in any possible way.
+All registered commands can be used in [STscript](SillyTavern_For_Contributors_st-script.md) in any possible way.
 
 ## Events
 
@@ -449,11 +455,13 @@ The main event types are:
 * `GENERATION_ENDED`: the generation has been completed or has errored out.
 * `SETTINGS_UPDATED`: the application settings have been updated.
 
-The rest can be found in the source.
+The rest can be found in the source (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/events.js).
+
+**Event data**
 
 The way each event passes its data to the listener is not uniform. Some events don't emit any data; some pass an object or a primitive value. Please refer to the source code where the event is emitted to see what data it passes, or check with the debugger.
 
-### Emitting events
+**### Emitting events**
 
 You can produce any application events from extensions, including custom events, by calling `eventSource.emit(eventType, ...eventData)`:
 
@@ -569,15 +577,16 @@ const result = await generateRaw({
 
 Currently only supported by the Chat Completion API. The availability varies based on the selected source and model. If the selected model does not support structured outputs, the generation will either fail or will return an empty object (`'{}'`). Check the documentation for the specific API you are using to see if structured outputs are supported.
 
-You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema. This is useful for extensions that require structured data, such as state tracking, data classification, etc.
+**You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema (https://json-schema.org/learn). This is useful for extensions that require structured data, such as state tracking, data classification, etc.**
 
 To use structured outputs, you must pass a JSON schema object to `generateRaw()` or `generateQuietPrompt()`. The model will then generate a response that matches the schema, and it will be returned as a stringified JSON object.
 
 The outputs are not validated against the schema, you must handle the parsing and validation of the generated output yourself. If the model fails to generate a valid JSON object, the function will return an empty object (`'{}'`).
 
-Zod is a popular library to generate and validate JSON schemas. Its use will not be covered here.
+Zod (https://zod.dev/json-schema) is a popular library to generate and validate JSON schemas. Its use will not be covered here.
 
 ```js
+
 const { generateRaw, generateQuietPrompt } = SillyTavern.getContext();
 
 // Define a JSON schema for the expected output
@@ -661,7 +670,7 @@ unregisterMacro('fizz');
 
 The Extras API is deprecated. It's not recommended to use it in new extensions.
 
-The `doExtrasFetch()` function allows you to make requests to your SillyTavern Extras API server.
+**The `doExtrasFetch()` function allows you to make requests to your SillyTavern Extras API server.**
 
 For example, to call the `/api/summarize` endpoint:
 
@@ -876,7 +885,7 @@ const { moment } = SillyTavern.libs;
 const formatted = moment().format('YYYY-MM-DD HH:mm:ss');
 ```
 
-Other available libraries include: `DOMPurify`, `localforage`, `hljs`, `showdown`, `yaml`, and more. Check lib.js for the full list.
+Other available libraries include: `DOMPurify`, `localforage`, `hljs`, `showdown`, `yaml`, and more. Check lib.js (https://github.com/SillyTavern/SillyTavern/blob/release/public/lib.js) for the full list.
 
 **Initialize settings properly**
 

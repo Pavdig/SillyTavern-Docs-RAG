@@ -9,8 +9,6 @@ This extension allows you to create, store, and utilize automatically generated 
 
 The summarization extension is installed in SillyTavern by default, thus it will show up in ST's Extensions panel (stacked cubes icon) list like this:
 
-
-
 - **Current summary** - displays and provides an ability to modify the current summary. The summary is updated and embedded into the chat file's metadata for the message that was the last in context when the summary was generated. Deleting or editing a message from the chat that has a summary attached to it, will revert the state to the last valid summary.
 - **Restore Previous** - removes the current summary, rolling it back to the previous state. This is useful if the summarizer does a poor job at any given point.
 - **Pause** - check this to prevent the summary from being automatically updated. This is useful if you want to provide a custom summary of your own or to effectively disable the summary by clearing the box and stopping updates.
@@ -92,12 +90,12 @@ It has a very small context size (~1024 tokens), so its ability to handle large 
 
 To configure the Extras summary source, do the following:
 
-1. Install or Update Extras to the latest version.
+1. Install or Update Extras (https://github.com/SillyTavern/SillyTavern-extras) to the latest version.
 2. Run Extras with the `summarize` module enabled: `python server.py --enable-modules=summarize`
 
 #### Changing Summary Model
 
-By default, Summarize uses the Qiliang/bart-large-cnn-samsum-ChatGPT_v3 model for summarization purposes.
+By default, Summarize uses the Qiliang/bart-large-cnn-samsum-ChatGPT_v3 (https://huggingface.co/Qiliang/bart-large-cnn-samsum-ChatGPT_v3) model for summarization purposes.
 
 This can be changed by using the command line argument `--summarization-model=(###Hugging-Face-Model-URL-Here###)`
 

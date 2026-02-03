@@ -5,9 +5,11 @@ These plugins allow for adding functionality that is impossible to achieve using
 
 Plugins are contained in the `plugins` directory of SillyTavern and are loaded on server startup, but *only* if `enableServerPlugins` is set to `true` in the `config.yaml` file.
 
+**Warning**
+
  **Server Plugins are not sandboxed. This means they can potentially gain access to your entire file system, or introduce a wide range of security vulnerabilities in a way that normal UI extensions cannot. Only install server plugins from developers you trust!**
 
-For a list of all official server plugins, see the GitHub organization list: <https://github.com/search?q=topic%3Aplugin+org%3ASillyTavern&type=Repositories>
+**For a list of all official server plugins, see the GitHub organization list: <https://github.com/search?q=topic%3Aplugin+org%3ASillyTavern&type=Repositories>**
 
 ## Types of plugins
 

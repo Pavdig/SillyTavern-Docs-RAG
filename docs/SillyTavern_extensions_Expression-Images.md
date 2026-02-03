@@ -39,9 +39,9 @@ The `classify` module uses a small 'sentiment parsing' model that runs alongside
 3. This will start a one-time download of the classification model from HuggingFace Hub (about ~100 Mb).
 4. Generate any message to verify that the classification works and the sprite appears. You may also check the server console for debug logs.
 
-Local classification defaults to 28 possible image labels: Cohee/distilbert-base-uncased-go-emotions-onnx
+Local classification defaults to 28 possible image labels: Cohee/distilbert-base-uncased-go-emotions-onnx (https://huggingface.co/Cohee/distilbert-base-uncased-go-emotions-onnx)
 
-To use the 6-option classification model, change the value of `extensions.models.classification` variable in the `config.yaml` file to: Cohee/bert-base-uncased-emotion-onnx
+To use the 6-option classification model, change the value of `extensions.models.classification` variable in the `config.yaml` file to: Cohee/bert-base-uncased-emotion-onnx (https://huggingface.co/Cohee/bert-base-uncased-emotion-onnx)
 
 ### Setup Instructions (with LLM)
 
@@ -60,7 +60,7 @@ Main LLM source allows to choose how the classification prompt will be built:
 
 ### Setup Instructions (WebLLM)
 
-1. Install the official WebLLM extension.
+1. Install the official WebLLM extension (https://github.com/SillyTavern/Extension-WebLLM).
 2. Import the expression images the same way as mentioned above.
 3. Select "WebLLM" in the classification source dropdown.
 4. Optionally, configure the classification instruction prompt.
@@ -76,9 +76,9 @@ Main LLM source allows to choose how the classification prompt will be built:
 3. Select "Extras" in the classification source dropdown.
 4. The appropriate expression image will display automatically whenever the AI sends you a response.
 
-Extras API uses a classification model with 6 options by default: nateraw/bert-base-uncased-emotion
+Extras API uses a classification model with 6 options by default: nateraw/bert-base-uncased-emotion (https://huggingface.co/nateraw/bert-base-uncased-emotion)
 
-There is also a model with 28 options: joeddav/distilbert-base-uncased-go-emotions-student
+There is also a model with 28 options: joeddav/distilbert-base-uncased-go-emotions-student (https://huggingface.co/joeddav/distilbert-base-uncased-go-emotions-student)
 
 To use this model you need to change your Extras command line to include the following argument (with a space before and after): `--classification-model=joeddav/distilbert-base-uncased-go-emotions-student`
 

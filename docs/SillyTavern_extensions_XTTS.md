@@ -10,8 +10,8 @@ Fear not, this stunning groundbreaking technology is already available at your l
 ## Prerequisites
 
 1. Latest version of SillyTavern.
-2. Miniconda installed.
-3. (Windows) Visual C++ Build Tools installed.
+2. Miniconda (https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) installed.
+3. (Windows) Visual C++ Build Tools (https://visualstudio.microsoft.com/visual-cpp-build-tools/) installed.
 4. WAV files with voice clips to clone from (~10 seconds per file). File requirements: PCM, Mono, 22050Hz, 16-bit (convert via Audacity).
 5. Create a folder with "speakers" and "output" subfolders. Put WAV files into "speakers".
 
@@ -26,7 +26,7 @@ C:\xtts
 
 ## Installing 
 
-daswer123 made an API server that runs the XTTSv2 model on your computer and connects to SillyTavern's TTS extension.
+daswer123 (https://github.com/daswer123) made an API server that runs the XTTSv2 model on your computer and connects to SillyTavern's TTS extension.
 
 It's completely independent of Extras API and would use a separate environment.
 
@@ -119,4 +119,4 @@ Just do steps 1, 3 and 7 from the installation instruction.
 
 Unlikely, it can't run apps that require PyTorch without some arcane black magic that we don't provide support for. You can try it out at your own risk, but no support will be provided if you face any problems.
 
-Your best solution is to host the TTS API on your PC over the local network, just don't forget to specify the host and port to listen on - see README.
+Your best solution is to host the TTS API on your PC over the local network, just don't forget to specify the host and port to listen on - see README (https://github.com/daswer123/xtts-api-server/blob/main/README.md).
