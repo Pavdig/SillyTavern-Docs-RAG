@@ -1,7 +1,7 @@
 name: Update ST Docs
 on:
-  # schedule:
-  #   - cron: '0 * * * *' # (Runs every hour)
+  schedule:
+    - cron: '0 * * * *' # (Runs every hour)
   workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}
@@ -27,11 +27,8 @@ jobs:
         id: upstream_info
         run: |
           cd temp_source
-          # Get the short hash
           SHORT_HASH=$(git rev-parse --short HEAD)
           echo "HASH=$SHORT_HASH" >> $GITHUB_OUTPUT
-          
-          # Get the full commit message
           {
             echo 'MSG<<EOF'
             git log -1 --pretty=%B
@@ -39,58 +36,56 @@ jobs:
           } >> $GITHUB_OUTPUT
           cd ..
 
-      - name: Process Docs
+      - name: Process Docs (Python Sanitization)
         run: |
-          # 1. Prepare working directory (Copy source to work_dir to sanitize IN PLACE)
-          # We need to preserve folder structure for relative link resolution
+          # 1. Prepare directories
           cp -r temp_source work_dir
           mkdir -p processed_temp
           
-          echo "Sanitizing Markdown files..."
+          echo "Running Python Sanitizer..."
           
-          # 2. Sanitize In-Place (Python)
-          # We pass the root directory so the script can calculate flattened paths correctly
-          find work_dir -type f -name "*.md" | while read -r file; do
+          # 2. Run the Logic
             python3 -c "
           import re
-          import sys
           import os
           
-          # Arguments: 1=Current File Path, 2=Root Work Directory
-          file_path = sys.argv[1]
-          root_dir = sys.argv[2]
+          SOURCE_DIR = 'work_dir'
+          OUTPUT_DIR = 'processed_temp'
+          ROOT_DIR = 'work_dir'
+
+          ADMONITION_TYPES = [
+              'note', 'abstract', 'info', 'tip', 'success', 'question', 
+              'warning', 'failure', 'danger', 'bug', 'example', 'quote', 'callout'
+          ]
           
-          def replace_link(match):
+          def replace_link(match, file_path):
               text = match.group(1)
               url = match.group(2)
               
-              # Ignore external links
               if url.startswith('http') or url.startswith('www'):
                   return f'{text} ({url})'
               
-              # Remove anchors and query strings
               url = url.split('#')[0].split('?')[0]
-              
-              # RESOLVE RELATIVE PATHS
-              # 1. Get directory of current file
               current_dir = os.path.dirname(file_path)
-              # 2. Resolve absolute path (ignoring ../ if it goes out of root)
+              
               try:
+                  if url.startswith('/') or url.startswith('\\\\'):
+                      abs_path = os.path.normpath(os.path.join(ROOT_DIR, url.lstrip('/\\\\')))
+                  else:
                   abs_path = os.path.normpath(os.path.join(current_dir, url))
-                  # 3. Calculate path relative to the root_dir (e.g. Administration/config.yaml)
-                  rel_path = os.path.relpath(abs_path, root_dir)
+                  
+                  rel_path = os.path.relpath(abs_path, ROOT_DIR)
               except ValueError:
                   return text 
 
               if rel_path.startswith('..'):
-                  return text # Pointing outside doc root
+                  return text 
               
-              # 4. Flatten the relative path (Administration/config.yaml -> Administration_config.yaml)
               flat_name = rel_path.replace(os.sep, '_')
+              filename, ext = os.path.splitext(flat_name)
+              if not ext:
+                  flat_name += '.md'
               
-              # Ensure we point to the markdown version for internal linking
-              # If the original link was config.yaml, we assume it maps to ...config-yaml.md
-              # (Simple heuristic: replace .yaml with .md for links, or just keep original ext if md)
               if flat_name.endswith('.yaml'):
                   flat_name = flat_name.replace('.yaml', '-yaml.md')
               
@@ -100,75 +95,66 @@ jobs:
               return text
           
           def replace_image(match):
-              alt_text = match.group(1)
-              url = match.group(2)
-              # If URL is an image, discard it.
-              if re.search(r'\.(png|jpg|jpeg|gif|webp|svg)$', url, re.IGNORECASE):
-                  return ''
-              # If Alt Text looks like a filename, discard it.
-              if re.search(r'\.(png|jpg|jpeg|gif|webp|svg)$', alt_text, re.IGNORECASE):
-                  return ''
-              return alt_text
+              return '' # Remove images to save tokens
 
           def replace_admonition(match):
-              # Regex now captures content in Group 1
-              content = match.group(1)
-              return content.strip() if content else ''
+              content = match.group(1).strip()
+              if not content: return ''
+              
+              first_word = content.split(' ')[0]
+              if first_word.lower() in ADMONITION_TYPES:
+                  content = content[len(first_word):].strip()
+                  
+              if not content: return ''
+
+              # If content is a Table or Code Block, do not bold it
+              if content.startswith('|') or content.startswith('\`\`\`'):
+                  return f'\n{content}\n'
+
+              return f'\n**{content}**\n'
+
+          print(f'Scanning {SOURCE_DIR}...')
+          count = 0
+          
+          for root, dirs, files in os.walk(SOURCE_DIR):
+              for filename in files:
+                  if not filename.endswith('.md'): continue
+                  
+                  file_path = os.path.join(root, filename)
 
           try:
               with open(file_path, 'r', encoding='utf-8') as f:
                   content = f.read()
               
-              # 1. Handle Images: Check URL AND Alt Text
-              # Regex handles balanced brackets for complex alt text
-              content = re.sub(r'!\[((?:[^][]+|\[[^][]*\])*)\]\s*\(([^)]*)\)', replace_image, content)
-              
-              # 2. Handle Links
-              content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', replace_link, content)
-              
-              # 3. Handle Admonitions
-              # Matches !!! or ::: followed by optional type, optional content
-              # ^\s* matches start of line with indent
-              # (?:[a-zA-Z]+)? matches 'warning' or 'callout'
-              # (?:[ ]+(.*))? matches ' "Title"' or nothing
-              content = re.sub(r'^\s*(?:!!!|:::)\s*(?:[a-zA-Z]+)?(?:[ ]+(.*))?$', replace_admonition, content, flags=re.MULTILINE)
+                      # Skip Redirect Stubs
+                      if 'This page has been moved to' in content: continue
 
-              with open(file_path, 'w', encoding='utf-8') as f:
+                      # Remove Front Matter
+                      content = re.sub(r'^---\n.*?\n---\n', '', content, flags=re.DOTALL)
+
+                      # Apply Regex
+              content = re.sub(r'!\[((?:[^][]+|\[[^][]*\])*)\]\s*\(([^)]*)\)', replace_image, content)
+                      content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', lambda m: replace_link(m, file_path), content)
+                      content = re.sub(r'^\s*(?:!!!|:::)\s*(.*)$', replace_admonition, content, flags=re.MULTILINE)
+                      content = re.sub(r'^\s*\|[\s|]+\|\s*$', '', content, flags=re.MULTILINE) # Ghost Tables
+                      content = re.sub(r'<br\s*\/?>', '', content, flags=re.IGNORECASE)
+                      content = re.sub(r'\n{3,}', '\n\n', content) # Whitespace
+
+                      # Determine Output Filename
+                      rel_path = os.path.relpath(file_path, SOURCE_DIR)
+                      flat_name = rel_path.replace(os.sep, '_')
+                      out_path = os.path.join(OUTPUT_DIR, f'SillyTavern_{flat_name}')
+
+                      with open(out_path, 'w', encoding='utf-8') as f:
                   f.write(content)
+                      count += 1
           except Exception as e:
-              print(f'Error processing {file_path}: {e}')
-          " "$file" "work_dir"
-          done
+                      print(f'Error on {filename}: {e}')
           
-          # 3. Flatten and Move to processed_temp
-          # Now that files are sanitized and links rewritten, we just move them.
-          find work_dir -type f -name "*.md" | while read -r file; do
-              clean_path="${file#work_dir/}"
-              flat_name="${clean_path//\//_}"
-              cp "$file" "processed_temp/SillyTavern_$flat_name"
-          done
-          
-          # 4. Final Cleanup (Sed)
-          cd processed_temp
-          
-          # Remove Redirect Stubs
-          grep -rl "This page has been moved to" . | xargs -r rm
-          
-          # Remove YAML Front Matter
-          find . -type f -name "*.md" -exec sed -i '1{/^---/!q;};1,/^---/d' {} +
-          
-          # Clean up "Ghost" Table rows
-          find . -type f -name "*.md" -exec sed -i -E '/^\|[[:space:]|]*\|$/d' {} +
-          
-          # Remove <br> tags
-          find . -type f -name "*.md" -exec sed -i -E 's/<br\s*\/?>//gi' {} +
-          
-          # Squeeze Whitespace
-          find . -type f -name "*.md" | while read -r file; do
-              cat -s "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"
-          done
-          
-          cd ..
+          print(f'Processed {count} files.')
+          "
+
+          # Cleanup source
           rm -rf work_dir
 
       - name: Push to Sync Branch

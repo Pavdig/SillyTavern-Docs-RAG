@@ -26,8 +26,8 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
 *   **Sanitize Content:** Removes noise that confuses LLMs:
     *   **Redirect stubs:** Files that just say "Page moved" are removed.
     *   **Front Matter:** Metadata headers (`---`) are stripped.
-    *   **Admonitions:** Tags like `!!!warning` are stripped, but **titles and text are preserved**.
-    *   **Images:** Converted to plain text (Alt Text preserved).
+    *   **Admonitions:** Tags like `!!!warning` are stripped, but **titles and text are preserved** (formatted as bold text).
+    *   **Images:** Removed entirely to reduce token usage.
     *   **Ghost Tables:** Empty table artifacts left by images are cleaned up.
     *   **Links:**
         *   **Internal:** Context-aware rewriting of relative links to match flattened filenames (e.g., `../Installation/Windows.md` -> `SillyTavern_Installation_Windows.md`).
