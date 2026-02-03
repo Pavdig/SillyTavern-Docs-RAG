@@ -71,8 +71,10 @@ jobs:
           # Converts ![Alt Text](img.png) to just "Alt Text"
           find . -type f -name "*.md" -exec sed -i -E 's/!\[([^]]*)\]\([^)]*\)/\1/g' {} +
           
-          # Clean up "Ghost" Table rows (leftover from deleted images)
-          find . -type f -name "*.md" -exec sed -i -E '/^\|[ :|#-]*\|$/d' {} +
+          # Clean up "Ghost" Table rows
+          # Only removes rows containing pipes and whitespace. 
+          # Does NOT remove rows with dashes (-) or colons (:), preserving table headers.
+          find . -type f -name "*.md" -exec sed -i -E '/^\|[[:space:]|]*\|$/d' {} +
           
           # Smart Link Handling (Python)
           # Rewrites internal links to match flattened filenames, protects external links
@@ -115,8 +117,9 @@ jobs:
           " "$file"
           done
           
-          # Remove HTML tags
-          find . -type f -name "*.md" -exec sed -i -E 's/<[^>]+>//g' {} +
+          # Remove specific HTML tags (FIXED)
+          # Only removes <br> tags to prevent breaking <USER> placeholders or <URL> links
+          find . -type f -name "*.md" -exec sed -i -E 's/<br\s*\/?>//gi' {} +
           
           # Squeeze Whitespace (max 2 newlines)
           find . -type f -name "*.md" | while read -r file; do
