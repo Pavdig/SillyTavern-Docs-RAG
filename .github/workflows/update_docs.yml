@@ -96,7 +96,8 @@ jobs:
 
           def replace_admonition(match):
               # Capture content after !!!type or !!! type
-              content = match.group(2)
+              # Since using non-capturing groups (?:) for prefix, content is Group 1
+              content = match.group(1)
               return content if content else ''
 
           try:
