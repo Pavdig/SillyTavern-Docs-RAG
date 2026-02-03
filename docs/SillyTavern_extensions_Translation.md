@@ -7,8 +7,6 @@ The Chat Translation Extension enables real-time translation of chat messages be
 different languages using various translation providers. It supports both manual and
 automatic translation modes.
 
-
-
 +++ English
 
 +++ 简体中文
@@ -59,7 +57,7 @@ Extensions** panel.
 
 #### Provider
 
-- Choose your preferred translation service
+- Choose your preferred [translation service](SillyTavern_extensions.md)
 - Click the **<i class="fa-solid fa-key"></i> API Key** icon, if it appears, to enter an API key
 - Click the **<i class="fa-solid fa-link"></i> Custom URL** icon, if it appears, to enter a custom API URL
 
@@ -105,19 +103,19 @@ explicit source language selection.
 
 | Provider                                                            | Location                                                                      | Features                                                                                               |
 |---------------------------------------------------------------------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| Libre Translate                      | :icon-cloud: <i class="fa-solid fa-key"></i> <i class="fa-solid fa-link"></i> | Self-hosted (AGPL-3.0) alternative to proprietary translation services, with cloud-hosted Pro tier     | 
-| Google Translate              | :icon-cloud:                                                                  | Widely used, supports many languages, good accuracy                                                    |
-| Lingva Translate                              | <i class="fa-solid fa-link"></i>                                              | Alternative front-end for Google Translate, open source (AGPL-3.0), privacy-focused                    |
-| DeepL                                     | :icon-cloud: <i class="fa-solid fa-key"></i>                                  | High-quality translations, especially for European languages                                           |
-| DeepLX                     | <i class="fa-solid fa-link"></i>                                              | Self-hosted DeepL proxy, open source (MIT), free but proxying DeepL Pro requires DeepL API key         |
-| Bing Translator                  | :icon-cloud:                                                                  | Microsoft's translation service, integrates with Azure services                                        |
-| OneRing Translator | <i class="fa-solid fa-link"></i>                                              | Self-hosted front-end to Google Translate and other providers, privacy-focused, open source (AGPL-3.0) |
-| Yandex Translate                   | :icon-cloud:                                                                  | Good for Russian and Eastern European languages                                                        |
+| Libre Translate (https://libretranslate.com/)                      | :icon-cloud: <i class="fa-solid fa-key"></i> <i class="fa-solid fa-link"></i> | Self-hosted (AGPL-3.0) alternative to proprietary translation services, with cloud-hosted Pro tier     | 
+| Google Translate (https://cloud.google.com/translate)              | :icon-cloud:                                                                  | Widely used, supports many languages, good accuracy                                                    |
+| Lingva Translate (https://lingva.ml/)                              | <i class="fa-solid fa-link"></i>                                              | Alternative front-end for Google Translate, open source (AGPL-3.0), privacy-focused                    |
+| DeepL (https://www.deepl.com/)                                     | :icon-cloud: <i class="fa-solid fa-key"></i>                                  | High-quality translations, especially for European languages                                           |
+| DeepLX (https://github.com/OwO-Network/DeepLX)                     | <i class="fa-solid fa-link"></i>                                              | Self-hosted DeepL proxy, open source (MIT), free but proxying DeepL Pro requires DeepL API key         |
+| Bing Translator (https://www.bing.com/translator)                  | :icon-cloud:                                                                  | Microsoft's translation service, integrates with Azure services                                        |
+| OneRing Translator (https://github.com/janvarev/OneRingTranslator) | <i class="fa-solid fa-link"></i>                                              | Self-hosted front-end to Google Translate and other providers, privacy-focused, open source (AGPL-3.0) |
+| Yandex Translate (https://translate.yandex.com/)                   | :icon-cloud:                                                                  | Good for Russian and Eastern European languages                                                        |
 
 ### DeepL-specific configuration
 
 - Formality levels available for German, French, Italian, Spanish, Dutch, Japanese, and Russian
-- Configure via `deepl.formality` in config.yaml
+- Configure via `deepl.formality` in [config.yaml](SillyTavern_Administration_config-yaml.md)
 
 ## Slash Commands
 
@@ -132,15 +130,11 @@ Translate text to the current target language and show it in a popup:
 /translate Welcome to the Tavern | /echo 
 ```
 
-
-
 Translate text to Spanish and add it to the chat:
 
 ```
 /translate target=es Hello world | /send
 ```
-
-
 
 ### Testing, pipeline translation, localization
 
@@ -156,30 +150,20 @@ to gather user input:
 /translate target={{var::lang}} {{var::input}} | /let key=tx_target | 
 /translate | /let key=tx_orig ||
 /echo escapeHtml=false cssClass=wider_dialogue_popup
-<b data-i18n="Test Message">Test message</b>: {{var::input}} <br/>
-<b data-i18n="Output">Output</b> ({{var::lang}}): {{var::tx_target}} <br/>
-<b data-i18n="Output">Output</b> (<span data-i18n="ext_translate_target_lang">target language</span>): {{var::tx_orig}} <br/>
+<b data-i18n="Test Message">Test message</b>: {{var::input}} 
+<b data-i18n="Output">Output</b> ({{var::lang}}): {{var::tx_target}} 
+<b data-i18n="Output">Output</b> (<span data-i18n="ext_translate_target_lang">target language</span>): {{var::tx_orig}} 
 ```
 
 This is useful for checking the quality of a translation into a language that you don't speak, before writing it
 somewhere important.
 
-
-
-
 The UI controls are shown in the current locale, independent of the configured target language.
 
 | `/input`                                                                                        | `/buttons`                                                                          |
 |-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|  |  |
-
-
 
 Input language detection is relatively effective in the following examples:
-
-
-
-
 
 ## Technical Notes
 

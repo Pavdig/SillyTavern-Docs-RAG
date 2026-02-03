@@ -29,7 +29,7 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - These LLM APIs can be run on your PC.
 - They are free to use and have no content filter.
 - Installation process can be complex (**The SillyTavern dev team does not provide support for this**).
-- Requires separate download of LLM models from HuggingFace which can be 5-50GB each.
+- Requires separate download of LLM models from HuggingFace (https://huggingface.co/models?other=LLM) which can be 5-50GB each.
 - Most models are not as powerful as cloud LLM APIs.
 
 ### KoboldCpp
@@ -38,7 +38,7 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - Runs from a single binary file on Windows, Mac, and Linux
 - Supports GGUF models
 - Slower than GPU-only loaders such as AutoGPTQ and Exllama/v2
-- GitHub, Setup Instructions
+- GitHub (https://github.com/LostRuins/koboldcpp), [Setup Instructions](SillyTavern_Usage_API_Connections_koboldcpp.md)
 
 ### llama.cpp
 
@@ -46,14 +46,14 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - Provides pre-compiled binaries and an option to compile from source
 - Supports GGUF models
 - Lightweight CLI interface for llama-server
-- GitHub
+- GitHub (https://github.com/ggml-org/llama.cpp)
 
 ### Ollama
 
 - Easiest to set up and use of all llama.cpp-based APIs
-- A nifty catalog of models available for one-click download
+- A nifty catalog (https://ollama.com/library) of models available for one-click download
 - Supports GGUF models wrapped in Ollama's own format
-- GitHub, Website
+- GitHub (https://github.com/ollama/ollama), Website (https://ollama.com/)
 
 ### Oobabooga TextGeneration WebUI
 
@@ -61,7 +61,7 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - Broadest support for quantized (AWQ, Exl2, GGML, GGUF, GPTQ) and FP16 models
 - One-click installers available
 - Regular updates, which can sometimes break compatibility with SillyTavern
-- GitHub
+- GitHub (https://github.com/oobabooga/text-generation-webui#one-click-installers)
 
 **Correct Way to Connect SillyTavern to Ooba's new OpenAI API:**
 
@@ -73,11 +73,11 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 
 ### TabbyAPI
 
-- Lightweight Exllamav2-based API with streaming
+- Lightweight Exllamav2 (https://github.com/turboderp/exllamav2)-based API with streaming
 - Supports Exl2, GPTQ, and FP16 models
-- Official extension allows loading/unloading models directly from SillyTavern
+- Official extension (https://github.com/theroyallab/ST-tabbyAPI-loader) allows loading/unloading models directly from SillyTavern
 - Not recommended for users with low VRAM (no CPU offloading)
-- GitHub, Setup Instructions
+- GitHub (https://github.com/theroyallab/tabbyAPI), [Setup Instructions](SillyTavern_Usage_API_Connections_tabbyapi.md)
 
 ### KoboldAI Classic (deprecated, abandoned)
 
@@ -87,8 +87,8 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - Models limited to 2k context
 - No streaming
 - Popular KoboldAI versions:
-  - Henky's United
-  - 0cc4m's 4bit-supporting United
+  - Henky's United (https://github.com/henk717/KoboldAI)
+  - 0cc4m's 4bit-supporting United (https://github.com/0cc4m/KoboldAI)
 
 ## Cloud LLM APIs
 
@@ -101,7 +101,7 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - SillyTavern can access this API out of the box with no additional settings required
 - Uses the GPU of individual volunteers (Horde Workers) to process responses for your chat inputs
 - At the mercy of the Worker in terms of generation wait times, AI settings, and available models
-- Website, Setup Instructions
+- Website (https://aihorde.net/), [Setup Instructions](SillyTavern_Usage_API_Connections_horde.md)
 
 ### OpenAI (ChatGPT)
 
@@ -109,77 +109,77 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 - Requires prepayment for credits and charges per prompt
 - Very logical. Creative style can be repetitive and predictable
 - Most of the newer models (gpt-4-turbo, gpt-4o) support multimodality
-- Website, Setup Instructions
+- Website (https://platform.openai.com/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### Claude (by Anthropic)
 
 - Recommended for users who want their AI chats to have a creative, unique writing style
 - Requires prepayment for credits and charges per prompt
 - The newest models (Claude 3) support multimodality
-- Requires a specific prompting style and utilization of prefills for reply steering
-- Website, Setup Instructions
+- Requires a specific prompting style and utilization of prefills (https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prefill-claudes-response) for reply steering
+- Website (https://console.anthropic.com/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### Google AI Studio and Vertex AI
 
 - Has a free tier with rate limits (Gemini Flash), may require billing information
-- AI Studio usually has the latest models and features
-- Vertex AI is trickier to set up, but more stable
-- Setup Instructions
+- AI Studio (https://aistudio.google.com/) usually has the latest models and features
+- Vertex AI (https://console.cloud.google.com/vertex-ai/studio) is trickier to set up, but more stable
+- [Setup Instructions](SillyTavern_Usage_API_Connections_google.md)
 
 ### Mistral (by Mistral AI)
 
-- Efficient models of various sizes and use cases. You can create an account and API key on their platform.
+- Efficient models of various sizes and use cases. You can create an account and API key on their platform (https://console.mistral.ai/api-keys/).
 - From 32k to 128k context sizes for general use, and 32k to 256k context sizes for coding.
 - Free Tier with rate limits.
-- Reasonable moderation, with Mistral's main principles being to be neutral and empower users, more information here.
-- Website, Setup Instructions
+- Reasonable moderation, with Mistral's main principles being to be neutral and empower users, more information here (https://mistral.ai/terms/).
+- Website (https://console.mistral.ai/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### OpenRouter
 
 - Provides a unified API to access all the major LLMs on the market
 - Pay-per-token credit system, as well as free models with limited daily requests
 - No enforced moderation, unless required by the LLM vendor
-- Website, Setup Instructions
+- Website (https://openrouter.ai), [Setup Instructions](SillyTavern_Usage_API_Connections_OpenRouter.md)
 
 ### DeepSeek
 
 - Provides access to the latest versions of very popular DeepSeek V3 (`deepseek-chat`) and DeepSeek R1 (`deepseek-reasoner`) models
 - Requires a payment for credits ($2 minimum), but the models are fairly cheap for their quality
 - No moderation on the API, but the models may refuse certain prompts
-- Website, Setup Instructions
+- Website (https://platform.deepseek.com/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### AI21
 
 - Provides access to Jamba Family open models
 - Has a free trial ($10 for three months), then requires to pay monthly per token
-- Website, Setup Instructions
+- Website (https://ai21.com/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### Cohere
 
 - Provides access to the latest models from Cohere (command-r, command-a, c4ai-aya, etc.)
 - Has a free tier (Trial Keys) with enough rate limits for casual use
-- Website, Setup Instructions
+- Website (https://cohere.com/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### Perplexity
 
 - Provides access to unique Perplexity Sonar online-enabled models via their API
 - Requires to have billing configured and credits purchased
-- Website, Setup Instructions
+- Website (https://perplexity.ai/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### Mancer AI
 
 - Service that hosts unconstrained models of various families
 - Uses 'credits' to pay for tokens on various models
 - Does not log prompts by default, but you can enable it to get credit discounts on tokens.
-- Uses an API similar to `Oobabooga TextGeneration WebUI`, see Mancer docs for details.
-- Website, Setup Instructions
+- Uses an API similar to `Oobabooga TextGeneration WebUI`, see Mancer docs (https://mancer.tech/docs/clients/#sampling-parameters) for details.
+- Website (https://mancer.tech/), [Setup Instructions](SillyTavern_Usage_API_Connections_mancer.md)
 
 ### DreamGen
 
 - Uncensored models tuned for steerable creative writing
 - Free monthly credits, as well as a paid subscription
 - Models ranging from 7B to 70B
-- Setup Instructions
+- [Setup Instructions](SillyTavern_Usage_API_Connections_DreamGen.md)
 
 ### Pollinations
 
@@ -191,16 +191,16 @@ Most Text Completion models have a recommended "Instruct Template" (usually ment
 
 - No content filter, the latest model is based on Llama 3
 - Paid subscription required, the tier determines the max context length
-- Website, Setup Instructions
+- Website (https://novelai.net/), [Setup Instructions](SillyTavern_Usage_API_Connections_novelai.md)
 
 ### Electron Hub
 
 - One API key unlocks models from multiple vendors (OpenAI, Anthropic, DeepSeek, etc.) for text and image generation
 - $0.25 of free credits every day, paid plans available
-- Website, Setup Instructions
+- Website (https://www.electronhub.ai/), [Setup Instructions](SillyTavern_Usage_API_Connections_openai.md)
 
 ### AI/ML API
 
 - Unified API for 300+ models including Claude, GPT-4o, Gemini, LLaMA 3, Mistral and others
 - Has a free tier with rate limits, subscription plans, and pay-as-you-go options
-- Website, Docs, Models
+- Website (https://aimlapi.com), Docs (https://docs.aimlapi.com), Models (https://aimlapi.com/models)

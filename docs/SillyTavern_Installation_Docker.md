@@ -1,15 +1,15 @@
 
 # Docker Installation
 
-These instructions assume you have installed Docker, are able to access your command line for the installation of containers, and familiar with their general operation.
+**These instructions assume you have installed Docker, are able to access your command line for the installation of containers, and familiar with their general operation.**
 
-## Using the GitHub Container Registry
+**## Using the GitHub Container Registry**
 
 Using a prebuilt image is the quickest and easiest way to get started with SillyTavern in Docker. You can pull the latest image from the GitHub Container Registry.
 
 ### Docker Compose (recommended)
 
-Download the `docker-compose.yml` file from the GitHub Repository and run the following command in the directory where the file is located. This will pull the latest release image from the GitHub Container Registry and start the container, automatically creating the necessary volumes.
+Download the `docker-compose.yml` file from the GitHub Repository (https://github.com/SillyTavern/SillyTavern/blob/release/docker/docker-compose.yml) and run the following command in the directory where the file is located. This will pull the latest release image from the GitHub Container Registry and start the container, automatically creating the necessary volumes.
 
 ```sh
 docker compose up
@@ -19,7 +19,7 @@ You can edit the file and apply additional customization to suit your needs:
 
 - The default port is 8000. You can change it by modifying the `ports` section.
 - Change the `image` tag to `staging` if you want to use the development branch instead of the stable release.
-- If you want to adjust the server configuration using environment variables, check the Environment Variables page.
+- If you want to adjust the server configuration using environment variables, check the [Environment Variables](SillyTavern_Administration_config-yaml.md) page.
 
 ### Docker CLI (advanced)
 
@@ -40,7 +40,7 @@ You will need two mandatory directory mappings and a port mapping to allow Silly
 
 ##### Additional Settings
 
-- `SILLYTAVERN_VERSION` - On the GitHub Packages page you'll see the list of tagged image versions. The image tag "latest" will keep you up-to-date with the current release. You can also utilize "staging" that points to the nightly image of the respective branch.
+- `SILLYTAVERN_VERSION` - On the GitHub Packages page (https://github.com/SillyTavern/SillyTavern/pkgs/container/sillytavern) you'll see the list of tagged image versions. The image tag "latest" will keep you up-to-date with the current release. You can also utilize "staging" that points to the nightly image of the respective branch.
 
 #### Running the container
 
@@ -67,20 +67,21 @@ docker run \
 
 By default the container will run in the foreground. If you want to run it in the background, add the `-d` flag to the `docker run` command.
 
-## Building the Docker Image
+**## Building the Docker Image**
 
 The following section assumes you installed SillyTavern in a non-root (non-admin) folder. If you installed SillyTavern in a root folder, you may have to run some of these commands with administrator rights [`sudo`, `doas`, Command Prompt (Administrator)].
 
-If you want to build the Docker image yourself, you can do so by following these steps. This is useful if you want to customize the image or use it for development purposes.
+**If you want to build the Docker image yourself, you can do so by following these steps. This is useful if you want to customize the image or use it for development purposes.**
 
 ### Linux
 
-1. Install Docker by following the Docker installation guide here.
-   !!!danger
+1. Install Docker by following the Docker installation guide here (https://docs.docker.com/engine/install/).
+
    **Do not** install Docker Desktop.
-   !!!
-2. Follow the steps in **Manage Docker as a non-root user** in the Docker Post-Installation Guide.
-3. Install Git using your package manager.
+
+**2. Follow the steps in **Manage Docker as a non-root user** in the Docker Post-Installation Guide (https://docs.docker.com/engine/install/linux-postinstall/).**
+
+3. Install Git (https://git-scm.com/download/linux) using your package manager.
 
     - Debian (Ubuntu/Pop! OS/etc.)
 
@@ -118,16 +119,19 @@ If you want to build the Docker image yourself, you can do so by following these
     docker compose up -d
     ```
 
-6. Open a new browser and go to http://localhost:8000. You should see SillyTavern load in a few moments.
+6. Open a new browser and go to http://localhost:8000 (http://localhost:8000). You should see SillyTavern load in a few moments.
 
 ### Windows
 
+**Regarding Docker on Windows**
+
 Using Docker on Windows is **_really_** complicated. Not only do you need to activate _Windows Subsystem for Linux_ within _Turn Windows features on or off_, but also configure your system for Virtualization (Intel VT-d/AMD SVM) which differs from PC manufacturer to PC manufacturer (or motherboard manufacturer). Sometimes, this option is not present on some systems.
 
-It is highly suggested you install SillyTavern by following our Windows guide. This section is a _rough_ idea of how it can be done on Windows.
+It is highly suggested you install SillyTavern by following our [Windows](SillyTavern_Installation_Windows.md) guide. This section is a _rough_ idea of how it can be done on Windows.
 
-1.  Install Docker Desktop by following the Docker installation guide here.
-2.  Install Git for Windows.
+**1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/windows-install/).**
+
+2.  Install Git for Windows (https://git-scm.com/download/win).
 3.  Clone the SillyTavern repository.
 
     -   Release (Stable Branch)
@@ -147,14 +151,16 @@ It is highly suggested you install SillyTavern by following our Windows guide. T
     docker compose up -d
     ```
 
-5.  Open a new browser and go to http://localhost:8000. You should see SillyTavern load in a few moments.
+5.  Open a new browser and go to http://localhost:8000 (http://localhost:8000). You should see SillyTavern load in a few moments.
 
 ### macOS
 
-Even though macOS is similar to Linux, it doesn't have the Docker Engine. You will have to install Docker Desktop similarly to Windows.
-You will also need to install Homebrew in order to install Git on your Mac. This section is a _rough_ idea on how it can be done on macOS.
+**Even though macOS is similar to Linux, it doesn't have the Docker Engine. You will have to install Docker Desktop similarly to Windows.**
 
-1.  Install Docker Desktop by following the Docker installation guide here.
+You will also need to install Homebrew (https://brew.sh/) in order to install Git on your Mac. This section is a _rough_ idea on how it can be done on macOS.
+
+**1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/mac-install/).**
+
 2.  Install `git` using Homebrew.
 
     ```sh
@@ -180,7 +186,7 @@ You will also need to install Homebrew in order to install Git on your Mac. This
     docker compose up -d
     ```
 
-5.  Open a new browser and go to http://localhost:8000. You should see SillyTavern load in a few moments.
+5.  Open a new browser and go to http://localhost:8000 (http://localhost:8000). You should see SillyTavern load in a few moments.
 
 ## Configuring SillyTavern
 
@@ -192,18 +198,17 @@ Don't forget to restart the Docker container for SillyTavern in order to apply y
 docker compose restart sillytavern
 ```
 
-
-## Locating User Data
+**## Locating User Data**
 
 SillyTavern's data folder will be within the `data` folder. Backing up your files should be easy to do, however, restoring or adding content into it may require you to do so with administrator rights.
 
 ## Running Server Plugins
 
-Running plugins like HoYoWiki-Scraper-TS or SillyTavern-Fandom-Scraper within Docker is no different from running it on your system without Docker, however we will need to do a slight modification to the Docker Compose script in order to do so.
+Running plugins like HoYoWiki-Scraper-TS (https://github.com/Bronya-Rand/HoYoWiki-Scraper-TS) or SillyTavern-Fandom-Scraper (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) within Docker is no different from running it on your system without Docker, however we will need to do a slight modification to the Docker Compose script in order to do so.
 
 If you already see a _plugins_ folder within the `docker` folder, you can skip Steps 1-2.
 
-1. Using `nano` or a code editor, open _docker-compose.yml_ and add the following line below `volumes`.
+**1. Using `nano` or a code editor, open _docker-compose.yml_ and add the following line below `volumes`.**
 
     ```sh
         volumes:
@@ -228,9 +233,11 @@ If you already see a _plugins_ folder within the `docker` folder, you can skip S
 
 ## Non-root user mode
 
+**Staging Feature**
+
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
-By default, the container runs as root. If you want files created in mounted volumes to be owned by a specific host user (for example, to avoid root-owned files), you can enable non-root mode.
+**By default, the container runs as root. If you want files created in mounted volumes to be owned by a specific host user (for example, to avoid root-owned files), you can enable non-root mode.**
 
 ### Option 1: PUID/PGID (recommended)
 
@@ -279,9 +286,11 @@ docker run \
 
 ## Container Healthcheck
 
+**Staging Feature**
+
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 
-The Docker image includes a built-in healthcheck mechanism that monitors the SillyTavern server's responsiveness. This is useful for container orchestration systems (like Docker Compose, Kubernetes, or Docker Swarm) to detect and automatically restart unresponsive containers.
+**The Docker image includes a built-in healthcheck mechanism that monitors the SillyTavern server's responsiveness. This is useful for container orchestration systems (like Docker Compose, Kubernetes, or Docker Swarm) to detect and automatically restart unresponsive containers.**
 
 ### How it works
 
@@ -295,7 +304,7 @@ The healthcheck uses a heartbeat file mechanism:
 
 The healthcheck script doesn't support overriding the data directory via command line arguments. If you change the data directory from the default `/home/node/app/data`, ensure that the `SILLYTAVERN_DATAROOT` environment variable is set accordingly.
 
-The healthcheck is controlled by the `SILLYTAVERN_HEARTBEATINTERVAL` environment variable (or `heartbeatInterval` in config.yaml). This value specifies the interval in seconds between heartbeat writes.
+**The healthcheck is controlled by the `SILLYTAVERN_HEARTBEATINTERVAL` environment variable (or `heartbeatInterval` in config.yaml). This value specifies the interval in seconds between heartbeat writes.**
 
 - **Default:** `0` (disabled)
 - **Recommended:** `30` seconds when using Docker healthchecks
@@ -368,11 +377,11 @@ volumes:
 
 ### Forbidden by Whitelist
 
-Docker gateway IPs should be whitelisted automatically if whitelistDockerHosts config value is set to `true`.
+**Docker gateway IPs should be whitelisted automatically if [whitelistDockerHosts](SillyTavern_Administration_config-yaml.md) config value is set to `true`.**
 
 If you are still unable to access SillyTavern, follow the instructions below to update the whitelist manually.
 
-1. Execute the following Docker command to obtain the IP of your SillyTavern Docker container.
+**1. Execute the following Docker command to obtain the IP of your SillyTavern Docker container.**
 
     ```sh
     docker network inspect docker_default
@@ -417,11 +426,9 @@ If you are still unable to access SillyTavern, follow the instructions below to 
 
     Save the file and exit the text editor.
 
-    !!!info
     Note that if you configured Docker network as a bridge, you could also add external IP addresses to the whitelist as usual.
-    !!!
 
-3. Restart the Docker Container to apply the new configuration.
+**3. Restart the Docker Container to apply the new configuration.**
 
     ```sh
     docker compose restart sillytavern

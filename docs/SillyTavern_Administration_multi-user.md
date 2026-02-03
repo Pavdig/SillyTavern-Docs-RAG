@@ -3,7 +3,7 @@ Multi-user mode allows several people to use one SillyTavern server. Each user h
 
 User passwords provide basic privacy between users of a multi-user setup. They are not a security feature and should not be considered as such. All user data (including chat history, API keys, and other sensitive information) is stored in plain text on the server. It can be viewed and modified by anyone with access to the server's filesystem. **Do not use SillyTavern on a public server or with untrusted users.**
 
-## Configuration
+**## Configuration**
 
 To enable and use the multi-user mode, edit the `config.yaml` file:
 
@@ -19,7 +19,7 @@ enableDiscreetLogin: true
 
 You can't _delete_ the `default-user` account from the users list because it is used for serving the user data in case if `enableUserAccounts` is set to `false`. But you can _disable_ it to hide it from the list and disallow logins.
 
-## User handles
+**## User handles**
 
 A handle is the unique identifier of a user. It can consist only of lowercase letters, numbers, and dashes.
 
@@ -78,7 +78,7 @@ Scaffolded files are copied before default files, which means they will override
 
 Every user data directory has a `content.log` file that lists all files copied from the scaffold and default directories. Remove this file to force the server to sync the content again on the next restart.
 
-### Recognized content types
+**### Recognized content types**
 
 | Type                          | Value                |
 |-------------------------------|----------------------|

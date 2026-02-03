@@ -7,38 +7,48 @@ Despite following many security best practices, the SillyTavern server is not se
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES RESULTING FROM UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
 
-**config.yaml**
+**:::callout**
+
+**[config.yaml](SillyTavern_Administration_config-yaml.md)**
 
 The main configuration file for SillyTavern. It contains various settings, such as network, security, and backend-specific options.
 
-**Multi-user**
+**:::callout**
+
+**[Multi-user](SillyTavern_Administration_multi-user.md)**
 
 To share your SillyTavern instance with others, you can create multiple user accounts. Each user has their own settings, extensions, and data. User accounts can also be password-protected.
 
-**Remote access**
+**:::callout**
+
+**[Remote access](SillyTavern_Administration_remote-connections.md)**
 
 You can access your SillyTavern instance from your phone, tablet, or another computer.
 
-**VPNs and Tunneling**
+**:::callout**
+
+**[VPNs and Tunneling](SillyTavern_Administration_tunneling.md)**
 
 To access your SillyTavern instance from the internet, you can use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale.
 
-**Reverse proxying**
+**:::callout**
+
+**[Reverse proxying](SillyTavern_Administration_reverse-proxying.md)**
 
 Enthusiasts can set up a reverse proxy to access their SillyTavern instance from the internet.
 
-## Security checklist
+**## Security checklist**
 
 **These are just recommendations. Please consult a web application security specialist before making your ST instance live.**
 
 1. Keep your operating system and runtime software, such as Node.js, up to date. This ensures your system has the latest security patches and fixes, which helps prevent potential vulnerabilities.
-2. Use a whitelist and a network firewall. Only allow trusted IP ranges to access the server.
-3. Enable basic authentication. It acts as a "master password" before you can access the front-end app.
-4. Alternatively, configure external authentication. Some known services for this are Authelia and authentik. See the SSO guide for details.
+2. Use a [whitelist](SillyTavern_Administration_config-yaml.md) and a network firewall. Only allow trusted IP ranges to access the server.
+3. Enable [basic authentication](SillyTavern_Administration_config-yaml.md). It acts as a "master password" before you can access the front-end app.
+4. Alternatively, configure external authentication. Some known services for this are Authelia (https://www.authelia.com/) and authentik (https://goauthentik.io/). See the [SSO guide](SillyTavern_Administration_sso.md) for details.
 5. Never leave admin accounts without passwords. The server will warn you on startup if you have any unprotected admin accounts.
 6. Use the discreet login setting outside the local network. This hides the user list from potential outsiders.
 7. Check the access logs often. They are written to the server console and to the `access.log` file and provide information about incoming connections, such as IP address and user agent.
-8. Configure HTTPS. For a localhost server, you can generate and use a self-signed certificate. Otherwise, you may need to deploy a reverse-proxy web server such as Traefik or Caddy.
-9. Configure and enable host whitelisting, especially if you're not using HTTPS encryption on a local network.
+8. Configure HTTPS. For a localhost server, you can generate and use a self-signed certificate. Otherwise, you may need to deploy a reverse-proxy web server such as Traefik (https://traefik.io/) or Caddy (https://caddyserver.com/docs/getting-started).
+9. Configure and enable [host whitelisting](SillyTavern_Administration_config-yaml.md), especially if you're not using HTTPS encryption on a local network.
 
-Find more information about secure proxying in the following guide: Reverse Proxying SillyTavern.
+Find more information about secure proxying in the following guide: [Reverse Proxying SillyTavern](SillyTavern_Administration_reverse-proxying.md).

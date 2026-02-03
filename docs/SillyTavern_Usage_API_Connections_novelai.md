@@ -11,15 +11,11 @@ To get your NovelAI API key, follow these steps:
 
 1. Select the gear icon at the top of the left sidebar.
 
-
 2. Select "Account" under "User Settings".
-
 
 3. Select "Get Persistent API Token".
 
-
 4. Select the copy icon to copy your NovelAI API token to the clipboard. 
-
 
 ## Models
 
@@ -152,9 +148,9 @@ Here are a couple of example cards, made for NovelAI, that show off different wa
 
 <div style="display:flex;gap:2em;justify-content:center">
 
+[](/static/Valka.png)
 
-
-
+[](/static/Eris.png)
 
 </div>
 

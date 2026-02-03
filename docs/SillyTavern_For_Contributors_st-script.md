@@ -24,7 +24,6 @@ To run your first script, open any SillyTavern chat and type the following into 
 /pass Hello, World! | /echo
 ```
 
-|  |
 |-------------------------------------------------|
 
 You should see the message in the toast on top of the screen. Now let's break it down bit by bit.
@@ -38,7 +37,7 @@ Commands are executed sequentially, one after another, and transfer data between
 
 **Hint:** To see a list of all available commands, type `/help slash` into the chat.
 
-As constant unnamed arguments and pipes are interchangeable, we could rewrite this script simply as:
+**As constant unnamed arguments and pipes are interchangeable, we could rewrite this script simply as:**
 
 ```stscript
 /echo Hello, World!
@@ -56,7 +55,6 @@ Now let's add a little bit of interactivity to the script. We will accept the in
 1. The `/input` command is used to display an input box with the prompt specified in the unnamed argument and then writes the output to the pipe.
 2. Because `/echo` already has an unnamed argument that sets the template for the output, we use the `{{pipe}}` macro to specify a place where the pipe value will be rendered.
 
-|  |  |
 |-----------------------------------------------------|-------------------------------------------------------|
 
 ### Other input/output commands
@@ -491,7 +489,6 @@ Block comments can be used to quickly comment out multiple commands at once. The
 /echo foo again |
 ```
 
-
 ## Flow Control
 
 ### Loops: `/while` and `/times`
@@ -658,7 +655,6 @@ The generated text is then passed through the pipe to the next command and can b
 /popup <h3>Cthulhu says:</h3><div>{{pipe}}</div>
 ```
 
-|  |
 |---------------------------------------------------|
 
 or to insert the generated message as a response from your character:
@@ -681,7 +677,6 @@ If you are not in a group chat, scripts may temporarily make a request to the cu
 
 - `name` — **Required**. The name of the character to ask (or a unique character identifier, such as an avatar key). This must be provided as a named argument.
 - `return` — Specifies how the return value should be provided. Defaults to `pipe` (output via the command pipe). Other options can be specified if supported by the API.
-
 
 ```stscript
 /ask name=Alice What is your favorite color?
@@ -771,7 +766,7 @@ This will insert a user message at the beginning of the conversation history:
 
 ## World Info commands
 
-World Info (also known as Lorebook) is a highly utilitarian tool for dynamically inserting data into the prompt. See the dedicated page for more detailed explanation: World Info.
+World Info (also known as Lorebook) is a highly utilitarian tool for dynamically inserting data into the prompt. See the dedicated page for more detailed explanation: [World Info](SillyTavern_Usage_worldinfo.md).
 
 1. `/getchatbook` – gets a name of the chat-bound World Info file or create a new one if was unbound, and pass it down the pipe.
 2. `/findentry file=bookName field=fieldName [text]` – finds a UID of the record from the specified file (or a variable pointing to a file name) using fuzzy matching of a field value with the provided text (default field: `key`) and passes the UID down the pipe, e.g. `/findentry file=chatLore field=key Shadowfang`.
@@ -994,8 +989,6 @@ In order to get started, enable open the extensions panel (stacked blocks icon),
 
 <div style="display:flex;justify-content:center">
 
-
-
 </div>
 
 **Quick Replies are disabled by default, you need to enable them first.** Then you will see a bar appearing above your chat input bar.
@@ -1025,7 +1018,6 @@ Every click increments the variable `clicks` by one and displays a different mes
 
 Open the modal menu by clicking the `⋮` button for the created command.
 
-|  |
 |---------------------------------------------------------|
 
 In this menu you can do the following:
@@ -1066,7 +1058,6 @@ A basic debugger exists inside the expanded Quick Reply editor. Set breakpoints 
 /echo result is {{pipe}} |
 ```
 
-|  |
 |--------------------------------------------------------|
 
 ### Calling procedures
@@ -1250,6 +1241,7 @@ Scripts can also interact with SillyTavern's UI: navigate through the chats or c
 **Hint**: Set value of `fib_no` to the desired number
 
 ```stscript
+
 /setvar key=fib_no 5 |
 /pow 5 0.5 | /setglobalvar key=SQRT5 |
 /setglobalvar key=PHI 1.618033 |

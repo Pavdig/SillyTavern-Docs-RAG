@@ -42,23 +42,23 @@ choose <i class="fa-solid fa-user-plus"></i> **Create New Character** to add a n
 * <i class="fa-solid fa-star"></i> **Favorites Filter**: Show favorite characters
 * <i class="fa-solid fa-users"></i> **Groups Filter**: Show only group chats
 * <i class="fa-solid fa-folder-plus"></i> **Tags as Folders**: Organize by tag hierarchy
-* <i class="fa-solid fa-gear"></i> **Manage Tags**: Tag configuration
+* <i class="fa-solid fa-gear"></i> **Manage Tags**: [Tag configuration](SillyTavern_Usage_Characters_Tags.md)
 * <i class="fa-solid fa-tags"></i> **Tag List**: View all available tags
 * <i class="fa-solid fa-filter-circle-xmark"></i> **Clear Filters**: Reset all filters
 
 ### Character Creation/Edit Panel
 
 * **Avatar Image**: Upload and preview character profile picture
-* **Token Count**: Token usage for the character
+* **Token Count**: [Token usage](SillyTavern_Usage_Characters_characterdesign.md) for the character
 * <i class="fa-solid fa-ranking-star"></i> **Stats**: Chat history and usage statistics
-* Tag management
+* [Tag management](SillyTavern_Usage_Characters_Tags.md)
 
 #### Quick Actions
 
 - <i class="fa-solid fa-star"></i> Favorite toggle
 - <i class="fa-solid fa-book"></i> Advanced definitions
 - <i class="fa-solid fa-globe"></i> Character lore
-- <i class="fa-solid fa-passport"></i> Chat lore: link the chat to a World Info
+- <i class="fa-solid fa-passport"></i> Chat lore: link the chat to a [World Info](SillyTavern_Usage_worldinfo.md)
 - <i class="fa-solid fa-file-export"></i> Export character
 - <i class="fa-solid fa-clone"></i> Duplicate
 - <i class="fa-solid fa-skull"></i> Delete
@@ -77,8 +77,8 @@ choose <i class="fa-solid fa-user-plus"></i> **Create New Character** to add a n
 
 #### Content Fields
 
-* **Character Description**: Brief character summary
-* **First Message**: Initial greeting or prompt when starting a new chat
+* **[Character Description](SillyTavern_Usage_Characters_characterdesign.md)**: Brief character summary
+* **[First Message](SillyTavern_Usage_Characters_characterdesign.md)**: Initial greeting or prompt when starting a new chat
 * **Alternative greetings**: Define multiple first messages that you can swipe between when starting a chat
 
 ### Advanced Definitions Panel
@@ -87,10 +87,10 @@ Click on the <i class="fa-solid fa-book"></i> **Advanced Definitions** button to
 
 #### Prompt Overrides (Chat Completion/Instruct Mode)
 
-* **Main Prompt**: Replaces default main/system prompt, can use
+* **Main Prompt**: Replaces default [main/system prompt](SillyTavern_Usage_Prompts_index.md), can use
   \{\{original\}\} placeholder to include the original prompt
 * **Post-History Instructions**: Overrides
-  default post-history instructions
+  default [post-history instructions](SillyTavern_Usage_Prompts_index.md)
 
 #### Creator's Metadata
 
@@ -103,10 +103,10 @@ Non-prompt information about the character:
 
 #### Character Personality
 
-* **Personality Summary**: Brief overview of character's traits
-* **Scenario**: Context and circumstances of the dialog
+* **[Personality Summary](SillyTavern_Usage_Characters_characterdesign.md)**: Brief overview of character's traits
+* **[Scenario](SillyTavern_Usage_Characters_characterdesign.md)**: Context and circumstances of the dialog
 * **Character's Note**: Custom message with selectable depth and message role (also
-  see Author's Note)
+  see [Author's Note](SillyTavern_Usage_Characters_Author's-Note.md))
 * **Talkativeness** (Group Chats): Slider for Shy → Normal → Chatty
 * **Example Messages**: Examples of character's writing style
 
@@ -114,4 +114,4 @@ Non-prompt information about the character:
 
 If this is a group chat, you can manage the group members and settings from this panel.
 
-See Group Chats for more details.
+See [Group Chats](SillyTavern_Usage_Characters_groupchats.md) for more details.

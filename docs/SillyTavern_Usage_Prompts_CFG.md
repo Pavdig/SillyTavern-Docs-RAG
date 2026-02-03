@@ -12,7 +12,7 @@ CFG, or classifier-free guidance is a method that's used to help make parts of a
 ### Supported Backend APIs
 
 Currently, the supported backends are oobabooga's textgen WebUI, NovelAI, and TabbyAPI. 
-NovelAI had its own documentation for CFG.
+NovelAI had its own documentation for CFG (https://web.archive.org/web/20240917150051/https://docs.novelai.net/text/cfg.html).
 
 WARNING: CFG increases vram usage due to ingesting more than 1 prompt! If your GPU memory runs out while generating a prompt with CFG on, consider reducing your context size, using a lesser parameter model, or turning off CFG entirely.
 
@@ -22,11 +22,7 @@ WARNING: CFG increases vram usage due to ingesting more than 1 prompt! If your G
 
 Accessing CFG settings are the same as accessing Author's note:
 
-
-
 And here's what the CFG panel looks like:
-
-
 
 There are four dropdowns in the CFG panel:
 
@@ -49,8 +45,6 @@ NOTE: If the guidance scale is set to 1, nothing will be sent since that's when 
 
 In group chats, the CFG scale panel looks like this:
 
-
-
 The main change is that character CFG is removed and a checkbox called `Use Character CFG Scales` is present in the chat CFG dropdown. This allows for the current character's guidance scale to be used instead of whatever the chat CFG scale is set to.
 
 The main utility of this feature is to alter the scale based on each character's individual needs.
@@ -67,13 +61,11 @@ Yes and no. CFG with LLMs works in a different way than what one might be used t
 
 Here's an illustration to help visualize this concept. The red represents the negative prompt, the blue represents the neutral prompt, and the purple represents the mixed result that's interpreted. All the white space is the same across all 3 prompts, so those are not used for CFG mixing.
 
-
-
 If you want to know more about CFG and LLMs, Vermifuge's original paper is located here. I'd suggest giving it a read/listen:
 
 - Paper - [[2306.17806] Stay on topic with Classifier-Free Guidance (arxiv.org)](https://arxiv.org/abs//2306.17806)
   
-- Audio version - https://www.youtube.com/watch?v=MGY00YFcyco
+- Audio version - https://www.youtube.com/watch?v=MGY00YFcyco (https://www.youtube.com/watch?v=MGY00YFcyco)
   
 
 ### Do I need CFG prompts?

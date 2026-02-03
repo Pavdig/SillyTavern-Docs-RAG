@@ -9,7 +9,7 @@ AI Studio is the fastest and the most user-friendly way to try out the latest Go
 
 ### Step 1: Create a Google AI Studio Key
 
-1. Go to the Google AI Studio page and sign in with your Google account.
+1. Go to the Google AI Studio (https://aistudio.google.com/apikey) page and sign in with your Google account.
 2. Click on "Get API Key", accept the terms and conditions.
 3. Click "Create API Key" to generate your API key.
 4. Copy the API key to your clipboard.
@@ -107,7 +107,7 @@ You should now be able to use the Google Vertex AI API with SillyTavern.
 
 Express mode is the quickest way to get started with using Generative AI on Google Cloud. It allows you to use the Gemini API without needing to set up a service account. Instead, you can use an API key directly.
 
-See the official documentation for more details: Vertex AI in express mode overview.
+See the official documentation for more details: Vertex AI in express mode overview (https://cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/overview).
 
 #### Step 1: Ensure your account is eligible for Express Mode
 
@@ -116,7 +116,7 @@ If you have an existing Google Cloud project (including free trials), you can cr
 
 #### Step 2: Active the Vertex AI Express Mode
 
-1. Go to the following web page: Vertex AI Studio.
+1. Go to the following web page: Vertex AI Studio (https://cloud.google.com/generative-ai-studio).
 2. Click on "Try it free".
 3. Accept the terms and conditions and sign in with your Google account.
 4. Choose your country and click "Agree & start free". Wait for the setup to complete.
