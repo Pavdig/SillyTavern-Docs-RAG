@@ -11,9 +11,6 @@ The (free) credits reset at the start of each calendar month. See pricing (https
 
 Go to the DreamGen API keys (https://dreamgen.com/account/api-keys) page and click the "New API Key" button. Make sure the API Key is copied into your clipboard.
 
-Create New DreamGen API key
-Copy DreamGen API key
-
 ### Connect
 
 1. Go to the SillyTavern connection settings.
@@ -21,8 +18,6 @@ Copy DreamGen API key
 3. Select API Type: DreamGen
 4. Enter the API key
 5. (optional) Pick a model
-
-Connecting to DreamGen
 
 ## Models
 
@@ -44,8 +39,6 @@ We strongly recommend to start with one of these master presets:
 - DreamGen Lucid V1 Story preset (https://dreamgen.com/docs/models/lucid-v1/sillytavern/master-preset/story)
 
 These presets come with built-in support for `/sys` to send instructions to the model. You can use those to steer the plot or control character's actions.
-
-DreamGen preset selected
 
 Other resources:
 
@@ -80,8 +73,6 @@ The next message is from {{char}} and is at most 50 words long<|eot_id|><|start_
 ```
 
 Make sure to preserve all newlines, including the two at the end.
-
-Long Message Prefix
 
 You can also include writing style description in your card or system prompt, e.g.:
 

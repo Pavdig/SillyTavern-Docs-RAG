@@ -13,19 +13,17 @@ Before you begin, ensure you've met the following prerequisites:
 
 3. **Model Folder Placement**: Place your Live2D model folders into the `/data/<user-handle>/assets/live2d` directory. A properly organized `live2d` assets folder might look like this:
 
-    Asset folder example
+    
 
     - A Live2D model folder should include all necessary components for the Live2D model, such as expressions, motions, textures, sounds, and settings files. Notably the `***.model.json` file must be at the root of the Live2D model folder for the model to be detected by the extension. In this example the `shizuku` live2d model folder may look like this:
 
-    Live2d model folder example
+    
 
     - Note: Models can also be placed in character-specific folders, such as `/data/<user-handle>/characters/Shizuku/live2d/`. However, models in character folders will only be accessible for that specific character.
 
 ## Extension Settings
 
 The Live2D extension offers various settings to customize the behavior of your animated model. Here are the key settings:
-
-UI global settings
 
 ### Global Settings
 
@@ -68,8 +66,6 @@ These settings allow you to manage characters and assign Live2D models to them.
 
 ## Model Selection
 
-UI model list
-
 1. **Refresh Button**:
    - Click the refresh button if your Live2D model does not appear in the list.
 
@@ -82,8 +78,6 @@ UI model list
    - Settings are saved per character and model
 
 ## Model Settings
-
-UI model settings
 
 1. **Model Scale**:
    - Use the slider to adjust the size of the model, making it larger or smaller.
@@ -101,8 +95,6 @@ UI model settings
 
 ## Model Talk
 
-UI model talk
-
 1. **Param mouth open Y id**
     - Select from the list the ID of the parameter corresponding to the model's mouth Y value. Not all models have one, and names may vary from model to model. Usually something like "PARAM_MOUTH_OPEN_Y" or "ParamMouthOpenY". Check the model when selecting an element from the list; it will try to run the speak animation. If the mouth moves, you got it!
 
@@ -116,8 +108,6 @@ UI model talk
 - This mouth animation does not work on every model and every animation. Even if your model has animations where the mouth moves, it does not mean the mouth animation can be controlled by this extension. If nothing shows in the parameter list, your model is probably made with a too old version of Live2D to access the parameters properly.
 
 ## Model Animations
-
-UI model animations
 
 1. **Starter animation**
     - Select an expression and motion from the lists that will play when starting a chat with the character. You can also add a delay during which the model will be invisible if you need to hide the character for some time to achieve a perfect effect.
@@ -133,8 +123,6 @@ UI model animations
 
 ## Hit areas mapping
 
-UI model mapping
-
 1. **Default click animation**
     - Select an expression and motion from the list that will play when you click on the model. You can also set a message that will be sent as a user message.
 
@@ -148,8 +136,6 @@ UI model mapping
 - For some models, animations need to be finished before starting another one. Use the debug checkbox if you want to force the refresh and spam animations.
 
 ## Classified Expressions Mapping
-
-UI model classify
 
 1. **Requirements**
     - Requires the use of the classify expression extension; otherwise, it will fall back to the default animation.

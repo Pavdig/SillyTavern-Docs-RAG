@@ -10,32 +10,32 @@ can get started with SillyTavern in just a few minutes. Here are two easy ways t
 
 ## Quick start with AI Horde
 
-1. Follow the [Installation Guide](SillyTavern_Installation_index.md) to install and start SillyTavern.
+1. Follow the Installation Guide to install and start SillyTavern.
 
 2. In SillyTavern's onboarding screen, enter a name for your persona. This name will be used in the chat.
 
-   This is an optional caption
+   
 3. Click the API Connections button in the top bar.
 
-   This is an optional caption
+   
 4. Enter an API key for AI Horde. You can use `0000000000` for now, or get a free key from AI Horde (https://aihorde.net/).
 
-   This is an optional caption
+   
 5. Select some AI models to use. Just choose a few from the top. You can always change them later.
 
-   This is an optional caption
+   
 6. Close the API Connections window. Enter a message in the chat box at the bottom and press Enter.
 
-   This is an optional caption
-7. Your AI will respond in a few moments. You can continue [chatting](SillyTavern_Usage_Chatting_index.md) with it. Success!
+   
+7. Your AI will respond in a few moments. You can continue chatting with it. Success!
 
-   This is an optional caption
+   
 
 ## Quick start with OpenAI
 
 ### Install SillyTavern
 
-Follow the [Installation Guide](SillyTavern_Installation_index.md) to install and start SillyTavern.
+Follow the Installation Guide to install and start SillyTavern.
 
 ### Get access to OpenAI
 

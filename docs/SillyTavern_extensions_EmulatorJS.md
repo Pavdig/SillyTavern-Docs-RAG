@@ -34,7 +34,7 @@ With the power of multimodal models, your AI bots can see your gameplay and prov
 
 1. A browser that supports ImageCapture (https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture#browser_compatibility). Tested on desktop Chrome. Firefox requires to enable it with config. Safari won't work.
 2. Chat Completion API with image inlining mode is recommended. Check the API documentation to see if the chosen model supports multimodal prompts.
-3. If image inlining is disabled, make sure that the [Image Captioning](SillyTavern_captioning.md) extension is enabled, then select the "Multimodal" captioning source.
+3. If image inlining is disabled, make sure that the [Image Captioning](SillyTavern_extensions_captioning.md) extension is enabled, then select the "Multimodal" captioning source.
 
 ### How to enable comments
 

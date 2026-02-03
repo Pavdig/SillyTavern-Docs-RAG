@@ -8,7 +8,6 @@ In language models, reasoning (also known as model thinking) refers to a chain-o
 1. When using reasoning models, the model's internal reasoning process consumes part of your response token allowance, even if this reasoning isn't shown in the final output (e.g. o3-mini or Gemini Thinking). If you notice your responses are coming back incomplete or empty, you should try adjusting the Max Response Length setting found in the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel. For reasoning models, it's typical to use significantly higher token limits - anywhere from 1024 to 4096 tokens - compared to standard conversational models.
 
 ## Configuration
-
 reasoning-related settings can be configured in the "Reasoning" section of **<i class="fa-solid fa-font"></i> Advanced Formatting** panel.
 blocks appear in the chat as collapsible message sections. They can be added manually, automatically by the backend, or through response parsing (see below).
 
@@ -51,9 +50,9 @@ Supported sources:
 - Electron Hub
 - Chutes
 - NanoGPT
-
 **most** sources, "Request model reasoning" does not determine whether a model does reasoning as it can't be disabled. If the backend and model support explicitly requesting disabled reasoning, the setting will do so. Otherwise, the model will always reason.
--specific notes:
+
+Provider-specific notes:
 
 - Claude and Google (2.5 Flash) allow thinking mode to be toggled; see Reasoning Effort.
 - Reasoning can be disabled for Z.AI (GLM). The setting maps the to `thinking.type` parameter, see the documentation (https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking). It does not support "Reasoning Effort".
@@ -77,8 +76,8 @@ This is the main content.
 ## Prompting with Reasoning
 
 By default, recognized reasoning block contents are not sent back to the model. To include reasoning in prompts, enable "Add to Prompts" in the **<i class="fa-solid fa-font"></i> Advanced Formatting** panel. Reasoning content will be wrapped in configured Prefix and Suffix sequences and separated by a Separator from the main context. The Max Additions numeric setting controls how many reasoning blocks can be included, counting from the end of the prompt.
-
 model providers do not recommend sending CoT back to the model in multi-turn conversations.
+
 ### Continuing from Reasoning
 
 A special case when the reasoning can be sent back to the model without having the "Add to Prompts" toggle enabled is when the generation is continued (e.g. by pressing "Continue" from the **<i class="fa-solid fa-bars"></i> Options** menu), but the message being continued contains only the reasoning without an actual content. This gives the model an opportunity to finish an incomplete reasoning and start generating the main content. The prompt will be sent as follows:
@@ -90,7 +89,7 @@ Incomplete reasoning...
 
 ## Regex Scripts
 
-Regular expression scripts from the [Regex extension](SillyTavern_extensions_Regex.md) can be applied to the contents of reasoning blocks. Check "Reasoning" in the "Affects" section of the script editor to target reasoning blocks specifically.
+Regular expression scripts from the Regex extension can be applied to the contents of reasoning blocks. Check "Reasoning" in the "Affects" section of the script editor to target reasoning blocks specifically.
 
 Different ephemerality options affect reasoning blocks in the following ways:
 

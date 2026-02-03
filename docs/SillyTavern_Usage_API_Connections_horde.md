@@ -18,8 +18,6 @@ To help reduce this problem, SillyTavern has built in the following feature:
 - This information can be seen by hovering your mouse cursor over the chat item (see image below).
 - If you believe you received a malicious response, you can pass this information to the Horde admin on the AI Horde Discord (https://discord.gg/3DxrhksKzn) for review and possible disciplinary action against that Worker.
 
-Horde Worker Info Popup
-
 ## Setup
 
 - SillyTavern is able to connect with Horde out of the box with no additional setup required.
@@ -27,11 +25,10 @@ Horde Worker Info Popup
 - Select one or more Models ('AI brains' for the characters) from the Model Selector at the bottom of the panel.
 - Select a character and begin chatting.
 
-ST Kobold Horde API Connection Panel
-
 By default, your SillyTavern instance connects to the Horde's low priority 'guest account'.
 This means you may have to wait a long time for a reply.
 To reduce wait times, follow the tips down below.
+
 ## Tips
 
 - Register an account on the Horde website (https://aihorde.net/register) then add your Horde key into the SillyTavern Horde API Key box.

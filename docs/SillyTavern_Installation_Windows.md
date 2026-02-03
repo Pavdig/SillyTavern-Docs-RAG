@@ -5,6 +5,7 @@ DO NOT INSTALL INTO ANY WINDOWS CONTROLLED FOLDER (Program Files, System32, etc)
 DO NOT RUN START.BAT WITH ADMIN PERMISSIONS
 
 INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CAN NOT RUN NODEJS 18.16
+
 ## Installing via Git
 
 1. Install NodeJS (https://nodejs.org/en) (latest LTS version is recommended)
@@ -38,22 +39,22 @@ INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CAN NOT RUN NODEJS 18.16
 2. Install GitHub Desktop (https://central.github.com/deployments/desktop/desktop/latest/win32)
 3. After installing GitHub Desktop, click on `Clone a repository from the internet....` (Note: You **do NOT need** to create a GitHub account for this step)
   
-    image
+    
 
 4. On the menu, click the URL tab, enter this URL `https://github.com/SillyTavern/SillyTavern`, and click Clone. You can change the Local path to change where SillyTavern is going to be downloaded.
 
-    image
+    
 
 5. To open SillyTavern, use Windows Explorer to browse into the folder where you cloned the repository. By default, the repository will be cloned here: `C:\Users\[Your Windows Username]\Documents\GitHub\SillyTavern`
   
 6. Double-click on the `start.bat` file. (Note: the `.bat` part of the file name might be hidden by your OS, in that case, it will look like a file called "`Start`". This is what you double-click to run SillyTavern)
 
-    image
+    
 
 7. After double-clicking, a large black command console window should open and SillyTavern will begin to install what it needs to operate.
   
 8. After the installation process, if everything is working, the command console window should look like this and a SillyTavern tab should be open in your browser:
 
-    image
+    
 
-9. Connect to any of the [supported APIs](SillyTavern_Usage_API_Connections_index.md) and start chatting!
+9. Connect to any of the supported APIs and start chatting!

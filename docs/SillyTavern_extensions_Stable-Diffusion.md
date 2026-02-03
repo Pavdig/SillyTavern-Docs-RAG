@@ -119,7 +119,7 @@ Allow to edit the automatically generated prompts manually before sending them t
 
 ### Use function tool
 
-Uses [function calling](SillyTavern_extensions_Stable-Diffusion.md) to automatically detect the intention to generate an image.
+Uses function calling to automatically detect the intention to generate an image.
 
 **Requirements:**
 
@@ -129,6 +129,7 @@ Uses [function calling](SillyTavern_extensions_Stable-Diffusion.md) to automatic
 4. The user should express an intent to generate an image in the chat message, e.g. "Send me a picture of a cat".
 
 The interactive mode will not trigger when the function tool is enabled.
+
 ### Use interactive mode
 
 Allows to trigger an image generation instead of text as a reply to a user message that follows the special pattern:
@@ -163,7 +164,6 @@ Snap image generation requests with a forced aspect ratio (portraits, background
 **Recommended for SDXL models**.
 
 ## Common prompt prefix
-
 Pro Tip
 Use `{prompt}` macro to specify where exactly the generated prompt will be inserted.
 before every generated or free-mode prompt. Commonly used for setting the overall style of the picture.
@@ -177,7 +177,6 @@ Characteristics of the image you don't want to be present in the output.
 Example: `bad quality, watermark`.
 
 ## Character-specific prompt prefix
-
 Pro Tip
 If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
 characteristics that describe the currently selected character. Will be added after a common prefix.
@@ -191,7 +190,7 @@ Limitations:
 2. Won't be used for backgrounds and free mode generations.
 
 To force include a character prefix into a free mode prompt, use the `{{charPrefix}}` macro anywhere in the prompt.
-you want to share the prefixes with others, tick the "Shareable" checkbox. This will save them with the character data, rather than your local settings. 
+you want to share the prefixes with others, tick the "Shareable" checkbox. This will save them with the character data, rather than your local settings.
 
 ## Styles
 
@@ -250,9 +249,9 @@ After entering the URL, choose <i class="fa-solid fa-check"></i> **Connect** to 
   * Depending on your local setup, you may need to/want to pick a variation of the model for use on RunPod. For example, if you use a quantized GGUF locally, but want to use an fp16 version on RunPod. The JSON workflow you use in ST needs to have this change.
   * Model, samplers, VAE, etc cannot be determined dynamically so your workflow needs to have these hard coded (no `%model%` substitution).
   * Other substitutions should work the same as local.
-
 Note
 The serverless configuration does not currently embed the workflow into the output image. i.e., you won't be able to drag/drop the image into local ComfyUI to see the seed or prompt. This is just a limitation of the RunPod handler and is a capability that could be added on that side.
+
 ### Workflow Management
 
 Select a ComfyUI workflow from the dropdown menu. Two default workflows are provided:
@@ -279,11 +278,11 @@ To add a ComfyUI workflow to the editor, follow these steps:
 3. Create a new workflow in SillyTavern and open the editor.
 4. Paste the downloaded JSON data into the text area.
 5. Replace specific values with placeholders as needed for your use case.
-
 Tips
 You can add the API-format JSON file directly to the `data/default-user/user/workflows` directory in your SillyTavern installation. This will save you from steps 3 and 4.
 
 Retain the original JSON file. If you need to open the workflow again in ComfyUI to make changes, it is much more convenient to edit the original file than the one with all the placeholders.
+
 ### Placeholders
 
 The editor provides a list of predefined placeholders that can be used in your workflow JSON. These placeholders are replaced with dynamic values when the workflow is executed in SillyTavern.
@@ -323,8 +322,6 @@ Notice that the placeholder is wrapped in double quotes. This is important for t
 Sometimes the prompt (or other value) doesn't appear where you might expect. ComfyUI will remove nodes from the API version of the workflow if they are not necessary for the workflow to function in API mode. 
 
 For instance, this workflow uses a LoRA tag loader node (https://github.com/badjeff/comfyui_lora_tag_loader) with a prompt primitive so the workflow is clearer in UI mode:
-
-Prompt primitive and LoRA loader
 
 The prompt primitive node will be removed from the API version of the workflow, so you insert the placeholder in the LoraTagLoader node. Find the text "apple tree" in the workflow and replace it with the `%prompt%` placeholder:
 
@@ -410,18 +407,16 @@ choose a `GGUF` model in the SillyTavern model dropdown, and use the `%model%` p
 }
 ```
 +++
-
 If you have model types other than the usual SD checkpoints in ComfyUI
 Stable Diffusion checkpoints, SD UNets, and GGUF-quantized UNets all appear in the Model dropdown.
 Models of one type will not work with workflows/loader nodes expecting another type.
 If you choose an incompatible model type in ST, ComfyUI will report a problem with the loader node.
+
 #### Avatar images
 
 Use the `%user_avatar%` and `%char_avatar%` placeholders to include the user and character avatars in the workflow. These placeholders are replaced with the PNG data of the avatars when the workflow is executed. The image data is encoded in base64 format, so you must decode it in your workflow. A popular choice for this task is the Load image (Base64) (https://github.com/Acly/comfyui-tooling-nodes) node.
 
 In this example, the character avatar is loaded with a `Load Image (Base64)` node. It also uses an Image Resize node to rescale the image to whatever size is specified in the image generation settings:
-
-Load image from base64 string and resize
 
 Insert the `%char_avatar%`, `%width%`, and `%height%` placeholders into the JSON for the Load Image (Base64) and Image Resize nodes:
 

@@ -1,6 +1,5 @@
 
 # Macros
-
 Experimental Macro Engine
 To enable advanced macro processing that supports nesting, stable substitution order, and other improvements, go to **User Settings** > **Chat/Message Handling** and enable the **Experimental Macro Engine** option.
 are dynamic placeholders that get replaced with actual values when text is processed. They are used throughout SillyTavern in prompts, character cards, lorebooks, Quick Replies, and more.
@@ -137,7 +136,6 @@ Sets a variable with content that includes the user's name.
 The condition itself is a macro that retrieves a variable value.
 
 ## Scoped Macros
-
 Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.
@@ -202,7 +200,6 @@ Produces `# Heading\nSome content here` (without the leading spaces).
 To preserve all whitespace including leading/trailing newlines, use the `#` flag. See Macro Flags for details.
 
 ## Conditional Macros
-
 Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.
@@ -277,7 +274,6 @@ Another example:
 ```
 
 ## Macro Flags
-
 Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 are special symbol characters placed between the opening braces and the macro name that modify macro behavior.
@@ -365,7 +361,6 @@ To display literal curly braces without macro resolution, escape them with backs
 This outputs `{{notAMacro}}` as plain text.
 
 ## Variable Shorthands
-
 Staging Feature
 This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
 shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.
@@ -674,6 +669,7 @@ These are automatically converted to their macro equivalents during processing.
 ## Common Macros by Category
 
 Use `/? macros` for the complete list of available macros and their detailed descriptions.
+
 ### Names & Participants
 
 | Macro | Description |

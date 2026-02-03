@@ -2,10 +2,10 @@
 # How to Update SillyTavern
 
 Find your OS below and follow the instructions to update ST.
-
-installation instructions, see the [Installation](SillyTavern_Installation_index.md) page.
+installation instructions, see the Installation page.
 
 This guide assumes you have already installed and run SillyTavern at least once.
+
 ----
 
 ## Linux/Termux or MacOS
@@ -39,7 +39,7 @@ You have chosen a wise path.
 
 Since your installation was done via Zip, you will need to make a new install using git.
 
-Thankfully we have [instructions](SillyTavern_Installation_Windows.md) on how to do so.
+Thankfully we have instructions on how to do so.
 
 Once you have used git to install a NEW SillyTavern into a DIFFERENT folder, come back to this page and proceed to **Step 4** of the 'Zip Update' instructions below.
 
@@ -155,7 +155,7 @@ If everything goes smoothly, docker should start redownloading the image, and yo
 ### Common Update Problems
 #### I use Docker and all my data is gone after the update!
 
-You must follow the [Migration guide for Docker containers](SillyTavern_Installation_Updating_ST-1.12.0-Migration-Guide.md)
+You must follow the Migration guide for Docker containers
  to update volume mappings for the new data model introduced in 1.12.0
 
 #### Permission denied when running docker commands

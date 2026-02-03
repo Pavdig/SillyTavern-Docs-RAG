@@ -7,6 +7,7 @@ SillyTavern can be run natively on Android devices using Termux.
 
 Avoid installing Termux from the Google Play Store, that version is no longer maintained. 
 Instead, use F-Droid (recommended) or GitHub releases to get the latest version.
+
 1. Download Termux from F-Droid (https://f-droid.org/en/packages/com.termux/) or GitHub releases (https://github.com/termux/termux-app/releases).
 2. Install the downloaded APK file.
 3. Open Termux and run your first command:
@@ -31,9 +32,10 @@ pkg install git nodejs-lts nano
 ```
 
 If you're running 32-bit Android, see the Common Errors section below for additional steps.
+
 ## Installing SillyTavern
 
-Clone the SillyTavern repository ([How to Choose a Branch](SillyTavern_Installation_index.md)):
+Clone the SillyTavern repository (How to Choose a Branch):
 
 - **Release Branch:**
 
@@ -81,8 +83,8 @@ Then proceed with the installation steps above.
 
 ### Performance tweaks
 
-For general tips on improving performance, see the respective [FAQ section](SillyTavern_Usage_faq.md).
-to hardware limitations on Android devices, you may want to adjust the following SillyTavern [config.yaml](SillyTavern_Administration_config-yaml.md) settings for better memory, storage, and CPU usage:
+For general tips on improving performance, see the respective FAQ section.
+to hardware limitations on Android devices, you may want to adjust the following SillyTavern config.yaml settings for better memory, storage, and CPU usage:
 
 ```yaml
 performance:
@@ -97,6 +99,7 @@ backups:
 ```
 
 Use the `nano` text editor included with Termux to edit the `config.yaml` file: `nano ~/SillyTavern/config.yaml`
+
 ## Optional: Create Aliases
 
 You can create shortcuts for common commands to make your workflow easier.
@@ -135,6 +138,7 @@ Now you can use the following commands:
 ## Further Reading
 
 The guides linked below are not maintained by the SillyTavern team.
+
 - SillyTavern in Termux guide by ArroganceComplex#2659: <https://rentry.org/STAI-Termux>
 - Accessing Termux files with Material Files: <https://www.learntermux.tech/2020/10/Termux-File-Manager.html>
 - Prevent Termux process deep sleep: <https://wiki.termux.com/wiki/Termux-wake-lock>

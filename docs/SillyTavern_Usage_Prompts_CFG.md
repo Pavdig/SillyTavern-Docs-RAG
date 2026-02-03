@@ -22,11 +22,7 @@ WARNING: CFG increases vram usage due to ingesting more than 1 prompt! If your G
 
 Accessing CFG settings are the same as accessing Author's note:
 
-CFGhamburgermenupng
-
 And here's what the CFG panel looks like:
-
-CFGchatpanelpng
 
 There are four dropdowns in the CFG panel:
 
@@ -49,8 +45,6 @@ NOTE: If the guidance scale is set to 1, nothing will be sent since that's when 
 
 In group chats, the CFG scale panel looks like this:
 
-CFGpanelgcpng
-
 The main change is that character CFG is removed and a checkbox called `Use Character CFG Scales` is present in the chat CFG dropdown. This allows for the current character's guidance scale to be used instead of whatever the chat CFG scale is set to.
 
 The main utility of this feature is to alter the scale based on each character's individual needs.
@@ -66,8 +60,6 @@ In addition, checking the `Character Negatives` box in prompt cascading will app
 Yes and no. CFG with LLMs works in a different way than what one might be used to in Stable Diffusion. LLM-based CFG works on the principle of "prompt mixing". The CFG formula takes a positive and negative prompt, then mixes the *differences* between them. From there, a combined prompt is sent and a response is generated!
 
 Here's an illustration to help visualize this concept. The red represents the negative prompt, the blue represents the neutral prompt, and the purple represents the mixed result that's interpreted. All the white space is the same across all 3 prompts, so those are not used for CFG mixing.
-
-stcfgdiagrampng
 
 If you want to know more about CFG and LLMs, Vermifuge's original paper is located here. I'd suggest giving it a read/listen:
 

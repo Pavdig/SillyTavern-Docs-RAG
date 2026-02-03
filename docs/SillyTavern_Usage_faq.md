@@ -17,8 +17,8 @@ SillyTavern is an app to facilitate these uses:
 
 SillyTavern can interact with two types of AI:
 
-1. [Web services](SillyTavern_Usage_API_Connections_openai.md) (Cloud-based, usually paid, proprietary, closed)
-2. [Self-hosted](SillyTavern_Usage_API_Connections_self-hosted.md) (local, free, open-source)
+1. Web services (Cloud-based, usually paid, proprietary, closed)
+2. Self-hosted (local, free, open-source)
 
 ### Paid web service AIs
 
@@ -50,13 +50,13 @@ Cons:
 * They are not as capable as <abbr title="State of the art">SOTA</abbr> models (i.e., they write worse dialog, are less creative, etc).
 * Running local models requires a GPU with at least 6GB VRAM.
 
-If you are interested in using these, refer to the dedicated guide here: [How To Use A Self-Hosted Model](SillyTavern_Usage_API_Connections_self-hosted.md).
+If you are interested in using these, refer to the dedicated guide here: How To Use A Self-Hosted Model.
 
 ## Can I use SillyTavern on my phone or tablet?
 
-iPhones and iPads are not capable of running the whole SillyTavern app, but since it's just a web interface, you can run it on another computer on your home Wi-Fi, and then access it in your mobile browser. Refer to [Remote Connections](SillyTavern_Administration_remote-connections.md) for more information.
+iPhones and iPads are not capable of running the whole SillyTavern app, but since it's just a web interface, you can run it on another computer on your home Wi-Fi, and then access it in your mobile browser. Refer to Remote Connections for more information.
 
-For Android users, in addition to the above, you can run the whole SillyTavern directly on your phone, without needing a PC, using the Termux app. Refer to [Installation (Android)](SillyTavern_Installation_Android.md). (NOTE: Termux installations are not officially supported, and we can't guarantee it will work.)
+For Android users, in addition to the above, you can run the whole SillyTavern directly on your phone, without needing a PC, using the Termux app. Refer to Installation (Android). (NOTE: Termux installations are not officially supported, and we can't guarantee it will work.)
 
 ## I tried to import a PNG character card but got an error that it's invalid. Why?
 

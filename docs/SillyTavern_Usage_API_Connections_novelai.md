@@ -10,16 +10,12 @@ You will get only *50 generations* for free to evaluate the model. When the **"N
 To get your NovelAI API key, follow these steps:
 
 1. Select the gear icon at the top of the left sidebar.
-Left Sidebar
 
 2. Select "Account" under "User Settings".
-User Settings
 
 3. Select "Get Persistent API Token".
-Account
 
 4. Select the copy icon to copy your NovelAI API token to the clipboard. 
-Persistent API Token
 
 ## Models
 
@@ -152,9 +148,9 @@ Here are a couple of example cards, made for NovelAI, that show off different wa
 
 <div style="display:flex;gap:2em;justify-content:center">
 
-Valka
+[](/static/Valka.png)
 
-Eris
+[](/static/Eris.png)
 
 </div>
 

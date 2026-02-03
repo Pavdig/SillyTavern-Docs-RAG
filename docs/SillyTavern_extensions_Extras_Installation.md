@@ -11,7 +11,7 @@ installation of Extras can be difficult or impossible on your OS (especially Ter
 * Simple to setup
 * Free to use
 * No Colab GPU credits required (use the `use_cpu` options)
-* See the [Colab Guide Page](SillyTavern_extensions_Extras_Installation.md) for details.
+* See the Colab Guide Page for details.
 
 ### Running Extras in Colab
 
@@ -79,7 +79,7 @@ This method is recommended because Conda makes a 'virtual environment' for the E
    * `pip install -r requirements-rvc.txt` - for real-time voice cloning
    * `pip install -r requirements-coqui.txt` - for Coqui TTS (not recommended)
 
-    See the [Common Problems](SillyTavern_extensions_Extras_Installation.md) page if you get errors at this step!
+    See the Common Problems page if you get errors at this step!
 
 9. See below 'Running Extras After Install'
 
@@ -212,8 +212,6 @@ It requires the installation of an additional package because it's not installed
 
 Find and replace that line in your "webui-user.bat": `set COMMANDLINE_ARGS=--api`
 
-How it should look
-
 If the API mode is disabled for SD Web UI, the Extras server won't be able to make a connection and you won't be able to generate images!
 
 #### Still doesn't work?
@@ -250,7 +248,7 @@ Install the requirements using the `requirements-silicon.txt` file instead.
 ### Missing modules?
 
 * You must specify a list of module names in your Python command line, with the `--enable-modules` modifier.
-* See [Modules](SillyTavern_extensions_Extras_Installation.md) section.
+* See Modules section.
 
 ---
 

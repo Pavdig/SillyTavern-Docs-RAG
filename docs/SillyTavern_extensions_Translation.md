@@ -7,18 +7,16 @@ The Chat Translation Extension enables real-time translation of chat messages be
 different languages using various translation providers. It supports both manual and
 automatic translation modes.
 
-Character message translated from English to Chinese using 'Translate Message/翻譯訊息' message action button
-
 +++ English
-"Translate Chat", "Translate Input"
+
 +++ 简体中文
-"翻译聊天", "翻译输入"
+
 +++ 繁體中文
-"翻譯聊天內容", "翻譯輸入內容"
+
 +++ 한국어
-"채팅 번역하기", "입력 번역하기"
+
 +++ Русский
-"Перевести чат", "Перевести моё сообщение"
+
 +++
 
 ## Usage
@@ -117,7 +115,7 @@ explicit source language selection.
 ### DeepL-specific configuration
 
 - Formality levels available for German, French, Italian, Spanish, Dutch, Japanese, and Russian
-- Configure via `deepl.formality` in [config.yaml](SillyTavern_Administration_config-yaml.md)
+- Configure via `deepl.formality` in config.yaml
 
 ## Slash Commands
 
@@ -132,15 +130,11 @@ Translate text to the current target language and show it in a popup:
 /translate Welcome to the Tavern | /echo 
 ```
 
-Popup in Chinese (Simplified), '欢迎来到酒馆/Welcome to the Tavern'
-
 Translate text to Spanish and add it to the chat:
 
 ```
 /translate target=es Hello world | /send
 ```
-
-User message in Spanish, 'Hola Mundo/Hello world'
 
 ### Testing, pipeline translation, localization
 
@@ -164,22 +158,12 @@ to gather user input:
 This is useful for checking the quality of a translation into a language that you don't speak, before writing it
 somewhere important.
 
-Popup, 'Welcome to the Tavern/欢迎来到酒馆/welcome to the pub', en, zh-CN, en
-Popup, 'My hovercraft is full of eels/我的氣墊船裡裝滿了鰻魚/My hovercraft is filled with eels', en, zh-TW, en
-
 The UI controls are shown in the current locale, independent of the configured target language.
 
 | `/input`                                                                                        | `/buttons`                                                                          |
 |-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Input dialog, '发送测试消息/Send Test Message' | Buttons dialog, '语言/Language' |
-
-Popup, '我的氣墊船裡裝滿了鰻魚/My hovercraft is full of eels', zh-TW -> en -> zh-TW
 
 Input language detection is relatively effective in the following examples:
-
-Popup, '(My hovercraft is full of eels)/A légpárnás hajóm tele van angolnával/我的氣墊船裡裝滿了鰻魚', zh-TW -> hu -> zh-TW
-Popup, '我的氣墊船裡裝滿了鰻魚/Mi aerodeslizador está lleno de anguilas/My hovercraft is full of eels', zh-TW -> es -> en
-Popup, 'Il mio hovercraft è pieno di anguille/我的气垫船里装满了鳗鱼/My hovercraft is filled with eels', it -> zh-CN -> en
 
 ## Technical Notes
 

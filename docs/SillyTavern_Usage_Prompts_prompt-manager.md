@@ -1,17 +1,16 @@
 
 # Prompt Manager
 
-The Prompt Manager is a system that provides more control over the [prompt-building](SillyTavern_index.md) strategy for Chat Completion APIs.
-
+The Prompt Manager is a system that provides more control over the [prompt-building](SillyTavern_Usage_Prompts_index.md) strategy for Chat Completion APIs.
 to: Chat Completion APIs
-For equivalent settings in Text Completion APIs, use [Advanced Formatting](SillyTavern_advancedformatting.md).
-!!!tip Naming Presets
+For equivalent settings in Text Completion APIs, use [Advanced Formatting](SillyTavern_Usage_Prompts_advancedformatting.md).
+Naming Presets
 If a preset shares a name with one of your character cards, it will be automatically selected when starting a chat with that character. Name presets something unique to avoid this behavior.
-the Prompt Manager by clicking on the "AI Response Configuration" button in the navigation bar. The Prompt Manager is located below the [common settings](SillyTavern_Usage_Common-Settings.md) panel.
+the Prompt Manager by clicking on the "AI Response Configuration" button in the navigation bar. The Prompt Manager is located below the common settings panel.
 
 ## Quick Prompts Edit
 
-Provides space to quickly edit common prompt sections, such as **Main Prompt**, **Auxiliary Prompt**, and **Post-History Instructions**. More information on these prompts can be found on the [prompt-building](SillyTavern_index.md) page.
+Provides space to quickly edit common prompt sections, such as **Main Prompt**, **Auxiliary Prompt**, and **Post-History Instructions**. More information on these prompts can be found on the [prompt-building](SillyTavern_Usage_Prompts_index.md) page.
 
 ## Utility Prompts
 
@@ -20,7 +19,7 @@ These prompts are sent to the Chat Completion model to help it understand the in
 ### Format Templates
 
 If the format template is not set, the information will be sent as-is, without any wrapping.
-are string templates used to wrap the information pulled from [World Info](SillyTavern_Usage_worldinfo.md) and [Character Cards](SillyTavern_Usage_Characters_characterdesign.md).
+are string templates used to wrap the information pulled from World Info and Character Cards.
 
 A special marker is used to indicate where the information should be inserted:
 
@@ -36,7 +35,7 @@ Leave this empty to disable Group Nudge functionality.
 
 ### New Chat, New Group Chat, New Example Chat
 
-These are sent before the chat history and before each [Example Dialogue](SillyTavern_Usage_Characters_characterdesign.md) block to inform the model where background information ends and chat history begins.
+These are sent before the chat history and before each Example Dialogue block to inform the model where background information ends and chat history begins.
 
 - **New Chat:** Used for individual chats.
 - **New Group Chat:** Used for group chats.
@@ -47,9 +46,9 @@ Leave these empty to disable this functionality.
 ### Continue Nudge
 
 Sent at the end of the prompt to instruct the model on what to do when Continue is triggered, such as when the Continue button is pressed or when triggered by STScript.
-
 Completion 'Continues'
 Keep in mind that Chat Completion models handle Continues differently than **Text Completion** models, and may not always deliver seamless results regardless of your Continue Nudge.
+
 ### Replace Empty Message
 
 Sends the contents of this field instead of a blank message when the text box is empty and **Send a message** is pressed.
@@ -66,7 +65,7 @@ When Continue is triggered, the 'continued' message returned by the model will h
 
 ### Wrap in Quotes
 
-Deprecated option. Prefer [Regex scripts](SillyTavern_extensions_Regex.md) instead.
+Deprecated option. Prefer Regex scripts instead.
 the entire user message in hidden quotation marks before sending. This is useful for sessions where characters do not use quotes to indicate speech. If your session uses quotation marks to indicate speech, leave this unchecked.
 
 ### Continue Prefill
@@ -76,30 +75,26 @@ the Continue Nudge as an Assistant role message instead of a System message. If 
 
 ### Squash system messages
 
-Deprecated option. Prefer [Prompt Post-Processing](SillyTavern_Usage_API_Connections_openai.md) instead.
+Deprecated option. Prefer Prompt Post-Processing instead.
 consecutive System messages into a single combined message (excluding Example Dialogue).
 
 ### Enable web search
-
-to be confused with the [Web Search extension](SillyTavern_extensions_WebSearch.md).
+to be confused with the Web Search extension.
 web search capabilities provided by the Chat Completion backend. The prompt is usually enriched with search results by the model provider and may incur additional costs.
 
 ### Enable function calling
 
-See [Function Calling](SillyTavern_For_Contributors_Function-Calling.md)
+See Function Calling
 
 ### Send inline images, Send inline videos
-
-to be confused with the [Image Captioning extension](SillyTavern_extensions_captioning.md).
+to be confused with the Image Captioning extension.
 the Chat Completion model has multimodal capabilities to process submitted images and videos, this toggles its ability to do so. To append media to the prompt, use the **Attach A File** option in the "Magic Wand" menu.
 
 ### Request inline images
-
-to be confused with the [Image Generation extension](SillyTavern_extensions_Stable-Diffusion.md).
+to be confused with the Image Generation extension.
 the model to return image attachments.
 
 ### Use system prompt
-
 supported by Google Gemini and Anthropic Claude backends.
 
 Despite having very similar settings for these two, they are technically separate options, so they can be configured separately.
@@ -111,11 +106,11 @@ If the Chat Completion model uses reasoning, these settings affect its visibilit
 
 ### Request model reasoning
 
-See [Adding Reasoning: By Backend](SillyTavern_Usage_Prompts_reasoning.md).
+See Adding Reasoning: By Backend.
 
 ### Reasoning Effort
 
-See [Reasoning Effort](SillyTavern_Usage_Prompts_reasoning.md).
+See Reasoning Effort.
 
 ## "Prompts"
 
@@ -128,15 +123,15 @@ Contains a dropdown list of all (non-default) prompts that the current Chat Comp
 ### Prompts List
 
 This is a drag-and-drop interface that lists the prompts selected to potentially be sent to the Chat Completion model. Prompts placed closer to the **top** of the interface are sent earlier. The **bottom** of the list is the **last thing** sent to the model (typically, this would be your **Post-History Instructions**).
-
 'Pinned' prompts = Default prompts
 The default prompts cannot be removed from the list of selected prompts. This includes Main Prompt, World Info (before/after), Persona Description, Character Description, Character Personality, Scenario, Enhance Definitions, Auxiliary Prompt, Chat Examples, Chat History, and Post-History Instructions. If these are not desired, they can be **toggled 'OFF'**, but not removed or deleted outright.
+
 ## Editing a Prompt
 
 Clicking the **pencil button** on a prompt will bring you to the **Edit interface**. Here, you can edit the prompt directly.
-
 sure to save your changes!
 To permanently save changes to these prompts in your Chat Completion preset, you must click the **Save** button in the bottom right of the **Edit interface**, as well as save the preset itself by using the **Save** button located at the top of the **AI Response Configuration** section! Otherwise, changes made will be lost when the Chat Completion preset is switched to a different one.
+
 ### Name
 
 The name of the prompt. This is not sent to the Chat Completion model; it is for your reference within the Prompt Manager only.
@@ -154,9 +149,9 @@ The generation types for which this prompt is sent. If nothing is selected, the 
 - **Impersonate:** When the Impersonate button is pressed.
 - **Swipe:** When the generation is triggered by swiping.
 - **Regenerate:** When the Regenerate button is pressed in solo chats.
-- **Quiet:** Background generation requests, usually triggered by [extensions](SillyTavern_extensions_index.md) or [STscript](SillyTavern_For_Contributors_st-script.md) commands.
+- **Quiet:** Background generation requests, usually triggered by extensions or STscript commands.
+"Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen Group reply strategy.
 
-"Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen [Group reply strategy](SillyTavern_Usage_Characters_groupchats.md).
 ### Position
 
 When Position is set to **Relative**, this prompt is sent where it's located in the drag-and-drop interface with all other prompts. When it is set to **In-Chat** and given a **Depth**, it is instead sent **within the Chat History** as the selected Role, and **ignores** the order of the drag-and-drop interface.
@@ -166,11 +161,10 @@ When Position is set to **Relative**, this prompt is sent where it's located in 
 When Position is set to **In-Chat**, this defines how deep the prompt is sent within the chat history. The higher the number, the deeper it is sent. For example, a Depth of 0 will be sent after the last chat message, a Depth of 1 will be sent before the last chat message, and a Depth of 2 will be sent before the second-to-last chat message, and so on.
 
 ### Order
-
 that have the same Role and Depth will be grouped together and ordered by their Order value.
 The order is as follows (from top to bottom): User, AI Assistant, System.
 Position is set to **In-Chat**, this defines the order in which the prompt is sent within the chat history. The lower the number, the earlier it is sent.
 
 ## Building Your Prompt: Tips and Tricks
 
-Visit the [prompt-building](SillyTavern_index.md) section of the SillyTavern documentation for more information on how to write effective prompts. The information can largely be applied to Chat Completion presets.
+Visit the [prompt-building](SillyTavern_Usage_Prompts_index.md) section of the SillyTavern documentation for more information on how to write effective prompts. The information can largely be applied to Chat Completion presets.

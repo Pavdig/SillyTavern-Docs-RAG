@@ -55,7 +55,6 @@ You can also download tokenizers manually from the SillyTavern-Tokenizers (https
 If the required tokenizer model is not cached and downloads are disabled, a fallback tokenizer (Llama 3) will be used for counting.
 
 ### Token Padding
-
 to: Text Completion APIs
 SillyTavern will always use the matching tokenizer for Chat Completion models, so there is no need for token padding.
 SillyTavern uses a tokenizer provided by the remote backend API that runs the model, all token counts assumed during prompt generation are estimated based on the selected tokenizer type.

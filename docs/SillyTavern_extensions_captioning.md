@@ -124,7 +124,7 @@ Caption an image from message #5 without sending a new message:
 /caption mesId=5 quiet=true
 ```
 
-Caption an image from message #10 with a custom prompt then [generate a new image](SillyTavern_extensions_Stable-Diffusion.md) based on the caption:
+Caption an image from message #10 with a custom prompt then generate a new image based on the caption:
 
 ```
 /caption mesId=10 Describe this image using comma-separated keywords | /imagine 
@@ -132,7 +132,7 @@ Caption an image from message #10 with a custom prompt then [generate a new imag
 
 ## Local source
 
-You can change the model in [config.yaml](SillyTavern_Administration_config-yaml.md). The key is called `extensions.models.captioning`. Enter the Hugging Face model ID you want to use. The default is `Xenova/vit-gpt2-image-captioning`. 
+You can change the model in config.yaml. The key is called `extensions.models.captioning`. Enter the Hugging Face model ID you want to use. The default is `Xenova/vit-gpt2-image-captioning`. 
 
 You can use any model that supports image captioning (`VisionEncoderDecoderModel` or "image-to-text" pipeline). The model needs be to compatible with the transformers.js library. That is, it needs ONNX weights. Look for models with the `ONNX` and `image-to-text` tags, or that have a folder called `onnx` full of `.onnx` files. 
 
@@ -143,8 +143,7 @@ You can use any model that supports image captioning (`VisionEncoderDecoderModel
 - **Model**: Choose the model for image captioning. Options vary based on the selected API.
 - **Allow reverse proxy**: Toggle to allow using a reverse proxy if defined and valid (OpenAI, Anthropic, Google, Mistral, xAI)
 
-API keys and endpoint URLs for captioning sources are managed in the [API Connections](SillyTavern_Usage_API_Connections_index.md) panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
-
+API keys and endpoint URLs for captioning sources are managed in the API Connections panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
 Set it up in the API Connections panel first
 One last time: configure the API key/address/port in **<i class="fa-solid fa-plug"></i> API Connections** and use the connection in Captioning.
 

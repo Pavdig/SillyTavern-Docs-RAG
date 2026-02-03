@@ -9,8 +9,6 @@ This extension allows you to create, store, and utilize automatically generated 
 
 The summarization extension is installed in SillyTavern by default, thus it will show up in ST's Extensions panel (stacked cubes icon) list like this:
 
-Summarize Config Panel
-
 - **Current summary** - displays and provides an ability to modify the current summary. The summary is updated and embedded into the chat file's metadata for the message that was the last in context when the summary was generated. Deleting or editing a message from the chat that has a summary attached to it, will revert the state to the last valid summary.
 - **Restore Previous** - removes the current summary, rolling it back to the previous state. This is useful if the summarizer does a poor job at any given point.
 - **Pause** - check this to prevent the summary from being automatically updated. This is useful if you want to provide a custom summary of your own or to effectively disable the summary by clearing the box and stopping updates.

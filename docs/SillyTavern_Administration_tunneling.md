@@ -40,7 +40,7 @@ Tailscale is a VPN provider enabling a secure remote connection to your PC. An o
 
 ### 3. Adding your devices to the whitelist
 
-* Add your connecting device's machine name (the one you want to use SillyTavern with) to SillyTavern's whitelist by following [Managing whitelisted IPs](SillyTavern_remote-connections.md).
+* Add your connecting device's machine name (the one you want to use SillyTavern with) to SillyTavern's whitelist by following [Managing whitelisted IPs](SillyTavern_Administration_remote-connections.md).
 
 ### 4. Connecting
 

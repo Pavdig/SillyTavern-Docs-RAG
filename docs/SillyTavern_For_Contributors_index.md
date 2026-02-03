@@ -6,19 +6,19 @@ SillyTavern's default package only provides a barebones platform that can be ext
 **STscript**
 
 STscript is a powerful scripting language based on batched chat commands that can be approached without any prior coding knowledge.
-:::callout
+
 **Function Calling**
 
 Add more dynamic capabilities by letting the LLM use external sources of data or trigger specific functionality of the extension.
-:::callout
+
 **UI Extensions**
 
 UI extensions run in a browser environment and expand the functionality of SillyTavern by hooking into its events and API.
-:::callout
+
 **Server Plugins**
 
 Server plugins allow adding functionality such as new API endpoints by running code in the NodeJS environment.
-:::callout
+
 **Internationalization (i18n)**
 
 Learn how to translate SillTavern's UI into your language.

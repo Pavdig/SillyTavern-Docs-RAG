@@ -10,7 +10,7 @@ Expression images can automatically change based on a classification, adjusting 
 ## Adding Character Expression Images
 
 1. Open the Extensions Panel and expand the 'Character Expressions' section. If you have the character chat open, you will see a grid of image placeholders.
-Expression Drawer
+
 2. Click the 'Upload image' button at the top left of each image in the grid, and select the image you want to apply to that emotion. This will save the image with the correct filename inside the `/data/<user-handle>/characters/(character_name_here)/` folder.
 3. Repeat this for all expressions you want to assign an image to.
 

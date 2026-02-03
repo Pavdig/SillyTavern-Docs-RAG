@@ -1,17 +1,15 @@
 
 # What is SillyTavern?
 
-SillyTavern - LLM Frontend for Power Users
-
 SillyTavern (or ST for short) is a locally installed user interface that allows you to interact with text generation LLMs, image generation engines, and TTS voice models. Our goal is to empower users with as much utility and control over their LLM prompts as possible, embracing the steep learning curve as part of the fun.
 
 SillyTavern is a passion project brought to you by a dedicated community of LLM enthusiasts and will always be free and open-sourced. Beginning in February 2023 as a fork of TavernAI 1.2.8, SillyTavern now has over 200 contributors and 2 years of independent development under its belt, and continues to serve as a leading software for savvy AI hobbyists.
 
 ## Screenshots
 
-|   API Connection    |  Chat UI   |
+|   [](/static/screenshot1.jpg)    |  [](/static/screenshot2.jpg)   |
 |:--------------------------------------------------------------------------:|:-----------------------------------------------------------------:|
-| Advanced Formatting | World Info |
+| [](/static/screenshot3.jpg) | [](/static/screenshot4.jpg) |
 
 ## Installation Requirements
 
@@ -19,10 +17,10 @@ The hardware requirements are minimal: it will run on anything that can run Node
 
 Follow the installation guide for your platform:
 
-* [Windows](SillyTavern_Installation_Windows.md)
-* [Linux and Mac](SillyTavern_Installation_LinuxMacOS.md)
-* [Android](SillyTavern_Installation_Android.md)
-* [Docker](SillyTavern_Installation_Docker.md)
+* Windows
+* Linux and Mac
+* Android
+* Docker
 
 ## Branches
 
@@ -33,38 +31,38 @@ SillyTavern is being developed using a two-branch system to ensure a smooth expe
 
 ## What do I need other than SillyTavern?
 
-Since SillyTavern is only an interface, you will need access to an LLM backend to provide inference. You can use AI Horde for instant out-of-the-box chatting. Aside from that, we support many other local and cloud-based LLM backends: OpenAI-compatible API, KoboldAI, Tabby, and many more. You can read more about our supported APIs in the [API Connections](SillyTavern_Usage_API_Connections_index.md) section.
+Since SillyTavern is only an interface, you will need access to an LLM backend to provide inference. You can use AI Horde for instant out-of-the-box chatting. Aside from that, we support many other local and cloud-based LLM backends: OpenAI-compatible API, KoboldAI, Tabby, and many more. You can read more about our supported APIs in the API Connections section.
 
 ## Character Cards
 
 SillyTavern is built around the concept of "character cards". A character card is a collection of prompts that set the behavior of the LLM and is required to have persistent conversations in SillyTavern. They function similarly to ChatGPT's GPTs or Poe's bots. The content of a character card can be anything: an abstract scenario, an assistant tailored for a specific task, a famous personality or a fictional character.
 
-To have a quick conversation without selecting a character card or to just test the LLM connection, simply type your prompt input into the input bar on the [Welcome Screen](SillyTavern_Usage_welcome-assistants.md) after opening SillyTavern. This will create an empty "Assistant" character card that you can customize later.
+To have a quick conversation without selecting a character card or to just test the LLM connection, simply type your prompt input into the input bar on the Welcome Screen after opening SillyTavern. This will create an empty "Assistant" character card that you can customize later.
 
 To get a general idea on how to define character cards, see the default character (Seraphina) or download selected community-made cards from the "Download Extensions & Assets" menu.
 
-You can also create your own character cards from scratch. Refer to the [Character Design](SillyTavern_Usage_Characters_characterdesign.md) guide for more information.
+You can also create your own character cards from scratch. Refer to the Character Design guide for more information.
 
 ## Key Features
 
-* Advanced [text generation settings](SillyTavern_Usage_Prompts_advancedformatting.md) with many community-made presets
+* Advanced text generation settings with many community-made presets
 * [World Info support](SillyTavern_Usage_worldinfo.md): create rich lore or save tokens on your character card
-* [Group chats](SillyTavern_Usage_Characters_groupchats.md): multi-bot rooms for characters to talk to you and/or each other
-* [Rich UI customization options](SillyTavern_Usage_User_Settings_uicustomization.md): theme colors, background images, custom CSS, and more
-* [User personas](SillyTavern_Usage_personas.md): let the AI know a bit about you for greater immersion
-* [Built-in RAG support](SillyTavern_Usage_Characters_data-bank.md): add documents to your chats for the AI to reference
-* Extensive [chat commands](SillyTavern_Usage_Chatting_slashcommands.md) subsystem and own [scripting engine](SillyTavern_For_Contributors_st-script.md)
+* Group chats: multi-bot rooms for characters to talk to you and/or each other
+* Rich UI customization options: theme colors, background images, custom CSS, and more
+* User personas: let the AI know a bit about you for greater immersion
+* Built-in RAG support: add documents to your chats for the AI to reference
+* Extensive chat commands subsystem and own scripting engine
 
 ## Extensions
 
 SillyTavern has extensibility support.
 
-* [Character emotional expressions (sprites)](SillyTavern_extensions_Expression-Images.md)
-* [Auto-Summary of the chat history](SillyTavern_extensions_Summarize.md)
+* Character emotional expressions (sprites)
+* Auto-Summary of the chat history
 * Automatic UI and [chat translation](SillyTavern_extensions_Translation.md)
-* [Stable Diffusion/FLUX/DALL-E image generation](SillyTavern_extensions_Stable-Diffusion.md)
-* [Text-to-speech for AI response messages](SillyTavern_extensions_TTS.md)
-* [Web Search capabilities for adding additional real world context to your prompts](SillyTavern_extensions_WebSearch.md)
+* Stable Diffusion/FLUX/DALL-E image generation
+* Text-to-speech for AI response messages
+* Web Search capabilities for adding additional real world context to your prompts
 * Many more are available to download from the "Download Extensions & Assets" menu.
 
 ## How can I get in touch with the developers directly?

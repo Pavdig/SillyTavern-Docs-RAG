@@ -3,7 +3,7 @@
 
 ## What is it?
 
-The Regex extension lets the user automatically detect specific patterns in a string of text (called 'sequences') and apply manipulations (replacements) to them. It can be a powerful tool when used in conjuction with other SillyTavern features such as [Quick Replies or STscript](SillyTavern_For_Contributors_st-script.md), or simply a way to remove certain words from a chat.
+The Regex extension lets the user automatically detect specific patterns in a string of text (called 'sequences') and apply manipulations (replacements) to them. It can be a powerful tool when used in conjuction with other SillyTavern features such as Quick Replies or STscript, or simply a way to remove certain words from a chat.
 
 ## Helpful Links
 
@@ -29,8 +29,6 @@ RegEx is often used to apply a find-replace function on certain words in the cha
 
 ## Script List
 
-RegEx Extension Script List
-
 - The buttons at the top are used to make a new script.
   - 'Global' scripts will apply to all characters and will be saved into `settings.json`.
   - 'Scoped' scripts will only apply to the currently active character, and will be saved into the character card's data.
@@ -47,13 +45,11 @@ Below this is a list of your scripts with some action buttons.
 
 ## RegEx Editor
 
-RegEx Editor
-
 - **Test Mode** : This will open a comparison view at the top of the editor. Type some text into the 'Input' box, and the results of your RegEx script will be shown in the Output box. It is a valuable debug tool as it will update the Output box in real time as you make changes to the script settings.
 
 - **Name** : The label for the script shown on the extension's script list. **This is also used to target the script when triggering it via slash command or STscript.**
 
-- **Find Regex** : This is the Regular Expression that is used to detect your targeted text pattern. This is usually the most complex part of any RegEx script, and is the easiest place to make mistakes. Refer to the links at the top of the page for information how to write a RegEx sequence. This box can resolve the values of [common SillyTavern macros](SillyTavern_Usage_Characters_macros.md) (such as \{\{user\}\}, \{\{char\}\}, etc) if the 'Macros in Find Regex' is set to do so (see below).
+- **Find Regex** : This is the Regular Expression that is used to detect your targeted text pattern. This is usually the most complex part of any RegEx script, and is the easiest place to make mistakes. Refer to the links at the top of the page for information how to write a RegEx sequence. This box can resolve the values of common SillyTavern macros (such as \{\{user\}\}, \{\{char\}\}, etc) if the 'Macros in Find Regex' is set to do so (see below).
 
 - **Replace With**: This is what will replace the matched sequence. In a very simple example, if your 'Find Regex' is `apple`, and your 'Replace With' is `orange`, the first occurence of 'apple' would be automatically changed to 'orange' in any text where the script is applied.
 

@@ -24,7 +24,7 @@ Choose between Circle, Square, Rectangle, or Rounded Square. This setting applie
 
 #### Chat Style
 
-| Style        | Description                                                                                                                                                    | [Slash command](SillyTavern_For_Contributors_st-script.md) |
+| Style        | Description                                                                                                                                                    | Slash command |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
 | **Flat**     | Clean and continuous "chat log" style, a flat canvas for your AI interactions to come to life.                                                                 | `/flat``/default`                                      |
 | **Bubbles**  | "Instant messenger" style with distinct bubbles for each message, delightful rounded corners, and a subtle 3D effect.                                          | `/bubble``/bubbles`                                    |
@@ -47,8 +47,8 @@ Default display style for media attachments (images, audio, video) in chat messa
 
 * **List**: Display all media attachments at once in a grid-like layout.
 * **Gallery**: Display media attachments in a carousel-style gallery.
-
 setting also affects how the inline media attachments are sent to supported Chat Completion sources: list sends all attachments at once, while gallery sends the selected attachment.
+
 ### Theme Colors
 
 Customize the color scheme of every UI element to create your perfect theme. Colors can be selected using a color picker, and include transparency options where applicable.
@@ -80,7 +80,7 @@ These switches control various UI features and behaviors. Some options can impro
 * **Reduced Motion**: Disable animations and transitions
 * **No Blur Effect**: Remove background blur for better performance
 * **No Text Shadows**: Disable text shadow effects
-* **[Visual Novel mode](SillyTavern_Visual-Novel.md)**: Compact chat with background sprite
+* **[Visual Novel mode](SillyTavern_Usage_User_Settings_Visual-Novel.md)**: Compact chat with background sprite
 * **Expand Message Actions**: Always show full message context menu
 * **Zen Sliders**: Simplified parameter controls
 * **Mad Lab Mode**: Unrestricted parameter ranges
@@ -117,7 +117,7 @@ To play your own custom sound on receiving a new message from bot, replace the f
 
 Plays at 80% volume.
 
-If the "[Background Sound Only](SillyTavern_index.md)" option is enabled, the sound plays only if SillyTavern window is **unfocused**.
+If the "[Background Sound Only](SillyTavern_Usage_User_Settings_index.md)" option is enabled, the sound plays only if SillyTavern window is **unfocused**.
 
 ## Formulas Rendering
 
@@ -132,7 +132,6 @@ Type your formulas in code blocks with `latex` or `asciimath` language identifie
 ```asciimath
 int_{-oo}^{oo} e^{-x^2} dx = sqrt{pi}
 ```</code></pre>
-
 Deprecation notice
 The legacy `$` and `$$` wrapper syntax is no longer supported. Please use the following regex scripts to polyfill the old syntax:
 

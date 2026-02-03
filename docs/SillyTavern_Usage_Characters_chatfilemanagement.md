@@ -2,14 +2,14 @@
 # Chat File Management
 
 This page describes the ways you can manage your AI chat files.
-
 Note
 Some of these options are available in the "Manage chat files" dialog that opens from the bottom left options menu.
+
 ## Solo Chats vs Group Chats
 
 The simplest way to use a character card is a Solo chat; just click on their card and start chatting.
 
-Once you have a few character cards, you can also use the "Create New Chat Group" button to create a [group chat](SillyTavern_Usage_Characters_groupchats.md) including multiple characters which will then interact with each other and you.
+Once you have a few character cards, you can also use the "Create New Chat Group" button to create a group chat including multiple characters which will then interact with each other and you.
 
 ## Chat import
 

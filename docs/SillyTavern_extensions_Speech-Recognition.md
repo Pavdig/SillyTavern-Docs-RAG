@@ -46,8 +46,8 @@ To set up:
 4. Configure additional settings as needed, similar to the "Browser" provider setup.
 
 ## Speech Recognition Setup (Extras) - Deprecated
+ffmpeg binary installed. See [RVC setup](SillyTavern_extensions_RVC.md) for more details.
 
-ffmpeg binary installed. See [RVC setup](SillyTavern_RVC.md) for more details.
 1. **Enable Provider**:
    - Enable the desired speech recognition provider on the extras server using the following command:
      ```shell
@@ -65,8 +65,8 @@ ffmpeg binary installed. See [RVC setup](SillyTavern_RVC.md) for more details.
    - The settings are similar to the "Browser" provider setup (except for language) see above.
 
 ## Speech Recognition Setup (Streaming) - Deprecated
+ffmpeg binary installed. See [RVC setup](SillyTavern_extensions_RVC.md) for more details.
 
-ffmpeg binary installed. See [RVC setup](SillyTavern_RVC.md) for more details.
 1. **Enable Provider**:
    - Enable the streaming speech recognition module on Sillytavern-extras with the following command:
      ```shell

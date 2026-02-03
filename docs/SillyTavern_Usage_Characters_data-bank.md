@@ -16,7 +16,6 @@ Data Bank stores file attachments, also known as documents. The documents are di
 1. Global attachments - available in every chat, either solo or group.
 2. Character attachments - available only for the currently chosen character, including when they are replying in a group. _Attachments are saved locally and are not exported with the character card!_
 3. Chat attachments - available only in the currently open chat. Every character in the chat can pull from it.
-
 Note
 While not formally a part of the data bank, you can attach files even to individual messages. Use the Attach File option from the "Wand" menu, or a paperclip icon in the message actions row.
 can be a document? Practically anything that is representable in plain text form!
@@ -48,9 +47,9 @@ Upload a file from the hard drive of your computer. SillyTavern provides built-i
 - TXT
 
 You can also attach any text files with non-standard extensions, such as JSON, YAML, source codes, etc. If there are no known conversions from the type of a selected file, and the file can't be parsed as a plain text document, the file upload will be rejected, meaning that raw binary files are not allowed.
-
 Note
 Importing Microsoft Office (DOCX, PPTX, XLSX) and LibreOffice documents (ODT, ODP, ODS) requires a Server Plugin (https://github.com/SillyTavern/SillyTavern-Office-Parser) to be installed and loaded. See the plugin's README page for installation instructions.
+
 ### Web
 
 Scrape text from a web page by its URL. The HTML document is then processed through the Readability (https://github.com/mozilla/readability) library to extract only usable text.
@@ -64,21 +63,18 @@ Download a transcript of the YouTube video by its ID or URL, either uploaded by 
 The script is loaded in the video's default language. Optionally, you can specify the two-letter language code to try and fetch the transcript in a specific language. This feature is not always available and may fail, so use it with caution.
 
 ### Web Search
-
 Note
-This source requires to have a [Web Search](SillyTavern_extensions_WebSearch.md) extension installed and properly configured. See the linked page for more details.
+This source requires to have a Web Search extension installed and properly configured. See the linked page for more details.
 a web search and download the text from the search result pages. This is similar to the Web source but fully automated. A chosen search engine will be inherited from the extension settings, so set it up in advance.
 
 To begin, specify the search query, max number of links to be visited, and the output type: one combined file (formatted according to the extension rules) or an individual file for every single page. You can choose to save the page snippets as well.
 
 ### Fandom
-
 Note
 This source requires to have a Server Plugin (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) installed and loaded. See the plugin's README page for installation instructions.
 articles from a Fandom (https://www.fandom.com/) wiki by its ID or URL. As some wikis are very large, it may be beneficial to limit the scope using the filter regular expression, it will be tested against the article's title. If no filter is provided, then all of the pages are subject to be exported. You may save them either as individual files for every page, or joint into a single document.
 
 ### Bronie Parser Extension (Third-Party)
-
 Note
 This source comes from a third-party and is **not affiliated** with the SillyTavern team. This source requires you to have Bronya Rand's Bronie Parser Extension (https://github.com/Bronya-Rand/Bronie-Parser-Extension) installed as well as Server Plugins that require the parser to work.
 Rand's Bronie Parser Extension allows the use of third-party scrapers, such as miHoYo/HoYoverse's HoYoLab (https://wiki.hoyolab.com) into SillyTavern, similar to the other data sources.
@@ -96,21 +92,18 @@ So, you've built yourself a nice and comprehensive library of information on you
 To use the documents for RAG, you need to use a compatible extension that will insert related data into the LLM prompt.
 
 Vector Storage, which comes bundled with SillyTavern, is a reference implementation of such an extension. It uses embeddings (also known as vectors) to search for documents that relate to your ongoing chats.
-
 Fun facts
 
 1. Embeddings are arrays of numbers that abstractly represent a piece of text, produced by specialized language models. More similar texts have a shorter distance between their respective vectors.
 2. Vector Storage extension uses the Vectra (https://github.com/Stevenic/vectra) library to keep track of file embeddings. They are stored in JSON files in the `/vectors` folder of your user data directory. Every document is internally represented by its own index/collection file.
-   !!!
-
-As the Vectors functionality is disabled by default, you need to open the extensions panel ("Stacked Cubes" icon on the top bar), then navigate to the "Vector Storage" section, and tick the "Enabled for files" checkbox under the "File vectorization settings".
+the Vectors functionality is disabled by default, you need to open the extensions panel ("Stacked Cubes" icon on the top bar), then navigate to the "Vector Storage" section, and tick the "Enabled for files" checkbox under the "File vectorization settings".
 
 By itself, Vector Storage does not produce any vectors, you need to use a compatible embedding provider.
 
 ## Vector Providers
-
 Warning
 Embeddings are only usable when they are retrieved using the same model that generated them. When changing an embedding model or source, the vectors need to be recalculated.
+
 ### Local
 
 These sources are free and unlimited and use your CPU/GPU to calculate embeddings.
@@ -140,9 +133,9 @@ All these sources require an API key of the respective service and usually have 
 ## Vectorization Settings
 
 After you've selected your embedding provider, don't forget to configure other settings that will define the rules for processing and retrieving documents.
-
 Note
 Splitting, vectorization, and retrieval of information from the attachments take some time. While the initial ingestion of the file may take a while, the RAG search queries are usually fast enough not to create a significant lag.
+
 ### Message attachments
 
 These settings control the files that are attached directly to the messages.
@@ -181,13 +174,13 @@ The following rules apply:
 - Score threshold - adjust to allow culling the retrieval of chunks based on their relevance score (0 - no match at all, 1 - perfect match). Higher values allow for more accurate retrieval and prevent completely random information from entering the context. Sane values are in a range between 0.2 (more loose) and 0.5 (more focused).
 - Chunk boundary - a custom string that will be prioritized when splitting the files into chunks. If not specified, the default is to split by (in order) double line breaks, single line breaks, and spaces between words.
 - Only chunk on custom boundary - if enabled, the chunking will only occur on the specified chunk boundary. Otherwise, the chunking will also occur on the default boundaries.
-- Translate files into English before processing - if enabled, will use the translation API configured in the [Chat Translation](SillyTavern_extensions_Translation.md) extension to translate the files into English before processing them. This is useful when using embedding models that only support English text.
+- Translate files into English before processing - if enabled, will use the translation API configured in the Chat Translation extension to translate the files into English before processing them. This is useful when using embedding models that only support English text.
 - Include in World Info Scanning - check if you want the injected content to activate lore book entries.
 - Vectorize All - forcibly ingests the embeddings for all unprocessed files.
 - Purge Vectors - clears the file embeddings, allowing to recalculate their vectors.
-
 Note
-For "Chat vectorization" settings see [Chat Vectorization](SillyTavern_extensions_Chat-vectorization.md).
+For "Chat vectorization" settings see Chat Vectorization.
+
 ## Conclusion
 
 Congratulations! Your chatting experience is now enhanced with the power of RAG. Its capabilities are only limited by your imagination. As always, don't be afraid to experiment!

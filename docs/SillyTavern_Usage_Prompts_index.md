@@ -6,19 +6,19 @@ When you send a message to your AI, the text you write is combined with other te
 The prompt can include a variety of different types of text, including:
 
 * Main instructions to the AI about how to generate a response
-* Definitions of the [roles that the AI should take on](SillyTavern_Usage_Characters_characterdesign.md)
-* Definitions of [the role that you are taking on](SillyTavern_Usage_personas.md)
-* [Information about the "world"](SillyTavern_Usage_worldinfo.md) that the AI is interacting with
-* Relevant documents or information from [Data Bank](SillyTavern_Usage_Characters_data-bank.md)
-* [Summaries](SillyTavern_extensions_Summarize.md) of the past conversation
-* Results of [web searches](SillyTavern_extensions_WebSearch.md) or other [external data sources](SillyTavern_For_Contributors_Function-Calling.md)
+* Definitions of the roles that the AI should take on
+* Definitions of the role that you are taking on
+* Information about the "world" that the AI is interacting with
+* Relevant documents or information from Data Bank
+* Summaries of the past conversation
+* Results of web searches or other external data sources
 * Previous messages in the conversation
 * **Your message to the AI**
 * Final instructions for the AI about how to generate a response
 
 This can be a lot to manage! To help you understand how to structure and modify the request that's sent to the AI, SillyTavern identifies different elements that you might want to include in your prompt. You can then structure your prompt to include the things that make sense for the way you want to interact with the AI.
 
-Many of these elements are explained in the sections where you will change them. For example, to describe the role that you would like the AI to take on, you could use the [Description](SillyTavern_Usage_Characters_characterdesign.md) field in [Character Design](SillyTavern_Usage_Characters_characterdesign.md).
+Many of these elements are explained in the sections where you will change them. For example, to describe the role that you would like the AI to take on, you could use the Description field in Character Design.
 
 ## Viewing the Prompt
 
@@ -35,11 +35,11 @@ Presenting all the parts of your prompt to the AI in the right way is crucial fo
 
 +++ Text Completion APIs
 
-Use the [Advanced Formatting](SillyTavern_advancedformatting.md) panel to customize prompt construction for Text Completion APIs.
+Use the [Advanced Formatting](SillyTavern_Usage_Prompts_advancedformatting.md) panel to customize prompt construction for Text Completion APIs.
 
 +++ Chat Completion APIs
 
-Use the [Prompt Manager](SillyTavern_prompt-manager.md) to customize prompt construction for Chat Completion APIs.
+Use the [Prompt Manager](SillyTavern_Usage_Prompts_prompt-manager.md) to customize prompt construction for Chat Completion APIs.
 
 +++
 
@@ -49,11 +49,11 @@ The Main Prompt (or System Prompt) defines the general instructions for the mode
 
 +++ Text Completion APIs
 
-The [System Prompt](SillyTavern_advancedformatting.md) is a part of the [Story String](SillyTavern_context-template.md) and usually the first part of the prompt that the model receives.
+The [System Prompt](SillyTavern_Usage_Prompts_advancedformatting.md) is a part of the [Story String](SillyTavern_Usage_Prompts_context-template.md) and usually the first part of the prompt that the model receives.
 
 +++ Chat Completion APIs
 
-The Main Prompt is one of the default prompts in [Prompt Manager](SillyTavern_prompt-manager.md). It is usually the first message in the context that the model receives, attributed to ("sent by") the system role.
+The Main Prompt is one of the default prompts in [Prompt Manager](SillyTavern_Usage_Prompts_prompt-manager.md). It is usually the first message in the context that the model receives, attributed to ("sent by") the system role.
 
 +++
 
@@ -63,7 +63,7 @@ The default Main Prompt is:
 
 The \{\{char\}\} and \{\{user\}\} placeholders are replaced with the names of the character and persona that you've defined in the conversation. 
 
-You can use any of the supported [\{\{macro\}\}](SillyTavern_Usage_Characters_macros.md) tags in the Main Prompt to include information that might vary between conversations or changes as the conversation progresses.
+You can use any of the supported \{\{macro\}\} tags in the Main Prompt to include information that might vary between conversations or changes as the conversation progresses.
 
 ### Adjusting the Main Prompt
 
@@ -74,7 +74,6 @@ However, you can adjust the main prompt to better suit your needs. Here are some
 * **Provide additional instructions**: for example, you want the AI to explain its reasoning, follow specific rules, or avoid certain topics
 * **Clarify the role of the AI**: for example, you want the AI to act as a narrator, a storyteller, or a guide
 * **Change the context of the conversation**: for example, you want the AI to respond as if it were an AI assistant, text adventure game, or a writing partner
-
 things out and see what works best for you
 All the examples in this guide have worked well for other users, but the prompt that works for your needs and the model you're using might be different. Experiment with different instructions and prompting styles to see what works best for you. If you're not sure what to try, you can always ask for help in the SillyTavern Discord (https://discord.gg/sillytavern).
 the AI additional instructions in the Main Prompt can help it understand what you want from the conversation.
@@ -97,17 +96,17 @@ There is often a better place than the Main Prompt to include information about 
 
 When adjusting the main prompt to improve the AI's responses, consder that the AI picks up a lot from the message history. The history is its memory of past events, character interactions and relationships, and its style guide for word choice and writing style.
 
-Use this to your advantage by also providing [example messages](SillyTavern_Usage_Characters_characterdesign.md) showing how you want the AI to respond. Showing what you want is often easier than trying to explain it!
+Use this to your advantage by also providing example messages showing how you want the AI to respond. Showing what you want is often easier than trying to explain it!
 
 When your conversation already has history, changing the main prompt has a limited effect on the AI's responses. In terms of events and relationships, the AI assumes that the main prompt occurred in the distant past, and the message history updates it. In terms of writing style and word choice, the AI assumes that all the messages in history were generated according to the rules in the *current* main prompt, and that it should continue to generate messages in the same way. Some suggestions for dealing with this are:
 
-* insert current instructions close to or after the end of message history, for example by using an [Author's Note](SillyTavern_Usage_Characters_Author's-Note.md)
+* insert current instructions close to or after the end of message history, for example by using an Author's Note
 * test your changes to the main prompt by starting a new conversation
 * edit the message history to remove or correct examples of unwanted behaviour
 * use the Post-History Instructions to provide final instructions to the AI
-
 it right the first time!
 Never let the AI "get away" with something you don't want it to do. If you don't like the AI's response, don't continue the conversation as if it was correct. Instead, modify the prompts, regenerate the message, and continue from there. This will help the AI learn what you want.
+
 ### Removing the "Fictional Chat" Context
 
 There are situations where "fictional chat" might not be the right context for your conversation. 
@@ -124,7 +123,7 @@ You may not want the AI to think of itself as role-playing at all. Instead of re
 
 What if you want the AI to act as a narrator, describing events from an omniscient perspective, inventing its own characters and settings?
 
-One approach is to create a named character for the AI to use as a narrator. This character could be called "Narrator" or "AI", suggesting that the AI is a general-purpose storyteller, or it could be named after a specific scenario or setting, giving the AI the task of narrating a story in that setting. The details of the setting can then be defined in the [Character](SillyTavern_Usage_Characters_characterdesign.md) or in [World Info](SillyTavern_Usage_worldinfo.md).
+One approach is to create a named character for the AI to use as a narrator. This character could be called "Narrator" or "AI", suggesting that the AI is a general-purpose storyteller, or it could be named after a specific scenario or setting, giving the AI the task of narrating a story in that setting. The details of the setting can then be defined in the Character or in World Info.
 
 You will need to adjust the default main prompt to reflect the AI's role. For a general-purpose narrator, you might use:
 
@@ -150,21 +149,21 @@ Post-History Instructions (PHI) are additional instructions sent to the AI after
 
 Since the Post-History Instructions are sent after the user message, they are the final instructions that the AI receives before generating a response. The AI usually gives them a higher priority than the main prompt, and they can override the main prompt's instructions.
 
-To use per-character Post-History Instructions, add them to the character's [Post-History Instructions](SillyTavern_Usage_Characters_characterdesign.md) and enable [Prefer Char. Instructions](SillyTavern_Usage_User_Settings_index.md). To preserve the globally defined PHI while using character-specific instructions, you can use the `{{original}}` macro in the character's Post-History Instructions field.
+To use per-character Post-History Instructions, add them to the character's Post-History Instructions and enable Prefer Char. Instructions. To preserve the globally defined PHI while using character-specific instructions, you can use the `{{original}}` macro in the character's Post-History Instructions field.
 
 +++ Text Completion APIs
 
-Post-History Instructions are defined in the [Advanced Formatting](SillyTavern_Usage_Prompts_advancedformatting.md) panel under the System Prompt category. The Post-History Instructions is added as an invisible user role injection that precedes the last line of the prompt (usually containing a response message "header"). Note that the "Enable System Prompt" toggle must be enabled for the Post-History Instructions to be applied (even if the System Prompt itself is empty).
+Post-History Instructions are defined in the Advanced Formatting panel under the System Prompt category. The Post-History Instructions is added as an invisible user role injection that precedes the last line of the prompt (usually containing a response message "header"). Note that the "Enable System Prompt" toggle must be enabled for the Post-History Instructions to be applied (even if the System Prompt itself is empty).
 
 +++ Chat Completion APIs
 
-Post-History Instructions is one of the default prompts in [Prompt Manager](SillyTavern_prompt-manager.md). It is usually the last message in the context that the model receives, attributed to ("sent by") the system role. If your Chat Completion API does not support the system role, it will usually be attributed to the user role instead.
+Post-History Instructions is one of the default prompts in [Prompt Manager](SillyTavern_Usage_Prompts_prompt-manager.md). It is usually the last message in the context that the model receives, attributed to ("sent by") the system role. If your Chat Completion API does not support the system role, it will usually be attributed to the user role instead.
 
 +++
 
 ## Adding to the Prompt (World Info)
 
-You can insert additional information anywhere in the prompt using the [World Info](SillyTavern_Usage_worldinfo.md) feature. By setting the conditions for when the information should be inserted, you can guide the AI to include specific details, change how it responds, or add new elements to the conversation.
+You can insert additional information anywhere in the prompt using the World Info feature. By setting the conditions for when the information should be inserted, you can guide the AI to include specific details, change how it responds, or add new elements to the conversation.
 
 Some common uses of World Info include:
 
