@@ -66,7 +66,6 @@ jobs:
           find . -type f -name "*.md" -exec sed -i -E '/^\|[[:space:]|]*\|$/d' {} +
           
           # Advanced Sanitization (Python)
-          # Handles Links, Images, and Admonitions in one robust pass
           find . -type f -name "*.md" | while read -r file; do
             python3 -c "
           import re
@@ -90,14 +89,13 @@ jobs:
           
           def replace_image(match):
               alt_text = match.group(1)
-              # If alt text looks like a filename, discard it
+              # If alt text looks like a filename (e.g. image.png), discard it
               if re.search(r'\.(png|jpg|jpeg|gif|webp|svg)$', alt_text, re.IGNORECASE):
                   return ''
               return alt_text
 
           def replace_admonition(match):
-              # Capture the content after !!!type or :::type
-              # match.group(2) is the rest of the line
+              # Capture content after !!!type or !!! type
               content = match.group(2)
               return content if content else ''
 
@@ -105,15 +103,16 @@ jobs:
               with open(filename, 'r', encoding='utf-8') as f:
                   content = f.read()
               
-              # 1. Handle Images: ![Alt](url) -> Alt (or empty if filename)
-              content = re.sub(r'!\[([^]]*)\]\([^)]*\)', replace_image, content)
+              # 1. Handle Images: ![Alt](url) -> Alt
+              # Regex updated to handle optional spaces \s* and ensure it matches full syntax
+              content = re.sub(r'!\[([^]]*)\]\s*\(([^)]*)\)', replace_image, content)
               
               # 2. Handle Links: [Text](url) -> [Text](SillyTavern_...)
               content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', replace_link, content)
               
               # 3. Handle Admonitions: !!! type "Title" -> Title
-              # Matches '!!!' or ':::', optional type word, optional space, then captures rest of line
-              content = re.sub(r'^(?:!!!|:::)(?:[a-zA-Z]+)?\s*(.*)$', replace_admonition, content, flags=re.MULTILINE)
+              # Regex updated to handle optional space between !!! and type
+              content = re.sub(r'^(?:!!!|:::)\s*(?:[a-zA-Z]+)?\s*(.*)$', replace_admonition, content, flags=re.MULTILINE)
 
               with open(filename, 'w', encoding='utf-8') as f:
                   f.write(content)
@@ -122,7 +121,7 @@ jobs:
           " "$file"
           done
           
-          # Remove <br> tags (Prevent wall of text)
+          # Remove <br> tags
           find . -type f -name "*.md" -exec sed -i -E 's/<br\s*\/?>//gi' {} +
           
           # Squeeze Whitespace
