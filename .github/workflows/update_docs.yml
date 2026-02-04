@@ -180,7 +180,10 @@ jobs:
           mv processed_temp/* docs/
           rm -rf processed_temp temp_source
           
-          git add docs/
+          echo "Generating llms.txt and llms.json..."
+          python3 scripts/generate_rag_bundle.py
+          
+          git add docs/ llms.txt llms.json
           
           if git diff --staged --quiet; then
             echo "No changes. Workflow finished."
