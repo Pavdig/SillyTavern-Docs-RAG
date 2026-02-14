@@ -233,11 +233,7 @@ If you already see a _plugins_ folder within the `docker` folder, you can skip S
 
 ## Non-root user mode
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**By default, the container runs as root. If you want files created in mounted volumes to be owned by a specific host user (for example, to avoid root-owned files), you can enable non-root mode.**
+By default, the container runs as root. If you want files created in mounted volumes to be owned by a specific host user (for example, to avoid root-owned files), you can enable non-root mode.
 
 ### Option 1: PUID/PGID (recommended)
 
@@ -286,11 +282,7 @@ docker run \
 
 ## Container Healthcheck
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**The Docker image includes a built-in healthcheck mechanism that monitors the SillyTavern server's responsiveness. This is useful for container orchestration systems (like Docker Compose, Kubernetes, or Docker Swarm) to detect and automatically restart unresponsive containers.**
+The Docker image includes a built-in healthcheck mechanism that monitors the SillyTavern server's responsiveness. This is useful for container orchestration systems (like Docker Compose, Kubernetes, or Docker Swarm) to detect and automatically restart unresponsive containers.
 
 ### How it works
 

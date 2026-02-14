@@ -140,11 +140,7 @@ The condition itself is a macro that retrieves a variable value.
 
 ## Scoped Macros
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**Any macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.**
+Any macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.
 
 ### Scoped Syntax
 
@@ -207,11 +203,7 @@ To preserve all whitespace including leading/trailing newlines, use the `#` flag
 
 ## Conditional Macros
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**The `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.**
+The `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.
 
 ### Simple Condition
 
@@ -284,11 +276,7 @@ Another example:
 
 ## Macro Flags
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**Flags are special symbol characters placed between the opening braces and the macro name that modify macro behavior.**
+Flags are special symbol characters placed between the opening braces and the macro name that modify macro behavior.
 
 ### Syntax
 
@@ -374,11 +362,7 @@ This outputs `{{notAMacro}}` as plain text.
 
 ## Variable Shorthands
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**Variable shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.**
+Variable shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.
 
 ### Variable Shorthands Prefixes
 
@@ -765,7 +749,7 @@ Use `/? macros` for the complete list of available macros and their detailed des
 | Macro | Description |
 |-------|-------------|
 | `{{random::a::b::c}}` | Random selection (re-rolls each time) |
-| `{{pick::a::b::c}}` | Stable random selection (consistent per chat and position) |
+| `{{pick::a::b::c}}` | Stable random selection (consistent per chat and position). Can be rerolled with the `/reroll-pick` command |
 | `{{roll::1d20}}` | Dice roll using droll syntax |
 
 ### Runtime State
@@ -776,6 +760,7 @@ Use `/? macros` for the complete list of available macros and their detailed des
 | `{{model}}` | Model name for the currently selected API |
 | `{{isMobile}}` | "true" if running in mobile environment, "false" otherwise |
 | `{{lastGenerationType}}` | Type of last queued generation request (e.g., "normal", "impersonate", "regenerate", "quiet", "swipe", "continue") |
+| `{{hasExtension::name}}` | Check if an extension is active (returns "true" or "false"). Matches by extension name, case-insensitive |
 
 ### Prompt Templates
 
