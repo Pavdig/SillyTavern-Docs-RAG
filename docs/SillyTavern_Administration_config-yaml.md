@@ -96,6 +96,7 @@ See more about using environment variables in the Node.js documentation (https:/
 | `dataRoot` | Root directory for user data storage (standalone mode only) | `./data` | Any valid directory path |
 | `skipContentCheck` | Skip checks for new default content | `false` | `true`, `false` |
 | `enableDownloadableTokenizers` | Enable on-demand tokenizer downloads | `true` | `true`, `false` |
+| `whitelistImportDomains` | List of trusted domains for importing web-hosted character cards and assets | See here (https://github.com/SillyTavern/SillyTavern/blob/d118eee014330c37978cc0226f4ca74a1f321eea/default/config.yaml#L220) | Array of strings |
 
 ## Logging Configuration
 
@@ -110,6 +111,7 @@ See more about using environment variables in the Node.js documentation (https:/
 |---------|-------------|---------|-----------------|
 | `listen` | Enable listening for incoming connections | `false` | `true`, `false` |
 | `port` | Server listening port | `8000` | Any valid port number (1-65535) |
+| `heartbeatInterval` | Interval in seconds to write a heartbeat file for Docker healthchecks. Set to 0 to disable | `0` | `0` (disabled), positive integer |
 | `protocol.ipv4` | Enable listening on the IPv4 protocol | `true` | `true`, `false`, `auto` |
 | `protocol.ipv6` | Enable listening on the IPv6 protocol | `false` | `true`, `false`, `auto` |
 | `listenAddress.ipv4` | Listen on a specific IPv4 address | `0.0.0.0` | Valid IPv4 address |
@@ -196,6 +198,18 @@ See more about using environment variables in the Node.js documentation (https:/
 
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
+
+## CORS Configuration
+
+| Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
+| `cors.enabled` | Enable or disable CORS middleware | `true` | `true`, `false` |
+| `cors.origin` | Allowed origins. `"null"` matches the default browser file origin | `["null"]` | `"*"` (any origin), array of allowed origins |
+| `cors.methods` | Allowed HTTP methods | `["OPTIONS"]` | Array of HTTP methods |
+| `cors.allowedHeaders` | Allowed request headers | `[]` | Array of header names |
+| `cors.exposedHeaders` | Exposed response headers | `[]` | Array of header names |
+| `cors.credentials` | Allow credentials (cookies, authorization headers) | `false` | `true`, `false` |
+| `cors.maxAge` | Preflight cache max age in seconds | `null` | `null`, positive integer |
 
 ## Browser Launch Configuration
 
@@ -311,6 +325,7 @@ See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/promp
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `gemini.apiVersion` | API endpoint version (AI Studio only) | `v1beta` | `v1beta`, `v1alpha` |
+| `gemini.thoughtSignatures` | Adds thought signatures to requests (if available). Only for Gemini 3 and above | `true` | `true`, `false` |
 | `gemini.enableSystemPromptCache` | Enables caching of the system prompt (OpenRouter only) | `false` | `true`, `false` |
 | `gemini.image.personGeneration` | See: <https://ai.google.dev/gemini-api/docs/imagen#imagen-configuration> | `allow_adult` | `dont_allow`, `allow_adult`, `allow_all` |
 

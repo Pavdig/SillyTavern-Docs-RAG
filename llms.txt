@@ -768,11 +768,7 @@ If you already see a _plugins_ folder within the `docker` folder, you can skip S
 
 ## Non-root user mode
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**By default, the container runs as root. If you want files created in mounted volumes to be owned by a specific host user (for example, to avoid root-owned files), you can enable non-root mode.**
+By default, the container runs as root. If you want files created in mounted volumes to be owned by a specific host user (for example, to avoid root-owned files), you can enable non-root mode.
 
 ### Option 1: PUID/PGID (recommended)
 
@@ -821,11 +817,7 @@ docker run \
 
 ## Container Healthcheck
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**The Docker image includes a built-in healthcheck mechanism that monitors the SillyTavern server's responsiveness. This is useful for container orchestration systems (like Docker Compose, Kubernetes, or Docker Swarm) to detect and automatically restart unresponsive containers.**
+The Docker image includes a built-in healthcheck mechanism that monitors the SillyTavern server's responsiveness. This is useful for container orchestration systems (like Docker Compose, Kubernetes, or Docker Swarm) to detect and automatically restart unresponsive containers.
 
 ### How it works
 
@@ -3280,6 +3272,7 @@ All these sources require an API key of the respective service and usually have 
 8. OpenRouter
 9. Electron Hub
 10. Chutes
+11. NanoGPT
 
 ## Vectorization Settings
 
@@ -4509,11 +4502,7 @@ The condition itself is a macro that retrieves a variable value.
 
 ## Scoped Macros
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**Any macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.**
+Any macro that accepts at least one argument supports scoped syntax. The content between opening and closing tags becomes the **last argument** of the macro.
 
 ### Scoped Syntax
 
@@ -4576,11 +4565,7 @@ To preserve all whitespace including leading/trailing newlines, use the `#` flag
 
 ## Conditional Macros
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**The `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.**
+The `{{if}}` macro renders content conditionally based on whether a value is truthy or falsy.
 
 ### Simple Condition
 
@@ -4653,11 +4638,7 @@ Another example:
 
 ## Macro Flags
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**Flags are special symbol characters placed between the opening braces and the macro name that modify macro behavior.**
+Flags are special symbol characters placed between the opening braces and the macro name that modify macro behavior.
 
 ### Syntax
 
@@ -4743,11 +4724,7 @@ This outputs `{{notAMacro}}` as plain text.
 
 ## Variable Shorthands
 
-**Staging Feature**
-
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
-
-**Variable shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.**
+Variable shorthands provide a concise syntax for common variable operations. Use `.` for local variables and `$` for global variables.
 
 ### Variable Shorthands Prefixes
 
@@ -5134,7 +5111,7 @@ Use `/? macros` for the complete list of available macros and their detailed des
 | Macro | Description |
 |-------|-------------|
 | `{{random::a::b::c}}` | Random selection (re-rolls each time) |
-| `{{pick::a::b::c}}` | Stable random selection (consistent per chat and position) |
+| `{{pick::a::b::c}}` | Stable random selection (consistent per chat and position). Can be rerolled with the `/reroll-pick` command |
 | `{{roll::1d20}}` | Dice roll using droll syntax |
 
 ### Runtime State
@@ -5145,6 +5122,7 @@ Use `/? macros` for the complete list of available macros and their detailed des
 | `{{model}}` | Model name for the currently selected API |
 | `{{isMobile}}` | "true" if running in mobile environment, "false" otherwise |
 | `{{lastGenerationType}}` | Type of last queued generation request (e.g., "normal", "impersonate", "regenerate", "quiet", "swipe", "continue") |
+| `{{hasExtension::name}}` | Check if an extension is active (returns "true" or "false"). Matches by extension name, case-insensitive |
 
 ### Prompt Templates
 
@@ -6297,13 +6275,14 @@ Supported sources:
 - Electron Hub
 - Chutes
 - NanoGPT
+- Moonshot
 
 **For **most** sources, "Request model reasoning" does not determine whether a model does reasoning as it can't be disabled. If the backend and model support explicitly requesting disabled reasoning, the setting will do so. Otherwise, the model will always reason.**
 
 **Provider-specific notes:**
 
 - Claude and Google (2.5 Flash) allow thinking mode to be toggled; see [Reasoning Effort](SillyTavern_Usage_Prompts.md).
-- Reasoning can be disabled for Z.AI (GLM). The setting maps the to `thinking.type` parameter, see the documentation (https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking). It does not support "Reasoning Effort".
+- Reasoning can be disabled for Z.AI (GLM) (https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking) and Moonshot (Kimi) (https://platform.moonshot.ai/docs/guide/use-kimi-k2-thinking-model). The setting maps the to `thinking.type` parameter. It does not support "Reasoning Effort".
 
 ### By Parsing
 
@@ -6351,15 +6330,15 @@ Different ephemerality options affect reasoning blocks in the following ways:
 
 Reasoning Effort is a Chat Completion setting in the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel that influences how many tokens may potentially be used on reasoning. The effect of each option depends on the source connected to. For the sources below, Auto simply means the relevant parameter is not included in the request.
 
-| Option  | Claude (≤ 21333 if no streaming) | OpenAI (keyword)     | OpenRouter (keyword)             | xAI (Grok) (keyword) | Perplexity (keyword) |
-| ------- | -------------------------------- | -------------------- | -------------------------------- | -------------------- | -------------------- |
-| Models  | Opus 4, Sonnet 4/3.7             | o4-mini, o3\*, o1\*  | applicable models                | grok-3-mini          | sonar-deep-research  |
-| Auto    | not specified, **no thinking**   | not specified        | not specified, effect depends    | not specified        | not specified        |
-| Minimum | budgets 1024 tokens              | "low"                | "low", or 20% of max response    | "low"                | "low"                |
-| Low     | 15% of max response, min 1024    | "low"                | "low", or 20% of max response    | "low"                | "low"                |
-| Medium  | 25% of max response, min 1024    | "medium"             | "medium", or 50% of max response | "low"                | "medium"             |
-| High    | 50% of max response, min 1024    | "high"               | "high", or 80% of max response   | "high"               | "high"               |
-| Maximum | 95% of max response, min 1024    | "high"               | "high", or 80% of max response   | "high"               | "high"               |
+| Option  | Claude (≤ 21333 if no streaming) | OpenAI (keyword)     | OpenRouter (keyword)             | xAI (Grok) (keyword) | Perplexity (keyword) | NanoGPT (keyword) |
+| ------- | -------------------------------- | -------------------- | -------------------------------- | -------------------- | -------------------- | ----------------- |
+| Models  | Opus 4, Sonnet 4/3.7             | o4-mini, o3\*, o1\*  | applicable models                | grok-3-mini          | sonar-deep-research  | applicable models |
+| Auto    | not specified, **no thinking**   | not specified        | not specified, effect depends    | not specified        | not specified        | not specified     |
+| Minimum | budgets 1024 tokens              | "low"                | "low", or 20% of max response    | "low"                | "low"                | "none"            |
+| Low     | 15% of max response, min 1024    | "low"                | "low", or 20% of max response    | "low"                | "low"                | "minimal"         |
+| Medium  | 25% of max response, min 1024    | "medium"             | "medium", or 50% of max response | "low"                | "medium"             | "low"             |
+| High    | 50% of max response, min 1024    | "high"               | "high", or 80% of max response   | "high"               | "high"               | "medium"          |
+| Maximum | 95% of max response, min 1024    | "high"               | "high", or 80% of max response   | "high"               | "high"               | "high"            |
 
 - For Claude, budget is capped to 21333 if streaming is disabled. If the calculated budget would be less than 1024, then max response is changed to 2048.
 - For OpenRouter, Perplexity and AI/ML API, only an OpenAI-style keyword is sent.
@@ -7711,6 +7690,7 @@ See more about using environment variables in the Node.js documentation (https:/
 | `dataRoot` | Root directory for user data storage (standalone mode only) | `./data` | Any valid directory path |
 | `skipContentCheck` | Skip checks for new default content | `false` | `true`, `false` |
 | `enableDownloadableTokenizers` | Enable on-demand tokenizer downloads | `true` | `true`, `false` |
+| `whitelistImportDomains` | List of trusted domains for importing web-hosted character cards and assets | See here (https://github.com/SillyTavern/SillyTavern/blob/d118eee014330c37978cc0226f4ca74a1f321eea/default/config.yaml#L220) | Array of strings |
 
 ## Logging Configuration
 
@@ -7725,6 +7705,7 @@ See more about using environment variables in the Node.js documentation (https:/
 |---------|-------------|---------|-----------------|
 | `listen` | Enable listening for incoming connections | `false` | `true`, `false` |
 | `port` | Server listening port | `8000` | Any valid port number (1-65535) |
+| `heartbeatInterval` | Interval in seconds to write a heartbeat file for Docker healthchecks. Set to 0 to disable | `0` | `0` (disabled), positive integer |
 | `protocol.ipv4` | Enable listening on the IPv4 protocol | `true` | `true`, `false`, `auto` |
 | `protocol.ipv6` | Enable listening on the IPv6 protocol | `false` | `true`, `false`, `auto` |
 | `listenAddress.ipv4` | Listen on a specific IPv4 address | `0.0.0.0` | Valid IPv4 address |
@@ -7811,6 +7792,18 @@ See more about using environment variables in the Node.js documentation (https:/
 
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
+
+## CORS Configuration
+
+| Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
+| `cors.enabled` | Enable or disable CORS middleware | `true` | `true`, `false` |
+| `cors.origin` | Allowed origins. `"null"` matches the default browser file origin | `["null"]` | `"*"` (any origin), array of allowed origins |
+| `cors.methods` | Allowed HTTP methods | `["OPTIONS"]` | Array of HTTP methods |
+| `cors.allowedHeaders` | Allowed request headers | `[]` | Array of header names |
+| `cors.exposedHeaders` | Exposed response headers | `[]` | Array of header names |
+| `cors.credentials` | Allow credentials (cookies, authorization headers) | `false` | `true`, `false` |
+| `cors.maxAge` | Preflight cache max age in seconds | `null` | `null`, positive integer |
 
 ## Browser Launch Configuration
 
@@ -7926,6 +7919,7 @@ See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/promp
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `gemini.apiVersion` | API endpoint version (AI Studio only) | `v1beta` | `v1beta`, `v1alpha` |
+| `gemini.thoughtSignatures` | Adds thought signatures to requests (if available). Only for Gemini 3 and above | `true` | `true`, `false` |
 | `gemini.enableSystemPromptCache` | Enables caching of the system prompt (OpenRouter only) | `false` | `true`, `false` |
 | `gemini.image.personGeneration` | See: <https://ai.google.dev/gemini-api/docs/imagen#imagen-configuration> | `allow_adult` | `dont_allow`, `allow_adult`, `allow_all` |
 
@@ -11263,6 +11257,7 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 | Pollinations (https://pollinations.ai/)                                                          | Cloud, open source (MIT), free of charge                                                        |
 | SD.Next / vladmandic (https://github.com/vladmandic/automatic)                                   | Local, open source (AGPL3), free of charge                                                      |
 | SillyTavern Extras (https://github.com/SillyTavern/SillyTavern-Extras)                           | Deprecated, not recommended                                                                     |
+| stable-diffusion.cpp (https://github.com/leejet/stable-diffusion.cpp)                             | Local, open source (MIT), free of charge                                                        |
 | Stability AI (https://platform.stability.ai/)                                                    | Cloud, paid                                                                                     |
 | Stable Diffusion WebUI / AUTOMATIC1111 (https://github.com/AUTOMATIC1111/stable-diffusion-webui) | Local, open source (AGPL3), free of charge                                                      |
 | Stable Horde (https://stablehorde.net/)                                                          | Cloud, open source (AGPL3), free of charge                                                      |
@@ -11376,6 +11371,10 @@ Some special subjects trigger a predefined generation mode:
 ### Extend free-mode prompts
 
 When using the interactive mode of the slash command, automatically extend free-mode generation subject descriptions by prompting your main API.
+
+### Minimal prompt processing
+
+When enabled, reduces the processing applied to prompts returned by the LLM for image generation. Only normalization and whitespace reduction are performed, skipping the aggressive sanitization that is done by default. This is useful when working with advanced workflows (e.g., ComfyUI) that accept structured prompt formats like JSON.
 
 ### Snap auto-adjusted resolutions
 
@@ -12109,6 +12108,7 @@ Available options (list may change over time):
 - **Ignore \*text, even "quotes", inside asterisks\*** - TTS will not play any text within `*asterisks*`, even "quotes" (internal variable name = `narrate_dialogues_only`)
 - *having both "only narrate quotes" and "ignore asterisks" checkboxes both checked will result in the TTS only reading "quotes" which are not in asterisks, and ignoring everything else.*
 - **Narrate only the translated text** - this will make the TTS only narrate the translated text.
+- **Apply regex** - applies a provided regex pattern to the text before sending it to the TTS provider. Useful for removing unwanted parts from the input text, such as emojis or non-native language characters that the TTS engine doesn't handle well.
 
 Given the example text: `*Cohee approaches you with a faint "nya"* "Good evening, senpai", she says.`
 Here's a table showing how the text will be modified based on the boolean states of **Ignore \*text, even "quotes", inside asterisks\*** and **Only narrate "quotes"**:
@@ -13594,7 +13594,7 @@ Function Calling allows adding dynamic functionality to your extensions by letti
 
 ## Prerequisites and limitations
 
-1. This feature is only available for certain Chat Completion sources: OpenAI, Claude, MistralAI, Groq, Cohere, OpenRouter, AI21, Google AI Studio, Google Vertex AI, DeepSeek, AI/ML API and Custom API sources.
+1. This feature is only available for certain Chat Completion sources: OpenAI, Claude, MistralAI, Groq, Cohere, OpenRouter, AI21, Google AI Studio, Google Vertex AI, DeepSeek, AI/ML API, NanoGPT and Custom API sources.
 2. Text Completion APIs don't support function calls, but some locally-hosted backends like Ollama and TabbyAPI may run in Custom OpenAI-compatible mode under Chat Completion.
 3. The support for function calling must be explicitly allowed by the user first. This is done by enabling the "Enable function calling" option in the AI Response Configuration panel.
 4. There is no guarantee that an LLM will perform any function calls at all. Most of them require an explicit "activation" through the prompt (e.g., the user asking to "Roll a dice", "Get the weather", etc.).
@@ -14416,6 +14416,7 @@ Now let's add a little bit of interactivity to the script. We will accept the in
 - `/setinput (text)` — replaces the contents of the user input bar with the provided text.
 - `/speak voice="name" (text)` — narrates the text using the selected TTS engine and the character name from the voice map, e.g. `/speak name="Donald Duck" Quack!`.
 - `/buttons labels=["a","b"] (text)` — shows a blocking popup with the specified text and button labels. `labels` must be a JSON-serialized array of strings or a variable name containing such an array. Returns the clicked button label into the pipe or empty string if canceled. The text supports lite HTML formatting.
+- `/beep` — plays the message notification sound.
 
 #### Arguments for `/popup` and `/input`
 
