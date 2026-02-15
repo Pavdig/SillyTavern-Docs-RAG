@@ -1,0 +1,6 @@
+# Ignore local test data
+tests/comparison/raw_source/*
+!tests/comparison/raw_source/.gitkeep
+tests/comparison/sanitized_test/*
+!tests/comparison/sanitized_test/.gitkeep
+tests/debug_report.md

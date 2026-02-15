@@ -8,6 +8,7 @@ on:
       - 'docs/**'
       - 'llms.txt'
       - 'llms.json'
+      - 'llms.md'
   workflow_dispatch:
 permissions:
   contents: write
@@ -65,7 +66,7 @@ jobs:
 
       - name: Create ZIP Archive
         run: |
-          zip -r ${{ steps.vars.outputs.ZIP_NAME }} docs/ llms.txt llms.json
+          zip -r ${{ steps.vars.outputs.ZIP_NAME }} docs/ llms.txt llms.json llms.md
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -81,7 +82,7 @@ jobs:
           prerelease: false
 
       - name: Cleanup Sync Branch
-        if: always() # Run even if release fails (optional, remove if you only want it on success)
+        if: always() # Run even if release fails
         run: |
           if git ls-remote --exit-code --heads origin docs-sync; then
             echo "Deleting docs-sync branch..."

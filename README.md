@@ -5,7 +5,7 @@ This repository hosts an automated pipeline that mirrors, processes, and sanitiz
 
 The goal is to create a "flat" and clean set of Markdown files optimized for ingestion into AI apps like **Open WebUI** or other RAG (Retrieval-Augmented Generation) knowledge bases.
 
-It now also generates **single-file bundles** (`llms.txt` and `llms.json`) for easy drag-and-drop context in LLMs like ChatGPT or Claude.
+It also generates **single-file bundles** (`llms.txt`, `llms.md`, and `llms.json`) for easy drag-and-drop context in LLMs like ChatGPT or Claude.
 
 ## 📥 Downloads
 
@@ -20,7 +20,7 @@ Go to the **[Releases Page](https://github.com/Pavdig/SillyTavern-Docs-RAG/relea
 
 ### Option 2: Single-File Context (ChatGPT, Claude, etc.)
 1.  Download the `.zip` or view the files in the repo root.
-2.  Use **`llms.txt`**: Drag and drop this single file into a "Project" or long-context chat window. It contains the *entire* documentation in one readable text file.
+2.  Use **`llms.txt`** or **`llms.md`**: Drag and drop this single file into a "Project" or long-context chat window. It contains the *entire* documentation in one readable text file.
 3.  Use **`llms.json`**: For programmatic ingestion or tools that support JSON knowledge dumps.
 
 ## ⚙️ How it Works
@@ -34,13 +34,16 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
 *   **Sanitize Content:** Removes noise that confuses LLMs:
     *   **Redirect stubs:** Files that just say "Page moved" are removed.
     *   **Front Matter:** Metadata headers (`---`) are stripped.
+    *   **Screenshots:** The entire "Screenshots" section is removed from files to reduce noise.
     *   **Admonitions:** Tags like `!!!warning` are stripped, but **titles and text are preserved** (formatted as bold text).
-    *   **Images:** Removed entirely to reduce token usage.
+    *   **Images:** All image tags are removed entirely to reduce token usage.
     *   **Ghost Tables:** Empty table artifacts left by images are cleaned up.
-    *   **Links:** Context-aware rewriting of relative links to match flattened filenames.
+    *   **Links:** 
+        *   *Docs folder:* Context-aware rewriting of relative links to match flattened filenames.
+        *   *Bundles:* Internal links are stripped completely (text preserved) to prevent hallucinations.
 *   **Generate Bundles:** Aggregates all processed files into:
-    *   `llms.txt`: A single concatenated file with headers and original URLs (optimized for logical reading order).
-    *   `llms.json`: A structured JSON array containing source filenames, real URLs, and content.
+    *   `llms.txt` / `llms.md`: A single concatenated file with clear `# SECTION:` headers.
+    *   `llms.json`: A structured JSON array containing source filenames and clean content.
 
 ### 2. The Update Cycle (CI/CD)
 1.  **Check:** The bot checks the official docs for changes every hour.

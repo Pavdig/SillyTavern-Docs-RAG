@@ -1,11 +1,12 @@
 import os
 import json
+import re
 
 # Configuration
 SOURCE_DIR = "docs"
 OUTPUT_TXT = "llms.txt"
 OUTPUT_JSON = "llms.json"
-BASE_URL = "https://docs.sillytavern.app"
+OUTPUT_MD = "llms.md"
 
 # ---------------------------------------------------------
 # Helper: Define logical sort order
@@ -39,45 +40,12 @@ def get_sort_weight(filename):
     return (99, name)
 
 # ---------------------------------------------------------
-# Helper: Generate clean URL from flattened filename
-# ---------------------------------------------------------
-def generate_url(filename):
-    # 1. Strip the artificial prefix added by the flattener
-    clean_name = filename.replace("SillyTavern_", "")
-    
-    # 2. Remove extension
-    clean_name = clean_name.replace(".md", "")
-    
-    # 3. Restore directory structure (underscore -> slash)
-    path = clean_name.replace("_", "/")
-    
-    # 4. Lowercase (URLs are usually lowercase)
-    path = path.lower()
-    
-    # 5. Handle special cases (index, readme)
-    if path == "readme":
-        path = ""  # Root URL
-    elif path == "index":
-        path = ""  # Root URL (if exists)
-    elif path.endswith("/index"):
-        path = path[:-6] # remove '/index' to point to the folder
-        
-    # Remove trailing slash if it exists (optional, but cleaner)
-    path = path.rstrip("/")
-    
-    if path:
-        return f"{BASE_URL}/{path}"
-    else:
-        return BASE_URL
-
-# ---------------------------------------------------------
 # Main Execution
 # ---------------------------------------------------------
 def generate_bundles():
 
     # --- Create a Header ---
-    combined_text = f"""# SILlYTAVERN DOCUMENTATION
-# Website: {BASE_URL}
+    combined_text = f"""# SILLYTAVERN DOCUMENTATION
 # Context: This file contains the full, flattened documentation for SillyTavern.
 # Structure: Each section below corresponds to a file from the official docs.
 
@@ -100,20 +68,23 @@ def generate_bundles():
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read().strip()
             
-            # Generate the Web URL
-            web_url = generate_url(filename)
-
+            # --- STRIP LINKS FOR BUNDLE ---
+            # Replaces [Link Name](SillyTavern_File.md) with just "Link Name"
+            # Note: External links have already been converted to "Name (URL)" in the sanitize step.
+            content = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', content)
+            
+            # --- PREPARE SECTION NAME ---
+            # Remove .md extension for cleaner headers
+            section_name = filename.replace(".md", "")
+            
             # --- Text Bundle Construction ---
-            combined_text += f"#{'='*30}\n"
-            combined_text += f"# Filename: {filename}\n"
-            combined_text += f"# URL: {web_url}\n"
-            combined_text += f"#{'='*30}\n\n"
+            # Separator using H1 style for section distinction
+            combined_text += f"# SECTION: {section_name}\n\n"
             combined_text += content + "\n\n"
             
             # --- JSON Bundle Construction ---
             json_data.append({
-                "source": filename,
-                "url": web_url,
+                "SECTION": section_name,
                 "content": content
             })
             
@@ -125,10 +96,15 @@ def generate_bundles():
         f.write(combined_text)
     print(f"✅ Generated {OUTPUT_TXT} (Ordered by section)")
 
+    # Write llms.md
+    with open(OUTPUT_MD, "w", encoding="utf-8") as f:
+        f.write(combined_text)
+    print(f"✅ Generated {OUTPUT_MD} (Markdown copy)")
+
     # Write llms.json
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(json_data, f, indent=2)
-    print(f"✅ Generated {OUTPUT_JSON} (Corrected URLs)")
+    print(f"✅ Generated {OUTPUT_JSON} (Clean content)")
 
 if __name__ == "__main__":
     generate_bundles()

@@ -131,6 +131,9 @@ jobs:
                       # Remove Front Matter
                       content = re.sub(r'^---\n.*?\n---\n', '', content, flags=re.DOTALL)
 
+                      # Remove Screenshots Section
+                      content = re.sub(r'## Screenshots.*?(?=## Installation Requirements)', '', content, flags=re.DOTALL)
+
                       # Apply Regex
                       content = re.sub(r'!\[((?:[^][]+|\[[^][]*\])*)\]\s*\(([^)]*)\)', replace_image, content)
                       content = re.sub(r'\[([^]]+)\]\(([^)]+)\)', lambda m: replace_link(m, file_path), content)
@@ -180,10 +183,11 @@ jobs:
           mv processed_temp/* docs/
           rm -rf processed_temp temp_source
           
-          echo "Generating llms.txt and llms.json..."
+          echo "Generating llms.txt, llms.md, and llms.json..."
           python3 scripts/generate_rag_bundle.py
           
-          git add docs/ llms.txt llms.json
+          # Added llms.md here
+          git add docs/ llms.txt llms.json llms.md
           
           if git diff --staged --quiet; then
             echo "No changes. Workflow finished."
