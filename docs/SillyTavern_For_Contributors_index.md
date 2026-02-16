@@ -29,4 +29,4 @@ Server plugins allow adding functionality such as new API endpoints by running c
 
 **[Internationalization (i18n)](SillyTavern_For_Contributors_i18n.md)**
 
-Learn how to translate SillTavern's UI into your language.
+Learn how to translate SillyTavern's UI into your language.

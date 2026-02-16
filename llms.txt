@@ -100,7 +100,7 @@ The Extras project was discontinued in April 2024 and won't receive any new upda
 
 ## Use the Official Extras Colab (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
 
-* Simple to setup
+* Simple to set up
 * Free to use
 * No Colab GPU credits required (use the `use_cpu` options)
 * See the Colab Guide Page for details.
@@ -199,7 +199,7 @@ If this is your first time touching anything Python-related, that should not be 
 
 ### Confirm extensions are enabled
 
-1. Open the file called `config.yaml`in a text editor. The file is located in ST's base install folder.
+1. Open the file called `config.yaml` in a text editor. The file is located in ST's base install folder.
 2. Look for the line that reads `enableExtensions`.
 3. Make sure that line has `true`, and not `false`.
 
@@ -257,7 +257,7 @@ To run Extras again, simply activate the environment and run these commands in a
 `conda activate extras`, Hit Enter.
 `python server.py`, Hit Enter.
 
-Be sure to the additional options for server.py (see below) that your setup requires.
+Be sure to use the additional options for server.py (see below) that your setup requires.
 
 ## Make a .bat File for Easy Startup
 
@@ -1017,7 +1017,7 @@ For MacOS / Linux all of these will be done in a Terminal.
 1. Open your favorite terminal and install git
 2. Download Sillytavern Launcher with: `git clone https://github.com/SillyTavern/SillyTavern-Launcher.git`
 3. Navigate to the SillyTavern-Launcher with: `cd SillyTavern-Launcher`
-4. Start the install launcher with: `chmod +x install.sh && ./install.sh` and choose what you wanna install
+4. Start the install launcher with: `chmod +x install.sh && ./install.sh` and choose what you want to install
 5. After installation start the launcher with: `chmod +x launcher.sh && ./launcher.sh`
 
 ### For Mac users
@@ -1025,7 +1025,7 @@ For MacOS / Linux all of these will be done in a Terminal.
 2. Then install git with: `brew install git`
 3. Download Sillytavern Launcher with: `git clone https://github.com/SillyTavern/SillyTavern-Launcher.git`
 4. Navigate to the SillyTavern-Launcher with: `cd SillyTavern-Launcher`
-5. Start the install launcher with: `chmod +x install.sh && ./install.sh` and choose what you wanna install
+5. Start the install launcher with: `chmod +x install.sh && ./install.sh` and choose what you want to install
 6. After installation start the launcher with: `chmod +x launcher.sh && ./launcher.sh`
 
 # SECTION: SillyTavern_Installation_Updating_index
@@ -1460,7 +1460,7 @@ DO NOT INSTALL INTO ANY WINDOWS CONTROLLED FOLDER (Program Files, System32, etc)
 
 DO NOT RUN START.BAT WITH ADMIN PERMISSIONS
 
-INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CAN NOT RUN NODEJS 18.16
+INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CANNOT RUN NODEJS 18.16
 
 **## Installing via Git**
 
@@ -1523,7 +1523,7 @@ Save Connection Profiles to quickly switch between different APIs, models and fo
 
 ## Accessing Connection Profiles
 
-This feature is enabled by default starting from SillyTavern 1.12.6 or later as a built-in extension, and available in the API Connections menu. If you wish to *disable* it, open the Extensions panel, click on "Manager extensions", locate Connection Profiles in the list, uncheck the "Enabled" checkbox, and then click "Close".
+This feature is enabled by default starting from SillyTavern 1.12.6 or later as a built-in extension, and available in the API Connections menu. If you wish to *disable* it, open the Extensions panel, click on "Manage extensions", locate Connection Profiles in the list, uncheck the "Enabled" checkbox, and then click "Close".
 
 ## What is Saved
 
@@ -1602,7 +1602,7 @@ DreamGen API offers several models of different sizes.
 - Lucid Max (in API called `lucid-v1-max` or `lucid-v1-extra-large`)
 - Lucid Base (in API called `lucid-v1-base` or `lucid-v1-medium`) -- corresponds to the weight-available Lucid V1 Nemo (https://dreamgen.com/docs/models/lucid-v1/huggingface).
 
-Lucid Base uses much less credits and is faster, while Lucid Max is more creative and is able to handle more complex instructions and narratives.
+Lucid Base uses much fewer credits and is faster, while Lucid Max is more creative and is able to handle more complex instructions and narratives.
 
 ## Settings
 
@@ -1664,7 +1664,7 @@ See the "Style" documentation (https://v2.dreamgen.com/docs/scenario-editor#styl
 
 Use the `/sys` option to send instructions to the model. Some examples:
 
-> The inkeeper offers Daria and the others a pint of ale.
+> The innkeeper offers Daria and the others a pint of ale.
 
 > The next message is from Draco and should be at least 200 words, focusing on his inner conflict about the decision.
 
@@ -1674,7 +1674,7 @@ See it in action. (https://imgur.com/a/dreamgen-lucid-sillytavern-roleplay-demo-
 
 # Google Gemini
 
-Gemini is Google's cutting-edge multimodal LLM, which is available though several APIs, including Google Vertex AI and Google AI Studio (formerly MakerSuite). This guide will help you set up the Gemini API connections in SillyTavern.
+Gemini is Google's cutting-edge multimodal LLM, which is available through several APIs, including Google Vertex AI and Google AI Studio (formerly MakerSuite). This guide will help you set up the Gemini API connections in SillyTavern.
 
 ## Google AI Studio
 
@@ -1787,7 +1787,7 @@ See the official documentation for more details: Vertex AI in express mode overv
 You must have a Google account that was not previously used to create a Google Cloud project.
 If you have an existing Google Cloud project (including free trials), you can create a new one for this purpose.
 
-#### Step 2: Active the Vertex AI Express Mode
+#### Step 2: Activate the Vertex AI Express Mode
 
 1. Go to the following web page: Vertex AI Studio (https://cloud.google.com/generative-ai-studio).
 2. Click on "Try it free".
@@ -1866,7 +1866,7 @@ Below is a description of their respective strengths, weaknesses, and use cases.
 
 When you first navigate to the "API Connections" page in ST, you will notice a drop-down option to select between options using nomenclature such as "Chat Completion" and "Text Completion". It's helpful to understand what this means.
 
-What it's not: It's easy to think of "Text Completion" as local models and "Chat Completion" as cloud-based LLMs, but that's not the case. Neither is e.g. "Novel AI" or "Kobold" actually a separate type of model altogether, even though they are separate options in the API dropdown in ST. You can force models into different API structures with the appropriate backend, but that's not the point of this section.
+What it's not: It's easy to think of "Text Completion" as local models and "Chat Completion" as cloud-based LLMs, but that's not the case. Neither is e.g. "NovelAI" or "Kobold" actually a separate type of model altogether, even though they are separate options in the API dropdown in ST. You can force models into different API structures with the appropriate backend, but that's not the point of this section.
 
 When you send a message using ST, your chat, character description, and other prompts such as lorebooks or author's notes are constructed into a single "prompt" to be sent to the model. The API "type" for the model you are using decides how exactly this prompt will be constructed (something that ST takes care of for you automatically in the background - you can open your ST terminal and see exactly what the prompt being sent to the AI looks like).
 
@@ -2224,7 +2224,7 @@ How many tokens of the chat are kept in the context at any given time. How large
 Text that is inserted right above the chat to modify the writing style. The recommended format is a list of short tags, like "[ Style: chat, detailed, sensory ]". 
 
 ## Preset Descriptions
-This is, according to Novel AI, what the default presets are good for.
+This is, according to NovelAI, what the default presets are good for.
 
 ### Erato
 
@@ -2663,9 +2663,9 @@ If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<po
 **### Downloading and using KoboldCpp (No installation required, GGUF models)**
 
 1. Visit https://koboldai.org/cpp where you will see the latest version with various files you can download.
-At the time of writing the newest CUDA version they list is cu12 which will work best on modern Nvidia GPU's, if you have an older GPU or a different brand you can use the regular koboldcpp.exe. If you have an old CPU its possible that KoboldCpp will crash when you try to load models, in that case try the _oldcpu version to see if it resolves your issue.
+At the time of writing the newest CUDA version they list is cu12 which will work best on modern Nvidia GPUs, if you have an older GPU or a different brand you can use the regular koboldcpp.exe. If you have an old CPU its possible that KoboldCpp will crash when you try to load models, in that case try the _oldcpu version to see if it resolves your issue.
 2. KoboldCpp does not need to be installed, once you start KoboldCpp you will immediately be able to select your GGUF model such as the one linked above using the Browse button next to the Model field.
-3. By default KoboldCpp runs at a maximum of 4K context even if you set this higher in SillyTavern, if you wish to run a model at higher context make sure to adjust the context slider on this screen before launching the model. Keep in mind that more context size means higher (video) memory requirements, if you set this to high or load a model that is to big for your system KoboldCpp will automatically begin using your CPU for the layers it can not fit on your GPU, this will be much slower.
+3. By default KoboldCpp runs at a maximum of 4K context even if you set this higher in SillyTavern, if you wish to run a model at higher context make sure to adjust the context slider on this screen before launching the model. Keep in mind that more context size means higher (video) memory requirements, if you set this too high or load a model that is too big for your system KoboldCpp will automatically begin using your CPU for the layers it can not fit on your GPU, this will be much slower.
 4. Click Launch, if everything goes well a new webpage will open with KoboldAI Lite where you can test if everything works correctly.
 5. Open SillyTavern and click API Connections (2nd button in the top bar)
 6. Set API to Text Completion and the API Type to KoboldCpp.
@@ -2674,16 +2674,16 @@ At the time of writing the newest CUDA version they list is cu12 which will work
 9. Chat with a character to test that it works.
 
 ### Tips for Optimizing KoboldCpp's speed
-1. Flash Attention will help reduce the memory requirements, it can be faster or slowing depending on your system and will allow you to fit more layers on your GPU than the default.
+1. Flash Attention will help reduce the memory requirements, it can be faster or slower depending on your system and will allow you to fit more layers on your GPU than the default.
 2. KoboldCpp will leave some space for other software when it guesses layers to prevent issues, if you have few programs open and are unable to fit the model entirely in the GPU you may be able to add a few extra layers.
-3. If the model uses up to much memory for the context size you can decrease this by Quantizing the KV. This will reduce the quality of the output but can help you put more layers on the GPU. To do this you go to the Tokens tab in KoboldCpp and then disable Context Shifting and enable Flash Attention. This will unlock the Quantized KV Cache slider, a lower number means less memory / intelligence of the model.
+3. If the model uses up too much memory for the context size you can decrease this by Quantizing the KV. This will reduce the quality of the output but can help you put more layers on the GPU. To do this you go to the Tokens tab in KoboldCpp and then disable Context Shifting and enable Flash Attention. This will unlock the Quantized KV Cache slider, a lower number means less memory / intelligence of the model.
 4. Running KoboldCpp on a slower system where it takes long to process the prompt? Context Shifting works best when you avoid using Lorebooks, randomization or other features that dynamically change the input. Leaving context shifting enabled KoboldCpp will help you avoid long reprocessing times.
 
 ### Installing Oobabooga
 
 Depending on how you have installed Oobabooga, the file paths can be slightly different; i.e. `/text-generation-webui/user_data` if you installed via git clone, and `/text-generation-webui-main/user_data` if you used the .zip method.  
 
-**Here's a more correct/dummy proof installation procedure:**
+**Here's a more correct/dummy-proof installation procedure:**
 
 1. git clone <https://github.com/oobabooga/text-generation-webui> (or download their repo as a .zip in your browser, then extract it)
 2. Run `start_windows.bat` or whatever your OS is
@@ -2809,7 +2809,7 @@ The box at the bottom of the panel contains the Default Author's Note which will
 
 ### Remind AI of response formatting
 
-The Author's Note can be used to specify how the AI should write it's responses.
+The Author's Note can be used to specify how the AI should write its responses.
 
 - [Your next response must be 300 tokens in length.]
 - [Write your next reply in the style of Edgar Allan Poe]
@@ -2897,14 +2897,14 @@ These will always be sent to the AI with every generation request:
 
 ## First message
 
-The First Message is an important element that defines how and in what style the character will communicate. The model is most likely to pick up the style and length constrains from the first message than anything else, so it's important to write it in a way that you want the responses to be (short and concise, long and detailed, etc.).
+The First Message is an important element that defines how and in what style the character will communicate. The model is more likely to pick up the style and length constraints from the first message than anything else, so it's important to write it in a way that you want the responses to be (short and concise, long and detailed, etc.).
 
 Supports Markdown and HTML formatting.
 
 For example:
 
 ```txt
-*You wake with a start, recalling the events that led you deep into the forest and the beasts that assailed you. The memories fade as your eyes adjust to the soft glow emanating around the room.* "Ah, you're awake at last. I was so worried, I found you bloodied and unconscious." *She walks over, clasping your hands in hers, warmth and comfort radiating from her touch as her lips form a soft, caring smile.* "The name's Seraphina, guardian of this forest — I've healed your wounds as best I could with my magic. How are you feeling? I hope the tea helps restore your strength." *Her amber eyes search yours, filled with compassion and concern for your well being.* "Please, rest. You're safe here. I'll look after you, but you need to rest. My magic can only do so much to heal you."
+*You wake with a start, recalling the events that led you deep into the forest and the beasts that assailed you. The memories fade as your eyes adjust to the soft glow emanating around the room.* "Ah, you're awake at last. I was so worried, I found you bloodied and unconscious." *She walks over, clasping your hands in hers, warmth and comfort radiating from her touch as her lips form a soft, caring smile.* "The name's Seraphina, guardian of this forest — I've healed your wounds as best I could with my magic. How are you feeling? I hope the tea helps restore your strength." *Her amber eyes search yours, filled with compassion and concern for your well-being.* "Please, rest. You're safe here. I'll look after you, but you need to rest. My magic can only do so much to heal you."
 ```
 
 ## Alternate Greetings
@@ -3005,7 +3005,7 @@ Other programs and tools that you can import chats from include:
 
 ## Export as .jsonl
 
-When clicking on "Manage chat files", each entry on the the chat file list will have a button to export it in a format that can then be re-imported as is. Use this to share or migrate chats including all their metadata (but excluding images and file attachments).
+When clicking on "Manage chat files", each entry on the chat file list will have a button to export it in a format that can then be re-imported as is. Use this to share or migrate chats including all their metadata (but excluding images and file attachments).
 
 If you're mindful of privacy, be sure to inspect the exported JSONL file and scrub anything you don't want to share.
 
@@ -3028,7 +3028,7 @@ You can go back to the parent from a checkpoint by entering the burger menu butt
 
 ## Rename Chat
 
-By default chat files are given a named with the date and time they were started.
+By default chat files are given a name with the date and time they were started.
 
 You can change this by clicking the pencil icon and typing in a new name.
 
@@ -3164,7 +3164,7 @@ Embeddings are only usable when they are retrieved using the same model that gen
 These sources are free and unlimited and use your CPU/GPU to calculate embeddings.
 
 1. Local (Transformers) - runs on a Node server. SillyTavern will automatically download a compatible model in ONNX format from HuggingFace. Default model: jina-embeddings-v2-base-en (https://huggingface.co/Cohee/jina-embeddings-v2-base-en).
-2. WebLLM - requires an extension to be installed and a web browser that supports WebGPU (https://caniuse.com/webgpu). Runs directly in your browser, can use hardware accelleration. Automatically downloads supported models from HuggingFace. Install the extension from here: <https://github.com/SillyTavern/Extension-WebLLM>.
+2. WebLLM - requires an extension to be installed and a web browser that supports WebGPU (https://caniuse.com/webgpu). Runs directly in your browser, can use hardware acceleration. Automatically downloads supported models from HuggingFace. Install the extension from here: <https://github.com/SillyTavern/Extension-WebLLM>.
 3. Ollama - get it from <https://ollama.com/>. Set the API URL in the API connection menu (under Text Completion, default: `http://localhost:11434`). Must download a compatible model first, then set its name in the extension settings. Example model: mxbai-embed-large (https://ollama.com/library/mxbai-embed-large). Optionally, check an option to keep the model loaded in memory.
 4. llama.cpp server - get it from ggerganov/llama.cpp (https://github.com/ggerganov/llama.cpp) and run the server executable with `--embedding` flag. Load compatible GGUF embedding models from HuggingFace, for example, nomic-ai/nomic-embed-text-v1.5-GGUF (https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF).
 5. vLLM - get it from vllm-project/vllm (https://github.com/vllm-project/vllm). Set the API URL and API key in the API connection menu first.
@@ -3263,7 +3263,7 @@ Tries to simulate the flow of a real human conversation. The algorithm is as fol
 
 1. Mentions of the group member names are extracted from the last message in chat.
 
-    Only whole words are recognized as mentions! If your character's name is "Misaka Mikoto", they will reply only activate on "Misaka" or "Mikoto", but never to "Misa", "Railgun", etc.
+    Only whole words are recognized as mentions! If your character's name is "Misaka Mikoto", they will only activate on "Misaka" or "Mikoto", but never to "Misa", "Railgun", etc.
     
     Unless the "Allow Self Responses" setting is enabled, characters won't reply to mentions of their name in their own message!
 
@@ -3281,7 +3281,7 @@ Characters are drafted based on the order they are presented in the group member
 
 ### Pooled Order
 
-Activates one random character who have't spoken yet since the last user message. If all characters have spoken, selects one randomly until the next user message.
+Activates one random character who hasn't spoken yet since the last user message. If all characters have spoken, selects one randomly until the next user message.
 
 ## Group generation handling mode
 
@@ -3314,7 +3314,7 @@ The following fields are being combined:
 
 When 'Join character cards' is selected, all respective fields of the characters are being joined together. This means that in the resulting prompt all character descriptions will be joined to one big blob of text. If you want those fields to be separated, you can define a prefix and/or suffix.
 
-These options support normal macros and will also replace \{\{char\}\} with the relevant characters's name and \<FIELDNAME\> with the name of the part (e.g.: description, personality, scenario, etc.)
+These options support normal macros and will also replace \{\{char\}\} with the relevant character's name and \<FIELDNAME\> with the name of the part (e.g.: description, personality, scenario, etc.)
 
 ## Other Group Chat menu options
 
@@ -3350,7 +3350,7 @@ Any of your existing characters can be added, removed, muted, or re-ordered with
 
 ### Group Chat pop-out
 
-The group chat menu pop-out can be activated by clicking on the icon next to the "Current Members" field. This creates a pop-out of the group chat menu. By enabling MovingUI from user settings, this menu can resized and dragged to any position within the interface and functions just like the regular group chat menu.
+The group chat menu pop-out can be activated by clicking on the icon next to the "Current Members" field. This creates a pop-out of the group chat menu. By enabling MovingUI from user settings, this menu can be resized and dragged to any position within the interface and functions just like the regular group chat menu.
 
 # SECTION: SillyTavern_Usage_Characters_index
 
@@ -3914,7 +3914,7 @@ Set multiplier to 0 to disable.
 
 ### Exclude Top Choices (XTC)
 
-XTC sampling algorithm removes the most likely tokens from consideration instead of pruning the least likely tokens It removes all except the least likely token meeting a given threshold, with a given probability. This ensures that at least one "viable" choice remains, retaining coherence. See the Pull Request here (https://github.com/oobabooga/text-generation-webui/pull/6335).
+XTC sampling algorithm removes the most likely tokens from consideration instead of pruning the least likely tokens. It removes all except the least likely token meeting a given threshold, with a given probability. This ensures that at least one "viable" choice remains, retaining coherence. See the Pull Request here (https://github.com/oobabooga/text-generation-webui/pull/6335).
 
 Set probability to 0 to disable.
 
@@ -4012,7 +4012,7 @@ Two possibilities:
 4. Optionally, click the Select Avatar button to pick an image portrait for this character
 5. Under Description, describe the character, and include any information you want that you feel is relevant to the chat. For example: ```Amanda is a student traveling during her gap year. She's 6 feet tall, and a volleyball player. She has an athletic figure. She has long brown hair. She loves the Victorian England period, and watching TV and reading novels relating to that period.```
 For example, if you want Amanda to be friendly, then you would add: ```Amanda is extremely cheerful and outgoing.```
-6. Under First Message, write the greeting the character when you begin a new chat. For example: ```*Amanda waves at you* Hey! Are you a backpacker too?```
+6. Under First Message, write the greeting for the character when you begin a new chat. For example: ```*Amanda waves at you* Hey! Are you a backpacker too?```
 7. Click the Create Character button
 
 You now have a basic character you can chat with. Select Amanda from the character list, and a new chat will begin.
@@ -4120,7 +4120,7 @@ This should be handled in the `Author's Note` with a combination of phrases like
 
 * \{\{char\}\}'s responses shall only be passive and reactive to \{\{user\}\}'s actions.
 * Your next response shall be solely from the POV of \{\{char\}\}.
-* You are never allowed to dictate actions or speech for \{\{user\}\}
+* You are never allowed to dictate actions or speech for \{\{user\}\}.
 
 # SECTION: SillyTavern_Usage_index
 
@@ -5326,7 +5326,7 @@ CFG, or classifier-free guidance is a method that's used to help make parts of a
 Currently, the supported backends are oobabooga's textgen WebUI, NovelAI, and TabbyAPI. 
 NovelAI had its own documentation for CFG (https://web.archive.org/web/20240917150051/https://docs.novelai.net/text/cfg.html).
 
-WARNING: CFG increases vram usage due to ingesting more than 1 prompt! If your GPU memory runs out while generating a prompt with CFG on, consider reducing your context size, using a lesser parameter model, or turning off CFG entirely.
+WARNING: CFG increases VRAM usage due to ingesting more than 1 prompt! If your GPU memory runs out while generating a prompt with CFG on, consider reducing your context size, using a lesser parameter model, or turning off CFG entirely.
 
 ---
 
@@ -5412,7 +5412,7 @@ Let's use the example with John again. The negative prompt is `[John's feelings:
 
 This will in turn accentuate the *negative* prompt more and you'll see John start to act sadder than normal rather than happier.
 
-tldr; Use a guidance scale of `1.5` and work up and down from there based on your outputs.
+TL;DR: Use a guidance scale of `1.5` and work up and down from there based on your outputs.
 
 ### Prompt Cascading
 
@@ -5630,7 +5630,7 @@ There is often a better place than the Main Prompt to include information about 
 
 ### Effect of Message History
 
-When adjusting the main prompt to improve the AI's responses, consder that the AI picks up a lot from the message history. The history is its memory of past events, character interactions and relationships, and its style guide for word choice and writing style.
+When adjusting the main prompt to improve the AI's responses, consider that the AI picks up a lot from the message history. The history is its memory of past events, character interactions and relationships, and its style guide for word choice and writing style.
 
 Use this to your advantage by also providing example messages showing how you want the AI to respond. Showing what you want is often easier than trying to explain it!
 
@@ -5638,7 +5638,7 @@ When your conversation already has history, changing the main prompt has a limit
 
 * insert current instructions close to or after the end of message history, for example by using an Author's Note
 * test your changes to the main prompt by starting a new conversation
-* edit the message history to remove or correct examples of unwanted behaviour
+* edit the message history to remove or correct examples of unwanted behavior
 * use the Post-History Instructions to provide final instructions to the AI
 
 **Get it right the first time!**
@@ -6098,7 +6098,7 @@ By default, reasoning blocks are collapsed to save space. Click a block to expan
 
 When a reasoning block is expanded, you can copy or edit its contents using the **<i class="fa-solid fa-copy"></i> Copy** and **<i class="fa-solid fa-pencil"></i> Edit** buttons.
 
-Some models models support reasoning, but will not send their thoughts back. It is possible to still show the reasoning block with reasoning time for those by toggling the **Show Hidden** setting.
+Some models support reasoning, but will not send their thoughts back. It is possible to still show the reasoning block with reasoning time for those by toggling the **Show Hidden** setting.
 
 ## Adding Reasoning
 
@@ -6140,7 +6140,7 @@ Supported sources:
 **Provider-specific notes:**
 
 - Claude and Google (2.5 Flash) allow thinking mode to be toggled; see Reasoning Effort.
-- Reasoning can be disabled for Z.AI (GLM) (https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking) and Moonshot (Kimi) (https://platform.moonshot.ai/docs/guide/use-kimi-k2-thinking-model). The setting maps the to `thinking.type` parameter. It does not support "Reasoning Effort".
+- Reasoning can be disabled for Z.AI (GLM) (https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-thinking) and Moonshot (Kimi) (https://platform.moonshot.ai/docs/guide/use-kimi-k2-thinking-model). The setting maps to the `thinking.type` parameter. They do not support "Reasoning Effort".
 
 ### By Parsing
 
@@ -6166,7 +6166,7 @@ By default, recognized reasoning block contents are not sent back to the model. 
 
 **### Continuing from Reasoning**
 
-A special case when the reasoning can be sent back to the model without having the "Add to Prompts" toggle enabled is when the generation is continued (e.g. by pressing "Continue" from the **<i class="fa-solid fa-bars"></i> Options** menu), but the message being continued contains only the reasoning without an actual content. This gives the model an opportunity to finish an incomplete reasoning and start generating the main content. The prompt will be sent as follows:
+A special case when the reasoning can be sent back to the model without having the "Add to Prompts" toggle enabled is when the generation is continued (e.g. by pressing "Continue" from the **<i class="fa-solid fa-bars"></i> Options** menu), but the message being continued contains only the reasoning without actual content. This gives the model an opportunity to finish an incomplete reasoning and start generating the main content. The prompt will be sent as follows:
 
 ```txt
 <think>
@@ -6245,8 +6245,8 @@ If you get inaccurate results or wish to experiment, you can set an _override to
 
 Chat Completion APIs **(non-overridable)**:
 
-1. OpenAI: model-dependant tokenizer via tiktoken (https://github.com/openai/tiktoken).
-2. Claude: model-dependant tokenizer via WebTokenizers (https://github.com/mlc-ai/tokenizers-cpp).
+1. OpenAI: model-dependent tokenizer via tiktoken (https://github.com/openai/tiktoken).
+2. Claude: model-dependent tokenizer via WebTokenizers (https://github.com/mlc-ai/tokenizers-cpp).
 3. OpenRouter: Llama, Mistral, Gemma, Yi tokenizers for their respective models.
 4. Google AI Studio: Gemma tokenizer.
 5. AI21 API: Jamba tokenizer (requires a one-time download).
@@ -6257,7 +6257,7 @@ Chat Completion APIs **(non-overridable)**:
 
 #### Additional Tokenizers
 
-These tokenizers are not included in the default installation due to their size A one-time download is required when they're used for the first time.
+These tokenizers are not included in the default installation due to their size. A one-time download is required when they're used for the first time.
 
 1. Qwen2 tokenizer.
 2. Command-R / Command-A tokenizers. Used by Cohere source in Chat Completion.
@@ -6877,7 +6877,7 @@ Visual Novel Mode is a special screen layout in SillyTavern that allows you to c
 
 ### Enabling Visual Novel Mode
 
-Visual Novel Mode comes built in with SillyTavern and can be toggle by going to *User Settings* (User Settings Icon) and checking **Visual Novel Mode** below *No Text Shadows*.
+Visual Novel Mode comes built in with SillyTavern and can be toggled by going to *User Settings* (User Settings Icon) and checking **Visual Novel Mode** below *No Text Shadows*.
 
 ### Disabling Visual Novel Mode
 
@@ -6899,11 +6899,11 @@ To toggle MovingUI, go to *User Settings* and check on **MovingUI**. Do note tha
 
 **Regarding Sprite Sizes**
 
-If the size of your character sprites are relatively big it will be a challenge to try and move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath a existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
+If the size of your character sprites is relatively big it will be a challenge to try to move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath an existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
 
 **## Obtaining Character Sprites**
 
-Obtaining character sprites can be done by browsing the internet for existing sprites, for say, a existing character from a Visual Novel or a game that uses a Visual Novel feature such as DDLC or CounterSide. If the character you desire sprites form does not come with sprites already, you have several options remaining.
+Obtaining character sprites can be done by browsing the internet for existing sprites, for say, an existing character from a Visual Novel or a game that uses a Visual Novel feature such as DDLC or CounterSide. If the character you desire sprites from does not come with sprites already, you have several options remaining.
 
 1. Search the character post for any sprite ZIP package or link to a sprite pack.
 
@@ -6911,7 +6911,7 @@ Obtaining character sprites can be done by browsing the internet for existing sp
 
 **2. Create your own using LoRAs and Stable Diffusion.**
 
-    Generating sprites from scratch is time-consuming (especially if no LoRAs exist for your character and/or for the Stable Diffusion model you want to use) and will require decent hardware in order to generate them, more so if you plan on making 28 sprite expression than 6 and if you are using SDXL and/or upscaling sprites to a more higher resolution.
+    Generating sprites from scratch is time-consuming (especially if no LoRAs exist for your character and/or for the Stable Diffusion model you want to use) and will require decent hardware in order to generate them, more so if you plan on making 28 sprite expressions than 6 and if you are using SDXL and/or upscaling sprites to a higher resolution.
 
 **3. Use the character card image. It might not be like a sprite, but at least you have something to look at on-screen. However, multiple character cards cannot be used in VN mode.**
 
@@ -7044,7 +7044,7 @@ When generating an AI reply, entries from the character World Info will be combi
 
 #### Sorted Evenly (default)
 
-All entries will be sorted according to their Insertion Order as if they a part of one big file, ignoring the source.
+All entries will be sorted according to their Insertion Order as if they were a part of one big file, ignoring the source.
 
 #### Character Lore First
 
@@ -7052,7 +7052,7 @@ Entries from the Character World Info would be included first by their Insertion
 
 #### Global Lore First
 
-Entries from the Global World Info Info would be included first by their Insertion Order, then entries from the Character World Info.
+Entries from the Global World Info would be included first by their Insertion Order, then entries from the Character World Info.
 
 ### World Info Entry
 
@@ -7076,7 +7076,7 @@ For more information on Regex syntax and possibilities: Regular expressions - Ja
 
 ###### Advanced Regex Per-Message Matching
 
-ST prefixes every chat message in the WI scan buffer with `character name:` and after v1.12.6, concatenates prepends them using the character value 1 (`\x01`).  
+ST prefixes every chat message in the WI scan buffer with `character name:` and after v1.12.6, prepends them using the character value 1 (`\x01`).  
 This means you can match specific input or output from a certain character using a regex tied to that separation character.
 
 For example, to match only the user saying "hello", you could use the following regex:
@@ -7954,7 +7954,7 @@ You should not use port forwarding to expose your ST server to the internet. Ins
 
 **!!!danger Disclaimer**
 
-**NEVER HOST ANY INSTANCES TO THE OPEN INTERNET WITHOUT ENSURING PROPER SECURITY MEASURES FIRST.**
+**NEVER HOST ANY INSTANCES ON THE OPEN INTERNET WITHOUT ENSURING PROPER SECURITY MEASURES FIRST.**
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES IN CASES OF UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
 
@@ -8086,7 +8086,7 @@ There is no rate-limiting to prevent brute-force attacks. If this is a concern, 
 
 **The server will ask for username and password whenever a client connects via HTTP. **This only works if the Remote connections (listen: true) are enabled.****
 
-To enable HTTP BA, Open `config.yaml` in the SillyTavern base directory and search for `basicAuthMode` Set basicAuthMode to true and set username and password. Note: `config.yaml` will only exist if ST has been executed before at least once.
+To enable HTTP BA, Open `config.yaml` in the SillyTavern base directory and search for `basicAuthMode`. Set basicAuthMode to true and set username and password. Note: `config.yaml` will only exist if ST has been executed before at least once.
 
 ```yaml
 basicAuthMode: true
@@ -8270,7 +8270,7 @@ For security and privacy reasons, do not include your SSL certificates inside th
 
 This section does **not** refer to OpenAI/Claude reverse proxies. This refers exclusively to **HTTP/HTTPS Reverse Proxies**.
 
-**Is Termux confusing to setup? Are you tired of updating and installing ST on every device you have? Want organization of your chats and characters? Well you are in luck. This guide will _hopefully_ cover how to host SillyTavern on your PC where you can connect from anywhere and chat to your bots on the same PC you use to run AI models!**
+**Is Termux confusing to set up? Are you tired of updating and installing ST on every device you have? Want organization of your chats and characters? Well you are in luck. This guide will _hopefully_ cover how to host SillyTavern on your PC where you can connect from anywhere and chat to your bots on the same PC you use to run AI models!**
 
 **Warning**
 
@@ -8297,7 +8297,7 @@ You must have prior knowledge of
 
 ### Linux (Bare-Metal SillyTavern)
 
-For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik.io/traefik/). There are other options such as _NGINX_ or _Caddy_, but for this guide, we will use Traefik as it is what we use ourselves.
+For Linux, we will be reverse proxying SillyTavern through Traefik (https://traefik.io/traefik/). There are other options such as _NGINX_ or _Caddy_, but for this guide, we will use Traefik as it is what we use ourselves.
 
 1. Get the private IP of your computer using `ifconfig` or from your router.
 
@@ -8337,12 +8337,12 @@ For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik
     mkdir appdata && mkdir appdata/traefik
     cd appdata/traefik
     ```
-9. Create a _acme.json_ file using `touch` and set the permissions of it to 600.
+9. Create an _acme.json_ file using `touch` and set the permissions of it to 600.
     ```sh
     touch acme.json
     chmod 600 acme.json
     ```
-10. Using `nano` or a similar editor, create a file name _traefik.yml_ and paste the following. Replace the template email with your own, then save the file.
+10. Using `nano` or a similar editor, create a file named _traefik.yml_ and paste the following. Replace the template email with your own, then save the file.
     ```yml
     api:
         dashboard: true
@@ -8370,7 +8370,7 @@ For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik
     certificatesResolvers:
         cloudflare:
             acme:
-                email: YOUR_CLOUDFLARE_EMAL@DOMAIN.com
+                email: YOUR_CLOUDFLARE_EMAIL@DOMAIN.com
                 storage: acme.json
                 dnsChallenge:
                     provider: cloudflare
@@ -8383,7 +8383,7 @@ For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik
     ```sh
     cd /docker
     ```
-12. Using `nano` or a similar editor, create a file name _docker-compose.yaml_ and paste the following. Save the file afterwards.
+12. Using `nano` or a similar editor, create a file named _docker-compose.yaml_ and paste the following. Save the file afterwards.
 
     ```yaml
     secrets:
@@ -8442,7 +8442,7 @@ For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik
     |-------|-----------------|-------------------|--------------|-----|
     | CNAME | silly           | DOMAIN.com        | Proxied      | N/A |
 
-19. `cd` into _appdata/traefik_ and using `nano` or a similar editor, create a file name _config.yml_ and paste the following. Replace `PRIVATE_IP` with the private IP you obtained, and `silly.DOMAIN.com` with the name of your subdomain and domain page, then save the file.
+19. `cd` into _appdata/traefik_ and using `nano` or a similar editor, create a file named _config.yml_ and paste the following. Replace `PRIVATE_IP` with the private IP you obtained, and `silly.DOMAIN.com` with the name of your subdomain and domain page, then save the file.
 
     ```yml
     http:
@@ -8499,7 +8499,7 @@ For Linux, we will reverse proxying SillyTavern through Traefik (https://traefik
 
     Before enabling perUserBasicAuth ensure you have a valid multi-user setup with working passwords.
 
-**22. Wait a few minutes, then open your domain page you made for ST. At the end of it, you should be able to open SillyTavern from anywhere you go just with one URL and one account.**
+**22. Wait a few minutes, then open the domain page you made for ST. At the end of it, you should be able to open SillyTavern from anywhere you go just with one URL and one account.**
 
 **Tip**
 
@@ -8545,7 +8545,7 @@ Do note that we run SillyTavern on bare-metal over Docker. This is a rough idea 
     ```sh
     cd /docker && git clone https://github.com/SillyTavern/SillyTavern
     ```
-9. Using `nano` or a similar editor, create a file name _docker-compose.yaml_ and paste the following. Replace `silly.DOMAIN.com` with the subdomain you added above, the save the file afterwards.
+9. Using `nano` or a similar editor, create a file named _docker-compose.yaml_ and paste the following. Replace `silly.DOMAIN.com` with the subdomain you added above, then save the file afterwards.
 
     ```yaml
     secrets:
@@ -8623,7 +8623,7 @@ Do note that we run SillyTavern on bare-metal over Docker. This is a rough idea 
     ```sh
     docker compose up -d sillytavern
     ```
-14. Wait a few minutes, then open your domain page you made for ST. At the end of it, you should be able to open SillyTavern from anywhere you go just with one URL and one account.
+14. Wait a few minutes, then open the domain page you made for ST. At the end of it, you should be able to open SillyTavern from anywhere you go just with one URL and one account.
 
 **Tip**
 
@@ -8785,13 +8785,13 @@ Once AllTalk is loaded, select it within SillyTavern on the TTS page, ensuring t
 
 Full details of the SillyTavern AllTalk Extension will be updated on the AllTalk Wiki page for SillyTavern (https://github.com/erew123/alltalk_tts/wiki/SillyTavern-Extension)
 
-TGWUI Users who user the AllTalk extension for TGWUI need to disable `Enable TGWUI TTS` in the TGWUI chat interface, otherwise you will have duplicate TTS audio generated.
+TGWUI Users who use the AllTalk extension for TGWUI need to disable `Enable TGWUI TTS` in the TGWUI chat interface, otherwise you will have duplicate TTS audio generated.
 
 ---
 
 ## 🟨 Troubleshooting
 
-If you experience issues that you believe are specific to AllTalk within SillyTavern, please refer to the AllTalk Wiki page for SillyTavern (https://github.com/erew123/alltalk_tts/wiki/SillyTavern-Extension) for the lastest information.
+If you experience issues that you believe are specific to AllTalk within SillyTavern, please refer to the AllTalk Wiki page for SillyTavern (https://github.com/erew123/alltalk_tts/wiki/SillyTavern-Extension) for the latest information.
 
 ---
 
@@ -8808,7 +8808,7 @@ For further assistance:
 
 # Blip
 
-This guide will walk you through setting up and customizing blip extension for your SillyTavern experience. This extension animate the text of messages with variable speed and play sound along the animation. You can use audio file or generate the sound.
+This guide will walk you through setting up and customizing blip extension for your SillyTavern experience. This extension animates the text of messages with variable speed and plays sound along the animation. You can use an audio file or generate the sound.
 
 ## Prerequisites
 
@@ -8828,7 +8828,7 @@ Before you begin, ensure you've met the following prerequisites:
    - Enable checkbox to ignore everything inside asterisks.
 
 3. **Automatic scroll down**:
-   - Enable checkbox to make the chat go down to follow the text animation, disable it if you wanna scroll freely during animation.
+   - Enable checkbox to make the chat go down to follow the text animation, disable it if you want to scroll freely during animation.
 
 4. **Audio volume**
    - Mute the audio if just the animation of the text is desired.
@@ -8841,7 +8841,7 @@ You can save a profile for each character:
    - If only the current chat characters are shown in the list, click the checkbox to show all your characters.
 
 1. **Select the character to assign/update profile**:
-   - Select a character, if he have a profile it will be loaded.
+   - Select a character. If it has a profile, it will be loaded.
    - If it does not have a profile yet the current parameters will become his profile settings.
    - Any profile can be deleted using the remove button.
    - Use refresh button if your character does not appear in the list.
@@ -8849,11 +8849,11 @@ You can save a profile for each character:
 2. **Text animation settings**:
    - Set the text speed: the delay in milliseconds between each letter printed.
    - Set Min/max speed multiplier different to 1.0 for randomness of speed animation.
-   - Set comma/phrase delay superior to 0 to add a pause when special character are printed, can add more liveliness to animation. Audio is paused too in this case.
+   - Set comma/phrase delay superior to 0 to add a pause when special characters are printed, can add more liveliness to animation. Audio is paused too in this case.
 
 3. **Audio parameters**:
    - Set a volume multiplier that will only affect this voice profile if needed.
-   - Set audio speed: the delay between each blip sound, independant of text speed.
+   - Set audio speed: the delay between each blip sound, independent of text speed.
 
 4. **Blip origin: Generated sound**:
    - Use the min/max frequency slider to customize the blip sound played.
@@ -8863,7 +8863,7 @@ You can save a profile for each character:
    - Choose a file in the list.
    - You can get official ST blip assets from the assets extension menu.
    - Or put file directly into: `\SillyTavern\data\<user-handle>\assets\blip`.
-   - Enable the checkbox to force to wait entire file is played before playing again if needed.
+   - Enable the checkbox to force waiting until the entire file is played before playing again if needed.
 
 Thank you for following this guide! Your SillyTavern experience is now enriched with text animation and blip voices.
 
@@ -9172,7 +9172,7 @@ Large messages are split into "chunks" so that the model can be given the most r
 You can change this with "Chunk size (chars)". 
 
 Messages are divided into chunks by finding a chunk boundary such as a paragraph break, line break, or space between words. This is so that 
-the all the chunks make sense, as far as possible. If your chat messages have some other way to mark natural splitting points, such as `----`, 
+all the chunks make sense, as far as possible. If your chat messages have some other way to mark natural splitting points, such as `----`, 
 you can add this to "Chunk boundary". The setting for "Chunk boundary" is shared with Data Bank.
 
 ### Vector storage controls
@@ -9234,7 +9234,7 @@ The summarized message does not replace the original message in chat. If a vecto
 
 To summarize the content of the messages used to search the chat history (the last 2 messages by default), choose "Summarize chat messages when sending".
 
-Each time a message is summarized for vectorising, a separate request is made to the summarizing model. You can choose which summarizing source is used with "Summarize with". Choosing "Main API" will generate the summaries using the same model and connection settings that you use for generating chat or text completions.
+Each time a message is summarized for vectorizing, a separate request is made to the summarizing model. You can choose which summarizing source is used with "Summarize with". Choosing "Main API" will generate the summaries using the same model and connection settings that you use for generating chat or text completions.
 
 The request consists of the raw message content and an instruction about how the model should produce the summary. You can change the instruction with "Summary Prompt".
 
@@ -9261,11 +9261,11 @@ Before you begin, ensure you've met the following prerequisites:
 2. **Enable Dynamic Audio Extension**:
    - In SillyTavern, go to **Extensions** > **Dynamic Audio**.
    - Enable the extension, unmute and adjust the volume of BGM and ambient sounds to your preference.
-   - When bgm end another one will play randomly, click on loop button to keep current bgm playing
+   - When bgm ends another one will play randomly, click on loop button to keep current bgm playing
    - Click on roll button to pick another bgm randomly
 
 3. **Expression based BGM**:
-   - Enable expression BGM switch if you want bgm to follow character expression (require bgm in character folder see below).
+   - Enable expression BGM switch if you want BGM to follow character expression (requires BGM in character folder see below).
    - Adjust the cooldown timer (in seconds) between BGM updates. Increase it if you find the BGM changes too frequently in group chats or when using character-specific BGM with emotion detection.
 
 ## Importing Music for Characters
@@ -9310,7 +9310,7 @@ Ambient sounds add depth to your scenes. Here's how you can customize them:
 2. **File Naming Convention**:
    - Ambient audio filenames correspond to background image filenames, replacing spaces with dashes.
    - Example: `"bedroom-clean.mp3"` corresponds to the "bedroom clean.jpg" background.
-   - If the lock button is unlock the audio file corresponding to the background will play. Activating lock will keep current ambient playing.
+   - If the lock button is unlocked the audio file corresponding to the background will play. Activating lock will keep current ambient playing.
 
 3. **Custom Ambients**:
    - You can add your own ambient sounds for custom or existing backgrounds by following the same naming pattern.
@@ -9352,7 +9352,7 @@ With the power of multimodal models, your AI bots can see your gameplay and prov
 
 ### Requirements
 
-1. A browser that supports ImageCapture (https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture#browser_compatibility). Tested on desktop Chrome. Firefox requires to enable it with config. Safari won't work.
+1. A browser that supports ImageCapture (https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture#browser_compatibility). Tested on desktop Chrome. Firefox requires enabling it via config. Safari won't work.
 2. Chat Completion API with image inlining mode is recommended. Check the API documentation to see if the chosen model supports multimodal prompts.
 3. If image inlining is disabled, make sure that the Image Captioning extension is enabled, then select the "Multimodal" captioning source.
 
@@ -9368,7 +9368,7 @@ With the power of multimodal models, your AI bots can see your gameplay and prov
 2. Comment template - a prompt used to write a comment based on the generated caption. `{{game}}`, `{{core}}`, `{{caption}}` additional macros are supported. For image inlining mode, `{{caption}}` is replaced with `see included image`.
 3. Force captions - will force the use of multimodal captioning even if image inlining is supported and enabled.
 
-### Why I'm not seeing any comments?
+### Why am I not seeing any comments?
 
 Comments are temporarily paused (interval step skipped) if:
 
@@ -9497,7 +9497,7 @@ All of those can be selected via the dropdown under 'Default / Fallback Expressi
 
 1. **Choose a Fallback Expression**: If an expression gets chosen where you don't have an image for, the fallback expression gets shown instead. Simply select one of the available expressions from the dropdown.
 2. **[No Fallback]**: When no image exists, show nothing.
-3. **[Default emojis]**: You can use the built-in default expressions which are included with in SillyTavern. These are simple emoji-style images.
+3. **[Default emojis]**: You can use the built-in default expressions which are included within SillyTavern. These are simple emoji-style images.
 
 ## Using Multiple Images per Expression
 
@@ -9512,8 +9512,8 @@ If you want to force a new image of that expression to be chosen when the same e
 
 ### Naming Convention for Multiple Images per Expression
 
-In case of multiple images per expressions, files need to be named a specic way.
-The files need to start with the name of the expressions, and then followed by a suffix, either separated by a dot or a dash. Examples: `joy.png`, `joy-1.png`, `joy.expressive.png`  
+In case of multiple images per expression, files need to be named a specific way.
+The files need to start with the name of the expression, and then followed by a suffix, either separated by a dot or a dash. Examples: `joy.png`, `joy-1.png`, `joy.expressive.png`  
 File names must follow this format for both direct uploads and ZIP imports.
 
 ## Sprite Folder Override
@@ -9598,12 +9598,12 @@ There are 4 main concepts to be aware of:
 
 ***
 
-#### SmartContext only starts after 10 mesages are in the chat history
+#### SmartContext only starts after 10 messages are in the chat history
 
 - At the start of a new chat, ChromaDB is inactive.
 - Once the chat has accumulated 10 messages, it will begin recording all messages into the database, and recalling messages as needed.
 
-#### Chat History Preservation ('kept mesages')
+#### Chat History Preservation ('kept messages')
 
 By default, ChromaDB will keep as many recent natural chat history messages as specified in the slider.
 Any messages beyond this amount will be removed from your sent prompt, and if 'memories' exist in the database they will be added in place of the older chat history messages (see Strategy below).
@@ -9652,7 +9652,7 @@ Disadvantage
 #### Add to Bottom
 
 This strategy leaves the chat history in its natural state and adds 'memories' **after** it inside a formatted [bracket header].
-This means the 'kept messages' sliders is effectively disabled.
+This means the 'kept messages' slider is effectively disabled.
 
 Advantage
 
@@ -9694,7 +9694,7 @@ Advantage
 
 Disadvantage
 
-- calculations for how much history to remove can be slightly innacurate as they are based on estimated tokens per message
+- calculations for how much history to remove can be slightly inaccurate as they are based on estimated tokens per message
 - it rounds the number of messages to remove to the nearest number divisible by 5 (0, 5, 10, 15, 20, etc), so it is not as fine grained as manual numeric selection.
 
 ***
@@ -9709,7 +9709,7 @@ This is the default behavior of smart-context and pulls 'memories' only from the
 
 This is an experimental behavior of smart-context which pulls 'memories' from all ChromaDB collections for the selected character.
 Hypothetically this should allow for the development of a more robust memory set spanning many interactions. 
-Reccomended that this be used with 'Add to Bottom' or 'Custom Depth' strategies and 'kept messages' set to a low number so that ChromaDB will pull from memory sooner.
+Recommended that this be used with 'Add to Bottom' or 'Custom Depth' strategies and 'kept messages' set to a low number so that ChromaDB will pull from memory sooner.
 
 ### Using Smart Context
 
@@ -9751,7 +9751,7 @@ We recommend using World Info for this purpose.
 
 # talkinghead
 
-**THE SUPPORT FOR TALKGINHEAD WAS DROPPED IN SILLYTAVERN 1.12.13. THIS PAGE IS KEPT FOR HISTORICAL PURPOSES.**
+**THE SUPPORT FOR TALKINGHEAD WAS DROPPED IN SILLYTAVERN 1.12.13. THIS PAGE IS KEPT FOR HISTORICAL PURPOSES.**
 
 **### What is it?**
 
@@ -9762,7 +9762,7 @@ An implementation of Talking Head Anime 3 Demo for AITuber. It possesses the fol
 
 This extension contains the original demo programs for the Talking Head(?) Anime from a Single Image 3: Now the Body Too project. As the name implies, the project allows you to animate anime characters, and you only need a single image of that character to do so. There are two demo programs:
 
-The manual_poser lets you manipulate a character's facial expression, head rotation, body rotation, and chest expansion due to breathing through a graphical user interface, so you can save them as default expressions IE Happy, sad, joy, etc.
+The manual_poser lets you manipulate a character's facial expression, head rotation, body rotation, and chest expansion due to breathing through a graphical user interface, so you can save them as default expressions e.g., Happy, sad, joy, etc.
 ifacialmocap_puppeteer lets you transfer your facial motion to an anime character.
 
 ### Hardware Requirements
@@ -9859,7 +9859,7 @@ if you have not already activated the environment.
 # Extensions
 
 SillyTavern comes with many extensions that can be enabled or disabled in the Extensions panel. Extensions can add new
-features, change the behaviour of existing features, or provide additional content for your AI to use. More extensions
+features, change the behavior of existing features, or provide additional content for your AI to use. More extensions
 can be installed from the "Download Extensions & Assets" menu in the Extensions panel.
 
 ## Extensions panel
@@ -10234,7 +10234,7 @@ These settings allow you to manage characters and assign Live2D models to them.
    - The model can be located in the asset folder or the current character's folder.
    - The list displays the model folder name, its origin (asset or character), and the name of the detected model setting file.
    - Note that some model folders may contain different versions of the same model. You can try different model files to see which one works best.
-   - Selecting none will use normal sprites if there is any
+   - Selecting none will use normal sprites if there are any
    - Settings are saved per character and model
 
 ## Model Settings
@@ -10488,7 +10488,7 @@ When using parent/child tasks in a task tree, tasks are selected depth-first, me
 
 #### Branch Tasks
 
-Click the Branch Task button to set the current task as an Objective where you can auto generate or manually create tasks as child tasks. You can continue to turn any child task into an Objective and keep generating to your hearts content.
+Click the Branch Task button to set the current task as an Objective where you can auto generate or manually create tasks as child tasks. You can continue to turn any child task into an Objective and keep generating to your heart's content.
 
 Marking a parent task as complete will cause the extension to skip all subtasks. When all child tasks are complete, the parent task will be marked as complete
 
@@ -10522,7 +10522,7 @@ If you want to remain unaware of what tasks the AI is attempting to complete, ch
 
 ## What is it?
 
-The Regex extension lets the user automatically detect specific patterns in a string of text (called 'sequences') and apply manipulations (replacements) to them. It can be a powerful tool when used in conjuction with other SillyTavern features such as Quick Replies or STscript, or simply a way to remove certain words from a chat.
+The Regex extension lets the user automatically detect specific patterns in a string of text (called 'sequences') and apply manipulations (replacements) to them. It can be a powerful tool when used in conjunction with other SillyTavern features such as Quick Replies or STscript, or simply a way to remove certain words from a chat.
 
 ## Helpful Links
 
@@ -10570,9 +10570,9 @@ Below this is a list of your scripts with some action buttons.
 
 - **Find Regex** : This is the Regular Expression that is used to detect your targeted text pattern. This is usually the most complex part of any RegEx script, and is the easiest place to make mistakes. Refer to the links at the top of the page for information how to write a RegEx sequence. This box can resolve the values of common SillyTavern macros (such as \{\{user\}\}, \{\{char\}\}, etc) if the 'Macros in Find Regex' is set to do so (see below).
 
-- **Replace With**: This is what will replace the matched sequence. In a very simple example, if your 'Find Regex' is `apple`, and your 'Replace With' is `orange`, the first occurence of 'apple' would be automatically changed to 'orange' in any text where the script is applied.
+- **Replace With**: This is what will replace the matched sequence. In a very simple example, if your 'Find Regex' is `apple`, and your 'Replace With' is `orange`, the first occurrence of 'apple' would be automatically changed to 'orange' in any text where the script is applied.
 
-  - Adding the extension-specific macro \{\{match\}\} in this box will insert the full matched sequence of text. This is commonly used to apply styles to specific words. Going back to the above example, if \*\*\{\{match\}\}\*\* were put into the 'Replace With' box instead, all occurences of the word 'apple' would be replaced with `**apple**`, which would apply the bold markdown style to it.
+  - Adding the extension-specific macro \{\{match\}\} in this box will insert the full matched sequence of text. This is commonly used to apply styles to specific words. Going back to the above example, if \*\*\{\{match\}\}\*\* were put into the 'Replace With' box instead, all occurrences of the word 'apple' would be replaced with `**apple**`, which would apply the bold markdown style to it.
 
   - Variables such as $1, $2, $3 etc can be used to insert what are called 'Capture Groups'. These are substrings located in the text sequence matched by the 'Find Regex' sequence. **Note that using these variables requires the matching expression to contain sets of parentheses to define which part of the matched string counts as a captured group.** Refer to the links at the top for reference on how to set up Capture Groups.
 
@@ -10584,7 +10584,7 @@ Below this is a list of your scripts with some action buttons.
   - 'Slash Commands': script will be run against the values inserted into prompt/chat by slash commands.
   - 'World Info': script will be run on against contents of World Info entries as they are injected into the prompt. **Requires 'Alter Outgoing Prompt' to be checked (or both ephemerality boxes to be unchecked).**
   - 'Reasoning': script will be run against the contents of the 'reasoning' object returned by Chat Completion API's like Gemini or Deepseek. If 'Alter Outgoing Prompt' is checked under Ephemerality, the script will also be applied to any reasoning blocks that are added into prompt in subsequent chat turns.
-  - **If everthing here is unchecked the script will never activate during normal chatting, but it can still be activated via slash command or STscript.**
+  - **If everything here is unchecked the script will never activate during normal chatting, but it can still be activated via slash command or STscript.**
 
 - **Other Options** :
   - 'Disabled' prevents the script from running. This is used as an override to prevent the script from running when you simply don't want to change any of the script's settings and/or don't want to disable it entirely via the switch on the script list (as doing so would prevent slash commands from triggering it).
@@ -10704,9 +10704,9 @@ brew install ffmpeg
 
 #### Make sure TTS is enabled and works
 
-RVC depends on TTS, you need to enable a TTS extension. Your TTS has to be already working properly and narrating your chats before you try to add RVC to the mix!
+RVC depends on TTS; you need to enable a TTS extension. Your TTS has to be already working properly and narrating your chats before you try to add RVC to the mix!
 
-Please note, that:
+Please note that:
 
 * System TTS engine does not support voice conversion at all.
 * Streaming TTS will wait for the audio stream to end before conversion.
@@ -10766,14 +10766,14 @@ python -m rvc_python api -p 5050 -l -md models_path
 
 * To set up a voice map, choose your character or persona name from the "Character" dropdown, then choose an RVC "Voice", then click Apply.
 * Optionally, you can also configure other related settings such as pitch correction or filtering.
-* If you did everything correctly, the Voice Map debug area will show something like 'Betty:MyVoice(rvpme)'.
+* If you did everything correctly, the Voice Map debug area will show something like 'Betty:MyVoice(rmvpe)'.
 
 ### SillyTavern Extras Setup
 
 #### 1. Prepare RVC Model Files
 
 * In a file browser, navigate to: `\SillyTavern-extras\data\models\rvc`.
-* Create a subfolder like 'Betty' and place the `.pth` and `.index` files into it. (Hint: you can download voice files from https://voice-models.com, make sure the voice name says it's RVPME.)
+* Create a subfolder like 'Betty' and place the `.pth` and `.index` files into it. (Hint: you can download voice files from https://voice-models.com, make sure the voice name says it's RMVPE.)
 
 #### 2. Install Requirements
 
@@ -10795,7 +10795,7 @@ Optionally, you may wish to run RVC on your GPU if you have a capable one, by ad
 
 #### 4. Set Up Voice Mapping
 
-Create a Voice map for RVC. Set your Character to your desired SillyTavern character name, and set Voice to the RVC folder you created at step 1, then click Apply. If you did things correctly, the Voice Map will show something like 'Betty:MyVoice(rvpme)'.
+Create a Voice map for RVC. Set your Character to your desired SillyTavern character name, and set Voice to the RVC folder you created at step 1, then click Apply. If you did things correctly, the Voice Map will show something like 'Betty:MyVoice(rmvpe)'.
 
 #### 5. Select Pitch Extraction
 
@@ -11003,7 +11003,7 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 
 | Source                                                                                            | Remarks                                                                                         |
 |:--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
-| AI.ML API (https://aimlapi.com/)                                                                 | Cloud, paid                                                                                     |
+| AI/ML API (https://aimlapi.com/)                                                                 | Cloud, paid                                                                                     |
 | Black Forest Labs (https://bfl.ai/)                                                              | Cloud, paid                                                                                     |
 | Chutes (https://chutes.ai/)                                                                      | Cloud                                                                                           |
 | ComfyUI (https://github.com/comfyanonymous/ComfyUI)                                              | Local, open source (GPL3), free of charge, see ComfyUI Configuration. |
@@ -11082,9 +11082,9 @@ The example below will send the generated image using Markdown as a user persona
 
 ### Image swipes
 
-Images swipes allow to reroll the image generation while keeping the same prompt. If a fixed seed is set, it will be randomized for the next generation. 
+Image swipes allow rerolling the image generation while keeping the same prompt. If a fixed seed is set, it will be randomized for the next generation. 
 
-To cycle through images, hover a mouse cursor (tap on mobile) over a generated image to reveal arrow buttons and swipes counter. Tapping right arrow on the latest image will generate a new one.
+To cycle through images, hover a mouse cursor (tap on mobile) over a generated image to reveal arrow buttons and swipes counter. Tapping the right arrow on the latest image will generate a new one.
 
 *'Swipes' here is just a name, don't try the actual swiping gesture, as this will regenerate the message itself, not the attached image.*
 
@@ -11109,7 +11109,7 @@ The interactive mode will not trigger when the function tool is enabled.
 
 **### Use interactive mode**
 
-Allows to trigger an image generation instead of text as a reply to a user message that follows the special pattern:
+Allows you to trigger an image generation instead of text as a reply to a user message that follows the special pattern:
 
 1. Contains one of the following verbs: send, mail, imagine, generate, make, create, draw, paint, render
 2. Followed by one of the following nouns (not further than 10 characters away): pic, picture, image, drawing, painting, photo, photograph
@@ -11466,7 +11466,7 @@ You can add custom placeholders to your workflow:
 
 Custom placeholders will appear in a separate list below the predefined ones.
 
-For example, you could replace the "SillyTavern" prefix for saved image filenames in the default workflow with a custom placeholder. Add a new custom placeholder with `find` set to `filename_prefix` and `replace` set to `ServiceTesnor`. Insert the new `%filename_prefix%` placeholder into your workflow JSON. Now you can change the filename prefix from SillyTavern to ServiceTesnor by changing the value of the custom placeholder.
+For example, you could replace the "SillyTavern" prefix for saved image filenames in the default workflow with a custom placeholder. Add a new custom placeholder with `find` set to `filename_prefix` and `replace` set to `ServiceTensor`. Insert the new `%filename_prefix%` placeholder into your workflow JSON. Now you can change the filename prefix from SillyTavern to ServiceTensor by changing the value of the custom placeholder.
 
 +++ JSON with placeholder
 ```json
@@ -11492,7 +11492,7 @@ For example, you could replace the "SillyTavern" prefix for saved image filename
 
 ### Comfy tricks
 
-Read all the general information on this page so you're familiar with the image generation options. Options such as switchable styles and common prompt prefixes, when combined wih the total flexibility of ComfyUI workflows, allow you to create a wide variety of image generation setups.
+Read all the general information on this page so you're familiar with the image generation options. Options such as switchable styles and common prompt prefixes, when combined with the total flexibility of ComfyUI workflows, allow you to create a wide variety of image generation setups.
 
 #### Loading LoRAs
 
@@ -11908,7 +11908,7 @@ Before you begin, ensure you've met the following prerequisites:
 
 2. **Extension Installation**: Install the "VRM" extension from the "Download Extensions & Assets" menu in the Extensions panel (represented by the stacked blocks icon).
 
-3. **Model Folder Placement**: Place your VRM model files (.vrm) into the `/data/<user-handle>/assets/vrm/model` directory and your animation files into the `/data/<user-handle>/assets/vrm/animation` directory. The currently supported animation file format are .fbx and .bvh that are compatible with VRM models. This include any animation you can get from Mixamo (https://www.mixamo.com/) and any animation you can export from tools like XR Animator (https://github.com/ButzYung/SystemAnimatorOnline).
+3. **Model Folder Placement**: Place your VRM model files (.vrm) into the `/data/<user-handle>/assets/vrm/model` directory and your animation files into the `/data/<user-handle>/assets/vrm/animation` directory. The currently supported animation file formats are .fbx and .bvh that are compatible with VRM models. This includes any animation you can get from Mixamo (https://www.mixamo.com/) and any animation you can export from tools like XR Animator (https://github.com/ButzYung/SystemAnimatorOnline).
 
 ## Extension Settings
 
@@ -11924,27 +11924,27 @@ The VRM extension offers various settings to customize the behavior of your anim
    - Enable this checkbox to make the VRM model eyes look at the camera.
 
 3. **Blink**:
-   - Enable this checkbox to make the VRM model eyes blink at random intervals. Model expressions should define properly blinking weight property otherwize model can blink with closed eyes for example, if that happens either:
+   - Enable this checkbox to make the VRM model eyes blink at random intervals. Model expressions should define properly blinking weight property otherwise model can blink with closed eyes for example, if that happens either:
     - correct the model if you have the .vroid file
-    - don't use that incorrect face experession
-    - disable blinking completly with this checkbox
+    - don't use that incorrect face expression
+    - disable blinking completely with this checkbox
 
 4. **TTS Lip sync**
-    - Enable this checkbox to have the VRM mouth movement follow the sound of your TTS when it's played. Only work with TTS whose sound is played by Sillytavern itself like XTTS (not in streaming mode). If disabled, mouth will be animated according to the message text length when a new character message is received.
+    - Enable this checkbox to have the VRM mouth movement follow the sound of your TTS when it's played. Only works with TTS whose sound is played by Sillytavern itself like XTTS (not in streaming mode). If disabled, mouth will be animated according to the message text length when a new character message is received.
 
 5. **Auto-send Interaction**:
    - Enable this checkbox to automatically trigger character interactions when you click on areas with mapped messages (refer to the hit areas section for details).
 
-### Performances Settings
+### Performance Settings
 
 1. **Body hitboxes**
-    - Enable this checkbox to activate detection of click on several part of the VRM model depending on the model the following area can be detected: head/chest/hands/groin/butt/legs/feets. Hitboxes location are computed at each frames and follow the body animation, disabling this option can improve performance.
+    - Enable this checkbox to activate detection of click on several part of the VRM model depending on the model the following area can be detected: head/chest/hands/groin/butt/legs/feet. Hitbox locations are computed at each frame and follow the body animation, disabling this option can improve performance.
 
 2. **Use model cache**
-    - Enable this checkbox to keep in memory VRM model when switching models, allows to switch back to previous model faster. Usefull if you use different model for the same character to change outfit or form for example. Can affect performance.
+    - Enable this checkbox to keep the VRM model in memory when switching models, allows to switch back to previous model faster. Useful if you use different model for the same character to change outfit or form for example. Can affect performance.
 
 3. **Use animation cache**
-    - Enable this checkboxx to keep in memory all animations played during the session. All animation assigned to a model will also be loaded the first time the model appear. Will increase the time you load the model the first time but make all animation switch instant. Can affect performance.
+    - Enable this checkbox to keep in memory all animations played during the session. All animation assigned to a model will also be loaded the first time the model appears. Will increase the time you load the model the first time but make all animation switch instant. Can affect performance.
 
 ### Debug Settings
 
@@ -12006,12 +12006,12 @@ These settings allow you to manage characters and assign VRM models to them.
 
 ## Hitboxes mapping
 
-    - Depending on the model bones definition some hitboxes area can be generated, they will be listed in this part of the ui, and you can assign an expression/animation/message to each of them that will trigger when you click the area.
+    - Depending on the model bones definition some hitbox areas can be generated, they will be listed in this part of the ui, and you can assign an expression/animation/message to each of them that will trigger when you click the area.
 
 ## Classified Expressions Mapping
 
 1. **Requirements**
-    - Requires the use of the classify expression extension; otherwise, it will fallback to the default animation.
+    - Requires the use of the classify expression extension; otherwise, it will fall back to the default animation.
 
 2. **Mapping**
     - For each detected emotion by the classify extension, you can assign an expression/motion/message. The message can contain commands.
@@ -12041,7 +12041,7 @@ These settings allow you to manage characters and assign VRM models to them.
     - "/vrmmotion idle" or "/vrmmotion character=Seraphina motion=idle loop=true random=false"
 
 ## Animations default mapping
-If your animation file are named in the following way they will be mapped automatically when reseting a model settings. For example the files named "assets/vrm/animation/neutral.bvh" and "assets/vrm/animation/neutral1.fbx" will be automatically mapped as a group for default and neutral classified animation. Same goes for the hitboxes. 
+If your animation files are named in the following way they will be mapped automatically when resetting a model settings. For example the files named "assets/vrm/animation/neutral.bvh" and "assets/vrm/animation/neutral1.fbx" will be automatically mapped as a group for default and neutral classified animation. Same goes for the hitboxes. 
 
     // Fallback
     "default": "assets/vrm/animation/neutral",
@@ -12093,7 +12093,7 @@ Thank you for following this guide! Your SillyTavern experience is now enriched 
 ## Remarks
     - The VRM model loaded by this extension are the .vrm files not the .vroid files.
     - Animation files should be VRM compatible, you can use a tool like XR animation (https://github.com/ButzYung/SystemAnimatorOnline) to convert fbx/bvh animation file.
-    - You can create animation groups by having file with same name ending with different numbers for example: "idle1.bvh", "idle2.bhv", "idle3.bvh" will be considered as one group "idle" and when selected in a mapping a random one will played when triggered, can be use to add variety to animations.
+    - You can create animation groups by having file with same name ending with different numbers for example: "idle1.bvh", "idle2.bvh", "idle3.bvh" will be considered as one group "idle" and when selected in a mapping a random one will played when triggered, can be used to add variety to animations.
     - You can get curated animations from this repository: https://github.com/test157t/VRM-Animations-Pack-For-Silly-Tavern
     - Nitral has some tutorial video about how to use the extension and the animation repo: https://www.youtube.com/@nitralai
 
@@ -12249,7 +12249,7 @@ Example: /websearch links=off snippets=on how to make a sandwich
 1. Google - answer box, knowledge graph, page snippets.
 2. DuckDuckGo - page snippets.
 
-**Selenium Plugin** can additionaly provide images.
+**Selenium Plugin** can additionally provide images.
 
 #### SearXNG
 
@@ -13981,7 +13981,7 @@ Server plugins allow adding functionality such as new API endpoints by running c
 
 **Internationalization (i18n)**
 
-Learn how to translate SillTavern's UI into your language.
+Learn how to translate SillyTavern's UI into your language.
 
 # SECTION: SillyTavern_For_Contributors_Server-Plugins
 
@@ -14224,7 +14224,7 @@ Examples:
 
 The following modifications can be applied to commands to work with these variables:
 
-- `/len` commands gets a number of items in the array.
+- `/len` command gets a number of items in the array.
 - `index=number/string` named argument can be added `/getvar` or `/setvar` and their global counterparts to get or set sub-values by either a zero-based index for arrays or a string key for objects.
   - If a numeric index is used on a nonexistent variable, the variable will be created as an empty array `[]`.
   - If a string index is used on a nonexistent variable, the variable will be created as an empty object `{}`.
@@ -14681,7 +14681,7 @@ The `/break` command can be used to break out of a loop (`/while` or `/times`) o
 10. `/cos (a)` – performs a cosine operation of a value, e.g. `/cos i`
 11. `/log (a)` – performs a natural logarithm operation of a value, e.g. `/log i`
 12. `/abs (a)` – performs an absolute value operation of a value, e.g. `/abs -10`
-13. `/sqrt (a)`– performs a square root operation of a value, e.g. `/sqrt 9`
+13. `/sqrt (a)` – performs a square root operation of a value, e.g. `/sqrt 9`
 14. `/round (a)` – performs a rounding to the nearest integer operation of a value, e.g. `/round 3.14`
 15. `/rand (round=round|ceil|floor from=number=0 to=number=1)` – returns a random number between from and to, e.g. `/rand` or `/rand 10` or `/rand from=5 to=10`. Ranges are inclusive. The returned value will contain a fractional part. Use `round` named argument to get an integral value, e.g. `/rand round=ceil` to round up, `round=floor` to round down, and `round=round` to round to nearest.
 
@@ -14728,7 +14728,7 @@ Scripts can make requests to your currently connected LLM API using the followin
 - `instruct` (only `/genraw`) — can be `on` or `off`. Allows to use instruct formatting on the input prompt (if instruct mode is enabled and the API supports it). Set to `off` to force pure prompts. Default: `on`.
 - `as` (for Text Completion APIs) — can be `system` (default) or `char`. Defines how the last prompt line will be formatted. `char` will use a character name, `system` will use no or neutral name.
 
-The generated text is then passed through the pipe to the next command and can be saved to a variable or displaced using the I/O capabilities:
+The generated text is then passed through the pipe to the next command and can be saved to a variable or displayed using the I/O capabilities:
 
 ```stscript
 /genraw Write a funny message from Cthulhu about taking over the world. Use emojis. |
@@ -14848,7 +14848,7 @@ This will insert a user message at the beginning of the conversation history:
 
 World Info (also known as Lorebook) is a highly utilitarian tool for dynamically inserting data into the prompt. See the dedicated page for more detailed explanation: World Info.
 
-1. `/getchatbook` – gets a name of the chat-bound World Info file or create a new one if was unbound, and pass it down the pipe.
+1. `/getchatbook` – gets a name of the chat-bound World Info file or create a new one if it was unbound, and pass it down the pipe.
 2. `/findentry file=bookName field=fieldName [text]` – finds a UID of the record from the specified file (or a variable pointing to a file name) using fuzzy matching of a field value with the provided text (default field: `key`) and passes the UID down the pipe, e.g. `/findentry file=chatLore field=key Shadowfang`.
 3. `/getentryfield file=bookName field=field [UID]` – gets a field value (default field: `content`) of the record with the UID from the specified World Info file (or a variable pointing to a file name) and passes the value down the pipe, e.g. `/getentryfield file=chatLore field=content 123`.
 4. `/setentryfield file=bookName uid=UID field=field [text]` – sets a field value (default field: `content`) of the record with the UID (or a variable pointing to UID) from the specified World Info file (or a variable pointing to a file name). To set multiple values for key fields, use a comma-delimited list as a text value, e.g. `/setentryfield file=chatLore uid=123 field=key Shadowfang,sword,weapon`.
@@ -14960,7 +14960,7 @@ There's a variety of useful text manipulation utility commands to be used in var
 ```
 
 1. `direction` sets the direction for trimming, which can be either `start` or `end`. Default: `end`.
-2. `limit` sets the amount of tokens to left in the output. Can also specify a variable name containing the number. **Required argument.**
+2. `limit` sets the amount of tokens to leave in the output. Can also specify a variable name containing the number. **Required argument.**
 3. Unnamed argument is the input text to be trimmed.
 
 ### Arguments for `/fuzzy`
@@ -15211,7 +15211,7 @@ Arguments:
 * `/qr-update (arguments, [message])` – updates Quick Reply, example: `/qr-update set=MyPreset label=MyButton newlabel=MyRenamedButton /echo 123`
 
 Arguments:
-- `newlabel` - string - new text fort the button, e.g. `newlabel=MyRenamedButton`
+- `newlabel` - string - new text for the button, e.g. `newlabel=MyRenamedButton`
 - `label`    - string - text on the button, e.g., `label=MyButton`
 - `set`      - string - name of the QR set, e.g., `set=PresetName1`
 - `hidden`   - bool   - whether the button should be hidden, e.g., `hidden=true`
@@ -15223,7 +15223,7 @@ Arguments:
 
 ####
 
-* `qr-get` - retrieves all of a Quick Reply's properties, eample: `/qr-get set=myQrSet id=42`
+* `qr-get` - retrieves all of a Quick Reply's properties, example: `/qr-get set=myQrSet id=42`
 
 #### Create or update QR preset
 
