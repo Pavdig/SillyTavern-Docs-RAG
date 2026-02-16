@@ -7,7 +7,7 @@ Visual Novel Mode is a special screen layout in SillyTavern that allows you to c
 
 ### Enabling Visual Novel Mode
 
-Visual Novel Mode comes built in with SillyTavern and can be toggle by going to *User Settings* (User Settings Icon) and checking **Visual Novel Mode** below *No Text Shadows*.
+Visual Novel Mode comes built in with SillyTavern and can be toggled by going to *User Settings* (User Settings Icon) and checking **Visual Novel Mode** below *No Text Shadows*.
 
 ### Disabling Visual Novel Mode
 
@@ -29,11 +29,11 @@ To toggle MovingUI, go to *User Settings* and check on **MovingUI**. Do note tha
 
 **Regarding Sprite Sizes**
 
-If the size of your character sprites are relatively big it will be a challenge to try and move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath a existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
+If the size of your character sprites is relatively big it will be a challenge to try to move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath an existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
 
 **## Obtaining Character Sprites**
 
-Obtaining character sprites can be done by browsing the internet for existing sprites, for say, a existing character from a Visual Novel or a game that uses a Visual Novel feature such as DDLC or CounterSide. If the character you desire sprites form does not come with sprites already, you have several options remaining.
+Obtaining character sprites can be done by browsing the internet for existing sprites, for say, an existing character from a Visual Novel or a game that uses a Visual Novel feature such as DDLC or CounterSide. If the character you desire sprites from does not come with sprites already, you have several options remaining.
 
 1. Search the character post for any sprite ZIP package or link to a sprite pack.
 
@@ -41,7 +41,7 @@ Obtaining character sprites can be done by browsing the internet for existing sp
 
 **2. Create your own using LoRAs and Stable Diffusion.**
 
-    Generating sprites from scratch is time-consuming (especially if no LoRAs exist for your character and/or for the Stable Diffusion model you want to use) and will require decent hardware in order to generate them, more so if you plan on making 28 sprite expression than 6 and if you are using SDXL and/or upscaling sprites to a more higher resolution.
+    Generating sprites from scratch is time-consuming (especially if no LoRAs exist for your character and/or for the Stable Diffusion model you want to use) and will require decent hardware in order to generate them, more so if you plan on making 28 sprite expressions than 6 and if you are using SDXL and/or upscaling sprites to a higher resolution.
 
 **3. Use the character card image. It might not be like a sprite, but at least you have something to look at on-screen. However, multiple character cards cannot be used in VN mode.**
 
