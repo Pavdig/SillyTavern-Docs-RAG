@@ -10002,9 +10002,9 @@ Adds web search results to LLM prompts.
 
 **:::callout**
 
-**AccuWeather (https://github.com/SillyTavern/Extension-AccuWeather)**
+**Weather (https://github.com/SillyTavern/Extension-Weather)**
 
-Provides weather information using the AccuWeather API as a slash command or a function tool.
+Provides weather information using one of the available weather APIs as a slash command or a function tool.
 
 **:::callout**
 
@@ -13334,7 +13334,7 @@ Function Calling allows adding dynamic functionality to your extensions by letti
 1. Image Generation (built-in) - generate images based on user prompts.
 2. Web Search - trigger a web search for a query.
 3. RSS (https://github.com/SillyTavern/Extension-RSS/) - fetch the latest news from RSS feeds.
-4. AccuWeather (https://github.com/SillyTavern/Extension-AccuWeather) - fetch the weather information from AccuWeather.
+4. Weather (https://github.com/SillyTavern/Extension-Weather) - fetch the weather information from weather APIs.
 5. D&D Dice (https://github.com/SillyTavern/Extension-Dice) - roll dice for D&D games.
 
 ## Prerequisites and limitations
