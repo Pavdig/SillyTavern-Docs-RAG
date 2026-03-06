@@ -7,7 +7,7 @@
 
 # SillyTavern Documentation (RAG-Ready)
 
-> **Note:** This is a **Proof of Concept (PoC)** project initiated from [SillyTavern Issue #183](https://github.com/SillyTavern/SillyTavern-Docs/issues/183). It aims to solve the problem of "token noise" and nested directory parsing issues when ingesting SillyTavern documentation into RAG knowledge bases (like Open WebUI).
+> **Note:** This is a **Proof of Concept (PoC)** project initiated from [SillyTavern-Docs Issue #183](https://github.com/SillyTavern/SillyTavern-Docs/issues/183). It aims to solve the problem of "token noise" and nested directory parsing issues when ingesting SillyTavern documentation into RAG knowledge bases (like Open WebUI).
 
 This repository hosts an automated pipeline that mirrors, processes, and sanitizes the official [SillyTavern Documentation](https://github.com/SillyTavern/SillyTavern-Docs). 
 
