@@ -1,14 +1,17 @@
+<!-- Badges -->
+![Status](https://img.shields.io/badge/status-experimental-yellow)
 ![Update Status](https://github.com/Pavdig/SillyTavern-Docs-RAG/actions/workflows/update_docs.yml/badge.svg)
 [![Last Commit](https://img.shields.io/github/last-commit/Pavdig/SillyTavern-Docs-RAG)](https://github.com/Pavdig/SillyTavern-Docs-RAG/commits/main)
 [![GitHub Downloads](https://img.shields.io/github/downloads/Pavdig/SillyTavern-Docs-RAG/total.svg)](https://github.com/Pavdig/SillyTavern-Docs-RAG/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/Pavdig/SillyTavern-Docs-RAG)](https://github.com/Pavdig/SillyTavern-Docs-RAG/stargazers)
 
 # SillyTavern Documentation (RAG-Ready)
 
+> **Note:** This is a **Proof of Concept (PoC)** project initiated from [SillyTavern Issue #183](https://github.com/SillyTavern/SillyTavern-Docs/issues/183). It aims to solve the problem of "token noise" and nested directory parsing issues when ingesting SillyTavern documentation into RAG knowledge bases (like Open WebUI).
+
 This repository hosts an automated pipeline that mirrors, processes, and sanitizes the official [SillyTavern Documentation](https://github.com/SillyTavern/SillyTavern-Docs). 
 
-The goal is to create a "flat" and clean set of Markdown files optimized for ingestion into AI apps like **Open WebUI** or other RAG (Retrieval-Augmented Generation) knowledge bases.
-
-It also generates **single-file bundles** (`llms.txt`, `llms.md`, and `llms.json`) for easy drag-and-drop context in LLMs like ChatGPT or Claude.
+The goal is to create a "flat" and clean set of Markdown files optimized for AI ingestion. It also generates **single-file bundles** (`llms.txt`, `llms.md`, and `llms.json`) for easy drag-and-drop context in LLMs like ChatGPT or Claude.
 
 ## 📥 Downloads
 
@@ -37,22 +40,17 @@ The automation pipeline runs on a schedule to ensure this repo stays in sync wit
 *   **Sanitize Content:** Removes noise that confuses LLMs:
     *   **Redirect stubs:** Files that just say "Page moved" are removed.
     *   **Front Matter:** Metadata headers (`---`) are stripped.
-    *   **Screenshots:** The entire "Screenshots" section is removed from files to reduce noise.
-    *   **Admonitions:** Tags like `!!!warning` are stripped, but **titles and text are preserved** (formatted as bold text).
+    *   **Screenshots:** The entire "Screenshots" section is removed from files.
+    *   **Admonitions:** Tags like `!!!warning` are stripped, but titles and text are preserved.
     *   **Images:** All image tags are removed entirely to reduce token usage.
-    *   **Ghost Tables:** Empty table artifacts left by images are cleaned up.
-    *   **Links:** 
-        *   *Docs folder:* Context-aware rewriting of relative links to match flattened filenames.
-        *   *Bundles:* Internal links are stripped completely (text preserved) to prevent hallucinations.
-*   **Generate Bundles:** Aggregates all processed files into:
-    *   `llms.txt` / `llms.md`: A single concatenated file with clear `# SECTION:` headers.
-    *   `llms.json`: A structured JSON array containing source filenames and clean content.
+    *   **Links:** Internal links are stripped (text preserved) to prevent hallucinations in bundles.
+*   **Generate Bundles:** Aggregates all processed files into a single context-rich file (`llms.txt`) and a structured JSON (`llms.json`).
 
 ### 2. The Update Cycle (CI/CD)
 1.  **Check:** The bot checks the official docs for changes every hour.
-2.  **Sync:** If updates are found, they are processed and pushed to a temporary `docs-sync` branch.
+2.  **Sync:** If updates are found, they are processed and pushed to a temporary branch.
 3.  **Notify:** A **Pull Request** is automatically opened (or updated) with the changelog.
-4.  **Release:** When the PR is merged into `main`, a GitHub Release is automatically published with a date-stamped ZIP file containing the docs and bundles.
+4.  **Release:** When the PR is merged, a GitHub Release is automatically published with a date-stamped ZIP file containing the docs and bundles.
 
 ## 🎖️ Credits
 
