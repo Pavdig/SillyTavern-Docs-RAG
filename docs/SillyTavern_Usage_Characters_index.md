@@ -57,8 +57,8 @@ choose <i class="fa-solid fa-user-plus"></i> **Create New Character** to add a n
 
 - <i class="fa-solid fa-star"></i> Favorite toggle
 - <i class="fa-solid fa-book"></i> Advanced definitions
-- <i class="fa-solid fa-globe"></i> Character lore
-- <i class="fa-solid fa-passport"></i> Chat lore: link the chat to a [World Info](SillyTavern_Usage_worldinfo.md)
+- <i class="fa-solid fa-globe"></i> [Character lore](SillyTavern_Usage_worldinfo.md)
+- <i class="fa-solid fa-passport"></i> [Chat lore](SillyTavern_Usage_worldinfo.md): link the chat to a World Info
 - <i class="fa-solid fa-file-export"></i> Export character
 - <i class="fa-solid fa-clone"></i> Duplicate
 - <i class="fa-solid fa-skull"></i> Delete
