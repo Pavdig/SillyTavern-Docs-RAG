@@ -3,7 +3,7 @@
 
 Adds web search results to LLM prompts.
 
-Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, xAI, and OpenRouter backends.
+Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, OpenRouter, Chutes, and other backends.
 
 **## Available sources**
 
