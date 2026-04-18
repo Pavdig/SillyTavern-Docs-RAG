@@ -69,7 +69,7 @@ jobs:
           zip -r ${{ steps.vars.outputs.ZIP_NAME }} docs/ llms.txt llms.json llms.md
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           # Tag: release-Jan-13-2026
           tag_name: release-${{ steps.vars.outputs.DATE }}
