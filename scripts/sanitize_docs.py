@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-import os
+import argparse
+import logging
 import re
-import shutil
 from pathlib import Path
 from urllib.parse import urlparse, urldefrag
 
-# === CONFIGURATION ===
-SOURCE_DIR = Path("comparison/raw_source")
-OUTPUT_DIR = Path("comparison/sanitized_test")
-ROOT_DIR = SOURCE_DIR
+ADMONITION_TYPES = {
+    'note', 'abstract', 'info', 'tip', 'success', 'question',
+    'warning', 'failure', 'danger', 'bug', 'example', 'quote', 'callout'
+}
 
 MD_LINK_RE = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
 MD_IMAGE_RE = re.compile(r'!\[([^\]]*)\]\(([^)]+)\)')
@@ -62,14 +62,15 @@ def resolve_relative_link(url: str, file_path: Path, root: Path) -> str | None:
         return None
     return make_flat_output_name(rel_target)
 
-def replace_link(match: re.Match, file_path: Path) -> str:
+def replace_link(match: re.Match, file_path: Path, root: Path) -> str:
     anchor_text = match.group(1).strip()
     url = match.group(2).strip()
     if is_external_link(url):
         return f'{anchor_text} ({url})'
-    resolved = resolve_relative_link(url, file_path, ROOT_DIR)
+    resolved = resolve_relative_link(url, file_path, root)
     if resolved:
         return f'[{anchor_text}](SillyTavern_{resolved})'
+    logging.debug('Unsupported link preserved as plain text: %s -> %s', anchor_text, url)
     return anchor_text
 
 def replace_image(match: re.Match) -> str:
@@ -130,53 +131,67 @@ def sanitize_admonitions(text: str) -> str:
         idx += 1
     return ''.join(output)
 
-def sanitize_text(content: str, file_path: Path) -> str:
+def sanitize_text(content: str, file_path: Path, root: Path) -> str:
     content = FRONT_MATTER_RE.sub('', content)
     content = SCREENSHOTS_RE.sub('', content)
     content = MD_IMAGE_RE.sub(replace_image, content)
-    content = MD_LINK_RE.sub(lambda m: replace_link(m, file_path), content)
+    content = MD_LINK_RE.sub(lambda m: replace_link(m, file_path, root), content)
     content = sanitize_admonitions(content)
     content = EMPTY_TABLE_ROW_RE.sub('', content)
     content = BR_RE.sub('', content)
     content = BLANK_LINES_RE.sub('\n\n', content)
     return content.strip() + '\n'
 
-def process_files():
-    if OUTPUT_DIR.exists():
-        for item in OUTPUT_DIR.iterdir():
-            if item.name == ".gitkeep":
-                continue
-            if item.is_dir():
-                shutil.rmtree(item)
-            else:
-                item.unlink()
-    else:
-        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+def collect_markdown_files(source_dir: Path) -> list[Path]:
+    return [path for path in source_dir.rglob('*.md') if path.is_file()]
 
-    processed_count = 0
-    skipped_count = 0
+def main() -> int:
+    parser = argparse.ArgumentParser(description='Sanitize SillyTavern docs for RAG ingestion.')
+    parser.add_argument('--source', default='work_dir', help='Source directory with markdown files')
+    parser.add_argument('--output', default='processed_temp', help='Output directory for sanitized files')
+    parser.add_argument('--root', default=None, help='Root for resolving relative links')
+    parser.add_argument('--verbose', action='store_true', help='Enable debug logging')
+    args = parser.parse_args()
 
-    for root, _, files in os.walk(SOURCE_DIR):
-        for filename in files:
-            if filename == ".gitkeep" or not filename.endswith(".md"):
-                continue
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format='[%(levelname)s] %(message)s'
+    )
 
-            file_path = Path(root) / filename
-            with file_path.open("r", encoding="utf-8") as f:
-                content = f.read()
+    source_dir = Path(args.source).resolve()
+    root_dir = Path(args.root).resolve() if args.root else source_dir
+    output_dir = Path(args.output).resolve()
 
-            if "This page has been moved to" in content:
-                skipped_count += 1
-                continue
+    if not source_dir.exists():
+        logging.error('Source directory does not exist: %s', source_dir)
+        return 1
 
-            sanitized = sanitize_text(content, file_path)
-            rel_path = file_path.relative_to(SOURCE_DIR)
-            output_filename = f"SillyTavern_{make_flat_output_name(rel_path)}"
-            output_path = OUTPUT_DIR / output_filename
-            output_path.write_text(sanitized, encoding="utf-8")
-            processed_count += 1
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"Done. Processed {processed_count} files. Skipped {skipped_count} redirects.")
+    markdown_files = collect_markdown_files(source_dir)
+    logging.info('Found %d markdown files under %s', len(markdown_files), source_dir)
 
-if __name__ == "__main__":
-    process_files()
+    count = 0
+    for file_path in markdown_files:
+        try:
+            text = file_path.read_text(encoding='utf-8')
+        except UnicodeDecodeError:
+            logging.warning('Unable to read file as UTF-8, skipping: %s', file_path)
+            continue
+
+        if 'This page has been moved to' in text:
+            logging.debug('Skipping redirect stub: %s', file_path)
+            continue
+
+        sanitized = sanitize_text(text, file_path, root_dir)
+        rel_path = file_path.relative_to(source_dir)
+        output_name = make_flat_output_name(rel_path)
+        output_file = output_dir / f'SillyTavern_{output_name}'
+        output_file.write_text(sanitized, encoding='utf-8')
+        count += 1
+
+    logging.info('Processed %d markdown files.', count)
+    return 0
+
+if __name__ == '__main__':
+    raise SystemExit(main())

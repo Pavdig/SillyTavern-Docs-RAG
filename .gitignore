@@ -4,3 +4,9 @@ tests/comparison/raw_source/*
 tests/comparison/sanitized_test/*
 !tests/comparison/sanitized_test/.gitkeep
 tests/debug_report.md
+
+# Python bytecode
+__pycache__/
+
+# Temporary directories
+work_dir/
