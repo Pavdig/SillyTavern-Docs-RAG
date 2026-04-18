@@ -1,4 +1,3 @@
-
 # NovelAI
 
 NovelAI is a paid subscription service that allows unlimited monthly access to their high-quality in-house text generation, image generation, and text-to-speech models. Register an account here to get started: <https://novelai.net/>
@@ -222,4 +221,4 @@ Then put the rest of your message on the next line. The bracketed text can be a 
 ### The AI keeps repeating specific words/phrases, what do I do? 
 
 As mentioned above, you can push the repetition penalty slider up a bit more, though pushing it too far can make the output incoherent. 
-To more thoroughly fix the problem, go back through the context, especially recent messages, and delete the repeated word/phrase. Removing it from the context gives the AI less reason to start saying it in the first place. 
+To more thoroughly fix the problem, go back through the context, especially recent messages, and delete the repeated word/phrase. Removing it from the context gives the AI less reason to start saying it in the first place.

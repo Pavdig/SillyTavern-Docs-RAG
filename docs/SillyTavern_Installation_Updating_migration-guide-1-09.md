@@ -1,4 +1,3 @@
-
 # 1.9.0 Migration Guide
 
 ## How to migrate to a new branch if I use main/dev?

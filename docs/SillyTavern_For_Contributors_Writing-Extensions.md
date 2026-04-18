@@ -1,13 +1,10 @@
-
 # UI Extensions
 
 UI extensions expand SillyTavern's functionality by hooking into its events and API. They run in a browser context and have practically unrestricted access to the DOM, JavaScript APIs, and the SillyTavern context. Extensions can modify the UI, call internal APIs, and interact with chat data. This guide explains how to create your own extensions (JavaScript knowledge is required).
 
-**Just want to install extensions?**
-
+!!!tip Just want to install extensions?
 Go here: [Extensions](SillyTavern_extensions_index.md).
-
-**To extend the functionality of the Node.js server, see the [Server Plugins](SillyTavern_For_Contributors_Server-Plugins.md) page.**
+To extend the functionality of the Node.js server, see the [Server Plugins](SillyTavern_For_Contributors_Server-Plugins.md) page.
 
 **Can't write JavaScript?**
 
@@ -112,7 +109,7 @@ Downloadable extensions are mounted into the `/scripts/extensions/third-party` f
 * `dependencies` is an optional array of strings specifying other **extensions** that this extension depends on.
 * `generate_interceptor` is an optional string that specifies the name of a global function called on text generation requests.
 * `minimum_client_version` is an optional string that specifies the minimum SillyTavern version required for this extension to work.
-* `hooks` is an optional object that specifies [lifecycle hook](SillyTavern_For_Contributors.md) function names exported from the JS entry point module.
+* `hooks` is an optional object that specifies lifecycle hook function names exported from the JS entry point module.
 
 ### Dependencies
 
@@ -156,9 +153,8 @@ context.groupId; // ID of the current group
 
 You can find the full list of available properties and functions in the SillyTavern source code (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/st-context.js).
 
-**If you're missing any of the functions/properties in `getContext`, please get in touch with the developers or send us a pull request!**
-
-**### Shared libraries**
+If you're missing any of the functions/properties in `getContext`, please get in touch with the developers or send us a pull request!
+### Shared libraries
 
 Most of the npm libraries used internally by the SillyTavern frontend are shared in the `libs` property of the `SillyTavern` global object.
 
@@ -255,12 +251,10 @@ $('#extensions_settings2').append(settingsHtml);
 ```
 
 `renderExtensionTemplate()` (synchronous) is deprecated. Always use `renderExtensionTemplateAsync()` instead.
-
-**### Importing from other files**
+### Importing from other files
 
 Using imports from SillyTavern code is unreliable and can break at any time if the internal structure of ST's modules changes. `getContext` provides a more stable API.
-
-**Unless you're building a bundled extension, you can import variables and functions from other JS files.**
+Unless you're building a bundled extension, you can import variables and functions from other JS files.
 
 For example, this code snippet will generate a reply from the currently selected API in the background:
 
@@ -327,9 +321,7 @@ To bind some data to a specific chat, you can use the `chatMetadata` object from
 To persist the metadata, use the `saveMetadata()` function, which will save the metadata to the server.
 
 Do not save the reference to `chatMetadata` in a long-lived variable, as the reference will change when the chat is switched. Always use `SillyTavern.getContext().chatMetadata` to access the current chat metadata.
-
 ```js
-
 const { chatMetadata, saveMetadata } = SillyTavern.getContext();
 
 // Set some metadata for the current chat
@@ -342,9 +334,8 @@ const value = chatMetadata['my_key'];
 await saveMetadata();
 ```
 
-The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen to this event to update your extension's state accordingly. See more in the [Listening to events](SillyTavern_For_Contributors.md) section.
-
-**### Character cards**
+The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen to this event to update your extension's state accordingly. See more in the Listening to events section.
+### Character cards
 
 SillyTavern fully supports Character Cards V2 Specification (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md), which allows to store arbitrary data in the character card JSON data.
 
@@ -352,16 +343,13 @@ This is useful for extensions that need to store additional data associated with
 
 To write data to the character card extensions (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md#extensions) data field, use the `writeExtensionField` function from the `getContext()` function. This function takes a character ID, a string key, and a value to write. The value must be JSON-serializable.
 
-**Weirdness Ahead**
-
+!!!warning Weirdness Ahead
 Despite being called `characterId`, it's not a "real" unique identifier but rather an index of the character in the `characters` array.
 
 The index of the current character is provided by the `characterId` property in the context. If you want to write data to the currently selected character, use `SillyTavern.getContext().characterId`. If you need to store data for another character, find the index by searching for the character in the `characters` array.
 
 **Caution: `characterId` is `undefined` in group chats or when no character is selected!**
-
 ```js
-
 const { writeExtensionField, characterId } = SillyTavern.getContext();
 
 // Write some data to the character card
@@ -405,13 +393,11 @@ await pm.writePresetExtensionField({ path: 'hello', value: 'world' });
 const value = pm.readPresetExtensionField({ path: 'hello' });
 ```
 
-The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset is changed or the main API is switched, so you can listen to these events to update your extension's state accordingly. See more in the [Listening to events](SillyTavern_For_Contributors.md) section.
+The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset is changed or the main API is switched, so you can listen to these events to update your extension's state accordingly. See more in the Listening to events section.
+## Internationalization
 
-**## Internationalization**
-
-**For general information on providing translations, see the [Internationalization](SillyTavern_For_Contributors_i18n.md) page.**
-
-**Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.**
+For general information on providing translations, see the [Internationalization](SillyTavern_For_Contributors_i18n.md) page.
+Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.
 
 See the list of supported locales here (`lang` key): <https://github.com/SillyTavern/SillyTavern/blob/release/public/locales/lang.json>
 
@@ -580,11 +566,9 @@ The main event types are:
 
 The full list of event types can be found in the source (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/events.js).
 
-**Event data**
-
+!!!info Event data
 The way each event passes its data to the listener is not uniform. Some events don't emit any data; some pass an object or a primitive value. Please refer to the source code where the event is emitted to see what data it passes, or check with the debugger.
-
-**### Emitting events**
+### Emitting events
 
 You can produce any application events from extensions, including custom events, by calling `eventSource.emit(eventType, ...eventData)`:
 
@@ -722,8 +706,7 @@ export function onDisable() {
 ```
 
 Hook functions have a **5-second timeout**. If your hook takes longer, execution will continue and a warning will be logged. Keep hook logic fast and lightweight.
-
-**## Generating text**
+## Generating text
 
 SillyTavern provides several functions to generate text in different contexts using the currently chosen LLM API. These functions allow you to generate text in the context of a chat, raw generation without any context, or with structured outputs.
 
@@ -778,17 +761,14 @@ const result = await generateRaw({
 ### Structured Outputs
 
 Currently only supported by the Chat Completion API. The availability varies based on the selected source and model. If the selected model does not support structured outputs, the generation will either fail or will return an empty object (`'{}'`). Check the documentation for the specific API you are using to see if structured outputs are supported.
-
-**You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema (https://json-schema.org/learn). This is useful for extensions that require structured data, such as state tracking, data classification, etc.**
+You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema (https://json-schema.org/learn). This is useful for extensions that require structured data, such as state tracking, data classification, etc.
 
 To use structured outputs, you must pass a JSON schema object to `generateRaw()` or `generateQuietPrompt()`. The model will then generate a response that matches the schema, and it will be returned as a stringified JSON object.
 
 The outputs are not validated against the schema, you must handle the parsing and validation of the generated output yourself. If the model fails to generate a valid JSON object, the function will return an empty object (`'{}'`).
 
 Zod (https://zod.dev/json-schema) is a popular library to generate and validate JSON schemas. Its use will not be covered here.
-
 ```js
-
 const { generateRaw, generateQuietPrompt } = SillyTavern.getContext();
 
 // Define a JSON schema for the expected output
@@ -899,8 +879,7 @@ macros.registerAlias('greet', 'hello', { visible: true });
 ### Legacy macro system (deprecated)
 
 `registerMacro()` and `unregisterMacro()` from `getContext()` are **deprecated**. Use `macros.register()` and `macros.registry.unregisterMacro()` instead.
-
-**The legacy API is still available for backward compatibility, but will be removed in a future release:**
+The legacy API is still available for backward compatibility, but will be removed in a future release:
 
 ```js
 const { registerMacro, unregisterMacro } = SillyTavern.getContext();
@@ -1134,8 +1113,7 @@ registerDebugFunction(
 ## Do Extras request
 
 The Extras API is deprecated. It's not recommended to use it in new extensions.
-
-**The `doExtrasFetch()` function allows you to make requests to your SillyTavern Extras API server.**
+The `doExtrasFetch()` function allows you to make requests to your SillyTavern Extras API server.
 
 For example, to call the `/api/summarize` endpoint:
 
@@ -1291,9 +1269,9 @@ const MODULE_NAME = 'settings';
 
 **Provide clear feedback**
 
-Use `toastr` for lightweight notifications and `Popup` for important user interactions. See the [Popups and user feedback](SillyTavern_For_Contributors.md) section for full details.
+Use `toastr` for lightweight notifications and `Popup` for important user interactions. See the Popups and user feedback section for full details.
 
-For long-running operations, use the [Action loader](SillyTavern_For_Contributors.md) instead of blocking the UI silently.
+For long-running operations, use the Action loader instead of blocking the UI silently.
 
 **Provide helpful console messages**
 
@@ -1311,7 +1289,7 @@ console.error(`[${MODULE_NAME}] Error occurred:`, error);
 
 **Use bundled libraries from `lib.js`**
 
-Before adding new dependencies, check the [Shared libraries](SillyTavern_For_Contributors.md) section — SillyTavern bundles many common libraries (lodash, Fuse, DOMPurify, moment, yaml, etc.) that are available via `SillyTavern.libs`.
+Before adding new dependencies, check the Shared libraries section — SillyTavern bundles many common libraries (lodash, Fuse, DOMPurify, moment, yaml, etc.) that are available via `SillyTavern.libs`.
 
 **Initialize settings properly**
 

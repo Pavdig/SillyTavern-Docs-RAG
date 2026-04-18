@@ -1,4 +1,3 @@
-
 # Tokenizer
 
 A tokenizer is a tool that breaks down a piece of text into smaller units called tokens. These tokens can be individual words or even parts of words, such as prefixes, suffixes, or punctuation. A rule of thumb is that one token generally corresponds to 3~4 characters of text.
@@ -56,11 +55,9 @@ If the required tokenizer model is not cached and downloads are disabled, a fall
 
 ### Token Padding
 
-**Applies to: Text Completion APIs**
-
+!!! Applies to: Text Completion APIs
 SillyTavern will always use the matching tokenizer for Chat Completion models, so there is no need for token padding.
-
-**Unless SillyTavern uses a tokenizer provided by the remote backend API that runs the model, all token counts assumed during prompt generation are estimated based on the selected [tokenizer](SillyTavern_Usage_Prompts.md) type.**
+Unless SillyTavern uses a tokenizer provided by the remote backend API that runs the model, all token counts assumed during prompt generation are estimated based on the selected tokenizer type.
 
 Since the results of tokenization can be inaccurate on context sizes close to the model-defined maximum, some parts of the prompt may be trimmed or dropped, which may negatively affect the coherence of character definitions.
 

@@ -1,4 +1,3 @@
-
 # Chat Translation
 
 ## Overview
@@ -57,7 +56,7 @@ Extensions** panel.
 
 #### Provider
 
-- Choose your preferred [translation service](SillyTavern_extensions.md)
+- Choose your preferred translation service
 - Click the **<i class="fa-solid fa-key"></i> API Key** icon, if it appears, to enter an API key
 - Click the **<i class="fa-solid fa-link"></i> Custom URL** icon, if it appears, to enter a custom API URL
 

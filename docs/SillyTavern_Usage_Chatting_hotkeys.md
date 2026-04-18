@@ -1,4 +1,3 @@
-
 # HotKeys
 
 **For the most up-to-date list of HotKeys that will work in your SillyTavern instance, use the `/help hotkeys` slash command in any chat.**

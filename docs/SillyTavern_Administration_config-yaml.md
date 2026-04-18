@@ -1,13 +1,11 @@
-
 # Configuration File
 
-**Disclaimer**
+!!!warning Disclaimer
 
 This documentation may be obsolete, incomplete, or incorrect. Please refer to the default config.yaml (https://github.com/SillyTavern/SillyTavern/blob/release/default/config.yaml) in your installation for the most up-to-date list of settings.
 
 **WARNING: DO NOT EDIT THE DEFAULT CONFIG DIRECTLY. THIS WON'T HAVE ANY POSITIVE EFFECT. EDIT ITS COPY IN THE REPOSITORY ROOT INSTEAD.**
-
-**`config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after [completing the installation](SillyTavern_Installation_index.md). It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.****
+`config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after [completing the installation](SillyTavern_Installation_index.md). It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
 
 New settings that are added upstream are automatically populated with default values when you run `npm install` (specifically, the `post-install.js` script) after [updating the repository](SillyTavern_Installation_Updating_index.md). You can then modify these settings as needed.
 
@@ -35,9 +33,7 @@ Start.bat --port 8000 --listen false
 ### Supported arguments
 
 None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
-
 | Option                          | Description                                                          | Type     |
-
 |---------------------------------|----------------------------------------------------------------------|----------|
 | `--version`                     | Shows the version number                                             | boolean  |
 | `--global`                      | Forces the use of system-wide paths for application data             | boolean  |
@@ -74,8 +70,7 @@ The environment variables should be prefixed with `SILLYTAVERN_` and use upperca
 The nested settings should be separated by underscores. For example, `protocol.ipv6` can be overridden with the `SILLYTAVERN_PROTOCOL_IPV6` environment variable.
 
 Configurations that expect arrays or objects should be JSON-stringified. For example, to override the `whitelist` setting with the `SILLYTAVERN_WHITELIST` environment variable, you should set it as a JSON string: `SILLYTAVERN_WHITELIST='["127.0.0.1", "::1"]'`.
-
-**If you are using Node.js v20 or later, you can also store environment variables in a `.env` file and pass it to the server with the `--env-file` flag. For example, to use the `.env` file located in the repository root, you can start the server with the following command:**
+If you are using Node.js v20 or later, you can also store environment variables in a `.env` file and pass it to the server with the `--env-file` flag. For example, to use the `.env` file located in the repository root, you can start the server with the following command:
 
 ```bash
 node --env-file=.env server.js
@@ -149,9 +144,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ### Security Overrides
 
 **DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
-
 | Setting | Description | Default | Permitted Values |
-
 |---------|-------------|---------|------------------|
 | `allowKeysExposure` | Allow unmasked API key exposure in the UI | `false` | `true`, `false` |
 | `disableCsrfProtection` | Disable CSRF protection (not recommended) | `false` | `true`, `false` |
@@ -192,10 +185,8 @@ See more about using environment variables in the Node.js documentation (https:/
 
 ## CORS Proxy Configuration
 
-**An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.**
-
+An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
 | Setting | Description | Default | Permitted Values |
-
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
 
@@ -238,9 +229,7 @@ See more about using environment variables in the Node.js documentation (https:/
 ## Cache Buster Configuration
 
 Requires localhost or a domain with HTTPS, otherwise will not work!
-
 | Setting | Description | Default | Permitted Values |
-
 |---------|-------------|---------|------------------|
 | `cacheBuster.enabled` | Clear browser cache on first load or after uploading image files | `false` | `true`, `false` |
 | `cacheBuster.userAgentPattern` | Only clear the cache for user agents matching the specified regex pattern. Example: `'firefox'` (case-insensitive). | `''` | Any valid regex string |
@@ -289,14 +278,12 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ## Git Configuration
 
-**Git backends explained**
+!!! Git backends explained
 
 1. `auto` - prefer system binary, falling back to integrated
 2. `system` - system git binary using simple-git (https://www.npmjs.com/package/simple-git)
 3. `builtin` - integrated engine using isomorphic-git (https://www.npmjs.com/package/isomorphic-git)
-
 | Setting | Description | Default | Permitted Values |
-
 |---------|-------------|---------|-----------------|
 | `git.backend` | Git backend for plugin/extension repository operations | `auto` | `auto`, `system`, `builtin` |
 
@@ -325,14 +312,12 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ### Claude Configuration
 
-****IMPORTANT!****
+!!!warning **IMPORTANT!**
 
 Use with caution and only when the prompt prefix is static and doesn't change between requests. \{\{random\}\} macro, lorebooks, vectors, summaries, etc. will likely invalidate the cache and you'll just waste money on cache misses. The provider may have a minimum prompt size requirement for caching. Behavior may be unpredictable and no guarantees can or will be made, please review the API documentation.
 
 See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
-
 | Setting | Description | Default | Permitted Values |
-
 |---------|-------------|---------|-----------------|
 | `claude.enableSystemPromptCache` | Enable system prompt caching | `false` | `true`, `false` |
 | `claude.cachingAtDepth` | Enable message history caching | `-1` | `-1` (disabled), `0` or positive integer |

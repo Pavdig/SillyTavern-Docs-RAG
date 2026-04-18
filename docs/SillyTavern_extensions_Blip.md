@@ -1,4 +1,3 @@
-
 # Blip
 
 This guide will walk you through setting up and customizing blip extension for your SillyTavern experience. This extension animates the text of messages with variable speed and plays sound along the animation. You can use an audio file or generate the sound.

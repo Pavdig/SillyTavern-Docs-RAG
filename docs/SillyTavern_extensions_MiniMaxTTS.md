@@ -1,4 +1,3 @@
-
 # MiniMax TTS
 
 This page will teach you how to properly use the MiniMax TTS provider.
@@ -16,13 +15,11 @@ This page will teach you how to properly use the MiniMax TTS provider.
 2. Click "Sign Up" or "Login"
 3. Complete the account registration process
 
-**Regional Differences**
-
+!!!warning Regional Differences
 MiniMax has separate Chinese and International versions. Please note:
 - The Chinese version does not support voice cloning features
 - The Chinese version only supports the `api.minimax.chat` API host
-
-**### 2. Obtain API Key and Group ID**
+### 2. Obtain API Key and Group ID
 
 1. Log into the MiniMax console (International) (https://www.minimax.io/platform/user-center/basic-information)
 2. You can find your GroupId on the Basic Information page

@@ -1,4 +1,3 @@
-
 # Data Bank (RAG)
 
 Retrieval-augmented generation (RAG) is a technique for providing external sources of knowledge to the LLM. It helps improve the accuracy of AI answers by accessing information outside of the model's training data.
@@ -17,11 +16,9 @@ Data Bank stores file attachments, also known as documents. The documents are di
 2. Character attachments - available only for the currently chosen character, including when they are replying in a group. _Attachments are saved locally and are not exported with the character card!_
 3. Chat attachments - available only in the currently open chat. Every character in the chat can pull from it.
 
-**Note**
-
+!!!info Note
 While not formally a part of the data bank, you can attach files even to individual messages. Use the Attach File option from the "Wand" menu, or a paperclip icon in the message actions row.
-
-**What can be a document? Practically anything that is representable in plain text form!**
+What can be a document? Practically anything that is representable in plain text form!
 
 Examples include, but are not limited to:
 
@@ -51,11 +48,9 @@ Upload a file from the hard drive of your computer. SillyTavern provides built-i
 
 You can also attach any text files with non-standard extensions, such as JSON, YAML, source codes, etc. If there are no known conversions from the type of a selected file, and the file can't be parsed as a plain text document, the file upload will be rejected, meaning that raw binary files are not allowed.
 
-**Note**
-
+!!!info Note
 Importing Microsoft Office (DOCX, PPTX, XLSX) and LibreOffice documents (ODT, ODP, ODS) requires a Server Plugin (https://github.com/SillyTavern/SillyTavern-Office-Parser) to be installed and loaded. See the plugin's README page for installation instructions.
-
-**### Web**
+### Web
 
 Scrape text from a web page by its URL. The HTML document is then processed through the Readability (https://github.com/mozilla/readability) library to extract only usable text.
 
@@ -69,29 +64,23 @@ The script is loaded in the video's default language. Optionally, you can specif
 
 ### Web Search
 
-**Note**
-
+!!!info Note
 This source requires to have a [Web Search](SillyTavern_extensions_WebSearch.md) extension installed and properly configured. See the linked page for more details.
-
-**Perform a web search and download the text from the search result pages. This is similar to the Web source but fully automated. A chosen search engine will be inherited from the extension settings, so set it up in advance.**
+Perform a web search and download the text from the search result pages. This is similar to the Web source but fully automated. A chosen search engine will be inherited from the extension settings, so set it up in advance.
 
 To begin, specify the search query, max number of links to be visited, and the output type: one combined file (formatted according to the extension rules) or an individual file for every single page. You can choose to save the page snippets as well.
 
 ### Fandom
 
-**Note**
-
+!!!info Note
 This source requires to have a Server Plugin (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) installed and loaded. See the plugin's README page for installation instructions.
-
-**Scrape articles from a Fandom (https://www.fandom.com/) wiki by its ID or URL. As some wikis are very large, it may be beneficial to limit the scope using the filter regular expression, it will be tested against the article's title. If no filter is provided, then all of the pages are subject to be exported. You may save them either as individual files for every page, or joint into a single document.**
+Scrape articles from a Fandom (https://www.fandom.com/) wiki by its ID or URL. As some wikis are very large, it may be beneficial to limit the scope using the filter regular expression, it will be tested against the article's title. If no filter is provided, then all of the pages are subject to be exported. You may save them either as individual files for every page, or joint into a single document.
 
 ### Bronie Parser Extension (Third-Party)
 
-**Note**
-
+!!!warning Note
 This source comes from a third-party and is **not affiliated** with the SillyTavern team. This source requires you to have Bronya Rand's Bronie Parser Extension (https://github.com/Bronya-Rand/Bronie-Parser-Extension) installed as well as Server Plugins that require the parser to work.
-
-**Bronya Rand's Bronie Parser Extension allows the use of third-party scrapers, such as miHoYo/HoYoverse's HoYoLab (https://wiki.hoyolab.com) into SillyTavern, similar to the other data sources.**
+Bronya Rand's Bronie Parser Extension allows the use of third-party scrapers, such as miHoYo/HoYoverse's HoYoLab (https://wiki.hoyolab.com) into SillyTavern, similar to the other data sources.
 
 Currently, Bronya Rand's Bronie Parser Extension supports the following:
 
@@ -107,22 +96,19 @@ To use the documents for RAG, you need to use a compatible extension that will i
 
 Vector Storage, which comes bundled with SillyTavern, is a reference implementation of such an extension. It uses embeddings (also known as vectors) to search for documents that relate to your ongoing chats.
 
-**Fun facts**
+!!!info Fun facts
 
 1. Embeddings are arrays of numbers that abstractly represent a piece of text, produced by specialized language models. More similar texts have a shorter distance between their respective vectors.
 2. Vector Storage extension uses the Vectra (https://github.com/Stevenic/vectra) library to keep track of file embeddings. They are stored in JSON files in the `/vectors` folder of your user data directory. Every document is internally represented by its own index/collection file.
-
-**As the Vectors functionality is disabled by default, you need to open the extensions panel ("Stacked Cubes" icon on the top bar), then navigate to the "Vector Storage" section, and tick the "Enabled for files" checkbox under the "File vectorization settings".**
+As the Vectors functionality is disabled by default, you need to open the extensions panel ("Stacked Cubes" icon on the top bar), then navigate to the "Vector Storage" section, and tick the "Enabled for files" checkbox under the "File vectorization settings".
 
 By itself, Vector Storage does not produce any vectors, you need to use a compatible embedding provider.
 
 ## Vector Providers
 
-**Warning**
-
+!!!warning Warning
 Embeddings are only usable when they are retrieved using the same model that generated them. When changing an embedding model or source, the vectors need to be recalculated.
-
-**### Local**
+### Local
 
 These sources are free and unlimited and use your CPU/GPU to calculate embeddings.
 
@@ -154,11 +140,9 @@ All these sources require an API key of the respective service and usually have 
 
 After you've selected your embedding provider, don't forget to configure other settings that will define the rules for processing and retrieving documents.
 
-**Note**
-
+!!!info Note
 Splitting, vectorization, and retrieval of information from the attachments take some time. While the initial ingestion of the file may take a while, the RAG search queries are usually fast enough not to create a significant lag.
-
-**### Message attachments**
+### Message attachments
 
 These settings control the files that are attached directly to the messages.
 
@@ -201,10 +185,8 @@ The following rules apply:
 - Vectorize All - forcibly ingests the embeddings for all unprocessed files.
 - Purge Vectors - clears the file embeddings, allowing to recalculate their vectors.
 
-**Note**
-
+!!!info Note
 For "Chat vectorization" settings see [Chat Vectorization](SillyTavern_extensions_Chat-vectorization.md).
-
-**## Conclusion**
+## Conclusion
 
 Congratulations! Your chatting experience is now enhanced with the power of RAG. Its capabilities are only limited by your imagination. As always, don't be afraid to experiment!

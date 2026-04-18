@@ -1,9 +1,7 @@
-
 # Docker Installation
 
-**These instructions assume you have installed Docker, are able to access your command line for the installation of containers, and familiar with their general operation.**
-
-**## Using the GitHub Container Registry**
+These instructions assume you have installed Docker, are able to access your command line for the installation of containers, and familiar with their general operation.
+## Using the GitHub Container Registry
 
 Using a prebuilt image is the quickest and easiest way to get started with SillyTavern in Docker. You can pull the latest image from the GitHub Container Registry.
 
@@ -66,21 +64,16 @@ docker run \
 ```
 
 By default the container will run in the foreground. If you want to run it in the background, add the `-d` flag to the `docker run` command.
-
-**## Building the Docker Image**
+## Building the Docker Image
 
 The following section assumes you installed SillyTavern in a non-root (non-admin) folder. If you installed SillyTavern in a root folder, you may have to run some of these commands with administrator rights [`sudo`, `doas`, Command Prompt (Administrator)].
-
-**If you want to build the Docker image yourself, you can do so by following these steps. This is useful if you want to customize the image or use it for development purposes.**
+If you want to build the Docker image yourself, you can do so by following these steps. This is useful if you want to customize the image or use it for development purposes.
 
 ### Linux
 
 1. Install Docker by following the Docker installation guide here (https://docs.docker.com/engine/install/).
-
    **Do not** install Docker Desktop.
-
-**2. Follow the steps in **Manage Docker as a non-root user** in the Docker Post-Installation Guide (https://docs.docker.com/engine/install/linux-postinstall/).**
-
+2. Follow the steps in **Manage Docker as a non-root user** in the Docker Post-Installation Guide (https://docs.docker.com/engine/install/linux-postinstall/).
 3. Install Git (https://git-scm.com/download/linux) using your package manager.
 
     - Debian (Ubuntu/Pop! OS/etc.)
@@ -123,14 +116,11 @@ The following section assumes you installed SillyTavern in a non-root (non-admin
 
 ### Windows
 
-**Regarding Docker on Windows**
-
+!!!warning Regarding Docker on Windows
 Using Docker on Windows is **_really_** complicated. Not only do you need to activate _Windows Subsystem for Linux_ within _Turn Windows features on or off_, but also configure your system for Virtualization (Intel VT-d/AMD SVM) which differs from PC manufacturer to PC manufacturer (or motherboard manufacturer). Sometimes, this option is not present on some systems.
 
 It is highly suggested you install SillyTavern by following our [Windows](SillyTavern_Installation_Windows.md) guide. This section is a _rough_ idea of how it can be done on Windows.
-
-**1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/windows-install/).**
-
+1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/windows-install/).
 2.  Install Git for Windows (https://git-scm.com/download/win).
 3.  Clone the SillyTavern repository.
 
@@ -155,12 +145,9 @@ It is highly suggested you install SillyTavern by following our [Windows](SillyT
 
 ### macOS
 
-**Even though macOS is similar to Linux, it doesn't have the Docker Engine. You will have to install Docker Desktop similarly to Windows.**
-
+Even though macOS is similar to Linux, it doesn't have the Docker Engine. You will have to install Docker Desktop similarly to Windows.
 You will also need to install Homebrew (https://brew.sh/) in order to install Git on your Mac. This section is a _rough_ idea on how it can be done on macOS.
-
-**1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/mac-install/).**
-
+1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/mac-install/).
 2.  Install `git` using Homebrew.
 
     ```sh
@@ -198,7 +185,7 @@ Don't forget to restart the Docker container for SillyTavern in order to apply y
 docker compose restart sillytavern
 ```
 
-**## Locating User Data**
+## Locating User Data
 
 SillyTavern's data folder will be within the `data` folder. Backing up your files should be easy to do, however, restoring or adding content into it may require you to do so with administrator rights.
 
@@ -207,8 +194,7 @@ SillyTavern's data folder will be within the `data` folder. Backing up your file
 Running plugins like HoYoWiki-Scraper-TS (https://github.com/Bronya-Rand/HoYoWiki-Scraper-TS) or SillyTavern-Fandom-Scraper (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) within Docker is no different from running it on your system without Docker, however we will need to do a slight modification to the Docker Compose script in order to do so.
 
 If you already see a _plugins_ folder within the `docker` folder, you can skip Steps 1-2.
-
-**1. Using `nano` or a code editor, open _docker-compose.yml_ and add the following line below `volumes`.**
+1. Using `nano` or a code editor, open _docker-compose.yml_ and add the following line below `volumes`.
 
     ```sh
         volumes:
@@ -295,8 +281,7 @@ The healthcheck uses a heartbeat file mechanism:
 ### Configuration
 
 The healthcheck script doesn't support overriding the data directory via command line arguments. If you change the data directory from the default `/home/node/app/data`, ensure that the `SILLYTAVERN_DATAROOT` environment variable is set accordingly.
-
-**The healthcheck is controlled by the `SILLYTAVERN_HEARTBEATINTERVAL` environment variable (or `heartbeatInterval` in config.yaml). This value specifies the interval in seconds between heartbeat writes.**
+The healthcheck is controlled by the `SILLYTAVERN_HEARTBEATINTERVAL` environment variable (or `heartbeatInterval` in config.yaml). This value specifies the interval in seconds between heartbeat writes.
 
 - **Default:** `0` (disabled)
 - **Recommended:** `30` seconds when using Docker healthchecks
@@ -369,8 +354,7 @@ volumes:
 
 ### Forbidden by Whitelist
 
-**Docker Desktop vs Docker CE**
-
+!!!warning Docker Desktop vs Docker CE
 The [whitelistDockerHosts](SillyTavern_Administration_config-yaml.md) config option (enabled by default) works by resolving `host.docker.internal` and `gateway.docker.internal` hostnames. These hostnames are **only available in Docker Desktop** (Windows/Mac). If you are using **Docker CE on Linux**, these hostnames will not resolve and the auto-whitelisting will fail with errors like this in the container logs:
 
 ```
@@ -379,8 +363,7 @@ Failed to resolve whitelist hostname gateway.docker.internal: getaddrinfo ENOTFO
 ```
 
 In this case, you need to manually add the Docker gateway IP to the whitelist as described below.
-
-**1. Execute the following Docker command to obtain the IP of your SillyTavern Docker container.**
+1. Execute the following Docker command to obtain the IP of your SillyTavern Docker container.
 
     ```sh
     docker network inspect docker_default
@@ -425,9 +408,9 @@ In this case, you need to manually add the Docker gateway IP to the whitelist as
 
     Save the file and exit the text editor.
 
-    Note that if you configured Docker network as a bridge, you could also add external IP addresses to the whitelist as usual.
-
-**3. Restart the Docker Container to apply the new configuration.**
+**Info:** Note that if you configured Docker network as a bridge, you could also add external IP addresses to the whitelist as usual.
+!!!
+3. Restart the Docker Container to apply the new configuration.
 
     ```sh
     docker compose restart sillytavern

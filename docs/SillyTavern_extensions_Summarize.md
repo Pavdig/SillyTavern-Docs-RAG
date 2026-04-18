@@ -1,4 +1,3 @@
-
 # Summarize
 
 ## What is it?

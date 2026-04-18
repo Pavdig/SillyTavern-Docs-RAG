@@ -1,11 +1,8 @@
-
 # Context Template
 
-**Applies to: Text Completion APIs**
-
+!!! Applies to: Text Completion APIs
 For equivalent settings in Chat Completion APIs, use [Prompt Manager](SillyTavern_Usage_Prompts_prompt-manager.md).
-
-**Usually, AI models require you to provide the character data to them in some specific way. SillyTavern includes a list of pre-made conversion rules for different models, but you may customize them however you like.**
+Usually, AI models require you to provide the character data to them in some specific way. SillyTavern includes a list of pre-made conversion rules for different models, but you may customize them however you like.
 
 Edit these settings in the "[Advanced Formatting](SillyTavern_Usage_Prompts_advancedformatting.md)" panel.
 
@@ -31,11 +28,9 @@ We provide the following parameters to the Handlebars evaluator (wrapped in doub
 12. `{{mesExamples}}`: (Optional) The character's [Example Dialogues](SillyTavern_Usage_Characters_characterdesign.md), instruct-formatted with a separator.
 13. `{{mesExamplesRaw}}`: The character's [Example Dialogues](SillyTavern_Usage_Characters_characterdesign.md) in raw format, without any formatting.
 
-****Important****
-
+!!!tip **Important**  
 When using `{{mesExamples}}` in the Story String, set **"Example Messages Behavior"** in the **<i class="fa-solid fa-user-cog"></i> User Settings** panel to **"Never include examples"** to avoid duplicating example messages in the prompt.
-
-**A special `{{trim}}` macro is supported to remove any newlines that surround it. Use it if you want a part of the text to not be separated from the previous line by a newline (_spaces **are not** trimmed_).**
+A special `{{trim}}` macro is supported to remove any newlines that surround it. Use it if you want a part of the text to not be separated from the previous line by a newline (_spaces **are not** trimmed_).
 
 **WARNING**: If any of the above parameters are missing from the story string template, they will not be sent in the prompt at all.
 
@@ -55,21 +50,17 @@ By default, the rendered story string (with all placeholders replaced) is placed
 
 Alternatively, you can move it to a dynamic position by choosing the "In-chat @ Depth" option, which places the story string at a specific depth in the chat context.
 
-****Attention****
-
+!!!warning **Attention**
 If the template contains static prompt elements (model-specific prefixes or suffixes) for wrapping the story string, using the "In-Chat @ Depth" position will cause it to be incorrectly double-wrapped with duplicate sequences, which may lead to unexpected results.
 
 In this case, you can fix the issue in one of the following ways:
 
 1. **Built-in templates**: Reset the templates to their defaults using the steps described in [Advanced Formatting](SillyTavern_Usage_Prompts_advancedformatting.md).
 2. **Custom templates**: Move the static elements from the story string template to [Story String Sequences](SillyTavern_Usage_Prompts_instructmode.md).
+### Story String wrapping
 
-**### Story String wrapping**
-
-**The following section only applies when **Instruct Mode** is ON.**
-
-*** **Default** position: The rendered Story String will be wrapped using the sequences defined in [Story String Sequences](SillyTavern_Usage_Prompts_instructmode.md).**
-
+The following section only applies when **Instruct Mode** is ON.
+* **Default** position: The rendered Story String will be wrapped using the sequences defined in [Story String Sequences](SillyTavern_Usage_Prompts_instructmode.md).
 * **In-chat @ Depth** position: The rendered Story String will be wrapped using the sequences defined in [Chat Messages Sequences](SillyTavern_Usage_Prompts_instructmode.md) for a chosen role (default: System).
 
 ## Example Separator
@@ -95,8 +86,7 @@ Recommended to keep it on to prevent model impersonation.
 ## Always add character's name to prompt
 
 This setting has no effect when Instruct Mode is ON. The name behavior is instead defined by the selected [Include Names](SillyTavern_Usage_Prompts_instructmode.md) option.
-
-**Appends the character's name to the prompt to force the model to complete the message as the character:**
+Appends the character's name to the prompt to force the model to complete the message as the character:
 
 ```txt
 ** OTHER CONTEXT HERE **

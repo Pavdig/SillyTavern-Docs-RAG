@@ -1,4 +1,3 @@
-
 # Objective
 
 ### What is it?

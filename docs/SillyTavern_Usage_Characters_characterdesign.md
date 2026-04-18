@@ -1,9 +1,7 @@
-
 # Character Design
 
 Character Name is the only required field. You can leave the rest empty and still use the character in chats.
-
-**## Character Description**
+## Character Description
 
 Used to add the character description and other relevant information for the AI. This information is always included in the prompt, so all important facts should be included here.
 
@@ -90,20 +88,16 @@ Click the **<i class="fa-solid fa-star"></i> Add to Favorites** button to mark t
 ## Advanced Definitions
 
 The following fields are hidden by default. To access and edit them, you need to click on the **<i class="fa-solid fa-book"></i> Advanced Definitions** button on the menu bar of the character definition page.
-
-**### Prompt Overrides**
+### Prompt Overrides
 
 * **Main Prompt**: If the "Prefer Char. Prompt" user setting is enabled, any text you put here will override the [main/system prompt](SillyTavern_Usage_Prompts_index.md) for the character.
 * **Post-History Instructions**: If the "Prefer Char. Instructions" user setting is enabled, any text you put here will be used as the [post-history instructions](SillyTavern_Usage_Prompts_index.md) for the character.
 
 Insert `{{original}}` into either box to include the respective default prompt from system settings in a designated place.
-
-**### Creator's Metadata**
+### Creator's Metadata
 
 Not used for prompt building, but provides additional metadata about the character.
-
-*** **Created by**: The name of the character's creator. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.**
-
+* **Created by**: The name of the character's creator. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.
 * **Character Version**: The version of the character. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.
 * **Creator's Notes**: Any additional notes about the character that the creator wants to share. The first few lines are displayed in the character list, and the full text is displayed in the "Creator's Notes" section on the character's page. Supports Markdown/HTML formatting.
 * **Tags to Embed**: A comma-separated list of tags that will be embedded in the character's description. These tags are not imported by default when importing the character, but you can merge them with your existing tags by selecting "Import Tags" from the "More..." menu on the character's page.

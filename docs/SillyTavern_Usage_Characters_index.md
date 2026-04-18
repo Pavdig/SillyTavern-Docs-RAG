@@ -1,4 +1,3 @@
-
 # Characters
 
 Characters are the AI identities that you can create and manage to shape the AI's role in the conversation. Each

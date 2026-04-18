@@ -1,4 +1,3 @@
-
 # Common Settings
 
 These settings control the sampling process when generating text using a language model. The meaning of these settings is universal for all the supported backends.

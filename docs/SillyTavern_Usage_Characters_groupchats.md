@@ -1,4 +1,3 @@
-
 # Group Chats
 
 ## Reply order strategies

@@ -1,4 +1,3 @@
-
 # Character Expressions
 
 ## What is it?
