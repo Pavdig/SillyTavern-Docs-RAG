@@ -1,4 +1,3 @@
-
 # EmulatorJS
 
 This extension allows you to play retro console games right from the SillyTavern chat.

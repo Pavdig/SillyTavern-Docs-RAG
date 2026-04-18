@@ -1,4 +1,3 @@
-
 # Author's Note
 
 ## What is it?

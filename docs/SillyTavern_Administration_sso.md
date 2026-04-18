@@ -1,4 +1,3 @@
-
 # Single Sign-On (SSO)
 
 SSO allows you to create users and secure many different pages using a login portal presented on sites you want to secure. While it is complex to setup, it is a good way to both learn SSO and secure your ST instance out on the internet more.

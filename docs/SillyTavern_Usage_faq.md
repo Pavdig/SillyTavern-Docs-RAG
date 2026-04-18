@@ -1,4 +1,3 @@
-
 # FAQ
 
 ## Explain what SillyTavern is about

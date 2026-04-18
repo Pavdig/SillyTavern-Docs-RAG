@@ -1,4 +1,3 @@
-
 # XTTS with voice cloning
 
 Greetings! So, you've been blown away by those Reddit posts showcasing how far the technology went for the AI text-to-speech?

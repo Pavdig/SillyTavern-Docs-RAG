@@ -1,4 +1,3 @@
-
 # Chatting
 
 When you are [connected to an API](SillyTavern_Usage_API_Connections_index.md), send messages to the AI by typing in the chat bar at the bottom of the screen. Then click <i class="fa-solid fa-paper-plane"></i> **Send** or press Enter. 
@@ -9,19 +8,15 @@ You can now:
 
 * **Send another message**
 * **Swipe the response**: Click the <i class="fa-solid fa-chevron-right"></i> **Swipe** button on the message to generate a different response.
-* **Edit the message**: Click the <i class="fa-solid fa-pencil"></i> **Edit** button on any message to [edit the message content](SillyTavern_Usage_Chatting.md).
-* **Message actions**: Click the <i class="fa-solid fa-ellipsis"></i> **Message actions** button on a message for more [message options](SillyTavern_Usage_Chatting.md) like [translation](SillyTavern_extensions_Translation.md), image generation, and story branching.
-* **Chat options**: Click the <i class="fa-solid fa-bars"></i> **Options** button next to the chat bar for more [chat options](SillyTavern_Usage_Chatting.md) like author's notes and chat file management.
+* **Edit the message**: Click the <i class="fa-solid fa-pencil"></i> **Edit** button on any message to edit the message content.
+* **Message actions**: Click the <i class="fa-solid fa-ellipsis"></i> **Message actions** button on a message for more message options like [translation](SillyTavern_extensions_Translation.md), image generation, and story branching.
+* **Chat options**: Click the <i class="fa-solid fa-bars"></i> **Options** button next to the chat bar for more chat options like author's notes and chat file management.
 
-**Edit and swipe**
-
+!!! Edit and swipe
 If you wish you'd said something different, you can edit your message and then swipe the AI's response to get a new one.
-
-**!!! Keyboard shortcuts**
-
+!!! Keyboard shortcuts
 You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` [slash command](SillyTavern_Usage_Chatting_slashcommands.md) in the chat or check the [HotKeys](SillyTavern_Usage_Chatting_hotkeys.md) page.
-
-**## Message actions panel**
+## Message actions panel
 
 Manage individual chat messages via the ellipsis (•••) button on the message.
 
@@ -85,7 +80,7 @@ the chat interface.
 
 * <i class="fa-lg fa-solid fa-note-sticky"></i> **[Author's Note](SillyTavern_Usage_Characters_Author's-Note.md)**: Custom context instructions
 * <i class="fa-lg fa-solid fa-scale-balanced"></i> **[CFG Scale](SillyTavern_Usage_Prompts_CFG.md)**: Adjust response creativity
-* <i class="fa-lg fa-solid fa-pie-chart"></i> **[Token Probabilities](SillyTavern_Usage_Chatting.md)**: View token generation stats
+* <i class="fa-lg fa-solid fa-pie-chart"></i> **Token Probabilities**: View token generation stats
 
 ### Chat Navigation
 

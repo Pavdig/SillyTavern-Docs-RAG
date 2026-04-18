@@ -1,4 +1,3 @@
-
 # TabbyAPI
 A FastAPI based application that allows for generating text using an LLM using the Exllamav2 backend, with support for Exl2, GPTQ, and FP16 models.
 

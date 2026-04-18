@@ -1,4 +1,3 @@
-
 # STscript Language Reference
 
 ## What is STscript?
@@ -36,8 +35,7 @@ Commands are executed sequentially, one after another, and transfer data between
 2. The `/echo` command receives the value through the pipe from the previous command and displays it as a toast notification.
 
 **Hint:** To see a list of all available commands, type `/help slash` into the chat.
-
-**As constant unnamed arguments and pipes are interchangeable, we could rewrite this script simply as:**
+As constant unnamed arguments and pipes are interchangeable, we could rewrite this script simply as:
 
 ```stscript
 /echo Hello, World!
@@ -284,7 +282,7 @@ If you want to use the character combinations used to mark the beginning or end 
 ## Pipe Breakers
 
 ```stscript
-||
+
 ```
 
 To prevent the previous command's output from being automatically injected as the unnamed argument into the next command, put double pipes between the two commands.
@@ -1264,9 +1262,7 @@ Scripts can also interact with SillyTavern's UI: navigate through the chats or c
 ### Get Nth Fibonacci's number (using Binet's formula)
 
 **Hint**: Set value of `fib_no` to the desired number
-
 ```stscript
-
 /setvar key=fib_no 5 |
 /pow 5 0.5 | /setglobalvar key=SQRT5 |
 /setglobalvar key=PHI 1.618033 |

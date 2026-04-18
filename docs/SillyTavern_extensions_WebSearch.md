@@ -1,11 +1,9 @@
-
 # Web Search
 
 Adds web search results to LLM prompts.
 
 Some [Chat Completion](SillyTavern_Usage_API_Connections_openai.md) sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, OpenRouter, Chutes, and other backends.
-
-**## Available sources**
+## Available sources
 
 ### Selenium Plugin
 
@@ -109,8 +107,7 @@ Search results from the latest query will stay included in the prompt until the 
 If you want to ask additional questions without accidentally triggering the search, start your message with a period.
 
 Web Search function tool always overrides other triggers if enabled and available.
-
-**Priority of triggers (if multiple are enabled):**
+Priority of triggers (if multiple are enabled):
 
 1. Backticks.
 2. Regular expressions.

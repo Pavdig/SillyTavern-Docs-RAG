@@ -5,8 +5,7 @@ DO NOT INSTALL INTO ANY WINDOWS CONTROLLED FOLDER (Program Files, System32, etc)
 DO NOT RUN START.BAT WITH ADMIN PERMISSIONS
 
 INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CANNOT RUN NODEJS 20
-
-**## Installing via Git**
+## Installing via Git
 
 1. Install NodeJS (https://nodejs.org/en) (latest LTS version is recommended)
 2. Install Git for Windows (https://gitforwindows.org/)

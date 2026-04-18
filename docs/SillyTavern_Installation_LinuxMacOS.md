@@ -1,4 +1,3 @@
-
 # Linux/MacOS Install
 
 ## Manual Git install

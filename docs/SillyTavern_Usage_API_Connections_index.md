@@ -1,4 +1,3 @@
-
 # API Connections
 
 SillyTavern can connect to a wide range of LLM APIs.

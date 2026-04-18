@@ -1,11 +1,10 @@
-
 # Prompts
 
 When you send a message to your AI, the text you write is combined with other text to form a single request that's sent to the AI. This combined text is called a "prompt" or sometimes the "request" or "context."
 
 The prompt can include a variety of different types of text, including:
 
-* [Main instructions](SillyTavern_Usage_Prompts.md) to the AI about how to generate a response
+* Main instructions to the AI about how to generate a response
 * Definitions of the [roles that the AI should take on](SillyTavern_Usage_Characters_characterdesign.md)
 * Definitions of [the role that you are taking on](SillyTavern_Usage_personas.md)
 * [Information about the "world"](SillyTavern_Usage_worldinfo.md) that the AI is interacting with
@@ -14,7 +13,7 @@ The prompt can include a variety of different types of text, including:
 * Results of [web searches](SillyTavern_extensions_WebSearch.md) or other [external data sources](SillyTavern_For_Contributors_Function-Calling.md)
 * Previous messages in the conversation
 * **Your message to the AI**
-* [Final instructions](SillyTavern_Usage_Prompts.md) for the AI about how to generate a response
+* Final instructions for the AI about how to generate a response
 
 This can be a lot to manage! To help you understand how to structure and modify the request that's sent to the AI, SillyTavern identifies different elements that you might want to include in your prompt. You can then structure your prompt to include the things that make sense for the way you want to interact with the AI.
 
@@ -75,11 +74,9 @@ However, you can adjust the main prompt to better suit your needs. Here are some
 * **Clarify the role of the AI**: for example, you want the AI to act as a narrator, a storyteller, or a guide
 * **Change the context of the conversation**: for example, you want the AI to respond as if it were an AI assistant, text adventure game, or a writing partner
 
-**Try things out and see what works best for you**
-
+!!! Try things out and see what works best for you
 All the examples in this guide have worked well for other users, but the prompt that works for your needs and the model you're using might be different. Experiment with different instructions and prompting styles to see what works best for you. If you're not sure what to try, you can always ask for help in the SillyTavern Discord (https://discord.gg/sillytavern).
-
-**Giving the AI additional instructions in the Main Prompt can help it understand what you want from the conversation.**
+Giving the AI additional instructions in the Main Prompt can help it understand what you want from the conversation.
 
 > Write one reply only. Write at least one paragraph, up to four.
 
@@ -106,13 +103,11 @@ When your conversation already has history, changing the main prompt has a limit
 * insert current instructions close to or after the end of message history, for example by using an [Author's Note](SillyTavern_Usage_Characters_Author's-Note.md)
 * test your changes to the main prompt by starting a new conversation
 * edit the message history to remove or correct examples of unwanted behavior
-* use the [Post-History Instructions](SillyTavern_Usage_Prompts.md) to provide final instructions to the AI
+* use the Post-History Instructions to provide final instructions to the AI
 
-**Get it right the first time!**
-
+!!! Get it right the first time!
 Never let the AI "get away" with something you don't want it to do. If you don't like the AI's response, don't continue the conversation as if it was correct. Instead, modify the prompts, regenerate the message, and continue from there. This will help the AI learn what you want.
-
-**### Removing the "Fictional Chat" Context**
+### Removing the "Fictional Chat" Context
 
 There are situations where "fictional chat" might not be the right context for your conversation. 
 

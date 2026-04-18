@@ -1,4 +1,3 @@
-
 # Google Gemini
 
 Gemini is Google's cutting-edge multimodal LLM, which is available through several APIs, including Google Vertex AI and Google AI Studio (formerly MakerSuite). This guide will help you set up the Gemini API connections in SillyTavern.

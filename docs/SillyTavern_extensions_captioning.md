@@ -1,4 +1,3 @@
-
 # Image Captioning
 
 Image Captioning allows SillyTavern to automatically generate text descriptions for images used in chats. 
@@ -36,8 +35,8 @@ Choose the source for image captioning. Supported options:
 
 | Source                           | Description                                                                                                                                                                                                  |
 |----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Multimodal](SillyTavern_extensions.md) | **Cloud**: OpenAI, Anthropic, Google, MistralAI, and others. **Local**: Ollama, llama.cpp, KoboldCpp, Text Generation WebUI, and vLLM. Supports custom prompts so you can ask your images questions. |
-| [Local](SillyTavern_extensions.md)           | Uses transformers.js (https://huggingface.co/docs/transformers.js/en/index) running locally inside your SillyTavern server. Zero setup!                                                                     |
+| Multimodal | **Cloud**: OpenAI, Anthropic, Google, MistralAI, and others. **Local**: Ollama, llama.cpp, KoboldCpp, Text Generation WebUI, and vLLM. Supports custom prompts so you can ask your images questions. |
+| Local           | Uses transformers.js (https://huggingface.co/docs/transformers.js/en/index) running locally inside your SillyTavern server. Zero setup!                                                                     |
 | Horde                            | Uses the AI Horde (https://aihorde.net/) network, a crowdsourced distributed network of image generation models. Nothing to download, configure, or pay for. Variable response times.                       |
 | Extras                           | The Extras project was discontinued in April 2024 and is not maintained or supported.                                                                                                                        |
 
@@ -58,10 +57,10 @@ All the ways to caption images in SillyTavern:
 
 * Choose "**Generate Caption**" from the **<i class="fa-solid fa-magic-wand-sparkles"></i> Extensions** popup menu and select an image file when prompted
 * Click the <i class="fa-solid fa-envelope-open-text"></i> **Caption** icon at the top of an image already in a message
-* Paste an image directly into the chat input with [auto-captioning](SillyTavern_extensions.md) enabled
+* Paste an image directly into the chat input with auto-captioning enabled
 * Attach an image file to a message using the <i class="fa-solid fa-paperclip"></i> **Embed File or Image** button in the actions of a message.
 * Send a message with an embedded image
-* Use the `/caption` [slash command](SillyTavern_extensions.md)
+* Use the `/caption` slash command
 
 ## Auto-Captioning
 The auto-captioning feature allows you to automatically generate captions for images as they are added to the chat, without manually triggering the captioning process each time.
@@ -145,15 +144,13 @@ You can use any model that supports image captioning (`VisionEncoderDecoderModel
 
 API keys and endpoint URLs for captioning sources are managed in the [API Connections](SillyTavern_Usage_API_Connections_index.md) panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
 
-**Set it up in the API Connections panel first**
-
+!!!warning Set it up in the API Connections panel first
 One last time: configure the API key/address/port in **<i class="fa-solid fa-plug"></i> API Connections** and use the connection in Captioning.
 
 You can still use Claude for chats and Google AI Studio for image captioning, or whatever. Just set them *both* up in the 'API Connections' tab first. Then flip your Chat Completion source to Claude and your Captioning source to Google AI Studio.
+For most local backends, you will need to set some options in the model backend rather than in SillyTavern. If your backend can only run one model at a time and doesn't support automatic switching, you have several options to use different models for chat and captioning:
 
-**For most local backends, you will need to set some options in the model backend rather than in SillyTavern. If your backend can only run one model at a time and doesn't support automatic switching, you have several options to use different models for chat and captioning:**
-
-1. **Secondary endpoints:** Use the secondary endpoint feature (see [Secondary endpoints](SillyTavern_extensions.md) section below) to connect to a different API server for captioning
+1. **Secondary endpoints:** Use the secondary endpoint feature (see Secondary endpoints section below) to connect to a different API server for captioning
 2. **Multiple connection types:** Connect to your backend using both Text Completion and Chat Completion modes in API Connections - this gives you two separate connections to the same backend type
 
 ### Sources
@@ -163,7 +160,7 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 * "I want the best captioning possible, and I don't mind paying for it": Anthropic
 * "I don't want to pay anything or run anything": Google AI Studio free tier
 * "I want to caption images locally and have it just work": Ollama
-* "I want to keep the dream of local AI alive": [KoboldCpp](SillyTavern_extensions.md)
+* "I want to keep the dream of local AI alive": KoboldCpp
 * "I want to complain when it doesn't work": ~~Extras~~
 
 | API Provider                      | Description                                                                                                                                                                   |
@@ -202,8 +199,7 @@ You can also set up a secondary endpoint specifically for multimodal captioning.
 - Check the "Use secondary URL" box to enable the secondary endpoint.
 
 Do not append `/v1` or `/chat/completions` to the end of the URL. The extension will handle that automatically.
-
-**This is only supported by the following APIs:**
+This is only supported by the following APIs:
 
 - KoboldCpp
 - llama.cpp

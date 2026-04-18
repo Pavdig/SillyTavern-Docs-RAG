@@ -1,4 +1,3 @@
-
 # Remote connections
 
 Most often this is for people who want to use SillyTavern on their mobile phones while their PC runs the ST server within the same WiFi network.
@@ -6,23 +5,17 @@ Most often this is for people who want to use SillyTavern on their mobile phones
 It is also the first step for allowing remote connections from outside the local network.
 
 You should not use port forwarding to expose your ST server to the internet. Instead, use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale. See the [VPN and Tunneling](SillyTavern_Administration_tunneling.md) guide for more information.
-
-**!!!danger Disclaimer**
-
+!!!danger Disclaimer
 **NEVER HOST ANY INSTANCES ON THE OPEN INTERNET WITHOUT ENSURING PROPER SECURITY MEASURES FIRST.**
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES IN CASES OF UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
-
-**## Allowing remote connections**
+## Allowing remote connections
 
 By default, the ST server only accepts connections from the machine that it's running on (localhost). To allow it to listen for connections from other devices, set the `listen` option in `config.yaml` to `true`.
 
-**If you search for `config.yaml` directly in the SillyTavern folder, you may find two files.**
-
+!!! If you search for `config.yaml` directly in the SillyTavern folder, you may find two files.
 All modifications to `config.yaml` in this document refer to the one in the SillyTavern root directory (/SillyTavern/config.yaml), not `/SillyTavern/default/config.yaml`.
-
 ```yaml
-
 # Listen for incoming connections
 listen: true
 ```
@@ -114,8 +107,7 @@ If `whitelist.txt` exists, it takes precedence over the whitelist settings in `c
 However, since all other configurations are managed within `config.yaml`, and `whitelist.txt` may encounter permission issues or become locked, the system could silently revert to using the `config.yaml` whitelist.
 
 **Editing config.yaml directly is both simpler and more reliable.**
-
-**If you still prefer using whitelist.txt:**
+If you still prefer using whitelist.txt:
 
 1. Create a new text file named `whitelist.txt` in the SillyTavern base installation folder.
 2. Open it in a text editor and add the allowed IP addresses.
@@ -138,8 +130,7 @@ This allows any device on the local network to connect.
 HTTP Basic Authentication does not provide strong security.
 
 There is no rate-limiting to prevent brute-force attacks. If this is a concern, it is recommended to use a reverse proxy with TLS and rate-limiting, and a dedicated [authentication service](SillyTavern_Administration_sso.md).
-
-**The server will ask for username and password whenever a client connects via HTTP. **This only works if the Remote connections (listen: true) are enabled.****
+The server will ask for username and password whenever a client connects via HTTP. **This only works if the Remote connections (listen: true) are enabled.**
 
 To enable HTTP BA, Open `config.yaml` in the SillyTavern base directory and search for `basicAuthMode`. Set basicAuthMode to true and set username and password. Note: `config.yaml` will only exist if ST has been executed before at least once.
 
@@ -179,14 +170,11 @@ hostWhitelist:
 
 To add a host name to a list of trusted hosts, include it in the `hostWhitelist.hosts` section:
 
-**Tips**
-
+!!!tip Tips
 Do not add `localhost` or IPs (such as `127.0.0.1` or `::1`). These are always considered trusted.
 
 To add a range of hosts, use a leading dot. For example, adding `.trycloudflare.com` will trust `trycloudflare.com` as well as any subdomain like `example.trycloudflare.com`.
-
 ```yaml
-
 hostWhitelist:
   hosts:
     - "example.com"
@@ -258,9 +246,9 @@ root of SillyTavern folder.
 
 Still unable to connect?
 
-* If the connection attempt [appears in the console](SillyTavern_Administration.md), but is forbidden, it is a [whitelist issue](SillyTavern_Administration.md).
-* If ST is listening for remote connections but the connection attempt does not appear in the console, it is a [network issue](SillyTavern_Administration.md).
-* If ST is not listening for remote connections, it is a [reading issue](SillyTavern_Administration.md).
+* If the connection attempt appears in the console, but is forbidden, it is a whitelist issue.
+* If ST is listening for remote connections but the connection attempt does not appear in the console, it is a network issue.
+* If ST is not listening for remote connections, it is a reading issue.
 
 #### Network issues
 
@@ -277,8 +265,7 @@ If you are trying to access your ST server from [outside your local network](Sil
 ### Start SillyTavern with TLS/SSL
 
 SSL can also be configured using the `config.yaml` file: [SSL Configuration](SillyTavern_Administration_config-yaml.md).
-
-**To encrypt traffic from and to your ST instance, start the server with the `--ssl` flag.**
+To encrypt traffic from and to your ST instance, start the server with the `--ssl` flag.
 
 Example:
 
@@ -303,8 +290,7 @@ The simplest, quickest way to get a certificate is by using certbot (https://let
 ### Certificates in Docker
 
 For security and privacy reasons, do not include your SSL certificates inside the Docker image if you are building one. Instead, use volume mounts to provide the certificates at runtime.
-
-**When running SillyTavern in Docker, the recommended way to provide SSL certificates is by placing them in the `/config` volume mount. This allows you to manage certificates without rebuilding the container image.**
+When running SillyTavern in Docker, the recommended way to provide SSL certificates is by placing them in the `/config` volume mount. This allows you to manage certificates without rebuilding the container image.
 
 1. Place your certificate files (e.g., `privkey.pem` and `cert.pem`) in your local config directory that is mounted to `/config` in the container.
 

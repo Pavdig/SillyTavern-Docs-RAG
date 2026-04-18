@@ -1,9 +1,7 @@
-
 # Self-hosted AI models
 
 This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the SillyTavern documentation repository (https://github.com/SillyTavern/SillyTavern-Docs).
-
-**## Intro**
+## Intro
 
 This guide aims to help you get set up using SillyTavern with a local AI running on your PC (we'll start using the proper terminology from now on and call it an LLM). Read it before bothering people with tech support questions.
 
@@ -71,8 +69,7 @@ With the LLM now on your PC, we need to download a tool that will act as a middl
 This guide covers both options, you only need one.
 
 If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<port\>** instead of **http://127.0.0.1:\<port\>**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
-
-**### Downloading and using KoboldCpp (No installation required, GGUF models)**
+### Downloading and using KoboldCpp (No installation required, GGUF models)
 
 1. Visit https://koboldai.org/cpp where you will see the latest version with various files you can download.
 At the time of writing the newest CUDA version they list is cu12 which will work best on modern Nvidia GPUs, if you have an older GPU or a different brand you can use the regular koboldcpp.exe. If you have an old CPU its possible that KoboldCpp will crash when you try to load models, in that case try the _oldcpu version to see if it resolves your issue.
@@ -94,8 +91,7 @@ At the time of writing the newest CUDA version they list is cu12 which will work
 ### Installing Oobabooga
 
 Depending on how you have installed Oobabooga, the file paths can be slightly different; i.e. `/text-generation-webui/user_data` if you installed via git clone, and `/text-generation-webui-main/user_data` if you used the .zip method.  
-
-**Here's a more correct/dummy-proof installation procedure:**
+Here's a more correct/dummy-proof installation procedure:
 
 1. git clone <https://github.com/oobabooga/text-generation-webui> (or download their repo as a .zip in your browser, then extract it)
 2. Run `start_windows.bat` or whatever your OS is

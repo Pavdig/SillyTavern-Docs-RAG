@@ -1,4 +1,3 @@
-
 # Dynamic Audio
 
 This guide will walk you through setting up and customizing dynamic audio assets for your SillyTavern experience.

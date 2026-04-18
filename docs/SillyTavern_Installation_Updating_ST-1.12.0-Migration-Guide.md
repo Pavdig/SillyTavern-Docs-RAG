@@ -1,4 +1,3 @@
-
 # 1.12.0 Migration Guide
 
 SillyTavern 1.12.0 (codename the "Neo Server" update) includes several critical changes that may affect the way you use SillyTavern.
@@ -37,16 +36,14 @@ npm run start -- --dataRoot="/Users/harry/ST-Data"
 
 The default data root path is `./data`, which means the `data` directory in SillyTavern's repository.
 
-**Note**
-
+!!!info Note
 The data root path should be either a **full absolute** or a **full relative** path. You _can't_ use path shortcuts like `~` or `%APP_DATA%`, as these are resolved by a shell, not the operating system.
-
-**### Migration**
+### Migration
 
 #### **IMPORTANT!** Before we begin
 
 1. **Only if you want to move dataRoot from the default location. Otherwise, skip this part.** Set the data root _before_ first running the server after pulling an update. Run `npm install` for the `config.yaml` to populate with a new value, or pass a console argument.
-2. All data will be migrated into a `default-user` account. See more on [Users](SillyTavern_Installation_Updating.md) below.
+2. All data will be migrated into a `default-user` account. See more on Users below.
 
 #### Containerless (bare metal) installs
 
@@ -70,11 +67,9 @@ volumes:
 
 **Step 3.** Rebuild the container and start it up.
 
-**Note**
-
+!!!info Note
 Soft links between the `/public` directory and the `config` volume are no longer needed and are not built into the Docker container!
-
-**#### What to migrate?**
+#### What to migrate?
 
 The following files and directories are subject to the data migration. Assuming the default configuration, the before and after paths are provided in the table below.
 

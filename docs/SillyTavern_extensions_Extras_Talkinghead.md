@@ -1,9 +1,7 @@
-
 # talkinghead
 
 **THE SUPPORT FOR TALKINGHEAD WAS DROPPED IN SILLYTAVERN 1.12.13. THIS PAGE IS KEPT FOR HISTORICAL PURPOSES.**
-
-**### What is it?**
+### What is it?
 
 An implementation of Talking Head Anime 3 Demo for AITuber. It possesses the following features:
 

@@ -1,4 +1,3 @@
-
 # Administration
 
 Despite following many security best practices, the SillyTavern server is not secure enough for exposure to the public internet.
@@ -7,37 +6,22 @@ Despite following many security best practices, the SillyTavern server is not se
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES RESULTING FROM UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
 
-**:::callout**
-
-**[config.yaml](SillyTavern_Administration_config-yaml.md)**
-
+**Callout:** **[config.yaml](SillyTavern_Administration_config-yaml.md)**
 The main configuration file for SillyTavern. It contains various settings, such as network, security, and backend-specific options.
 
-**:::callout**
-
-**[Multi-user](SillyTavern_Administration_multi-user.md)**
-
+**Callout:** **[Multi-user](SillyTavern_Administration_multi-user.md)**
 To share your SillyTavern instance with others, you can create multiple user accounts. Each user has their own settings, extensions, and data. User accounts can also be password-protected.
 
-**:::callout**
-
-**[Remote access](SillyTavern_Administration_remote-connections.md)**
-
+**Callout:** **[Remote access](SillyTavern_Administration_remote-connections.md)**
 You can access your SillyTavern instance from your phone, tablet, or another computer.
 
-**:::callout**
-
-**[VPNs and Tunneling](SillyTavern_Administration_tunneling.md)**
-
+**Callout:** **[VPNs and Tunneling](SillyTavern_Administration_tunneling.md)**
 To access your SillyTavern instance from the internet, you can use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale.
 
-**:::callout**
-
-**[Reverse proxying](SillyTavern_Administration_reverse-proxying.md)**
-
+**Callout:** **[Reverse proxying](SillyTavern_Administration_reverse-proxying.md)**
 Enthusiasts can set up a reverse proxy to access their SillyTavern instance from the internet.
 
-**## Security checklist**
+## Security checklist
 
 **These are just recommendations. Please consult a web application security specialist before making your ST instance live.**
 
