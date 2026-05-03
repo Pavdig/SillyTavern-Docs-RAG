@@ -80,13 +80,3 @@ jobs:
             ${{ steps.vars.outputs.ZIP_NAME }}
           draft: false
           prerelease: false
-
-      - name: Cleanup Sync Branch
-        if: always() # Run even if release fails
-        run: |
-          if git ls-remote --exit-code --heads origin docs-sync; then
-            echo "Deleting docs-sync branch..."
-            git push origin --delete docs-sync
-          else
-            echo "Branch docs-sync not found. It may have been deleted already."
-          fi
