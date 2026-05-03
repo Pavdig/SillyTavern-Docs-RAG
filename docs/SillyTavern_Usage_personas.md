@@ -20,7 +20,7 @@ Personas can also be created by converting any existing character. Simply open t
 Since `{{user}}` and `{{char}}` macros have opposite meanings when used in Persona and Character descriptions, you'll be prompted to swap them if the converted description contains either of them.
 ## Persona Description
 
-Each persona can store a custom text description — mental and physical traits, age, occupation, or any personal details. These can also include template macros such as `{{char}}` or `{{user}}` (see [Macros](SillyTavern_Usage_Characters_macros.md)).
+Each persona can store a custom text description — mental and physical traits, age, occupation, or any personal details. These can also include template macros such as `{{char}}` or `{{user}}` (see [Macros](SillyTavern_usage_macros.md)).
 
 Where your persona description is injected into the AI prompt depends on the **Position** setting in the Persona Management panel:
 
