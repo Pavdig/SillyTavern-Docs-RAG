@@ -3119,6 +3119,7 @@ All these sources require an API key of the respective service and usually have 
 10. Chutes
 11. NanoGPT
 12. SiliconFlow
+13. Cloudflare Workers AI
 
 ## Vectorization Settings
 
@@ -5958,7 +5959,7 @@ Provider-specific notes:
 
 Enable "Auto-Parse" in the **<i class="fa-solid fa-font"></i> Advanced Formatting** panel to automatically parse reasoning from the model's output.
 
-The response must contain a reasoning section wrapped in configured Prefix and Suffix sequences. The sequences provided by default correspond to the DeepSeek R1 reasoning format.
+The response must contain a reasoning section wrapped in configured Prefix and Suffix sequences. The sequences provided by default correspond to the DeepSeek R1 reasoning format. This is required to be enabled for some API sources that return unparsed reasoning, such as MiniMax or Perplexity.
 
 Example with prefix `<think>` and suffix `</think>`:
 
@@ -6009,9 +6010,12 @@ Reasoning Effort is a Chat Completion setting in the **<i class="fa-solid fa-sli
 | High    | 50% of max response, min 1024    | "high"               | "high", or 80% of max response   | "high"               | "high"               | "medium"          |
 | Maximum | 95% of max response, min 1024    | "high"               | "high", or 80% of max response   | "high"               | "high"               | "high"            |
 
-- For Claude, budget is capped to 21333 if streaming is disabled. If the calculated budget would be less than 1024, then max response is changed to 2048.
-- Claude also supports adaptive thinking for Opus 4.6+ models, which can be enabled via `claude.enableAdaptiveThinking` in config.yaml. When enabled, the Reasoning Effort setting maps to adaptive thinking levels instead of token budgets.
-- For OpenRouter, Perplexity and AI/ML API, only an OpenAI-style keyword is sent.
+- For older Claude models that don't support adaptive thinking, budget is capped to 21333 if streaming is disabled. If the calculated budget would be less than 1024, then max response is changed to 2048.
+- Claude also supports adaptive thinking for Opus 4.6+ models, which can be enabled via `claude.enableAdaptiveThinking` in config.yaml (always on for Opus 4.7+). When enabled, the Reasoning Effort setting maps to adaptive thinking levels instead of token budgets. This setting takes precedence over the "Verbosity" setting for applicable models.
+- For OpenRouter, Pollinations, Perplexity, xAI, Chutes, DeepSeek, AI/ML API, xAI, Electron Hub, only an OpenAI-style keyword is sent.
+- For GPT-5.4 and GPT-5.5 models on OpenAI, "Minimal" reasoning effort corresponds to "none", which disables reasoning.
+- For KoboldCpp running as a Chat Completion Custom API source, reasoning effort is sent as a `reasoning_effort` parameter with values "minimal", "low", "medium", "high", and "xhigh".
+- For other Custom (OpenAI-compatible) sources, a reasoning effort is sent only if the model supports it on the official OpenAI source.
 
 Google AI Studio and Vertex AI are as follows:
 
@@ -6020,8 +6024,8 @@ Google AI Studio and Vertex AI are as follows:
 | 2.5 Pro        | thinkingBudget = -1     | 128                | 15% of max response, min 128 | 25% of max | 50% of max | lower of max or 32768 |
 | 2.5 Flash      | thinkingBudget = -1     | 0, **no thinking** | 15% of max response          | 25% of max | 50% of max | lower of max or 24576 |
 | 2.5 Flash Lite | thinkingBudget = -1     | 0, **no thinking** | 15% of max response, min 512 | 25% of max | 50% of max | lower of max or 24576 |
-| 3.0 Pro        | thinkingLevel = null    | "low"              | "low"                        | "low"      | "high"     | "high"                |
-| 3.0 Flash      | thinkingLevel = null    | "minimal"          | "low"                        | "medium"   | "high"     | "high"                |
+| 3.0/3.1 Pro    | thinkingLevel = null    | "low"              | "low"                        | "low"      | "high"     | "high"                |
+| 3.0/3.1 Flash  | thinkingLevel = null    | "minimal"          | "low"                        | "medium"   | "high"     | "high"                |
 
 - For Gemini 2.5 Pro and 2.5 Flash/Lite, budget is capped to 32768 or 24576 tokens respectively, regardless of the streaming setting.
 
@@ -7242,9 +7246,9 @@ Shows an alert if the activated World Info exceeds the allocated token budget.
 This documentation may be obsolete, incomplete, or incorrect. Please refer to the default config.yaml (https://github.com/SillyTavern/SillyTavern/blob/release/default/config.yaml) in your installation for the most up-to-date list of settings.
 
 **WARNING: DO NOT EDIT THE DEFAULT CONFIG DIRECTLY. THIS WON'T HAVE ANY POSITIVE EFFECT. EDIT ITS COPY IN THE REPOSITORY ROOT INSTEAD.**
-`config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after completing the installation. It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
+`config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after completing the installation and running the server for the first time. It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
 
-New settings that are added upstream are automatically populated with default values when you run `npm install` (specifically, the `post-install.js` script) after updating the repository. You can then modify these settings as needed.
+New settings that are added upstream are automatically populated with default values when restarting the server after updating the repository. You can then modify these settings as needed. To add missing settings before startup, run the `npm run init` script.
 
 For nested settings, dot notation is used to indicate the hierarchy. For example, `protocol.ipv6: false` refers to the `ipv6` setting under the `protocol` section with a value of `false`.
 
@@ -7349,6 +7353,7 @@ See more about using environment variables in the Node.js documentation (https:/
 | `listenAddress.ipv4` | Listen on a specific IPv4 address | `0.0.0.0` | Valid IPv4 address |
 | `listenAddress.ipv6` | Listen on a specific IPv6 address | `'[::]'` | Valid IPv6 address |
 | `dnsPreferIPv6` | Prefer IPv6 for DNS resolution | `false` | `true`, `false` |
+| `enableKeepAlive` | Enable HTTP/HTTPS keep-alive globally | `false` | `true`, `false` |
 
 ## SSL Configuration
 
@@ -7366,9 +7371,33 @@ See more about using environment variables in the Node.js documentation (https:/
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `whitelistMode` | Enable IP whitelist filtering | `true` | `true`, `false` |
-| `enableForwardedWhitelist` | Check forwarded headers for whitelisted IPs | `true` | `true`, `false` |
+| `enableForwardedWhitelist` | Check forwarded headers for whitelisted IPs. Headers are defined in the Forwarded Headers Configuration section | `true` | `true`, `false` |
 | `whitelist` | List of allowed IP addresses | `["::1", "127.0.0.1"]` | Array of valid IP addresses |
 | `whitelistDockerHosts` | Automatically whitelist Docker host IPs | `true` | `true`, `false` |
+
+### Forwarded Headers Configuration
+
+Adjust which headers are used to determine the real IPs for features like IP whitelisting, rate limiting and access logging.
+
+Only change if you are sure that you use a correctly configured reverse proxy, otherwise this may lead to IP spoofing.
+| Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
+| `forwardedHeaders.xRealIp` | Use the `X-Real-IP` header for client IP detection | `true` | `true`, `false` |
+| `forwardedHeaders.xForwardedFor` | Use the `X-Forwarded-For` header for client IP detection | `true` | `true`, `false` |
+| `forwardedHeaders.cfConnectingIp` | Use the `CF-Connecting-IP` header for client IP detection | `false` | `true`, `false` |
+
+### Private Address Whitelisting
+
+This is an additional layer of security to prevent Server-Side Request Forgery (SSRF) attacks, performing whitelist checks against server-side HTTP requests that resolve to private IP addresses. When enabled, private network ranges will be blocked, unless explicitly allowed in the `privateAddressWhitelist.allowedRanges` setting.
+
+**This is disabled by default, but recommended when listen mode is enabled, or if your server is accessible by untrusted users.**
+| Setting | Description | Default | Permitted Values |
+|---------|-------------|---------|-----------------|
+| `privateAddressWhitelist.enabled` | Enable private address whitelisting | `false` | `true`, `false` |
+| `privateAddressWhitelist.allowUnresolvedHosts` | Allow requests to hosts that cannot be resolved | `false` | `true`, `false` |
+| `privateAddressWhitelist.allowedRanges` | List of allowed private IP addresses and CIDR ranges | `['127.0.0.0/8', '::1/128']` | Array of valid IP addresses and CIDR ranges |
+| `privateAddressWhitelist.log.blockedRequests` | Log blocked requests that resolve to private IP addresses | `true` | `true`, `false` |
+| `privateAddressWhitelist.log.allowedRequests` | Log allowed requests that resolve to private IP addresses | `false` | `true`, `false` |
 
 ### Host Whitelisting
 
@@ -7389,6 +7418,9 @@ See more about using environment variables in the Node.js documentation (https:/
 
 ## User Authentication
 
+Rate limiting is applied by default to both basic auth and user account login attempts. You can adjust the limits in the Rate Limiting Configuration section.
+
+If using basic auth behind a tunneled connection (e.g., Cloudflare Tunnel), make sure to adjust the rate limiting settings and IP address detection accordingly to prevent lockouts.
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `basicAuthMode` | Enable basic authentication | `false` | `true`, `false` |
@@ -7401,19 +7433,28 @@ See more about using environment variables in the Node.js documentation (https:/
 
 ### SSO Auto-Login
 
+Inadequately securing an SSO flow can lead to unauthorized access. Make sure to properly configure trusted proxies and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
+| `sso.trustedProxies` | List of trusted proxy IPs for SSO authentication | `["::1", "127.0.0.1"]` | Array of valid IP addresses, CIDR ranges, or wildcard patterns |
 | `sso.autheliaAuth` | Enable Authelia-based auto-login. See: SSO | `false` | `true`, `false` |
 | `sso.authentikAuth` | Enable Authentik-based auto-login. See: SSO | `false` | `true`, `false` |
 
 ## Rate Limiting Configuration
 
+To disable rate limiting for a specific route, set the limit to `0`.
+
+For example, to disable login rate limiting, set `rateLimiting.accountsLoginMaxAttempts` to `0`.
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
-| `rateLimiting.preferRealIpHeader` | Use the X-Real-IP header instead of the socket IP for rate limiting | `false` | `true`, `false` |
+| `rateLimiting.preferRealIpHeader` | Use IP from headers configured in the Forwarded Headers Configuration instead of the socket IP for rate limiting | `false` | `true`, `false` |
+| `rateLimiting.accountsLoginMaxAttempts` | Maximum login attempts for user accounts before temporary lockout (1 minute) | `5` | Any positive integer, or `0` |
+| `rateLimiting.accountsRecoverMaxAttempts` | Maximum password recovery attempts before temporary lockout (5 minutes) | `5` | Any positive integer, or `0` |
+| `rateLimiting.basicAuthMaxAttempts` | Maximum basic auth attempts before temporary lockout (1 minute) | `5` | Any positive integer, or `0` |
 
 ## Request Proxy Configuration
 
+Request proxying conflicts with the private address whitelist feature. If you enable both, only the requests that bypass the proxy will be checked against the private address whitelist, while the proxied requests will not be checked at all. If unsure, disabling the request proxy is recommended.
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `requestProxy.enabled` | Enable proxy for outgoing requests | `false` | `true`, `false` |
@@ -7423,6 +7464,8 @@ See more about using environment variables in the Node.js documentation (https:/
 ## CORS Proxy Configuration
 
 An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
+
+Enabling a CORS proxy without proper security measures (e.g., IP, host, and private address whitelists) can lead to SSRF vulnerabilities. Make sure to configure the whitelists accordingly if you enable this feature, and only enable it if you trust the extensions that require it.
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
@@ -7601,6 +7644,69 @@ To access your SillyTavern instance from the internet, you can use a VPN or a tu
 **Callout:** **Reverse proxying**
 Enthusiasts can set up a reverse proxy to access their SillyTavern instance from the internet.
 
+## Data Layout
+
+This section provides an overview of the user data storage structure in SillyTavern. Only the default data layout (data root is a subdirectory of the SillyTavern installation directory) is described here. If you have customized the data layout, refer to your custom configuration for details.
+
+### `data/[user-handle]` (e.g. `data/default-user`)
+
+Created for each user account, this folder contains user-specific data such as character files, conversation history, and settings.
+
+### `data/_cache`
+
+A storage for files downloaded by the server, such as tokenizer files and transformers.js models.
+
+#### `data/_cache/characters`
+
+Contains parsed character data when the `performance.useDiskCache` setting is enabled, synchronized on startup and when characters are updated.
+
+This allows for faster loading of character data at the cost of disk space.
+
+### `data/_css`
+
+A storage for custom CSS files.
+
+Currently, only the `user.css` file is supported, which allows you to add custom styles to the frontend.
+
+### `data/_errors`
+
+A storage of HTML files containing error pages for various HTTP status codes. These files are used to display custom error pages when the server encounters errors.
+
+- `forbidden-by-whitelist.html`: Displayed when a request is blocked by the IP address whitelist.
+- `host-not-allowed.html`: Displayed when a request is blocked by the host whitelist.
+- `unauthorized.html`: Displayed when the basic authentication fails.
+- `url-not-found.html`: Displayed when a requested resource is not found.
+
+### `data/_storage`
+
+A storage for user account data.
+
+Editing these files manually is not recommended and can lead to data corruption.
+
+### `data/_uploads`
+
+A temporary storage for files uploaded by users, while they are being processed by the server.
+
+These files are automatically cleared on every startup.
+
+### `data/_webpack`
+
+A storage for compiled webpack assets and cache files.
+
+If you experience issues with the frontend after an update, try clearing this folder to force a full rebuild of the frontend assets.
+
+### `data/access.log`
+
+A log file that records incoming HTTP requests to the server, after the first successful connection.
+
+Inspect this file regularly to monitor for any suspicious activity.
+
+### `data/cookie-secret.txt`
+
+Contains the secret key used for signing cookies in the server.
+
+This file is automatically generated on the first startup if it doesn't exist.
+
 ## Security checklist
 
 **These are just recommendations. Please consult a web application security specialist before making your ST instance live.**
@@ -7614,6 +7720,7 @@ Enthusiasts can set up a reverse proxy to access their SillyTavern instance from
 7. Check the access logs often. They are written to the server console and to the `access.log` file and provide information about incoming connections, such as IP address and user agent.
 8. Configure HTTPS. For a localhost server, you can generate and use a self-signed certificate. Otherwise, you may need to deploy a reverse-proxy web server such as Traefik (https://traefik.io/) or Caddy (https://caddyserver.com/docs/getting-started).
 9. Configure and enable host whitelisting, especially if you're not using HTTPS encryption on a local network.
+10. Configure and enable private address whitelisting to prevent SSRF attacks.
 
 Find more information about secure proxying in the following guide: Reverse Proxying SillyTavern.
 
@@ -7894,11 +8001,45 @@ In this `perUserBasicAuth` mode the basic auth's username and password will be t
 
 Save the file and restart SillyTavern if it was already running. You should be prompted for username and password when connecting to your ST. Both username and password are transmitted in plain text. If you are concerned about this, you can serve ST via HTTPS.
 
+### Private address whitelisting
+
+While making outbound HTTP requests to addresses in the private IP ranges (e.g., `192.168.x.x`, `10.x.x.x`) from the server is allowed by default, you can restrict access to specific private addresses using the whitelist configuration. This is recommended when you have a private API running on your local network that you want to allow ST to access, but you want to prevent ST from accessing other devices on the local network.
+
+#### What is considered a "private address"?
+
+* Loopback addresses: `127.0.0.0/8` for IPv4 and `::1/128` for IPv6.
+* IPv4 private address ranges: class A (`10.0.0.0/8`), class B (`172.16.0.0/12`), class C (`192.168.0.0/16`).
+* Link-local addresses: `169.254.0.0/16` for IPv4 and `fe80::/10` for IPv6.
+* Unique local addresses: `fc00::/7` for IPv6.
+
+#### Toggle private address whitelisting
+
+To enable private address whitelisting, edit the `config.yaml` file in the SillyTavern root directory:
+
+```yaml
+privateAddressWhitelist:
+    enabled: true
+```
+
+#### Add private addresses to the whitelist
+
+By default, this only allows making requests to loopback addresses (`127.0.0.1` and `::1`) from the server. To add more private addresses to the whitelist, include them in the `privateAddressWhitelist.allowedRanges` section:
+
+```yaml
+privateAddressWhitelist:
+  allowedRanges:
+    - "127.0.0.0/8"
+    - "::1/128"
+    - "192.168.0.0/16"
+```
+
+This example allows making requests to any address in the `192.168.x.x` range and loopback addresses from the server, while still blocking access to other private IP ranges.
+
 ### Host whitelisting
 
 When hosting a server over the network without HTTPS, it is highly recommended to enable request host verification. This helps prevent various attacks, such as DNS rebinding. By default, the SillyTavern server will log a console message on a first connection from an unrecognized host.
 
-### Toggle host whitelisting
+#### Toggle host whitelisting
 
 To enable host whitelisting, edit the `config.yaml` file in the SillyTavern root directory:
 
@@ -7907,7 +8048,7 @@ hostWhitelist:
     enabled: true
 ```
 
-### Add trusted hosts
+#### Add trusted hosts
 
 To add a host name to a list of trusted hosts, include it in the `hostWhitelist.hosts` section:
 
@@ -7922,7 +8063,7 @@ hostWhitelist:
     - ".trycloudflare.com"
 ```
 
-### Toggle console messages
+#### Toggle console messages
 
 To disable console messages for unrecognized hosts, set the `hostWhitelist.scan` option to `false`:
 
@@ -8382,6 +8523,7 @@ Click on _Continue to summary_ followed by _Create Token._
 
 # Single Sign-On (SSO)
 
+Despite all the benefits of SSO, it is a complex system to set up and maintain. If not configured correctly, it can lead to unauthorized access to your instance. Make sure to properly configure and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
 SSO allows you to create users and secure many different pages using a login portal presented on sites you want to secure. While it is complex to setup, it is a good way to both learn SSO and secure your ST instance out on the internet more.
 
 SSO can also replace HTTP Basic Authentication as an access control mechanism for remote connections.
@@ -8389,6 +8531,19 @@ SSO can also replace HTTP Basic Authentication as an access control mechanism fo
 This is recommended because SSO provides better security and functionality than HTTP Basic Authentication.
 
 **Authelia** (https://www.authelia.com/) and **Authentik** (https://goauthentik.io/) are open-source SSO providers that can be used with SillyTavern.
+
+## Configure trusted proxies
+
+Only requests from IP addresses that are configured as trusted proxies will be able to authenticate users by forwarding the necessary headers. By default, both IPv4 and IPv6 loopback addresses are trusted. To allow other IPs to authenticate with SSO headers, add them to the `sso.trustedProxies` list in your config.yaml file:
+
+Also supports CIDR and wildcard notation for specifying multiple IPs or ranges, e.g., `192.168.0.*` or `10.0.0.0/24`.
+```yaml
+sso:
+  trustedProxies:
+    - ::1           # IPv6 loopback address - trusted by default
+    - 127.0.0.1     # IPv4 loopback address - trusted by default
+    - '192.168.0.1' # Example IP address of a trusted proxy
+```
 
 ## Sign in with SSO
 
@@ -8782,6 +8937,7 @@ To use one of these caption sources, select Multimodal in the Source dropdown.
 | AI/ML API                         | Cloud, paid, various GPT, Claude, and Gemini models with vision capabilities                                                                                                  |
 | Chutes                            | Cloud, various models with vision capabilities                                                                                                                                |
 | Claude                            | Cloud, paid, all Claude models with vision capabilities                                                                                                                       |
+| Cloudflare Workers AI             | Cloud, paid, various models with vision capabilities                                                                                                                          |
 | Cohere                            | Cloud, paid, Aya Vision 8B / 32B                                                                                                                                              |
 | Custom (OpenAI-compatible)        | For custom OpenAI-compatible APIs, uses currently configured model in API Connections tab                                                                                     |
 | Electron Hub                      | Cloud, paid, various models with vision capabilities.                                                                                                                         |
@@ -10590,6 +10746,7 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 |:--------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
 | AI/ML API (https://aimlapi.com/)                                                                 | Cloud, paid                                                                                     |
 | Black Forest Labs (https://bfl.ai/)                                                              | Cloud, paid                                                                                     |
+| Cloudflare Workers AI (https://www.cloudflare.com/developer-platform/products/workers-ai/)       | Cloud, paid, various models with vision capabilities                                            |
 | Chutes (https://chutes.ai/)                                                                      | Cloud                                                                                           |
 | ComfyUI (https://github.com/comfyanonymous/ComfyUI)                                              | Local, open source (GPL3), free of charge, see ComfyUI Configuration. |
 | Draw Things (https://drawthings.ai/)                                                             | Local, Mac/iOS, free of charge                                                                  |
@@ -10604,7 +10761,7 @@ Most common Stable Diffusion generation settings are customizable within the Sil
 | Pollinations (https://pollinations.ai/)                                                          | Cloud, open source (MIT), free of charge                                                        |
 | SD.Next / vladmandic (https://github.com/vladmandic/automatic)                                   | Local, open source (AGPL3), free of charge                                                      |
 | SillyTavern Extras (https://github.com/SillyTavern/SillyTavern-Extras)                           | Deprecated, not recommended                                                                     |
-| stable-diffusion.cpp (https://github.com/leejet/stable-diffusion.cpp)                             | Local, open source (MIT), free of charge                                                        |
+| stable-diffusion.cpp (https://github.com/leejet/stable-diffusion.cpp)                            | Local, open source (MIT), free of charge                                                        |
 | Stability AI (https://platform.stability.ai/)                                                    | Cloud, paid                                                                                     |
 | Stable Diffusion WebUI / AUTOMATIC1111 (https://github.com/AUTOMATIC1111/stable-diffusion-webui) | Local, open source (AGPL3), free of charge                                                      |
 | Stable Horde (https://stablehorde.net/)                                                          | Cloud, open source (AGPL3), free of charge                                                      |
@@ -13308,11 +13465,26 @@ Function Calling allows adding dynamic functionality to your extensions by letti
 
 ## Prerequisites and limitations
 
-1. This feature is only available for certain Chat Completion sources: OpenAI, Claude, MistralAI, Groq, Cohere, OpenRouter, AI21, Google AI Studio, Google Vertex AI, DeepSeek, AI/ML API, NanoGPT and Custom API sources.
+1. This feature is only available for Chat Completion API, supported by the following sources: Custom (OpenAI-compatible), AI/ML API, AI21, Azure OpenAI, Chutes, Claude, Cloudflare Workers AI, Cohere, DeepSeek, Electron Hub, Fireworks, Google AI Studio, Google Vertex AI, Groq, MiniMax, MistralAI, Moonshot (Kimi), NanoGPT, OpenAI, OpenRouter, Pollinations, SiliconFlow, xAI (Grok), and Z.AI (GLM).
 2. Text Completion APIs don't support function calls, but some locally-hosted backends like Ollama and TabbyAPI may run in Custom OpenAI-compatible mode under Chat Completion.
 3. The support for function calling must be explicitly allowed by the user first. This is done by enabling the "Enable function calling" option in the AI Response Configuration panel.
 4. There is no guarantee that an LLM will perform any function calls at all. Most of them require an explicit "activation" through the prompt (e.g., the user asking to "Roll a dice", "Get the weather", etc.).
 5. Not all prompts can trigger a tool call. Continuations, impersonation, background ('quiet') prompts are not allowed to trigger a tool call. They can still use past successful tool calls in their responses.
+6. Certain models may not support function calling, even if the API source does. Please refer to your API provider's documentation for details on which models support function calling.
+
+## Tool calling recursion limit
+
+To prevent infinite loops of tool calls, there is a recursion limit (default: 5 rounds). If the LLM keeps calling tools repeatedly, execution will stop after the limit is reached. You can adjust this limit in the AI response configuration settings, next to the "Enable function calling" option.
+
+## Interleaved Thinking
+
+When using tool calling with a reasoning model, you can leverage reasoning returned together with tool-call requests to maintain interleaved thinking context. For some models, this is necessary to ensure consistency and preserve important details between tool calls.
+
+Choose one of the following settings in the AI response configuration:
+
+- Disabled: No reasoning context is included in tool-call requests. Highest compatibility, default setting.
+- Since Last User Message: Include reasoning for any tool turns that happened after the latest user message.
+- Active Tool Chain: Include reasoning only while still inside the current unresolved tool loop; once a normal assistant reply is produced, old tool-chain reasoning is no longer resent.
 
 ## How to make a function tool
 
