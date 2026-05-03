@@ -74,8 +74,16 @@ jobs:
             echo "HAS_CHANGES=false" >> $GITHUB_OUTPUT
           else
             DATE=$(date +'%Y-%m-%d')
+            COUNT=$(git log --oneline --grep="Sync: Docs Update $DATE" | wc -l)
+            if [ "$COUNT" -eq 0 ]; then
+              COMMIT_TITLE="Sync: Docs Update $DATE"
+            else
+              NEXT=$((COUNT + 1))
+              COMMIT_TITLE="Sync: Docs Update $DATE - Update $NEXT"
+            fi
+
             git commit \
-              -m "Sync: Docs Update $DATE" \
+              -m "$COMMIT_TITLE" \
               -m "$UPSTREAM_MSG" \
               -m "Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
             git push origin main
