@@ -8610,6 +8610,8 @@ Tailscale is a VPN provider enabling a secure remote connection to your PC. An o
 
 * Add your connecting device's machine name (the one you want to use SillyTavern with) to SillyTavern's whitelist by following Managing whitelisted IPs.
 
+**NOTE:** While editing the config you want to set listen to true if you haven't referenced from Remote Connections.
+
 ### 4. Connecting
 
 Now whenever you want to use SillyTavern from anywhere all you have to do is:
