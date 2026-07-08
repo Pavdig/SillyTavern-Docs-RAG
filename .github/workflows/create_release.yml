@@ -15,6 +15,7 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
@@ -59,10 +60,12 @@ jobs:
             NOTES="Manual release triggered via GitHub Actions."
           fi
           
-          # Handle multiline text for GitHub Actions
-          echo "BODY<<EOF" >> $GITHUB_OUTPUT
+          # Random delimiter avoids output injection if the commit body ever happens
+          # to contain a line that matches a static delimiter like "EOF".
+          DELIM="EOF_$(openssl rand -hex 8)"
+          echo "BODY<<$DELIM" >> $GITHUB_OUTPUT
           echo "$NOTES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "$DELIM" >> $GITHUB_OUTPUT
 
       - name: Create ZIP Archive
         run: |

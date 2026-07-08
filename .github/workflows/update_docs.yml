@@ -11,6 +11,7 @@ permissions:
 jobs:
   update-knowledge-base:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout your repo
         uses: actions/checkout@v6
@@ -30,11 +31,17 @@ jobs:
           cd temp_source
           SHORT_HASH=$(git rev-parse --short HEAD)
           echo "HASH=$SHORT_HASH" >> $GITHUB_OUTPUT
+
+          # Random delimiter avoids output injection if the upstream commit message
+          # ever happens to contain a line that matches a static delimiter like "EOF".
+          DELIM="EOF_$(openssl rand -hex 8)"
           {
-            echo 'MSG<<EOF'
+            echo "MSG<<$DELIM"
             # Using @ prevents collisions with both the forward slashes / and the regex alternation |
-            git log -1 --pretty=%B | sed -E 's@(^|[^A-Za-z0-9_])#([0-9]+)@\1SillyTavern/SillyTavern-Docs#\2@g'
-            echo 'EOF'
+            # Wrapped in backticks so GitHub renders it as plain text instead of a live
+            # cross-repo reference (which would otherwise ping the referenced PR/issue).
+            git log -1 --pretty=%B | sed -E 's@(^|[^A-Za-z0-9_])#([0-9]+)@\1`SillyTavern/SillyTavern-Docs#\2`@g'
+            echo "$DELIM"
           } >> $GITHUB_OUTPUT
           cd ..
 
@@ -74,18 +81,33 @@ jobs:
             echo "HAS_CHANGES=false" >> $GITHUB_OUTPUT
           else
             DATE=$(date +'%Y-%m-%d')
-            COUNT=$(git log --oneline --grep="Sync: Docs Update $DATE" | wc -l)
+            TITLE_PREFIX="Auto-sync: Docs Update $DATE"
+            COUNT=$(git log --oneline --grep="$TITLE_PREFIX" | wc -l)
             if [ "$COUNT" -eq 0 ]; then
-              COMMIT_TITLE="Sync: Docs Update $DATE"
+              COMMIT_TITLE="$TITLE_PREFIX"
             else
               NEXT=$((COUNT + 1))
-              COMMIT_TITLE="Sync: Docs Update $DATE - Update $NEXT"
+              COMMIT_TITLE="$TITLE_PREFIX - Update $NEXT"
             fi
 
             git commit \
               -m "$COMMIT_TITLE" \
               -m "$UPSTREAM_MSG" \
-              -m "Source Commit: https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH"
-            git push origin main
+              -m "Source Commit: \`https://github.com/SillyTavern/SillyTavern-Docs/commit/$UPSTREAM_HASH\`"
+
+            # Retry with rebase in case main moved between checkout and push
+            for attempt in 1 2 3; do
+              if git push origin main; then
+                break
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "Push failed after $attempt attempts."
+                exit 1
+              fi
+              echo "Push rejected (attempt $attempt/3), rebasing onto latest main and retrying..."
+              git fetch origin main
+              git rebase origin/main
+            done
+
             echo "HAS_CHANGES=true" >> $GITHUB_OUTPUT
           fi
