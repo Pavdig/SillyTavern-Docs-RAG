@@ -123,6 +123,8 @@ Check 'Bypass API status check' to prevent SillyTavern from alerting you about a
 
 Click "Test Message" to verify connectivity by sending a simple prompt to the model.
 
+!!!info Documenting an external provider?
+Provider developers should read [Integrating an External Provider](SillyTavern_for-contributors_provider-integrations.md) for the provider-owned setup-guide template and the UI extension, server plugin, and official-integration routes.
 ## Prompt Post-Processing
 
 **Note:** Tool Calling is not supported when Post-Processing option with "no tools" is used!

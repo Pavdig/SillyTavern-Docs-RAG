@@ -8,6 +8,9 @@ STscript is a powerful scripting language based on batched chat commands that ca
 **Callout:** **[Function Calling](SillyTavern_For_Contributors_Function-Calling.md)**
 Add more dynamic capabilities by letting the LLM use external sources of data or trigger specific functionality of the extension.
 
+**Callout:** **[External Provider Integrations](SillyTavern_For_Contributors_Provider-Integrations.md)**
+Choose between Custom OpenAI-compatible setup, a UI extension, a server plugin, or prior discussion for an official integration.
+
 **Callout:** **[UI Extensions](SillyTavern_For_Contributors_Writing-Extensions.md)**
 UI extensions run in a browser environment and expand the functionality of SillyTavern by hooking into its events and API.
 
