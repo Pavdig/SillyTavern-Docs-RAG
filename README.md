@@ -43,7 +43,7 @@ The automation pipeline runs on a schedule to keep this repo in sync with SillyT
   - **Redirect stubs:** Files that just say "Page moved" are skipped entirely.
   - **Front Matter:** Metadata headers (`---`) are stripped.
   - **Screenshots:** The entire "Screenshots" section is removed from files.
-  - **Admonitions:** Tags like `!!!warning` and `:::tip` are stripped, but titles and body text are preserved.
+  - **Admonitions:** Markers like `!!!warning` and `:::tip` are stripped. The type and title are kept as a bold label in front of the text (e.g. `**Warning Disclaimer:** text`), so the AI still sees that a passage is a warning or a note.
   - **Images:** All image tags are removed entirely to reduce token usage.
   - **Internal links:** Resolved and rewritten to match the flat output filenames (e.g. `[text](../foo/bar.md)` → `[text](SillyTavern_foo_bar.md)`). Unresolvable links fall back to plain text.
   - **External links:** Converted to `Name (URL)` format.
