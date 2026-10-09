@@ -144,10 +144,12 @@ You can use any model that supports image captioning (`VisionEncoderDecoderModel
 
 API keys and endpoint URLs for captioning sources are managed in the [API Connections](SillyTavern_Usage_API_Connections_index.md) panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
 
-!!!warning Set it up in the API Connections panel first
+**Warning Set it up in the API Connections panel first:**
+
 One last time: configure the API key/address/port in **<i class="fa-solid fa-plug"></i> API Connections** and use the connection in Captioning.
 
 You can still use Claude for chats and Google AI Studio for image captioning, or whatever. Just set them *both* up in the 'API Connections' tab first. Then flip your Chat Completion source to Claude and your Captioning source to Google AI Studio.
+
 For most local backends, you will need to set some options in the model backend rather than in SillyTavern. If your backend can only run one model at a time and doesn't support automatic switching, you have several options to use different models for chat and captioning:
 
 1. **Secondary endpoints:** Use the secondary endpoint feature (see Secondary endpoints section below) to connect to a different API server for captioning
@@ -199,7 +201,8 @@ You can also set up a secondary endpoint specifically for multimodal captioning.
 - Enter a valid URL for the secondary endpoint in the "Secondary captioning endpoint URL" field.
 - Check the "Use secondary URL" box to enable the secondary endpoint.
 
-Do not append `/v1` or `/chat/completions` to the end of the URL. The extension will handle that automatically.
+**Tip:** Do not append `/v1` or `/chat/completions` to the end of the URL. The extension will handle that automatically.
+
 This is only supported by the following APIs:
 
 - KoboldCpp

@@ -2,6 +2,7 @@
 import argparse
 import logging
 import re
+import textwrap
 from pathlib import Path
 from urllib.parse import urlparse, urldefrag
 
@@ -17,9 +18,21 @@ SCREENSHOTS_RE = re.compile(r'(?ms)^##\s*Screenshots\b.*?(?=^##\s*|\Z)')
 EMPTY_TABLE_ROW_RE = re.compile(r'^\s*\|(?:\s*\|)+\s*$', flags=re.MULTILINE)
 BR_RE = re.compile(r'<br\s*/?>', flags=re.IGNORECASE)
 BLANK_LINES_RE = re.compile(r'\n{3,}')
-ADMONITION_OPEN_RE = re.compile(
-    r'^\s*(:::|!!!)\s*([A-Za-z0-9_-]+)?(?:\s+["\'](.+?)["\'])?\s*$'
+# ::: blocks (e.g. ":::callout" ... ":::"), unchanged behaviour
+COLON_OPEN_RE = re.compile(
+    r'^\s*:::\s*([A-Za-z0-9_-]+)?(?:\s+["\'](.+?)["\'])?\s*$'
 )
+# !!! blocks. Upstream format:
+#   !!!type Free text title      (type attached, title unquoted)
+#   !!! Free text title          (no type, or a known type word)
+#   body, usually NOT indented
+#   !!!                          (bare !!! closes the block)
+BANG_RE = re.compile(r'^\s*!!!(.*)$')
+TYPE_TOKEN_RE = re.compile(r'^[A-Za-z0-9_-]+$')
+# A fence line starts with ``` or ~~~. Lines like "```</code></pre>" are the tail of an
+# HTML-wrapped block whose opener does not start the line, so they must not toggle state.
+FENCE_RE = re.compile(r'^\s*(```|~~~)(?!.*</(?:code|pre)>)')
+LIST_START_RE = re.compile(r'^(?:[-*+]\s|\d+[.)]\s)')
 
 def is_external_link(url: str) -> bool:
     parsed = urlparse(url)
@@ -76,58 +89,123 @@ def replace_link(match: re.Match, file_path: Path, root: Path) -> str:
 def replace_image(match: re.Match) -> str:
     return ''
 
-def normalize_admonition_block(block_type: str | None, title: str | None, lines: list[str]) -> str:
-    content_lines = []
-    for line in lines:
-        if line.startswith('    '):
-            content_lines.append(line[4:])
-        elif line.startswith('\t'):
-            content_lines.append(line[1:])
-        else:
-            content_lines.append(line.lstrip())
-    inner = ''.join(content_lines).strip()
-    if not inner:
-        return ''
-    if inner.startswith('|') or inner.startswith('```'):
-        return f'\n{inner}\n'
-    title_prefix = ''
-    if block_type:
-        title_prefix = block_type.title()
-    if title:
-        title_prefix = f'{title_prefix} {title}'.strip()
-    if title_prefix:
-        title_prefix = f'**{title_prefix}:** '
-    return f'\n{title_prefix}{inner}\n'
+def strip_wrapping_quotes(title: str) -> str:
+    if len(title) >= 2 and title[0] == title[-1] and title[0] in '"\'':
+        return title[1:-1].strip()
+    return title
 
-def sanitize_admonitions(text: str) -> str:
+def parse_bang_header(rest: str) -> tuple[str | None, str | None]:
+    """Parse the text after '!!!' into (type, title).
+
+    - '!!!warning Disclaimer'  -> ('warning', 'Disclaimer')   type attached: always a type
+    - '!!!light'               -> ('light', None)
+    - '!!! Note'               -> ('note', None)               known type word
+    - '!!! Git backends'       -> (None, 'Git backends')       free text title
+    - '!!! warning "Title"'    -> ('warning', 'Title')
+    - ''                       -> (None, None)
+    """
+    stripped = rest.strip()
+    if not stripped:
+        return None, None
+    attached = not rest[0].isspace()
+    parts = stripped.split(None, 1)
+    first = parts[0]
+    remainder = parts[1].strip() if len(parts) > 1 else ''
+    is_type = False
+    if TYPE_TOKEN_RE.match(first):
+        is_type = attached or first.lower() in ADMONITION_TYPES
+    if is_type:
+        return first.lower(), (strip_wrapping_quotes(remainder) or None)
+    return None, strip_wrapping_quotes(stripped)
+
+def build_label(block_type: str | None, title: str | None) -> str:
+    title = (title or '').replace('**', '').replace('__', '').strip()
+    type_text = block_type.title() if block_type else ''
+    if title and type_text and title.lower() == type_text.lower():
+        return type_text
+    return f'{type_text} {title}'.strip()
+
+def normalize_admonition_block(block_type: str | None, title: str | None, lines: list[str]) -> str:
+    inner = textwrap.dedent(''.join(lines)).strip('\n').rstrip()
+    label = build_label(block_type, title)
+    if not inner.strip():
+        return f'\n**{label}**\n' if title and label else ''
+    if not label:
+        return f'\n{inner}\n'
+    colon = '' if label.endswith(':') else ':'
+    multiline = '\n\n' in inner or inner.startswith(('|', '```', '~~~')) or bool(LIST_START_RE.match(inner))
+    if multiline:
+        return f'\n**{label}{colon}**\n\n{inner}\n'
+    return f'\n**{label}{colon}** {inner}\n'
+
+def is_fence(line: str) -> bool:
+    return bool(FENCE_RE.match(line))
+
+def collect_bang_body(lines: list[str], idx: int) -> tuple[list[str], bool, int]:
+    """Collect body lines until a bare '!!!'. Returns (body, closed, next_idx)."""
+    body = []
+    in_fence = False
+    while idx < len(lines):
+        line = lines[idx]
+        if is_fence(line):
+            in_fence = not in_fence
+        elif not in_fence:
+            stripped = line.strip()
+            if stripped == '!!!':
+                return body, True, idx + 1
+            if stripped.startswith('!!!'):
+                return body, False, idx  # next opener, this block was never closed
+        body.append(line)
+        idx += 1
+    return body, False, idx
+
+def sanitize_admonitions(text: str, source: str = '') -> str:
     lines = text.splitlines(keepends=True)
     output = []
     idx = 0
+    in_fence = False
     while idx < len(lines):
-        open_match = ADMONITION_OPEN_RE.match(lines[idx])
-        if open_match:
-            marker = open_match.group(1)
-            block_type = open_match.group(2).lower() if open_match.group(2) else None
-            title = open_match.group(3)
+        line = lines[idx]
+        if is_fence(line):
+            in_fence = not in_fence
+            output.append(line)
+            idx += 1
+            continue
+        if in_fence:
+            output.append(line)
+            idx += 1
+            continue
+
+        colon_match = COLON_OPEN_RE.match(line)
+        if colon_match:
+            block_type = colon_match.group(1).lower() if colon_match.group(1) else None
+            title = colon_match.group(2)
             idx += 1
             block_lines = []
-            if marker == ':::':
-                while idx < len(lines) and not re.match(r'^\s*:::\s*$', lines[idx]):
-                    block_lines.append(lines[idx])
-                    idx += 1
-                if idx < len(lines) and re.match(r'^\s*:::\s*$', lines[idx]):
-                    idx += 1
-            else:
-                while idx < len(lines) and (
-                    lines[idx].strip() == ''
-                    or lines[idx].startswith('    ')
-                    or lines[idx].startswith('\t')
-                ):
-                    block_lines.append(lines[idx])
-                    idx += 1
+            while idx < len(lines) and not re.match(r'^\s*:::\s*$', lines[idx]):
+                block_lines.append(lines[idx])
+                idx += 1
+            if idx < len(lines):
+                idx += 1
             output.append(normalize_admonition_block(block_type, title, block_lines))
             continue
-        output.append(lines[idx])
+
+        bang_match = BANG_RE.match(line)
+        if bang_match:
+            block_type, title = parse_bang_header(bang_match.group(1))
+            start_line = idx + 1
+            body, closed, idx = collect_bang_body(lines, idx + 1)
+            if closed:
+                output.append(normalize_admonition_block(block_type, title, body))
+            else:
+                logging.warning('Unclosed !!! block at %s:%d, keeping body as plain text', source or '<text>', start_line)
+                label = build_label(block_type, title)
+                if title and label:
+                    output.append(f'\n**{label}**\n')
+                output.append(''.join(body))
+            continue
+
+        output.append(line)
         idx += 1
     return ''.join(output)
 
@@ -136,7 +214,7 @@ def sanitize_text(content: str, file_path: Path, root: Path) -> str:
     content = SCREENSHOTS_RE.sub('', content)
     content = MD_IMAGE_RE.sub(replace_image, content)
     content = MD_LINK_RE.sub(lambda m: replace_link(m, file_path, root), content)
-    content = sanitize_admonitions(content)
+    content = sanitize_admonitions(content, file_path.name)
     content = EMPTY_TABLE_ROW_RE.sub('', content)
     content = BR_RE.sub('', content)
     content = BLANK_LINES_RE.sub('\n\n', content)

@@ -92,7 +92,8 @@ SillyTavern is a free and open-source project released under the AGPL-3.0 Licens
 
 This page contains instructions for installing SillyTavern Extras on your local device.
 
-The Extras project was discontinued in April 2024 and won't receive any new updates or modules. The vast majority of modules are available natively in the main SillyTavern application. You may still install and use it but don't expect to get immediate support if you face any issues.
+**Discontinued:** The Extras project was discontinued in April 2024 and won't receive any new updates or modules. The vast majority of modules are available natively in the main SillyTavern application. You may still install and use it but don't expect to get immediate support if you face any issues.
+
 Local installation of Extras can be difficult or impossible on your OS (especially Termux).
 
 ## Use the Official Extras Colab (https://colab.research.google.com/github/SillyTavern/SillyTavern/blob/release/colab/GPU.ipynb)
@@ -369,8 +370,9 @@ SillyTavern can be run natively on Android devices using Termux.
 
 ## Installing Termux
 
-Avoid installing Termux from the Google Play Store, that version is no longer maintained. 
+**Tip:** Avoid installing Termux from the Google Play Store, that version is no longer maintained. 
 Instead, use F-Droid (recommended) or GitHub releases to get the latest version.
+
 1. Download Termux from F-Droid (https://f-droid.org/en/packages/com.termux/) or GitHub releases (https://github.com/termux/termux-app/releases).
 2. Install the downloaded APK file.
 3. Open Termux and run your first command:
@@ -394,7 +396,8 @@ Install the required packages:
 pkg install git nodejs-lts nano
 ```
 
-If you're running 32-bit Android, see the Common Errors section below for additional steps.
+**Warning:** If you're running 32-bit Android, see the Common Errors section below for additional steps.
+
 ## Installing SillyTavern
 
 Clone the SillyTavern repository (How to Choose a Branch):
@@ -445,7 +448,8 @@ Then proceed with the installation steps above.
 
 ### Performance tweaks
 
-For general tips on improving performance, see the respective FAQ section.
+**Info:** For general tips on improving performance, see the respective FAQ section.
+
 Due to hardware limitations on Android devices, you may want to adjust the following SillyTavern config.yaml settings for better memory, storage, and CPU usage:
 
 ```yaml
@@ -460,7 +464,8 @@ backups:
     enabled: false
 ```
 
-Use the `nano` text editor included with Termux to edit the `config.yaml` file: `nano ~/SillyTavern/config.yaml`
+**Tip:** Use the `nano` text editor included with Termux to edit the `config.yaml` file: `nano ~/SillyTavern/config.yaml`
+
 ## Optional: Create Aliases
 
 You can create shortcuts for common commands to make your workflow easier.
@@ -498,7 +503,8 @@ Now you can use the following commands:
 
 ## Further Reading
 
-The guides linked below are not maintained by the SillyTavern team.
+**Info:** The guides linked below are not maintained by the SillyTavern team.
+
 - SillyTavern in Termux guide by ArroganceComplex#2659: <https://rentry.org/STAI-Termux>
 - Accessing Termux files with Material Files: <https://www.learntermux.tech/2020/10/Termux-File-Manager.html>
 - Prevent Termux process deep sleep: <https://wiki.termux.com/wiki/Termux-wake-lock>
@@ -508,6 +514,7 @@ The guides linked below are not maintained by the SillyTavern team.
 # Docker Installation
 
 These instructions assume you have installed Docker, are able to access your command line for the installation of containers, and familiar with their general operation.
+
 ## Using the GitHub Container Registry
 
 Using a prebuilt image is the quickest and easiest way to get started with SillyTavern in Docker. You can pull the latest image from the GitHub Container Registry.
@@ -570,16 +577,19 @@ docker run \
   ghcr.io/sillytavern/sillytavern:"$SILLYTAVERN_VERSION"
 ```
 
-By default the container will run in the foreground. If you want to run it in the background, add the `-d` flag to the `docker run` command.
+**Tip:** By default the container will run in the foreground. If you want to run it in the background, add the `-d` flag to the `docker run` command.
+
 ## Building the Docker Image
 
-The following section assumes you installed SillyTavern in a non-root (non-admin) folder. If you installed SillyTavern in a root folder, you may have to run some of these commands with administrator rights [`sudo`, `doas`, Command Prompt (Administrator)].
+**Info:** The following section assumes you installed SillyTavern in a non-root (non-admin) folder. If you installed SillyTavern in a root folder, you may have to run some of these commands with administrator rights [`sudo`, `doas`, Command Prompt (Administrator)].
+
 If you want to build the Docker image yourself, you can do so by following these steps. This is useful if you want to customize the image or use it for development purposes.
 
 ### Linux
 
 1. Install Docker by following the Docker installation guide here (https://docs.docker.com/engine/install/).
-   **Do not** install Docker Desktop.
+
+**Danger:** **Do not** install Docker Desktop.
 2. Follow the steps in **Manage Docker as a non-root user** in the Docker Post-Installation Guide (https://docs.docker.com/engine/install/linux-postinstall/).
 3. Install Git (https://git-scm.com/download/linux) using your package manager.
 
@@ -623,10 +633,12 @@ If you want to build the Docker image yourself, you can do so by following these
 
 ### Windows
 
-!!!warning Regarding Docker on Windows
+**Warning Regarding Docker on Windows:**
+
 Using Docker on Windows is **_really_** complicated. Not only do you need to activate _Windows Subsystem for Linux_ within _Turn Windows features on or off_, but also configure your system for Virtualization (Intel VT-d/AMD SVM) which differs from PC manufacturer to PC manufacturer (or motherboard manufacturer). Sometimes, this option is not present on some systems.
 
 It is highly suggested you install SillyTavern by following our Windows guide. This section is a _rough_ idea of how it can be done on Windows.
+
 1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/windows-install/).
 2.  Install Git for Windows (https://git-scm.com/download/win).
 3.  Clone the SillyTavern repository.
@@ -654,6 +666,7 @@ It is highly suggested you install SillyTavern by following our Windows guide. T
 
 Even though macOS is similar to Linux, it doesn't have the Docker Engine. You will have to install Docker Desktop similarly to Windows.
 You will also need to install Homebrew (https://brew.sh/) in order to install Git on your Mac. This section is a _rough_ idea on how it can be done on macOS.
+
 1.  Install Docker Desktop by following the Docker installation guide here (https://docs.docker.com/desktop/setup/install/mac-install/).
 2.  Install `git` using Homebrew.
 
@@ -686,6 +699,8 @@ You will also need to install Homebrew (https://brew.sh/) in order to install Gi
 
 SillyTavern's configuration file (config.yaml) will be located within the `config` folder. Configuring the config file should be no different than configuring it without Docker, however you will need to run `nano` or a code editor with administrator rights in order to save your changes.
 
+**Warning:**
+
 Don't forget to restart the Docker container for SillyTavern in order to apply your changes! Make sure you execute this command within the `docker` folder.
 
 ```sh
@@ -700,7 +715,8 @@ SillyTavern's data folder will be within the `data` folder. Backing up your file
 
 Running plugins like HoYoWiki-Scraper-TS (https://github.com/Bronya-Rand/HoYoWiki-Scraper-TS) or SillyTavern-Fandom-Scraper (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) within Docker is no different from running it on your system without Docker, however we will need to do a slight modification to the Docker Compose script in order to do so.
 
-If you already see a _plugins_ folder within the `docker` folder, you can skip Steps 1-2.
+**Note:** If you already see a _plugins_ folder within the `docker` folder, you can skip Steps 1-2.
+
 1. Using `nano` or a code editor, open _docker-compose.yml_ and add the following line below `volumes`.
 
     ```sh
@@ -787,7 +803,8 @@ The healthcheck uses a heartbeat file mechanism:
 
 ### Configuration
 
-The healthcheck script doesn't support overriding the data directory via command line arguments. If you change the data directory from the default `/home/node/app/data`, ensure that the `SILLYTAVERN_DATAROOT` environment variable is set accordingly.
+**Warning:** The healthcheck script doesn't support overriding the data directory via command line arguments. If you change the data directory from the default `/home/node/app/data`, ensure that the `SILLYTAVERN_DATAROOT` environment variable is set accordingly.
+
 The healthcheck is controlled by the `SILLYTAVERN_HEARTBEATINTERVAL` environment variable (or `heartbeatInterval` in config.yaml). This value specifies the interval in seconds between heartbeat writes.
 
 - **Default:** `0` (disabled)
@@ -861,7 +878,8 @@ volumes:
 
 ### Forbidden by Whitelist
 
-!!!warning Docker Desktop vs Docker CE
+**Warning Docker Desktop vs Docker CE:**
+
 The whitelistDockerHosts config option (enabled by default) works by resolving `host.docker.internal` and `gateway.docker.internal` hostnames. These hostnames are **only available in Docker Desktop** (Windows/Mac). If you are using **Docker CE on Linux**, these hostnames will not resolve and the auto-whitelisting will fail with errors like this in the container logs:
 
 ```
@@ -870,6 +888,7 @@ Failed to resolve whitelist hostname gateway.docker.internal: getaddrinfo ENOTFO
 ```
 
 In this case, you need to manually add the Docker gateway IP to the whitelist as described below.
+
 1. Execute the following Docker command to obtain the IP of your SillyTavern Docker container.
 
     ```sh
@@ -916,7 +935,7 @@ In this case, you need to manually add the Docker gateway IP to the whitelist as
     Save the file and exit the text editor.
 
 **Info:** Note that if you configured Docker network as a bridge, you could also add external IP addresses to the whitelist as usual.
-!!!
+
 3. Restart the Docker Container to apply the new configuration.
 
     ```sh
@@ -948,7 +967,8 @@ There are two modes of running SillyTavern that differ in how they handle the co
 * **Standalone mode** (default) - uses the `config.yaml` file and `data` directory in the server directory. All data will be constrained to the installation path. This is the recommended mode for most users.
 * **Global mode** - uses the system-wide paths for configuration and data. This is useful for installing SillyTavern as a package or when you want to share the same configuration and data across multiple installations.
 
-Installations made by using the official npm package (https://www.npmjs.com/package/sillytavern) (e.g. `npx sillytavern@latest`) will run in global mode by default.
+**Info:** Installations made by using the official npm package (https://www.npmjs.com/package/sillytavern) (e.g. `npx sillytavern@latest`) will run in global mode by default.
+
 ### Data paths
 
 **Standalone mode** paths are relative to the SillyTavern installation directory:
@@ -964,7 +984,8 @@ Installations made by using the official npm package (https://www.npmjs.com/pack
 
 ### How to run in global mode
 
-`dataRoot` and `configPath` can't be overridden with CLI arguments or config.yaml when running in global mode.
+**Warning:** `dataRoot` and `configPath` can't be overridden with CLI arguments or config.yaml when running in global mode.
+
 1. Pass the `--global` argument to the server startup command (e.g. `node server.js --global`).
 2. Pass the `--global` argument to the shell startup script (e.g. `Start.bat --global` or `./start.sh --global`).
 3. Use the `start:global` script in the `package.json` file (e.g. `npm run start:global`).
@@ -1012,9 +1033,8 @@ For MacOS / Linux all of these will be done in a Terminal.
 
 Find your OS below and follow the instructions to update ST.
 
-!!! For installation instructions, see the Installation page.
+**For installation instructions, see the Installation page.:** This guide assumes you have already installed and run SillyTavern at least once.
 
-This guide assumes you have already installed and run SillyTavern at least once.
 ----
 
 ## Linux/Termux or MacOS
@@ -1356,8 +1376,8 @@ npm run start -- --dataRoot="/Users/harry/ST-Data"
 
 The default data root path is `./data`, which means the `data` directory in SillyTavern's repository.
 
-!!!info Note
-The data root path should be either a **full absolute** or a **full relative** path. You _can't_ use path shortcuts like `~` or `%APP_DATA%`, as these are resolved by a shell, not the operating system.
+**Info Note:** The data root path should be either a **full absolute** or a **full relative** path. You _can't_ use path shortcuts like `~` or `%APP_DATA%`, as these are resolved by a shell, not the operating system.
+
 ### Migration
 
 #### **IMPORTANT!** Before we begin
@@ -1387,8 +1407,8 @@ volumes:
 
 **Step 3.** Rebuild the container and start it up.
 
-!!!info Note
-Soft links between the `/public` directory and the `config` volume are no longer needed and are not built into the Docker container!
+**Info Note:** Soft links between the `/public` directory and the `config` volume are no longer needed and are not built into the Docker container!
+
 #### What to migrate?
 
 The following files and directories are subject to the data migration. Assuming the default configuration, the before and after paths are provided in the table below.
@@ -1429,11 +1449,14 @@ Please refer to the Users documentation for more information.
 
 # Windows Installation
 
+**Warning:**
+
 DO NOT INSTALL INTO ANY WINDOWS CONTROLLED FOLDER (Program Files, System32, etc).
 
 DO NOT RUN START.BAT WITH ADMIN PERMISSIONS
 
 INSTALLATION ON WINDOWS 7 IS IMPOSSIBLE AS IT CANNOT RUN NODEJS 20
+
 ## Installing via Git
 
 1. Install NodeJS (https://nodejs.org/en) (latest LTS version is recommended)
@@ -1524,8 +1547,8 @@ Connection Profiles store the following selections.
 
 ## Managing Connection Profiles
 
-!!!info Note
-Profiles only save the selection in dropdown fields, without knowing anything about the underlying settings. This means that you will lose unsaved changes by switching to a different profile. To prevent this, make sure to update all presets and templates if you don't want to lose ephemeral changes.
+**Info Note:** Profiles only save the selection in dropdown fields, without knowing anything about the underlying settings. This means that you will lose unsaved changes by switching to a different profile. To prevent this, make sure to update all presets and templates if you don't want to lose ephemeral changes.
+
 * To save a profile, set all the required settings and click the "Create" button. Then review the settings and provide a name for the profile. **A name should be unique.**
 * To view the detailed information about a chosen profile, click on the "Information" button. Click again to hide the details.
 * Connection Profile settings are saved into `settings.json` without altering the associated profile save file until you press the "Update" button. This means that if you setup a profile, but then switch to a different one without updating, you will lose all of your previous changes.
@@ -1793,7 +1816,8 @@ You should now be able to use the Google Vertex AI API in Express Mode with Sill
   - log your activity (input prompts, AI responses).
   - produce bad or offensive responses.
 
-When using Horde **never send** any personal information such as names, email addresses, etc.
+**Warning:** When using Horde **never send** any personal information such as names, email addresses, etc.
+
 Switching on the "Trusted Workers Only" checkbox will limit the selection of available workers to only those who have been hosting on Horde for a while and are generally considered trusted. But they could still be seeing prompts, for example by hosting using unaccounted software.
 
 To help reduce this problem, SillyTavern has built in the following feature:
@@ -1809,9 +1833,10 @@ To help reduce this problem, SillyTavern has built in the following feature:
 - Select one or more Models ('AI brains' for the characters) from the Model Selector at the bottom of the panel.
 - Select a character and begin chatting.
 
-By default, your SillyTavern instance connects to the Horde's low priority 'guest account'.
+**Warning:** By default, your SillyTavern instance connects to the Horde's low priority 'guest account'.
 This means you may have to wait a long time for a reply.
 To reduce wait times, follow the tips down below.
+
 ## Tips
 
 - Register an account on the Horde website (https://aihorde.net/register) then add your Horde key into the SillyTavern Horde API Key box.
@@ -2376,8 +2401,8 @@ To more thoroughly fix the problem, go back through the context, especially rece
 
 ## Source-specific instructions
 
-!!!warning **Important!**
-Most API platforms allow you to view the generated API key only once, at the time of its creation. If you lose it, you will need to generate a new key. Make sure to keep it safe!
+**Warning Important!:** Most API platforms allow you to view the generated API key only once, at the time of its creation. If you lose it, you will need to generate a new key. Make sure to keep it safe!
+
 ### OpenAI
 
 Use OpenAI's developer platform to access various OpenAI models, including gpt-4o, gpt-4.1, o3, etc.
@@ -2466,11 +2491,13 @@ Electron Hub is a unified OpenAI-compatible platform that provides access to mod
 
 ## Custom OpenAI-compatible endpoint
 
-It is important to note that we do not provide support for possible issues that you may have!
+**Warning:** It is important to note that we do not provide support for possible issues that you may have!
 We do not guarantee compatibility with every possible API endpoint!
+
 If you intend to use this feature to use a local endpoint, like TabbyAPI, Oobabooga, Aphrodite, or any like those, you might want to check out the built-in compatibility for those instead. The custom endpoint feature is mainly intended for use with other services and programs that expose an OpenAI-compatible API Chat Completion endpoint.
 
 Most Text Completion APIs support far greater customization options than OpenAI's standards allow for. These greater customization options, such as the Min-P sampler, may be worthwhile for SillyTavern users to check out, which can greatly improve the quality of generations.
+
 You can configure an alternative endpoint for the Chat Completions backend. This custom endpoint can connect to any server that supports the generic OpenAI API schema.
 
 Examples of compatible backends include:
@@ -2488,7 +2515,8 @@ To access this feature:
 
 Enter the custom endpoint URL and an API key if required. For example, TabbyAPI requires an API key for authentication.
 
-**Hint:** If you experience connection issues, try adding `/v1` to the end of the endpoint URL. Do NOT add the `/chat/completions` suffix.
+**Tip:** **Hint:** If you experience connection issues, try adding `/v1` to the end of the endpoint URL. Do NOT add the `/chat/completions` suffix.
+
 ### Selecting a Model
 
 If the custom API implements the `/v1/models` endpoint to provide a list of available models, you can choose from a dropdown list. Otherwise, use the text field to manually input a model ID.
@@ -2497,11 +2525,12 @@ Check 'Bypass API status check' to prevent SillyTavern from alerting you about a
 
 Click "Test Message" to verify connectivity by sending a simple prompt to the model.
 
-!!!info Documenting an external provider?
-Provider developers should read Integrating an External Provider for the provider-owned setup-guide template and the UI extension, server plugin, and official-integration routes.
+**Info Documenting an external provider?:** Provider developers should read Integrating an External Provider for the provider-owned setup-guide template and the UI extension, server plugin, and official-integration routes.
+
 ## Prompt Post-Processing
 
-**Note:** Tool Calling is not supported when Post-Processing option with "no tools" is used!
+**Warning:** **Note:** Tool Calling is not supported when Post-Processing option with "no tools" is used!
+
 Some endpoints may impose specific restrictions on the format of incoming prompts, such as requiring only one system message or strictly alternating roles.
 
 SillyTavern provides built-in prompt converters to help meet these requirements (from least to most restrictive):
@@ -2522,16 +2551,20 @@ In strict mode, if no user message exists before the first assistant message, th
 
 # OpenRouter
 
-OpenRouter is available as both a Text Completion and Chat Completion source. All models are available through either API, but their features may differ depending on the API type you choose. For example, image inlining and tool calling are only available with the Chat Completion API.
+**Info:** OpenRouter is available as both a Text Completion and Chat Completion source. All models are available through either API, but their features may differ depending on the API type you choose. For example, image inlining and tool calling are only available with the Chat Completion API.
+
 Don't want to sign up for a dozen API services, but still want access to all the latest models? Use OpenRouter.
 
 OpenRouter works by letting you use a single endpoint to access models like DeepSeek, Claude, and Gemini, all in one service with a shared credit pool.
 
 It has a free trial (about $1) and paid access afterward. No subscription or monthly bill - you pay for what you actually use. Some models have free access with a limited number of daily requests.
 
+**Tip:**
+
 To get permanent access to free models with a generous daily limit, you need to buy at least $10 in credits **once**.
 
 See more details on the OpenRouter FAQ page (https://openrouter.ai/docs/faq).
+
 - Create an OpenRouter account: openrouter.ai (https://openrouter.ai/)
 - OpenRouter Models List (https://openrouter.ai/models?order=pricing-low-to-high)
 
@@ -2547,7 +2580,8 @@ From top to bottom (see image above):
 
 # Self-hosted AI models
 
-This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the SillyTavern documentation repository (https://github.com/SillyTavern/SillyTavern-Docs).
+**Warning:** This guide is based on the author's personal experience and knowledge and is not an absolute truth. All statements should be taken with a grain of salt. If you have any corrections or suggestions, please contact us on Discord or send a PR to the SillyTavern documentation repository (https://github.com/SillyTavern/SillyTavern-Docs).
+
 ## Intro
 
 This guide aims to help you get set up using SillyTavern with a local AI running on your PC (we'll start using the proper terminology from now on and call it an LLM). Read it before bothering people with tech support questions.
@@ -2615,7 +2649,8 @@ With the LLM now on your PC, we need to download a tool that will act as a middl
 
 This guide covers both options, you only need one.
 
-If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<port\>** instead of **http://127.0.0.1:\<port\>**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
+**Warning:** If you are hosting SillyTavern on Docker, use **http://host.docker.internal:\<port\>** instead of **http://127.0.0.1:\<port\>**. This is because SillyTavern connects to the API endpoint from the server running in the Docker container. Docker's network stack is separate from the host's, and so the loopback interfaces are not shared.
+
 ### Downloading and using KoboldCpp (No installation required, GGUF models)
 
 1. Visit https://koboldai.org/cpp where you will see the latest version with various files you can download.
@@ -2637,7 +2672,8 @@ At the time of writing the newest CUDA version they list is cu12 which will work
 
 ### Installing Oobabooga
 
-Depending on how you have installed Oobabooga, the file paths can be slightly different; i.e. `/text-generation-webui/user_data` if you installed via git clone, and `/text-generation-webui-main/user_data` if you used the .zip method.  
+**Note:** Depending on how you have installed Oobabooga, the file paths can be slightly different; i.e. `/text-generation-webui/user_data` if you installed via git clone, and `/text-generation-webui-main/user_data` if you used the .zip method.
+
 Here's a more correct/dummy-proof installation procedure:
 
 1. git clone <https://github.com/oobabooga/text-generation-webui> (or download their repo as a .zip in your browser, then extract it)
@@ -2784,7 +2820,8 @@ The Author's Note can be used to specify how the AI should write its responses.
 
 # Character Design
 
-Character Name is the only required field. You can leave the rest empty and still use the character in chats.
+**Tip:** Character Name is the only required field. You can leave the rest empty and still use the character in chats.
+
 ## Character Description
 
 Used to add the character description and other relevant information for the AI. This information is always included in the prompt, so all important facts should be included here.
@@ -2871,16 +2908,19 @@ Click the **<i class="fa-solid fa-star"></i> Add to Favorites** button to mark t
 
 ## Advanced Definitions
 
-The following fields are hidden by default. To access and edit them, you need to click on the **<i class="fa-solid fa-book"></i> Advanced Definitions** button on the menu bar of the character definition page.
+**Info:** The following fields are hidden by default. To access and edit them, you need to click on the **<i class="fa-solid fa-book"></i> Advanced Definitions** button on the menu bar of the character definition page.
+
 ### Prompt Overrides
 
 * **Main Prompt**: If the "Prefer Char. Prompt" user setting is enabled, any text you put here will override the main/system prompt for the character.
 * **Post-History Instructions**: If the "Prefer Char. Instructions" user setting is enabled, any text you put here will be used as the post-history instructions for the character.
 
-Insert `{{original}}` into either box to include the respective default prompt from system settings in a designated place.
+**Tip:** Insert `{{original}}` into either box to include the respective default prompt from system settings in a designated place.
+
 ### Creator's Metadata
 
-Not used for prompt building, but provides additional metadata about the character.
+**Info:** Not used for prompt building, but provides additional metadata about the character.
+
 * **Created by**: The name of the character's creator. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.
 * **Character Version**: The version of the character. Can be displayed in the character list if the "Char List Subheader" user setting is set accordingly.
 * **Creator's Notes**: Any additional notes about the character that the creator wants to share. The first few lines are displayed in the character list, and the full text is displayed in the "Creator's Notes" section on the character's page. Supports Markdown/HTML formatting.
@@ -2929,8 +2969,8 @@ Example:
 
 This page describes the ways you can manage your AI chat files.
 
-!!!info Note
-Some of these options are available in the "Manage chat files" dialog that opens from the bottom left options menu.
+**Info Note:** Some of these options are available in the "Manage chat files" dialog that opens from the bottom left options menu.
+
 ## Solo Chats vs Group Chats
 
 The simplest way to use a character card is a Solo chat; just click on their card and start chatting.
@@ -3002,8 +3042,8 @@ Data Bank stores file attachments, also known as documents. The documents are di
 2. Character attachments - available only for the currently chosen character, including when they are replying in a group. _Attachments are saved locally and are not exported with the character card!_
 3. Chat attachments - available only in the currently open chat. Every character in the chat can pull from it.
 
-!!!info Note
-While not formally a part of the data bank, you can attach files even to individual messages. Use the Attach File option from the "Wand" menu, or a paperclip icon in the message actions row.
+**Info Note:** While not formally a part of the data bank, you can attach files even to individual messages. Use the Attach File option from the "Wand" menu, or a paperclip icon in the message actions row.
+
 What can be a document? Practically anything that is representable in plain text form!
 
 Examples include, but are not limited to:
@@ -3034,8 +3074,8 @@ Upload a file from the hard drive of your computer. SillyTavern provides built-i
 
 You can also attach any text files with non-standard extensions, such as JSON, YAML, source codes, etc. If there are no known conversions from the type of a selected file, and the file can't be parsed as a plain text document, the file upload will be rejected, meaning that raw binary files are not allowed.
 
-!!!info Note
-Importing Microsoft Office (DOCX, PPTX, XLSX) and LibreOffice documents (ODT, ODP, ODS) requires a Server Plugin (https://github.com/SillyTavern/SillyTavern-Office-Parser) to be installed and loaded. See the plugin's README page for installation instructions.
+**Info Note:** Importing Microsoft Office (DOCX, PPTX, XLSX) and LibreOffice documents (ODT, ODP, ODS) requires a Server Plugin (https://github.com/SillyTavern/SillyTavern-Office-Parser) to be installed and loaded. See the plugin's README page for installation instructions.
+
 ### Web
 
 Scrape text from a web page by its URL. The HTML document is then processed through the Readability (https://github.com/mozilla/readability) library to extract only usable text.
@@ -3050,22 +3090,22 @@ The script is loaded in the video's default language. Optionally, you can specif
 
 ### Web Search
 
-!!!info Note
-This source requires to have a Web Search extension installed and properly configured. See the linked page for more details.
+**Info Note:** This source requires to have a Web Search extension installed and properly configured. See the linked page for more details.
+
 Perform a web search and download the text from the search result pages. This is similar to the Web source but fully automated. A chosen search engine will be inherited from the extension settings, so set it up in advance.
 
 To begin, specify the search query, max number of links to be visited, and the output type: one combined file (formatted according to the extension rules) or an individual file for every single page. You can choose to save the page snippets as well.
 
 ### Fandom
 
-!!!info Note
-This source requires to have a Server Plugin (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) installed and loaded. See the plugin's README page for installation instructions.
+**Info Note:** This source requires to have a Server Plugin (https://github.com/SillyTavern/SillyTavern-Fandom-Scraper) installed and loaded. See the plugin's README page for installation instructions.
+
 Scrape articles from a Fandom (https://www.fandom.com/) wiki by its ID or URL. As some wikis are very large, it may be beneficial to limit the scope using the filter regular expression, it will be tested against the article's title. If no filter is provided, then all of the pages are subject to be exported. You may save them either as individual files for every page, or joint into a single document.
 
 ### Bronie Parser Extension (Third-Party)
 
-!!!warning Note
-This source comes from a third-party and is **not affiliated** with the SillyTavern team. This source requires you to have Bronya Rand's Bronie Parser Extension (https://github.com/Bronya-Rand/Bronie-Parser-Extension) installed as well as Server Plugins that require the parser to work.
+**Warning Note:** This source comes from a third-party and is **not affiliated** with the SillyTavern team. This source requires you to have Bronya Rand's Bronie Parser Extension (https://github.com/Bronya-Rand/Bronie-Parser-Extension) installed as well as Server Plugins that require the parser to work.
+
 Bronya Rand's Bronie Parser Extension allows the use of third-party scrapers, such as miHoYo/HoYoverse's HoYoLab (https://wiki.hoyolab.com) into SillyTavern, similar to the other data sources.
 
 Currently, Bronya Rand's Bronie Parser Extension supports the following:
@@ -3082,18 +3122,19 @@ To use the documents for RAG, you need to use a compatible extension that will i
 
 Vector Storage, which comes bundled with SillyTavern, is a reference implementation of such an extension. It uses embeddings (also known as vectors) to search for documents that relate to your ongoing chats.
 
-!!!info Fun facts
+**Info Fun facts:**
 
 1. Embeddings are arrays of numbers that abstractly represent a piece of text, produced by specialized language models. More similar texts have a shorter distance between their respective vectors.
 2. Vector Storage extension uses the Vectra (https://github.com/Stevenic/vectra) library to keep track of file embeddings. They are stored in JSON files in the `/vectors` folder of your user data directory. Every document is internally represented by its own index/collection file.
+
 As the Vectors functionality is disabled by default, you need to open the extensions panel ("Stacked Cubes" icon on the top bar), then navigate to the "Vector Storage" section, and tick the "Enabled for files" checkbox under the "File vectorization settings".
 
 By itself, Vector Storage does not produce any vectors, you need to use a compatible embedding provider.
 
 ## Vector Providers
 
-!!!warning Warning
-Embeddings are only usable when they are retrieved using the same model that generated them. When changing an embedding model or source, the vectors need to be recalculated.
+**Warning:** Embeddings are only usable when they are retrieved using the same model that generated them. When changing an embedding model or source, the vectors need to be recalculated.
+
 ### Local
 
 These sources are free and unlimited and use your CPU/GPU to calculate embeddings.
@@ -3127,8 +3168,8 @@ All these sources require an API key of the respective service and usually have 
 
 After you've selected your embedding provider, don't forget to configure other settings that will define the rules for processing and retrieving documents.
 
-!!!info Note
-Splitting, vectorization, and retrieval of information from the attachments take some time. While the initial ingestion of the file may take a while, the RAG search queries are usually fast enough not to create a significant lag.
+**Info Note:** Splitting, vectorization, and retrieval of information from the attachments take some time. While the initial ingestion of the file may take a while, the RAG search queries are usually fast enough not to create a significant lag.
+
 ### Message attachments
 
 These settings control the files that are attached directly to the messages.
@@ -3172,8 +3213,8 @@ The following rules apply:
 - Vectorize All - forcibly ingests the embeddings for all unprocessed files.
 - Purge Vectors - clears the file embeddings, allowing to recalculate their vectors.
 
-!!!info Note
-For "Chat vectorization" settings see Chat Vectorization.
+**Info Note:** For "Chat vectorization" settings see Chat Vectorization.
+
 ## Conclusion
 
 Congratulations! Your chatting experience is now enhanced with the power of RAG. Its capabilities are only limited by your imagination. As always, don't be afraid to experiment!
@@ -3420,8 +3461,8 @@ There are several ways to add or remove tags to a character card:
 
 To do mass tagging, click the "Bulk edit characters" button (pencil icon), select the cards you want to tag, right click on any of them, then click "Tag" in the contextual menu.
 
-!!!info Note
-Please note that groups cannot be mass tagged.
+**Info Note:** Please note that groups cannot be mass tagged.
+
 From this screen you will be able to:
 
 - Add or remove tags using the combo box.
@@ -3438,16 +3479,16 @@ You can backup and restore all the information here (tag list, tag assignments t
 
 You can use grip buttons on the left to reorder tags as they will appear in the tag filter in Character Management.
 
-!!!warning Warning
-The tags backup JSON file is not intended for sharing with others as it contains information specific to your instance only, such as internal entity names!
+**Warning:** The tags backup JSON file is not intended for sharing with others as it contains information specific to your instance only, such as internal entity names!
+
 ## Importing tags when importing character cards
 
 When importing external character cards from downloaded images (or from the "Import content from external URL" button), you'll be prompted to optionally import the tags that it contains. They are not required for the card to function; tags are simply organizational.
 
 Embedded card tags are stored in the "Creator's Metadata" section of "Advanced Definitions" menu of the character editor. If you wish to propose some tags to other users who would import that character, populate the "Tags to Embed" field with a comma-separated list of tags.
 
-!!!info Note
-This popup will appear only if a User Settings option "Import Card Tags" is set to "Ask". 
+**Info Note:** This popup will appear only if a User Settings option "Import Card Tags" is set to "Ask".
+
 In the "Import tags for CHARACTER NAME" popup that opens, you'll see a list of Existing tags (which you already had locally with a matching name), and New tags (which you did not have locally).
 
 You can either:
@@ -3469,8 +3510,8 @@ You can filter by any number of tags at the same time.
 
 ## Tags as Folders
 
-!!!info Note
-To use this functionality, it has to be enabled first in the User Settings, under the UI Theme column. The state of this toggle also saves with the UI theme.
+**Info Note:** To use this functionality, it has to be enabled first in the User Settings, under the UI Theme column. The state of this toggle also saves with the UI theme.
+
 From the "Manage tags" button (gear icon), each tag entry has a multi-state toggle button to cycle between these tags-as-folder modes (called "bogus folder" in the code):
 
 - one click to turn this tag into an "open folder". It will appear as a virtual entry in the card list; clicking into it will only show cards with that tag
@@ -3524,10 +3565,10 @@ You can now:
 * **Message actions**: Click the <i class="fa-solid fa-ellipsis"></i> **Message actions** button on a message for more message options like translation, image generation, and story branching.
 * **Chat options**: Click the <i class="fa-solid fa-bars"></i> **Options** button next to the chat bar for more chat options like author's notes and chat file management.
 
-!!! Edit and swipe
-If you wish you'd said something different, you can edit your message and then swipe the AI's response to get a new one.
-!!! Keyboard shortcuts
-You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` slash command in the chat or check the HotKeys page.
+**Edit and swipe:** If you wish you'd said something different, you can edit your message and then swipe the AI's response to get a new one.
+
+**Keyboard shortcuts:** You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` slash command in the chat or check the HotKeys page.
+
 ## Message actions panel
 
 Manage individual chat messages via the ellipsis (•••) button on the message.
@@ -3691,9 +3732,12 @@ Token probabilities are not available from all APIs. If you are using an API tha
 
 # Slash commands
 
+**Warning:**
+
 **This is not an exhaustive list as it is updated rarely.**
 
 For the most up-to-date list of commands that will work in your instance, use the `/help slash` chat command in any SillyTavern chat.
+
 - `/help` – displays the help message
 - `/api` - switches to a different API
 - `/sys` - sends a neutral message as a system narrator
@@ -4047,32 +4091,60 @@ This should be handled in the `Author's Note` with a combination of phrases like
 
 Interact with AI, your way. Build your world, your work, or your dreams.
 
-**Callout:** ## Getting Started
+**Callout:**
+
+## Getting Started
+
 **Quick Start**
+
 Send your first message to the AI and get a response
+
 **Chatting**
+
 How to chat with the AI and use the chat interface
+
 **FAQ**
+
 Frequently asked questions about SillyTavern, AI models, making characters, getting better responses, and more
 
-**Callout:** ## Fundamentals
+**Callout:**
+
+## Fundamentals
+
 **API Connections**
+
 Connect to AI models for generating text, images, and more
+
 **Characters** and **Personas**
+
 Create and use characters to shape the AI's role, and personas to define your identities
+
 **Response Configuration** and **Prompts**
+
 Control the requests that you send to the AI and how it responds
+
 **Welcome Page Assistants**
+
 Learn how to set up and use Welcome Page Assistants to greet you with a designated character on the Welcome Screen.
 
-**Callout:** ## Building on SillyTavern
+**Callout:**
+
+## Building on SillyTavern
+
 **World Info**
+
 Manage information and when to insert it into the prompt
+
 **Data Bank**
+
 Store and retrieve information for use in the AI's responses
+
 **Extensions**
+
 Add new features and capabilities to the AI or the interface
+
 **Development and Automation**
+
 Automate tasks, let your AI interact with the world, and write your own extensions
 
 ---
@@ -4081,40 +4153,67 @@ Automate tasks, let your AI interact with the world, and write your own extensio
 
 What all the buttons do, from the left to the right:
 
-**Callout:** <i class="fa-solid fa-sliders fa-2xl fa-fw"></i> **Response Configuration**
+**Callout:**
+
+<i class="fa-solid fa-sliders fa-2xl fa-fw"></i> **Response Configuration**
 and **Prompt Manager**
+
 Control text generation and sampling. Customize prompt construction for Chat Completion APIs.
 
-**Callout:** <i class="fa-solid fa-plug fa-2xl fa-fw"></i> **API Connections**
+**Callout:**
+
+<i class="fa-solid fa-plug fa-2xl fa-fw"></i> **API Connections**
+
 Connect to AI models for generating text, images, and more
 
-**Callout:** <i class="fa-solid fa-font fa-2xl fa-fw"></i> **Advanced Formatting**
+**Callout:**
+
+<i class="fa-solid fa-font fa-2xl fa-fw"></i> **Advanced Formatting**
+
 Customize prompt construction for Text Completion APIs
 
-**Callout:** <i class="fa-solid fa-book-atlas fa-2xl fa-fw"></i> **World Info**
+**Callout:**
+
+<i class="fa-solid fa-book-atlas fa-2xl fa-fw"></i> **World Info**
+
 Manage information and when to insert it into the prompt
 
-**Callout:** <i class="fa-solid fa-user-gear fa-2xl fa-fw"></i> **User Settings**
+**Callout:**
+
+<i class="fa-solid fa-user-gear fa-2xl fa-fw"></i> **User Settings**
+
 Change the theme, and the look and feel of messages and chats
 
-**Callout:** <i class="fa-solid fa-panorama fa-2xl fa-fw"></i> **Backgrounds**
+**Callout:**
+
+<i class="fa-solid fa-panorama fa-2xl fa-fw"></i> **Backgrounds**
+
 Change the background image
 
-**Callout:** <i class="fa-solid fa-cubes fa-2xl fa-fw"></i> **Extensions**
+**Callout:**
+
+<i class="fa-solid fa-cubes fa-2xl fa-fw"></i> **Extensions**
+
 Add new features and capabilities to the AI or the interface
 
-**Callout:** <i class="fa-solid fa-face-smile fa-2xl fa-fw"></i> **Personas**
+**Callout:**
+
+<i class="fa-solid fa-face-smile fa-2xl fa-fw"></i> **Personas**
+
 Create and manage personas to use with the AI
 
-**Callout:** <i class="fa-solid fa-address-card fa-2xl fa-fw"></i> **Characters**
+**Callout:**
+
+<i class="fa-solid fa-address-card fa-2xl fa-fw"></i> **Characters**
+
 Create and manage characters for the AI to use
 
 # SECTION: SillyTavern_Usage_macros
 
 # Macros
 
-!!!tip Experimental Macro Engine
-The Experimental Macro Engine supports nesting, stable substitution order, and other improvements. It is enabled by default for new installations. Existing installations can enable it in **User Settings** > **Chat/Message Handling** > **Experimental Macro Engine**.
+**Tip Experimental Macro Engine:** The Experimental Macro Engine supports nesting, stable substitution order, and other improvements. It is enabled by default for new installations. Existing installations can enable it in **User Settings** > **Chat/Message Handling** > **Experimental Macro Engine**.
+
 Macros are dynamic placeholders that get replaced with actual values when text is processed. They are used throughout SillyTavern in prompts, character cards, lorebooks, Quick Replies, and more.
 
 ## Finding Available Macros
@@ -4777,7 +4876,8 @@ These are automatically converted to their macro equivalents during processing.
 
 ## Common Macros by Category
 
-Use `/? macros` for the complete list of available macros and their detailed descriptions.
+**Tip:** Use `/? macros` for the complete list of available macros and their detailed descriptions.
+
 ### Names & Participants
 
 | Macro | Description |
@@ -4932,6 +5032,7 @@ Use `/? macros` for the complete list of available macros and their detailed des
 A persona in SillyTavern is the identity you use to participate in chats — essentially a combination of your display name, avatar, and optional descriptive text. Personas allow you to easily switch roles or "characters" you speak as, without having to manually update your username/avatar each time.
 
 **Note:** Legacy user avatars/names that weren't tied to a persona have been removed. Existing data will be migrated to personas. If no name was specified, the persona will be named "[Unnamed Persona]".
+
 ## How to Create a Persona?
 
 1. Open the **Persona Management** panel (<i class="fa-solid fa-face-smile"></i> button in the top menu).
@@ -4944,7 +5045,8 @@ A persona in SillyTavern is the identity you use to participate in chats — ess
 
 Personas can also be created by converting any existing character. Simply open the character, select "More..." and click "Convert to Persona". A persona with the same name and description will be created. Other character card fields like Scenario or Personality will not be used. The character will not be deleted.
 
-Since `{{user}}` and `{{char}}` macros have opposite meanings when used in Persona and Character descriptions, you'll be prompted to swap them if the converted description contains either of them.
+**Note:** Since `{{user}}` and `{{char}}` macros have opposite meanings when used in Persona and Character descriptions, you'll be prompted to swap them if the converted description contains either of them.
+
 ## Persona Description
 
 Each persona can store a custom text description — mental and physical traits, age, occupation, or any personal details. These can also include template macros such as `{{char}}` or `{{user}}` (see Macros).
@@ -5055,7 +5157,7 @@ All settings under the **Current Persona** are saved per-persona. A few global s
 4. **Character link popups**: If multiple personas are linked to the same character, you'll get a popup to pick which persona each time you open the chat. This is a handy way to have a small selection of personas to choose from for specific characters.
 5. **Backups**: You can back up your entire persona list (names, character connections, descriptions) with the **Backup** button in Persona Management, and restore it later if needed.
 
-!!!tip Backup Remarks
+**Tip Backup Remarks:**
 
 - Images and chat connections are not saved together with personas and will not be backed up via this.
 - These backups are not designed to be shared, as they contain internal links.
@@ -5094,6 +5196,7 @@ You can restore the default templates to their original state. This can be done 
 ### Manual Reset
 
 Make sure the `skipContentCheck` setting is set to `false` in config.yaml, otherwise the content check will not be triggered.
+
 1. Navigate to your user data directory (see Data paths for details).
 2. Delete the `content.log` file from the root of your user data directory. This file tracks the default files copied for your user.
 3. Delete the template JSON files from the relevant subdirectories (`context`, `instruct`, `sysprompt`, etc.).
@@ -5101,8 +5204,8 @@ Make sure the `skipContentCheck` setting is set to `false` in config.yaml, other
 
 ## Backend-defined templates
 
-!!! Applies to: Text Completion APIs
-Not applicable to Chat Completion APIs as they use a different prompt builder.
+**Applies to: Text Completion APIs:** Not applicable to Chat Completion APIs as they use a different prompt builder.
+
 Some Text Completion sources provide an ability to automatically choose templates recommended by the model author. This works by comparing a hash of the chat template defined in the model's `tokenizer_config.json` file with one of the default SillyTavern templates.
 
 1. **<i class="fa-solid fa-bolt"></i> Derive templates** option must be enabled in the **<i class="fa-solid fa-font"></i> Advanced Formatting** menu. This can be applied to Context, Instruct, or both.
@@ -5113,8 +5216,8 @@ Some Text Completion sources provide an ability to automatically choose template
 
 ## System Prompt
 
-!!! Applies to: Text Completion APIs
-For equivalent settings in Chat Completion APIs, use Prompt Manager. The **Main Prompt** is the equivalent of the System Prompt in Chat Completion APIs.
+**Applies to: Text Completion APIs:** For equivalent settings in Chat Completion APIs, use Prompt Manager. The **Main Prompt** is the equivalent of the System Prompt in Chat Completion APIs.
+
 The System Prompt defines the general instructions for the model to follow. It sets the tone and context for the conversation. For example, it tells the model to act as an AI assistant, a writing partner, or a fictional character.
 
 The System Prompt is a part of the Story String and usually the first part of the prompt that the model receives.
@@ -5123,8 +5226,8 @@ See the prompting guide to learn more about the System Prompt.
 
 ## Context Template
 
-!!! Applies to: Text Completion APIs
-For equivalent settings in Chat Completion APIs, use Prompt Manager.
+**Applies to: Text Completion APIs:** For equivalent settings in Chat Completion APIs, use Prompt Manager.
+
 Usually, AI models require you to provide the character data to them in some specific way. SillyTavern includes a list of pre-made conversion rules for different models, but you may customize them however you like. 
 
 The options for this section are explained in Context Template.
@@ -5153,7 +5256,8 @@ Supported APIs:
 
 ## Start Reply With
 
-By default, the Start Reply With prefix won't be shown in the resulting message. Enable "Show reply prefix in chat" to display it.
+**Note:** By default, the Start Reply With prefix won't be shown in the resulting message. Enable "Show reply prefix in chat" to display it.
+
 ### Text Completion APIs
 
 Prefills the last line of the prompt, forcing the model to continue from that point. This is useful for enforcing content, such as nudging toward the Model Reasoning with the defined prefix:
@@ -5286,8 +5390,8 @@ However, if you want to experiment, an insertion depth of `0` is open. However, 
 
 # Context Template
 
-!!! Applies to: Text Completion APIs
-For equivalent settings in Chat Completion APIs, use Prompt Manager.
+**Applies to: Text Completion APIs:** For equivalent settings in Chat Completion APIs, use Prompt Manager.
+
 Usually, AI models require you to provide the character data to them in some specific way. SillyTavern includes a list of pre-made conversion rules for different models, but you may customize them however you like.
 
 Edit these settings in the "Advanced Formatting" panel.
@@ -5314,8 +5418,8 @@ We provide the following parameters to the Handlebars evaluator (wrapped in doub
 12. `{{mesExamples}}`: (Optional) The character's Example Dialogues, instruct-formatted with a separator.
 13. `{{mesExamplesRaw}}`: The character's Example Dialogues in raw format, without any formatting.
 
-!!!tip **Important**  
-When using `{{mesExamples}}` in the Story String, set **"Example Messages Behavior"** in the **<i class="fa-solid fa-user-cog"></i> User Settings** panel to **"Never include examples"** to avoid duplicating example messages in the prompt.
+**Tip Important:** When using `{{mesExamples}}` in the Story String, set **"Example Messages Behavior"** in the **<i class="fa-solid fa-user-cog"></i> User Settings** panel to **"Never include examples"** to avoid duplicating example messages in the prompt.
+
 A special `{{trim}}` macro is supported to remove any newlines that surround it. Use it if you want a part of the text to not be separated from the previous line by a newline (_spaces **are not** trimmed_).
 
 **WARNING**: If any of the above parameters are missing from the story string template, they will not be sent in the prompt at all.
@@ -5336,16 +5440,19 @@ By default, the rendered story string (with all placeholders replaced) is placed
 
 Alternatively, you can move it to a dynamic position by choosing the "In-chat @ Depth" option, which places the story string at a specific depth in the chat context.
 
-!!!warning **Attention**
+**Warning Attention:**
+
 If the template contains static prompt elements (model-specific prefixes or suffixes) for wrapping the story string, using the "In-Chat @ Depth" position will cause it to be incorrectly double-wrapped with duplicate sequences, which may lead to unexpected results.
 
 In this case, you can fix the issue in one of the following ways:
 
 1. **Built-in templates**: Reset the templates to their defaults using the steps described in Advanced Formatting.
 2. **Custom templates**: Move the static elements from the story string template to Story String Sequences.
+
 ### Story String wrapping
 
 The following section only applies when **Instruct Mode** is ON.
+
 * **Default** position: The rendered Story String will be wrapped using the sequences defined in Story String Sequences.
 * **In-chat @ Depth** position: The rendered Story String will be wrapped using the sequences defined in Chat Messages Sequences for a chosen role (default: System).
 
@@ -5371,7 +5478,8 @@ Recommended to keep it on to prevent model impersonation.
 
 ## Always add character's name to prompt
 
-This setting has no effect when Instruct Mode is ON. The name behavior is instead defined by the selected Include Names option.
+**Info:** This setting has no effect when Instruct Mode is ON. The name behavior is instead defined by the selected Include Names option.
+
 Appends the character's name to the prompt to force the model to complete the message as the character:
 
 ```txt
@@ -5457,8 +5565,8 @@ However, you can adjust the main prompt to better suit your needs. Here are some
 * **Clarify the role of the AI**: for example, you want the AI to act as a narrator, a storyteller, or a guide
 * **Change the context of the conversation**: for example, you want the AI to respond as if it were an AI assistant, text adventure game, or a writing partner
 
-!!! Try things out and see what works best for you
-All the examples in this guide have worked well for other users, but the prompt that works for your needs and the model you're using might be different. Experiment with different instructions and prompting styles to see what works best for you. If you're not sure what to try, you can always ask for help in the SillyTavern Discord (https://discord.gg/sillytavern).
+**Try things out and see what works best for you:** All the examples in this guide have worked well for other users, but the prompt that works for your needs and the model you're using might be different. Experiment with different instructions and prompting styles to see what works best for you. If you're not sure what to try, you can always ask for help in the SillyTavern Discord (https://discord.gg/sillytavern).
+
 Giving the AI additional instructions in the Main Prompt can help it understand what you want from the conversation.
 
 > Write one reply only. Write at least one paragraph, up to four.
@@ -5488,8 +5596,8 @@ When your conversation already has history, changing the main prompt has a limit
 * edit the message history to remove or correct examples of unwanted behavior
 * use the Post-History Instructions to provide final instructions to the AI
 
-!!! Get it right the first time!
-Never let the AI "get away" with something you don't want it to do. If you don't like the AI's response, don't continue the conversation as if it was correct. Instead, modify the prompts, regenerate the message, and continue from there. This will help the AI learn what you want.
+**Get it right the first time!:** Never let the AI "get away" with something you don't want it to do. If you don't like the AI's response, don't continue the conversation as if it was correct. Instead, modify the prompts, regenerate the message, and continue from there. This will help the AI learn what you want.
+
 ### Removing the "Fictional Chat" Context
 
 There are situations where "fictional chat" might not be the right context for your conversation. 
@@ -5562,8 +5670,8 @@ Some common uses of World Info include:
 
 Instruct Mode allows you to adjust the prompting for instruction-following models trained on various prompt formats, such as Alpaca, ChatML, Llama2, etc.
 
-!!! Applies to: Text Completion APIs
-For equivalent settings in Chat Completion APIs, use Prompt Manager.
+**Applies to: Text Completion APIs:** For equivalent settings in Chat Completion APIs, use Prompt Manager.
+
 ## API support
 
 ### Text Completion API
@@ -5600,8 +5708,8 @@ User: { Write a happy song about Nintendo Switch. }
 
 ### System Prompt
 
-!!!warning Recent change
-The System Prompt is now a separate entity. See the Advanced Formatting page for more details.
+**Warning Recent change:** The System Prompt is now a separate entity. See the Advanced Formatting page for more details.
+
 ### Templates
 
 Provides ready-made templates with sequences for some well-known instruct models.
@@ -5638,8 +5746,8 @@ The following options are available:
 
 ### Sequences: Story String Wrapping
 
-!!!warning Recent change
-System Prompt wrapping has been removed and replaced with Story String wrapping.
+**Warning Recent change:** System Prompt wrapping has been removed and replaced with Story String wrapping.
+
 Define how the Story String will be wrapped when the Position is set to "Default (top of context)"
 
 #### Story String Prefix
@@ -5694,12 +5802,14 @@ Various advanced configurations for finer tuning of the prompt building
 
 Inserted before the first Assistant's message.
 
-Only the first message of the **chat history** counts, not the message that actually goes into the prompt first!
+**Info:** Only the first message of the **chat history** counts, not the message that actually goes into the prompt first!
+
 #### Last Assistant Prefix
 
 Inserted before the last Assistant's message or as a last prompt line when generating an AI reply.
 
-Not used when generating text in a background (e.g. Stable Diffusion prompts or Summaries). System Instruction Prefix or Regular Assistant Prefix will be used instead.
+**Info:** Not used when generating text in a background (e.g. Stable Diffusion prompts or Summaries). System Instruction Prefix or Regular Assistant Prefix will be used instead.
+
 #### System Instruction Prefix
 
 Inserted as a last prompt line when generating neutral/system text in a background (e.g. Stable Diffusion prompts or Summaries).
@@ -5722,10 +5832,10 @@ If a stop sequence is generated, everything past it will be removed from the out
 
 The Prompt Manager is a system that provides more control over the prompt-building strategy for Chat Completion APIs.
 
-!!! Applies to: Chat Completion APIs
-For equivalent settings in Text Completion APIs, use Advanced Formatting.
-!!!tip Naming Presets
-If a preset shares a name with one of your character cards, it will be automatically selected when starting a chat with that character. Name presets something unique to avoid this behavior.
+**Applies to: Chat Completion APIs:** For equivalent settings in Text Completion APIs, use Advanced Formatting.
+
+**Tip Naming Presets:** If a preset shares a name with one of your character cards, it will be automatically selected when starting a chat with that character. Name presets something unique to avoid this behavior.
+
 Access the Prompt Manager by clicking on the "AI Response Configuration" button in the navigation bar. The Prompt Manager is located below the common settings panel.
 
 ## Quick Prompts Edit
@@ -5738,7 +5848,8 @@ These prompts are sent to the Chat Completion model to help it understand the in
 
 ### Format Templates
 
-If the format template is not set, the information will be sent as-is, without any wrapping.
+**Tip:** If the format template is not set, the information will be sent as-is, without any wrapping.
+
 These are string templates used to wrap the information pulled from World Info and Character Cards.
 
 A special marker is used to indicate where the information should be inserted:
@@ -5767,8 +5878,8 @@ Leave these empty to disable this functionality.
 
 Sent at the end of the prompt to instruct the model on what to do when Continue is triggered, such as when the Continue button is pressed or when triggered by STScript.
 
-!!! Chat Completion 'Continues'
-Keep in mind that Chat Completion models handle Continues differently than **Text Completion** models, and may not always deliver seamless results regardless of your Continue Nudge.
+**Chat Completion 'Continues':** Keep in mind that Chat Completion models handle Continues differently than **Text Completion** models, and may not always deliver seamless results regardless of your Continue Nudge.
+
 ### Replace Empty Message
 
 Sends the contents of this field instead of a blank message when the text box is empty and **Send a message** is pressed.
@@ -5785,22 +5896,26 @@ When Continue is triggered, the 'continued' message returned by the model will h
 
 ### Wrap in Quotes
 
-Deprecated option. Prefer Regex scripts instead.
+**Warning:** Deprecated option. Prefer Regex scripts instead.
+
 Wraps the entire user message in hidden quotation marks before sending. This is useful for sessions where characters do not use quotes to indicate speech. If your session uses quotation marks to indicate speech, leave this unchecked.
 
 ### Continue Prefill
 
-May not work with all Chat Completion sources.
+**Warning:** May not work with all Chat Completion sources.
+
 Sends the Continue Nudge as an Assistant role message instead of a System message. If this is enabled, the Continue Nudge prompt will not be used.
 
 ### Squash system messages
 
-Deprecated option. Prefer Prompt Post-Processing instead.
+**Warning:** Deprecated option. Prefer Prompt Post-Processing instead.
+
 Combines consecutive System messages into a single combined message (excluding Example Dialogue).
 
 ### Enable web search
 
 Not to be confused with the Web Search extension.
+
 Enables web search capabilities provided by the Chat Completion backend. The prompt is usually enriched with search results by the model provider and may incur additional costs.
 
 ### Enable function calling
@@ -5810,11 +5925,13 @@ See Function Calling
 ### Send inline images, Send inline videos
 
 Not to be confused with the Image Captioning extension.
+
 If the Chat Completion model has multimodal capabilities to process submitted images and videos, this toggles its ability to do so. To append media to the prompt, use the **Attach A File** option in the "Magic Wand" menu.
 
 ### Request inline images
 
 Not to be confused with the Image Generation extension.
+
 Allows the model to return image attachments.
 
 ### Use system prompt
@@ -5822,6 +5939,7 @@ Allows the model to return image attachments.
 Only supported by Google Gemini and Anthropic Claude backends.
 
 Despite having very similar settings for these two, they are technically separate options, so they can be configured separately.
+
 Merges all system messages up until the first message with a non-system role (User/Assistant) and sends them as a separate system instruction field.
 
 ## Reasoning Settings
@@ -5848,14 +5966,14 @@ Contains a dropdown list of all (non-default) prompts that the current Chat Comp
 
 This is a drag-and-drop interface that lists the prompts selected to potentially be sent to the Chat Completion model. Prompts placed closer to the **top** of the interface are sent earlier. The **bottom** of the list is the **last thing** sent to the model (typically, this would be your **Post-History Instructions**).
 
-!!! 'Pinned' prompts = Default prompts
-The default prompts cannot be removed from the list of selected prompts. This includes Main Prompt, World Info (before/after), Persona Description, Character Description, Character Personality, Scenario, Enhance Definitions, Auxiliary Prompt, Chat Examples, Chat History, and Post-History Instructions. If these are not desired, they can be **toggled 'OFF'**, but not removed or deleted outright.
+**'Pinned' prompts = Default prompts:** The default prompts cannot be removed from the list of selected prompts. This includes Main Prompt, World Info (before/after), Persona Description, Character Description, Character Personality, Scenario, Enhance Definitions, Auxiliary Prompt, Chat Examples, Chat History, and Post-History Instructions. If these are not desired, they can be **toggled 'OFF'**, but not removed or deleted outright.
+
 ## Editing a Prompt
 
 Clicking the **pencil button** on a prompt will bring you to the **Edit interface**. Here, you can edit the prompt directly.
 
-!!! Make sure to save your changes!
-To permanently save changes to these prompts in your Chat Completion preset, you must click the **Save** button in the bottom right of the **Edit interface**, as well as save the preset itself by using the **Save** button located at the top of the **AI Response Configuration** section! Otherwise, changes made will be lost when the Chat Completion preset is switched to a different one.
+**Make sure to save your changes!:** To permanently save changes to these prompts in your Chat Completion preset, you must click the **Save** button in the bottom right of the **Edit interface**, as well as save the preset itself by using the **Save** button located at the top of the **AI Response Configuration** section! Otherwise, changes made will be lost when the Chat Completion preset is switched to a different one.
+
 ### Name
 
 The name of the prompt. This is not sent to the Chat Completion model; it is for your reference within the Prompt Manager only.
@@ -5876,6 +5994,7 @@ The generation types for which this prompt is sent. If nothing is selected, the 
 - **Quiet:** Background generation requests, usually triggered by extensions or STscript commands.
 
 The "Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen Group reply strategy.
+
 ### Position
 
 When Position is set to **Relative**, this prompt is sent where it's located in the drag-and-drop interface with all other prompts. When it is set to **In-Chat** and given a **Depth**, it is instead sent **within the Chat History** as the selected Role, and **ignores** the order of the drag-and-drop interface.
@@ -5888,6 +6007,7 @@ When Position is set to **In-Chat**, this defines how deep the prompt is sent wi
 
 Prompts that have the same Role and Depth will be grouped together and ordered by their Order value.
 The order is as follows (from top to bottom): User, AI Assistant, System.
+
 When Position is set to **In-Chat**, this defines the order in which the prompt is sent within the chat history. The lower the number, the earlier it is sent.
 
 ## Building Your Prompt: Tips and Tricks
@@ -5907,6 +6027,7 @@ In language models, reasoning (also known as model thinking) refers to a chain-o
 ## Configuration
 
 Most reasoning-related settings can be configured in the "Reasoning" section of **<i class="fa-solid fa-font"></i> Advanced Formatting** panel.
+
 Reasoning blocks appear in the chat as collapsible message sections. They can be added manually, automatically by the backend, or through response parsing (see below).
 
 By default, reasoning blocks are collapsed to save space. Click a block to expand and view its contents. You can set blocks to expand automatically by enabling **Auto-Expand** in the reasoning settings.
@@ -5951,6 +6072,7 @@ Supported sources:
 - Moonshot
 
 For **most** sources, "Request model reasoning" does not determine whether a model does reasoning as it can't be disabled. If the backend and model support explicitly requesting disabled reasoning, the setting will do so. Otherwise, the model will always reason.
+
 Provider-specific notes:
 
 - Claude and Google (2.5 Flash) allow thinking mode to be toggled; see Reasoning Effort.
@@ -5978,6 +6100,7 @@ This is the main content.
 By default, recognized reasoning block contents are not sent back to the model. To include reasoning in prompts, enable "Add to Prompts" in the **<i class="fa-solid fa-font"></i> Advanced Formatting** panel. Reasoning content will be wrapped in configured Prefix and Suffix sequences and separated by a Separator from the main context. The Max Additions numeric setting controls how many reasoning blocks can be included, counting from the end of the prompt.
 
 Most model providers do not recommend sending CoT back to the model in multi-turn conversations.
+
 ### Continuing from Reasoning
 
 A special case when the reasoning can be sent back to the model without having the "Add to Prompts" toggle enabled is when the generation is continued (e.g. by pressing "Continue" from the **<i class="fa-solid fa-bars"></i> Options** menu), but the message being continued contains only the reasoning without actual content. This gives the model an opportunity to finish an incomplete reasoning and start generating the main content. The prompt will be sent as follows:
@@ -6090,8 +6213,8 @@ If the required tokenizer model is not cached and downloads are disabled, a fall
 
 ### Token Padding
 
-!!! Applies to: Text Completion APIs
-SillyTavern will always use the matching tokenizer for Chat Completion models, so there is no need for token padding.
+**Applies to: Text Completion APIs:** SillyTavern will always use the matching tokenizer for Chat Completion models, so there is no need for token padding.
+
 Unless SillyTavern uses a tokenizer provided by the remote backend API that runs the model, all token counts assumed during prompt generation are estimated based on the selected tokenizer type.
 
 Since the results of tokenization can be inaccurate on context sizes close to the model-defined maximum, some parts of the prompt may be trimmed or dropped, which may negatively affect the coherence of character definitions.
@@ -6104,7 +6227,8 @@ You can input negative values for reverse padding, which allows allocating more 
 
 # Quick Start
 
-I'm clueless. Just spoonfeed me the easiest and fastest way I can start using SillyTavern. -- *Anonymous*
+**Light:** I'm clueless. Just spoonfeed me the easiest and fastest way I can start using SillyTavern. -- *Anonymous*
+
 You can get started with SillyTavern in just a few minutes. Here are two easy ways to get started:
 
 * You can use AI Horde for free. AI Horde is a community-driven AI service that provides access to a variety of AI models.
@@ -6168,10 +6292,16 @@ If you did everything right, after a few seconds, Seraphina should respond.
 
 # User Settings
 
-**Callout:** **UI Customization**
+**Callout:**
+
+**UI Customization**
+
 Change the theme, look and feel of the chat interface to suit your preferences.
 
-**Callout:** **Visual Novel mode**
+**Callout:**
+
+**Visual Novel mode**
+
 Chat to characters with sprites, like in visual novels such as Doki Doki Literature Club and other famous VN games.
 
 ## General Settings
@@ -6227,9 +6357,8 @@ Critical account operations that should be used with caution:
 
 #### <i class="fa-fw fa-solid fa-user-tie"></i> Admin Panel
 
-!!! Applies to: multi-user mode
+**Applies to: multi-user mode:** Multi-account features require `enableUserAccounts` to be set to true in config.yaml.
 
-Multi-account features require `enableUserAccounts` to be set to true in config.yaml. 
 Select **Manage Users** to view and manage existing user accounts.
 
 ##### User Profile
@@ -6267,7 +6396,8 @@ Creating a new user automatically generates a subfolder in the /data/ directory 
 
 #### <i class="fa-fw fa-solid fa-right-from-bracket"></i> Logout
 
-!!! Applies to: multi-user mode
+**Applies to: multi-user mode**
+
 Sign out of your current session.
 
 ### Settings Search
@@ -6418,11 +6548,14 @@ See Replace Variable Macros for more information.
 
 The Clean-Up menu provides a data maintenance tool that helps you identify and remove unnecessary files from your SillyTavern installation. This feature helps keep your data directory organized and can free up significant disk space.
 
+**Warning Important Warning:**
+
 The Clean-up tool will permanently delete files. **This action cannot be undone!**
 
 Manual uploads to the `/data/user/files/` and `/data/user/images/` directories will be deleted if they are not associated with chat messages or Data Bank entries.
 
 If unsure, make a backup of your data before using the Clean-up menu.
+
 ### How to Use Clean-Up
 
 1. Click the **Clean-Up** button under the **Miscellaneous** section
@@ -6494,9 +6627,8 @@ The Clean-Up tool scans for loose files into the following categories:
 
 ## Debug menu
 
-!!!warning These functions are intended for advanced users only.
+**Warning These functions are intended for advanced users only.:** Do not use them unless you fully understand their consequences.
 
-Do not use them unless you fully understand their consequences.
 The Debug Menu provides functionality for troubleshooting, maintenance, and development purposes. These functions should be used with caution as they can significantly impact your SillyTavern installation.
 
 Because extensions can add debug functions, the available options will vary depending on the extensions you have installed.
@@ -6578,6 +6710,7 @@ Default display style for media attachments (images, audio, video) in chat messa
 * **Gallery**: Display media attachments in a carousel-style gallery.
 
 This setting also affects how the inline media attachments are sent to supported Chat Completion sources: list sends all attachments at once, while gallery sends the selected attachment.
+
 ### Theme Colors
 
 Customize the color scheme of every UI element to create your perfect theme. Colors can be selected using a color picker, and include transparency options where applicable.
@@ -6662,7 +6795,8 @@ Type your formulas in code blocks with `latex` or `asciimath` language identifie
 int_{-oo}^{oo} e^{-x^2} dx = sqrt{pi}
 ```</code></pre>
 
-!!!info Deprecation notice
+**Info Deprecation notice:**
+
 The legacy `$` and `$$` wrapper syntax is no longer supported. Please use the following regex scripts to polyfill the old syntax:
 
 * $$ - LaTeX (https://github.com/SillyTavern/Extension-LaTeX/raw/refs/heads/main/assets/$$_-_latex.json)
@@ -6684,19 +6818,20 @@ Visual Novel Mode comes built in with SillyTavern and can be toggled by going to
 
 Disabling Visual Novel Mode is the same steps as enabling it. Untoggle Visual Novel Mode and you should be back to the normal chat screen itself.
 
-!!!warning Regarding VN Mode with VN Extensions
-Some extensions (like the Prome VN Extension) will toggle 'Visual Novel Mode' on if you use their own respective VN modes. Enabling/Disabling VN Mode from the *User Settings* menu will also affect these extensions as well.
+**Warning Regarding VN Mode with VN Extensions:** Some extensions (like the Prome VN Extension) will toggle 'Visual Novel Mode' on if you use their own respective VN modes. Enabling/Disabling VN Mode from the *User Settings* menu will also affect these extensions as well.
+
 ## The Visual Novel UI
 
 In Visual Novel Mode, the UI is altered slightly in order to accommodate character sprites (or the character card image) which is shown in the center. In a group chat with multiple characters however, the character sprites will spread themselves out, accommodating for each other as shown below.
 
 ### VN Mode with MovingUI
 
-To toggle MovingUI, go to *User Settings* and check on **MovingUI**. Do note that this feature **only** works on Desktops.
+**Info:** To toggle MovingUI, go to *User Settings* and check on **MovingUI**. Do note that this feature **only** works on Desktops.
+
 If **MovingUI** is enabled in *User Settings*, the sprites (or character card image) can be moved around if you wish to move them around or place them in a more specific area on the screen.
 
-!!!warning Regarding Sprite Sizes
-If the size of your character sprites is relatively big it will be a challenge to try to move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath an existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
+**Warning Regarding Sprite Sizes:** If the size of your character sprites is relatively big it will be a challenge to try to move certain sprites around with MovingUI as the button to drag sprites around might be covered underneath an existing sprite. You will probably have to move them around a bit more than normal, especially if there is more characters on the screen for better placement.
+
 ## Obtaining Character Sprites
 
 Obtaining character sprites can be done by browsing the internet for existing sprites, for say, an existing character from a Visual Novel or a game that uses a Visual Novel feature such as DDLC or CounterSide. If the character you desire sprites from does not come with sprites already, you have several options remaining.
@@ -6704,16 +6839,13 @@ Obtaining character sprites can be done by browsing the internet for existing sp
 1. Search the character post for any sprite ZIP package or link to a sprite pack.
 
 **Info:** Some bot creators may release their bots with a sprite pack (either within the same post or in a sprites channel). Search those posts if someone hasn't made sprites of the character you want already.
-!!!
 2. Create your own using LoRAs and Stable Diffusion.
 
 **Warning:** Generating sprites from scratch is time-consuming (especially if no LoRAs exist for your character and/or for the Stable Diffusion model you want to use) and will require decent hardware in order to generate them, more so if you plan on making 28 sprite expressions than 6 and if you are using SDXL and/or upscaling sprites to a higher resolution.
-!!!
 3. Use the character card image. It might not be like a sprite, but at least you have something to look at on-screen. However, multiple character cards cannot be used in VN mode.
-    !!! Character Card Images with the Prome Visual Novel Extension
-    With the Prome Visual Novel Extension 1.0.6+, there is a feature called `Emulate Character Card as Sprite` that allows you to have a group chat with both sprite and non-sprite characters by using their character card as a sprite in chat.
 
-    
+**Character Card Images with the Prome Visual Novel Extension:** With the Prome Visual Novel Extension 1.0.6+, there is a feature called `Emulate Character Card as Sprite` that allows you to have a group chat with both sprite and non-sprite characters by using their character card as a sprite in chat.
+
 ## VN Extensions
 
 ### Prome Visual Novel Extension
@@ -6734,7 +6866,8 @@ To install the Prome Visual Novel Extension, you can either install by going to 
 
 SillyTavern features a Welcome Screen that can greet you with a designated "Assistant" character. This screen appears when you launch SillyTavern without an active chat or after you close your last chat session.
 
-If you don't see a Welcome Screen on app startup, make sure the "Auto-Load Last Chat" option is disabled in the "Chat/Message Handling" section of the **<i class="fa-solid fa-user-cog"></i> User Settings** panel. If this option is enabled, SillyTavern will automatically load your last chat instead of showing the Welcome Screen.
+**Note:** If you don't see a Welcome Screen on app startup, make sure the "Auto-Load Last Chat" option is disabled in the "Chat/Message Handling" section of the **<i class="fa-solid fa-user-cog"></i> User Settings** panel. If this option is enabled, SillyTavern will automatically load your last chat instead of showing the Welcome Screen.
+
 ## The Welcome Screen
 
 When no chat is active, the Welcome Screen provides several useful elements:
@@ -6751,7 +6884,8 @@ When no chat is active, the Welcome Screen provides several useful elements:
 
 ## Temporary Chat
 
-Due to a technical limitation, the Temporary Chat feature will not use your customized Welcome Page Assistant. It will always start an empty chat without any additional prompts or character information.
+**Note:** Due to a technical limitation, the Temporary Chat feature will not use your customized Welcome Page Assistant. It will always start an empty chat without any additional prompts or character information.
+
 The Temporary Chat button allows you to quickly start a new chat session without saving it to your chat history. This is useful for testing or casual conversations without cluttering your saved chats. This chat will be deleted as soon as you close it or switch to another chat.
 
 * **Save** button will allow you to export the temporary chat as a JSONL file, which you can then import later.
@@ -6844,6 +6978,7 @@ A World Info file can be assigned to the currently active persona. The entries f
 To assign a lorebook to a persona, open the **Persona Management** panel and click the <i class="fa-solid fa-globe"></i> **Persona Lore** button. Pick a World Info file from the dropdown list. If a lorebook is already bound, clicking the button opens the lorebook editor directly.
 
 To reopen the assignment popup when a lorebook is already bound, use a **long press** (on mobile) or **Shift+Click / Alt+Click** (on desktop) on the Persona Lore button.
+
 ### Chat Lorebook
 
 A World Info file can also be assigned to an individual chat. Entries from a chat-bound lorebook are only active in that specific conversation and will not carry over to other chats with the same character.
@@ -6851,6 +6986,7 @@ A World Info file can also be assigned to an individual chat. Entries from a cha
 To assign a lorebook to a chat, click the <i class="fa-solid fa-passport"></i> **Chat Lore** button in the Character Management panel. Pick a World Info file from the dropdown list. If a lorebook is already bound, clicking the button opens the lorebook editor directly.
 
 To reopen the assignment popup when a lorebook is already bound, use a **long press** (on mobile) or **Shift+Click / Alt+Click** (on desktop) on the Chat Lore button.
+
 ### Lore Insertion Strategy
 
 When generating an AI reply, entries from the character World Info and other auxiliary sources will be combined with the entries from a global World Info selector. By default the entries will be inserted in the following order:
@@ -7048,6 +7184,7 @@ The generation types for which this World Info entry can be activated. If nothin
 * **Quiet:** Background generation requests, usually triggered by extensions or STscript commands.
 
 The "Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen Group reply strategy.
+
 ### Additional matching sources
 
 By default World Info Entries are matched only against content from the current conversation. These options allow you to match the entry against different character information that does not show up in the chat, or even persona information. This is useful when you want to have a wide range of entries that are to be used between several characters but don't want to have to manage large lists of tags, or don't want to have to update character filter lists every time you create a new one. This also allows you to match entries based on the persona you have active.
@@ -7078,8 +7215,8 @@ Vector Storage matching adheres to this set of rules:
 * The "Scan Depth" setting from Activation Settings or entry overrides is not used. The Vector Storage "Query messages" value is utilized instead to get the text to match against. This allows for a configuration like "Scan Depth" set to 0, so no regular keyword matches will be made, but entries still can be activated by vectors.
 * A "Vectorized" status is only an additional marker. The entry would still behave like a normal, enabled, non-constant record that will be activated by keywords if they are set. Remove the keywords if you want them to be activated only by vectors.
 
-!!!info Note
-Since the retrieval quality depends entirely on the outputs of the embedding model, it's impossible to predict exactly what entries will be inserted. If you want deterministic and predictable results, stick to keyword matching.
+**Info Note:** Since the retrieval quality depends entirely on the outputs of the embedding model, it's impossible to predict exactly what entries will be inserted. If you want deterministic and predictable results, stick to keyword matching.
+
 ## Timed Effects
 
 Usually, World Info evaluation is stateless, meaning that the result of the evaluation is the same, only depending on the current chat context. However, with the introduction of Timed Effects, you can create entries that have an activation delay, stay active after being triggered, or can't be triggered after the activation.
@@ -7243,11 +7380,12 @@ Shows an alert if the activated World Info exceeds the allocated token budget.
 
 # Configuration File
 
-!!!warning Disclaimer
+**Warning Disclaimer:**
 
 This documentation may be obsolete, incomplete, or incorrect. Please refer to the default config.yaml (https://github.com/SillyTavern/SillyTavern/blob/release/default/config.yaml) in your installation for the most up-to-date list of settings.
 
 **WARNING: DO NOT EDIT THE DEFAULT CONFIG DIRECTLY. THIS WON'T HAVE ANY POSITIVE EFFECT. EDIT ITS COPY IN THE REPOSITORY ROOT INSTEAD.**
+
 `config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after completing the installation and running the server for the first time. It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
 
 New settings that are added upstream are automatically populated with default values when restarting the server after updating the repository. You can then modify these settings as needed. To add missing settings before startup, run the `npm run init` script.
@@ -7275,7 +7413,8 @@ Start.bat --port 8000 --listen false
 
 ### Supported arguments
 
-None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
+**Tip:** None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
+
 | Option                          | Description                                                          | Type     |
 |---------------------------------|----------------------------------------------------------------------|----------|
 | `--version`                     | Shows the version number                                             | boolean  |
@@ -7312,7 +7451,8 @@ The environment variables should be prefixed with `SILLYTAVERN_` and use upperca
 
 The nested settings should be separated by underscores. For example, `protocol.ipv6` can be overridden with the `SILLYTAVERN_PROTOCOL_IPV6` environment variable.
 
-Configurations that expect arrays or objects should be JSON-stringified. For example, to override the `whitelist` setting with the `SILLYTAVERN_WHITELIST` environment variable, you should set it as a JSON string: `SILLYTAVERN_WHITELIST='["127.0.0.1", "::1"]'`.
+**Warning:** Configurations that expect arrays or objects should be JSON-stringified. For example, to override the `whitelist` setting with the `SILLYTAVERN_WHITELIST` environment variable, you should set it as a JSON string: `SILLYTAVERN_WHITELIST='["127.0.0.1", "::1"]'`.
+
 If you are using Node.js v20 or later, you can also store environment variables in a `.env` file and pass it to the server with the `--env-file` flag. For example, to use the `.env` file located in the repository root, you can start the server with the following command:
 
 ```bash
@@ -7382,6 +7522,7 @@ See more about using environment variables in the Node.js documentation (https:/
 Adjust which headers are used to determine the real IPs for features like IP whitelisting, rate limiting and access logging.
 
 Only change if you are sure that you use a correctly configured reverse proxy, otherwise this may lead to IP spoofing.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `forwardedHeaders.xRealIp` | Use the `X-Real-IP` header for client IP detection | `true` | `true`, `false` |
@@ -7393,6 +7534,7 @@ Only change if you are sure that you use a correctly configured reverse proxy, o
 This is an additional layer of security to prevent Server-Side Request Forgery (SSRF) attacks, performing whitelist checks against server-side HTTP requests that resolve to private IP addresses. When enabled, private network ranges will be blocked, unless explicitly allowed in the `privateAddressWhitelist.allowedRanges` setting.
 
 **This is disabled by default, but recommended when listen mode is enabled, or if your server is accessible by untrusted users.**
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `privateAddressWhitelist.enabled` | Enable private address whitelisting | `false` | `true`, `false` |
@@ -7411,7 +7553,8 @@ This is an additional layer of security to prevent Server-Side Request Forgery (
 
 ### Security Overrides
 
-**DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
+**Danger:** **DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `allowKeysExposure` | Allow unmasked API key exposure in the UI | `false` | `true`, `false` |
@@ -7420,9 +7563,12 @@ This is an additional layer of security to prevent Server-Side Request Forgery (
 
 ## User Authentication
 
+**Tip:**
+
 Rate limiting is applied by default to both basic auth and user account login attempts. You can adjust the limits in the Rate Limiting Configuration section.
 
 If using basic auth behind a tunneled connection (e.g., Cloudflare Tunnel), make sure to adjust the rate limiting settings and IP address detection accordingly to prevent lockouts.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `basicAuthMode` | Enable basic authentication | `false` | `true`, `false` |
@@ -7435,7 +7581,8 @@ If using basic auth behind a tunneled connection (e.g., Cloudflare Tunnel), make
 
 ### SSO Auto-Login
 
-Inadequately securing an SSO flow can lead to unauthorized access. Make sure to properly configure trusted proxies and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
+**Warning:** Inadequately securing an SSO flow can lead to unauthorized access. Make sure to properly configure trusted proxies and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `sso.trustedProxies` | List of trusted proxy IPs for SSO authentication | `["::1", "127.0.0.1"]` | Array of valid IP addresses, CIDR ranges, or wildcard patterns |
@@ -7444,9 +7591,12 @@ Inadequately securing an SSO flow can lead to unauthorized access. Make sure to 
 
 ## Rate Limiting Configuration
 
+**Tip:**
+
 To disable rate limiting for a specific route, set the limit to `0`.
 
 For example, to disable login rate limiting, set `rateLimiting.accountsLoginMaxAttempts` to `0`.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `rateLimiting.preferRealIpHeader` | Use IP from headers configured in the Forwarded Headers Configuration instead of the socket IP for rate limiting | `false` | `true`, `false` |
@@ -7456,7 +7606,8 @@ For example, to disable login rate limiting, set `rateLimiting.accountsLoginMaxA
 
 ## Request Proxy Configuration
 
-Request proxying conflicts with the private address whitelist feature. If you enable both, only the requests that bypass the proxy will be checked against the private address whitelist, while the proxied requests will not be checked at all. If unsure, disabling the request proxy is recommended.
+**Warning:** Request proxying conflicts with the private address whitelist feature. If you enable both, only the requests that bypass the proxy will be checked against the private address whitelist, while the proxied requests will not be checked at all. If unsure, disabling the request proxy is recommended.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `requestProxy.enabled` | Enable proxy for outgoing requests | `false` | `true`, `false` |
@@ -7465,9 +7616,12 @@ Request proxying conflicts with the private address whitelist feature. If you en
 
 ## CORS Proxy Configuration
 
+**Warning:**
+
 An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
 
 Enabling a CORS proxy without proper security measures (e.g., IP, host, and private address whitelists) can lead to SSRF vulnerabilities. Make sure to configure the whitelists accordingly if you enable this feature, and only enable it if you trust the extensions that require it.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
@@ -7510,7 +7664,8 @@ Enabling a CORS proxy without proper security measures (e.g., IP, host, and priv
 
 ## Cache Buster Configuration
 
-Requires localhost or a domain with HTTPS, otherwise will not work!
+**Warning:** Requires localhost or a domain with HTTPS, otherwise will not work!
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `cacheBuster.enabled` | Clear browser cache on first load or after uploading image files | `false` | `true`, `false` |
@@ -7560,11 +7715,12 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ## Git Configuration
 
-!!! Git backends explained
+**Git backends explained:**
 
 1. `auto` - prefer system binary, falling back to integrated
 2. `system` - system git binary using simple-git (https://www.npmjs.com/package/simple-git)
 3. `builtin` - integrated engine using isomorphic-git (https://www.npmjs.com/package/isomorphic-git)
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `git.backend` | Git backend for plugin/extension repository operations | `auto` | `auto`, `system`, `builtin` |
@@ -7594,11 +7750,12 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ### Claude Configuration
 
-!!!warning **IMPORTANT!**
+**Warning IMPORTANT!:**
 
 Use with caution and only when the prompt prefix is static and doesn't change between requests. \{\{random\}\} macro, lorebooks, vectors, summaries, etc. will likely invalidate the cache and you'll just waste money on cache misses. The provider may have a minimum prompt size requirement for caching. Behavior may be unpredictable and no guarantees can or will be made, please review the API documentation.
 
 See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `claude.enableSystemPromptCache` | Enable system prompt caching | `false` | `true`, `false` |
@@ -7625,25 +7782,42 @@ See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/promp
 
 # Administration
 
+**Warning:**
+
 Despite following many security best practices, the SillyTavern server is not secure enough for exposure to the public internet.
 
 **NEVER HOST ANY INSTANCES ON THE OPEN INTERNET WITHOUT ENSURING PROPER SECURITY MEASURES FIRST.**
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES RESULTING FROM UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
 
-**Callout:** **config.yaml**
+**Callout:**
+
+**config.yaml**
+
 The main configuration file for SillyTavern. It contains various settings, such as network, security, and backend-specific options.
 
-**Callout:** **Multi-user**
+**Callout:**
+
+**Multi-user**
+
 To share your SillyTavern instance with others, you can create multiple user accounts. Each user has their own settings, extensions, and data. User accounts can also be password-protected.
 
-**Callout:** **Remote access**
+**Callout:**
+
+**Remote access**
+
 You can access your SillyTavern instance from your phone, tablet, or another computer.
 
-**Callout:** **VPNs and Tunneling**
+**Callout:**
+
+**VPNs and Tunneling**
+
 To access your SillyTavern instance from the internet, you can use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale.
 
-**Callout:** **Reverse proxying**
+**Callout:**
+
+**Reverse proxying**
+
 Enthusiasts can set up a reverse proxy to access their SillyTavern instance from the internet.
 
 ## Data Layout
@@ -7730,7 +7904,8 @@ Find more information about secure proxying in the following guide: Reverse Prox
 
 Multi-user mode allows several people to use one SillyTavern server. Each user has their own settings, extensions, and data. User accounts can also be password-protected.
 
-User passwords provide basic privacy between users of a multi-user setup. They are not a security feature and should not be considered as such. All user data (including chat history, API keys, and other sensitive information) is stored in plain text on the server. It can be viewed and modified by anyone with access to the server's filesystem. **Do not use SillyTavern on a public server or with untrusted users.**
+**Warning:** User passwords provide basic privacy between users of a multi-user setup. They are not a security feature and should not be considered as such. All user data (including chat history, API keys, and other sensitive information) is stored in plain text on the server. It can be viewed and modified by anyone with access to the server's filesystem. **Do not use SillyTavern on a public server or with untrusted users.**
+
 ## Configuration
 
 To enable and use the multi-user mode, edit the `config.yaml` file:
@@ -7745,7 +7920,8 @@ enableDiscreetLogin: true
 1. When the user account setting is disabled, a `default-user` fallback admin account is utilized for storing the user data.
 2. When the discreet login setting is disabled, a list of active users is displayed on the login screen. If enabled, a user must enter their handle manually.
 
-You can't _delete_ the `default-user` account from the users list because it is used for serving the user data in case if `enableUserAccounts` is set to `false`. But you can _disable_ it to hide it from the list and disallow logins.
+**Info:** You can't _delete_ the `default-user` account from the users list because it is used for serving the user data in case if `enableUserAccounts` is set to `false`. But you can _disable_ it to hide it from the list and disallow logins.
+
 ## User handles
 
 A handle is the unique identifier of a user. It can consist only of lowercase letters, numbers, and dashes.
@@ -7803,7 +7979,8 @@ You must create an `index.json` file in the `/default/scaffold` directory for th
 
 Scaffolded files are copied before default files, which means they will override any default files (presets/settings/etc.) that have the same file name.
 
-Every user data directory has a `content.log` file that lists all files copied from the scaffold and default directories. Remove this file to force the server to sync the content again on the next restart.
+**Tip:** Every user data directory has a `content.log` file that lists all files copied from the scaffold and default directories. Remove this file to force the server to sync the content again on the next restart.
+
 ### Recognized content types
 
 | Type                          | Value                |
@@ -7854,17 +8031,20 @@ Most often this is for people who want to use SillyTavern on their mobile phones
 
 It is also the first step for allowing remote connections from outside the local network.
 
-You should not use port forwarding to expose your ST server to the internet. Instead, use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale. See the VPN and Tunneling guide for more information.
-!!!danger Disclaimer
+**Warning:** You should not use port forwarding to expose your ST server to the internet. Instead, use a VPN or a tunneling service like Cloudflare Zero Trust, ngrok, or Tailscale. See the VPN and Tunneling guide for more information.
+
+**Danger Disclaimer:**
+
 **NEVER HOST ANY INSTANCES ON THE OPEN INTERNET WITHOUT ENSURING PROPER SECURITY MEASURES FIRST.**
 
 **WE ARE NOT RESPONSIBLE FOR ANY DAMAGE OR LOSSES IN CASES OF UNAUTHORIZED ACCESS DUE TO IMPROPER OR INADEQUATE SECURITY IMPLEMENTATION.**
+
 ## Allowing remote connections
 
 By default, the ST server only accepts connections from the machine that it's running on (localhost). To allow it to listen for connections from other devices, set the `listen` option in `config.yaml` to `true`.
 
-!!! If you search for `config.yaml` directly in the SillyTavern folder, you may find two files.
-All modifications to `config.yaml` in this document refer to the one in the SillyTavern root directory (/SillyTavern/config.yaml), not `/SillyTavern/default/config.yaml`.
+**If you search for `config.yaml` directly in the SillyTavern folder, you may find two files.:** All modifications to `config.yaml` in this document refer to the one in the SillyTavern root directory (/SillyTavern/config.yaml), not `/SillyTavern/default/config.yaml`.
+
 ```yaml
 # Listen for incoming connections
 listen: true
@@ -7952,11 +8132,14 @@ To disable access control via a whitelist:
 
 ### Not recommended: using `whitelist.txt`
 
+**Info:**
+
 If `whitelist.txt` exists, it takes precedence over the whitelist settings in `config.yaml`.
 
 However, since all other configurations are managed within `config.yaml`, and `whitelist.txt` may encounter permission issues or become locked, the system could silently revert to using the `config.yaml` whitelist.
 
 **Editing config.yaml directly is both simpler and more reliable.**
+
 If you still prefer using whitelist.txt:
 
 1. Create a new text file named `whitelist.txt` in the SillyTavern base installation folder.
@@ -7977,9 +8160,12 @@ This allows any device on the local network to connect.
 
 ### Access control by HTTP Basic Authentication
 
+**Warning:**
+
 HTTP Basic Authentication does not provide strong security.
 
 There is no rate-limiting to prevent brute-force attacks. If this is a concern, it is recommended to use a reverse proxy with TLS and rate-limiting, and a dedicated authentication service.
+
 The server will ask for username and password whenever a client connects via HTTP. **This only works if the Remote connections (listen: true) are enabled.**
 
 To enable HTTP BA, Open `config.yaml` in the SillyTavern base directory and search for `basicAuthMode`. Set basicAuthMode to true and set username and password. Note: `config.yaml` will only exist if ST has been executed before at least once.
@@ -8054,10 +8240,12 @@ hostWhitelist:
 
 To add a host name to a list of trusted hosts, include it in the `hostWhitelist.hosts` section:
 
-!!!tip Tips
+**Tip Tips:**
+
 Do not add `localhost` or IPs (such as `127.0.0.1` or `::1`). These are always considered trusted.
 
 To add a range of hosts, use a leading dot. For example, adding `.trycloudflare.com` will trust `trycloudflare.com` as well as any subdomain like `example.trycloudflare.com`.
+
 ```yaml
 hostWhitelist:
   hosts:
@@ -8148,7 +8336,8 @@ If you are trying to access your ST server from outside your local network, and 
 
 ### Start SillyTavern with TLS/SSL
 
-SSL can also be configured using the `config.yaml` file: SSL Configuration.
+**Tip:** SSL can also be configured using the `config.yaml` file: SSL Configuration.
+
 To encrypt traffic from and to your ST instance, start the server with the `--ssl` flag.
 
 Example:
@@ -8173,7 +8362,8 @@ The simplest, quickest way to get a certificate is by using certbot (https://let
 
 ### Certificates in Docker
 
-For security and privacy reasons, do not include your SSL certificates inside the Docker image if you are building one. Instead, use volume mounts to provide the certificates at runtime.
+**Warning:** For security and privacy reasons, do not include your SSL certificates inside the Docker image if you are building one. Instead, use volume mounts to provide the certificates at runtime.
+
 When running SillyTavern in Docker, the recommended way to provide SSL certificates is by placing them in the `/config` volume mount. This allows you to manage certificates without rebuilding the container image.
 
 1. Place your certificate files (e.g., `privkey.pem` and `cert.pem`) in your local config directory that is mounted to `/config` in the container.
@@ -8191,17 +8381,18 @@ When running SillyTavern in Docker, the recommended way to provide SSL certifica
 
 # SECTION: SillyTavern_Administration_reverse-proxying
 
-!!!danger Note
-This section does **not** refer to OpenAI/Claude reverse proxies. This refers exclusively to **HTTP/HTTPS Reverse Proxies**.
+**Danger Note:** This section does **not** refer to OpenAI/Claude reverse proxies. This refers exclusively to **HTTP/HTTPS Reverse Proxies**.
+
 Is Termux confusing to set up? Are you tired of updating and installing ST on every device you have? Want organization of your chats and characters? Well you are in luck. This guide will _hopefully_ cover how to host SillyTavern on your PC where you can connect from anywhere and chat to your bots on the same PC you use to run AI models!
 
-!!!warning Warning
-This guide is **not meant** for beginners. This will be very technical.
+**Warning:** This guide is **not meant** for beginners. This will be very technical.
+
 ## Fair Warning
 
-!!!info For Windows Users
-This guide is not for Windows users. We recommend using a Linux VM or WSL2 to follow this guide.
-!!!info For Linux Users
+**Info For Windows Users:** This guide is not for Windows users. We recommend using a Linux VM or WSL2 to follow this guide.
+
+**Info For Linux Users:**
+
 You must have prior knowledge of
 
 - Linux console commands
@@ -8218,14 +8409,14 @@ You must have prior knowledge of
 For Linux, we will be reverse proxying SillyTavern through Traefik (https://traefik.io/traefik/). There are other options such as _NGINX_ or _Caddy_, but for this guide, we will use Traefik as it is what we use ourselves.
 
 1. Get the private IP of your computer using `ifconfig` or from your router.
-   !!!info Tip
-   It is recommended to set your private IP to a Static IP. Refer to your router's manual or Google to configure static IPs.
+
+**Info Tip:** It is recommended to set your private IP to a Static IP. Refer to your router's manual or Google to configure static IPs.
 2. Get your public IP of your modem by Googling `what's my ip`.
-   !!!info About Public IPs
-   Most residential/home networks use **Dynamic IPs** which are renewed after months of use. If you have a dynamic IP, use either DDClient or remember to check and change your public IP ever so often on the Cloudflare Dashboard.
+
+**Info About Public IPs:** Most residential/home networks use **Dynamic IPs** which are renewed after months of use. If you have a dynamic IP, use either DDClient or remember to check and change your public IP ever so often on the Cloudflare Dashboard.
 3. Install Docker by following the Docker installation guide here (https://docs.docker.com/engine/install/).
-   !!!danger Note
-   **Do not** install Docker Desktop.
+
+**Danger Note:** **Do not** install Docker Desktop.
 4. Follow the steps in **Manage Docker as a non-root user** in the Docker post-installation guide here (https://docs.docker.com/engine/install/linux-postinstall/).
 5. Go to your root folder in Linux and make a new folder named `docker`.
     ```sh
@@ -8326,12 +8517,15 @@ For Linux, we will be reverse proxying SillyTavern through Traefik (https://trae
 
 13. Login to Cloudflare and click on your Domain, followed by **Get your API token**.
 14. Click on _Create Token_ then _Create Custom Token_ and make sure you give your token the following permissions.
-    !!!info Token Permissions
-    **Zone -> DNS -> Edit**
 
-    **Zone -> Zone -> Read**
+**Info Token Permissions:**
 
-Click on _Continue to summary_ followed by _Create Token._
+**Zone -> DNS -> Edit**
+
+**Zone -> Zone -> Read**
+
+    Click on _Continue to summary_ followed by _Create Token._
+
 15. Copy the Token Key given to you and store it somewhere secure.
 16. `cd` into `secrets/cloudflare` and using `nano` or a similar editor, create a file named **CF_DNS_API_KEY** and paste your key inside.
 17. Return to your domain page and go to **DNS**. Create a new record using **Add record** and create two _A_ type keys like the ones below. Replace `PUBLIC_IP` with your own public IP, then click _Save_.
@@ -8388,36 +8582,39 @@ Click on _Continue to summary_ followed by _Create Token._
     basicAuthMode: true
     ```
 
-    !!!warning Tip
-    Make sure to change the default username and password to something strong that you can remember.
+**Warning Tip:** Make sure to change the default username and password to something strong that you can remember.
 
-Or to use the SillyTavern accounts as usernames and passwords:
-```yaml
-basicAuthMode: true
-enableUserAccounts: true
-perUserBasicAuth: true
-```
-!!!warning Tip
-Before enabling perUserBasicAuth ensure you have a valid multi-user setup with working passwords.
-!!!
+    Or to use the SillyTavern accounts as usernames and passwords:
+
+    ```yaml
+    basicAuthMode: true
+    enableUserAccounts: true
+    perUserBasicAuth: true
+    ```
+
+**Warning Tip:** Before enabling perUserBasicAuth ensure you have a valid multi-user setup with working passwords.
+
 22. Wait a few minutes, then open the domain page you made for ST. At the end of it, you should be able to open SillyTavern from anywhere you go just with one URL and one account.
-    !!!info Tip
-    If nothing happens after several minutes, check the container logs for Traefik for any possible errors.
+
+**Info Tip:** If nothing happens after several minutes, check the container logs for Traefik for any possible errors.
 23. Enjoy! :D
 
 ### Linux (Docker SillyTavern)
 
-!!!warning Note
-Do note that we run SillyTavern on bare-metal over Docker. This is a rough idea of what we would do on Docker with other Docker containers we tend to use with ST.
+**Warning Note:** Do note that we run SillyTavern on bare-metal over Docker. This is a rough idea of what we would do on Docker with other Docker containers we tend to use with ST.
+
 1. Follow Steps 1-11 of **Linux (Bare-Metal SillyTavern)**.
 2. Login to Cloudflare and click on your Domain, followed by **Get your API token**.
 3. Click on _Create Token_ then _Create Custom Token_ and make sure you give your token the following permissions.
-   !!!info Token Permissions
-   **Zone -> DNS -> Edit**
 
-    **Zone -> Zone -> Read**
+**Info Token Permissions:**
 
-Click on _Continue to summary_ followed by _Create Token._
+**Zone -> DNS -> Edit**
+
+ **Zone -> Zone -> Read**
+
+    Click on _Continue to summary_ followed by _Create Token._
+
 4. Copy the Token Key given to you and store it somewhere secure.
 5. `cd` into `secrets/cloudflare` and using `nano` or a similar editor, create a file named **CF_DNS_API_KEY** and paste your key inside.
 6. Return to your domain page and go to **DNS**. Create a new record using **Add record** and create two _A_ type keys like the ones below. Replace `PUBLIC_IP` with your own public IP and the example domain with your domain, then click _Save_.
@@ -8506,15 +8703,15 @@ Click on _Continue to summary_ followed by _Create Token._
     basicAuthMode: true
     ```
 
-    !!!warning Tip
-    Make sure to change the default username and password to something strong that you can remember.
+**Warning Tip:** Make sure to change the default username and password to something strong that you can remember.
+
 13. Start the SillyTavern Docker container again.
     ```sh
     docker compose up -d sillytavern
     ```
 14. Wait a few minutes, then open the domain page you made for ST. At the end of it, you should be able to open SillyTavern from anywhere you go just with one URL and one account.
-    !!!info Tip
-    If nothing happens after several minutes, check the container logs for Traefik for any possible errors.
+
+**Info Tip:** If nothing happens after several minutes, check the container logs for Traefik for any possible errors.
 15. Enjoy! :D
 
 ## Updating your Cloudflare DNS
@@ -8525,7 +8722,8 @@ Click on _Continue to summary_ followed by _Create Token._
 
 # Single Sign-On (SSO)
 
-Despite all the benefits of SSO, it is a complex system to set up and maintain. If not configured correctly, it can lead to unauthorized access to your instance. Make sure to properly configure and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
+**Warning:** Despite all the benefits of SSO, it is a complex system to set up and maintain. If not configured correctly, it can lead to unauthorized access to your instance. Make sure to properly configure and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
+
 SSO allows you to create users and secure many different pages using a login portal presented on sites you want to secure. While it is complex to setup, it is a good way to both learn SSO and secure your ST instance out on the internet more.
 
 SSO can also replace HTTP Basic Authentication as an access control mechanism for remote connections.
@@ -8538,7 +8736,8 @@ This is recommended because SSO provides better security and functionality than 
 
 Only requests from IP addresses that are configured as trusted proxies will be able to authenticate users by forwarding the necessary headers. By default, both IPv4 and IPv6 loopback addresses are trusted. To allow other IPs to authenticate with SSO headers, add them to the `sso.trustedProxies` list in your config.yaml file:
 
-Also supports CIDR and wildcard notation for specifying multiple IPs or ranges, e.g., `192.168.0.*` or `10.0.0.0/24`.
+**Tip:** Also supports CIDR and wildcard notation for specifying multiple IPs or ranges, e.g., `192.168.0.*` or `10.0.0.0/24`.
+
 ```yaml
 sso:
   trustedProxies:
@@ -8917,10 +9116,12 @@ You can use any model that supports image captioning (`VisionEncoderDecoderModel
 
 API keys and endpoint URLs for captioning sources are managed in the API Connections panel. Set the connection up in API Connections first, then select it as your captions source in Captioning.
 
-!!!warning Set it up in the API Connections panel first
+**Warning Set it up in the API Connections panel first:**
+
 One last time: configure the API key/address/port in **<i class="fa-solid fa-plug"></i> API Connections** and use the connection in Captioning.
 
 You can still use Claude for chats and Google AI Studio for image captioning, or whatever. Just set them *both* up in the 'API Connections' tab first. Then flip your Chat Completion source to Claude and your Captioning source to Google AI Studio.
+
 For most local backends, you will need to set some options in the model backend rather than in SillyTavern. If your backend can only run one model at a time and doesn't support automatic switching, you have several options to use different models for chat and captioning:
 
 1. **Secondary endpoints:** Use the secondary endpoint feature (see Secondary endpoints section below) to connect to a different API server for captioning
@@ -8972,7 +9173,8 @@ You can also set up a secondary endpoint specifically for multimodal captioning.
 - Enter a valid URL for the secondary endpoint in the "Secondary captioning endpoint URL" field.
 - Check the "Use secondary URL" box to enable the secondary endpoint.
 
-Do not append `/v1` or `/chat/completions` to the end of the URL. The extension will handle that automatically.
+**Tip:** Do not append `/v1` or `/chat/completions` to the end of the URL. The extension will handle that automatically.
+
 This is only supported by the following APIs:
 
 - KoboldCpp
@@ -9010,8 +9212,8 @@ You can use multimodal projections for the base model that your particular finet
 
 # Chat Vectorization
 
-!!!warning Disclaimer
-The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
+**Warning Disclaimer:** The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
+
 Chat vectorization searches for messages in your current chat history that seem relevant to your most recent messages. 
 It temporarily shuffles the most relevant messages to the beginning or end of the chat history. 
 This happens when the model's reply to your last message is generated.
@@ -9029,7 +9231,8 @@ quality of responses generated by a model, by providing additional relevant info
 * Augmented: the model's context is augmented by inserting past messages in a useful way
 * Generation: the model is instructed to use the past messages when generating the response
 
-!!!info Some terms:
+**Info Some terms:**
+
 A *vector* is a set of numbers that could represent the themes, content, style, or other characteristics of a piece of text. 
 
 *Vectorization* is calculating the vector that represents a piece of text. This is done by a vectorizing model.
@@ -9039,10 +9242,11 @@ Just as text generation models make text from text, vectorizing models make vect
 for a search query, we can compare it to the stored vectors for a collection of pieces of text. This finds the texts 
 in our collection that are most similar to the text in the search query. In the case of chat vectorization, the 
 "search query" is the most recent 2 messages, and the "texts in our collection" are all the other messages in the chat.
+
 ## Setting up
 
-!!!warning Prompt Caching Compatibility
-Like any dynamic prompt source (World Info, Summarization, etc.), Chat Vectorization restructures the prompt prefix between the LLM calls, which can lead to frequent cache misses. When used with caching, vectorization is often counter-productive, as the modified prompts rarely hit the cache – effectively making caching useless. You have to choose one or the other, but not both.
+**Warning Prompt Caching Compatibility:** Like any dynamic prompt source (World Info, Summarization, etc.), Chat Vectorization restructures the prompt prefix between the LLM calls, which can lead to frequent cache misses. When used with caching, vectorization is often counter-productive, as the modified prompts rarely hit the cache – effectively making caching useless. You have to choose one or the other, but not both.
+
 To enable Chat vectorization, select "Extensions" > "Vector Storage" > "Enabled for chat messages".
 
 Configure a vectorization source and vectorization model. Chat vectorization uses the same vector source as Data Bank, 
@@ -9079,6 +9283,7 @@ To remove all the vectors for messages in the current chat, choose "Purge Vector
 
 The controls for "Vectorize All" and "Purge Vectors" **within Chat vectorization** only affect the stored vectors for the current chat. 
 However, there are identical buttons in File vectorization that affect the vectors for files in Data Bank. Ensure that you are purging the vectors that you intend to purge.
+
 ## Finding relevant messages to shuffle (vector retrieval)
 
 To find the most relevant messages in the chat history, the most recent messages are converted (vectorized) into a query vector. By default, the 2 most recent messages are used. To change this, change the value of "Query messages". This value is also used when finding relevant content from Data Bank. 
@@ -9109,10 +9314,12 @@ You can see the final prompt to the model using the Prompt Itemization popup, th
 
 ## Vector summarization
 
-!!!warning Warning
+**Warning:**
+
 The Vector summarization feature is experimental.
 
 **Vector summarization does not create summaries of your chat. It does not turn the retrieved messages into summaries. It does not make your chat history shorter. It is not "like Summarize but better".**
+
 Vector summarization is intended to make vector search of chat messages more effective. It does this by introducing a summarizing step prior to vectorizing. The summarizing step extracts the most important parts of the message, so that the resulting vector is a better indicator of what the message relates to.
 
 Vector summarization may make vector search less effective. 
@@ -9426,7 +9633,7 @@ Folder overrides can also be used to define different sprite sets (outfits, etc.
 
 # SECTION: SillyTavern_extensions_Extras_index
 
-The Extras project was discontinued in April 2024 and won't receive any new updates or modules. The vast majority of modules are available natively in the main SillyTavern application. You may still install and use it but don't expect to get immediate support if you face any issues.
+**Discontinued:** The Extras project was discontinued in April 2024 and won't receive any new updates or modules. The vast majority of modules are available natively in the main SillyTavern application. You may still install and use it but don't expect to get immediate support if you face any issues.
 
 # SECTION: SillyTavern_extensions_Extras_Smart-Context
 
@@ -9434,8 +9641,8 @@ The Extras project was discontinued in April 2024 and won't receive any new upda
 
 ## **THIS EXTENSION IS NO LONGER MAINTAINED AND NOT RECOMMENDED TO USE. CONSIDER CHAT VECTORIZATION AS A POSSIBLE ALTERNATIVE.**
 
-!!!warning Disclaimer
-The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
+**Warning Disclaimer:** The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
+
 ### What is it?
 
 Smart Context is a SillyTavern extension that uses the ChromaDB library (https://www.trychroma.com) to give your AI characters access to information that exists outside the normal chat history context limit.
@@ -9636,7 +9843,8 @@ We recommend using World Info for this purpose.
 
 # talkinghead
 
-**THE SUPPORT FOR TALKINGHEAD WAS DROPPED IN SILLYTAVERN 1.12.13. THIS PAGE IS KEPT FOR HISTORICAL PURPOSES.**
+**Warning:** **THE SUPPORT FOR TALKINGHEAD WAS DROPPED IN SILLYTAVERN 1.12.13. THIS PAGE IS KEPT FOR HISTORICAL PURPOSES.**
+
 ### What is it?
 
 An implementation of Talking Head Anime 3 Demo for AITuber. It possesses the following features:
@@ -9759,153 +9967,286 @@ To open or close the Extensions panel, choose **<i class="fa-solid fa-cubes fa-f
 
 These extensions are built into SillyTavern and do not need to be installed. They can be enabled or disabled in the Extensions panel.
 
-**Callout:** **Chat Translation**
+**Callout:**
+
+**Chat Translation**
+
 Translate chat messages to a different language
 
-**Callout:** **Image Captioning**
+**Callout:**
+
+**Image Captioning**
+
 Generates text from images so your AI can "see" and respond to visual content in your conversations
 
-**Callout:** **Image Generation**
+**Callout:**
+
+**Image Generation**
+
 Use local or cloud-based Stable Diffusion, FLUX or DALL-E APIs to generate images
 
-**Callout:** **Expression Images**
+**Callout:**
+
+**Expression Images**
+
 Images (aka 'sprites') of your AI character, shown next to or behind the chat window
 
-**Callout:** **Summarize**
+**Callout:**
+
+**Summarize**
+
 Auto-summary of the chat history
 
-**Callout:** **Chat Vectorization**
+**Callout:**
+
+**Chat Vectorization**
+
 Finds relevant messages from chat history and adds them into the context
 
-**Callout:** **Text To Speech**
+**Callout:**
+
+**Text To Speech**
+
 Voice narration for your chat messages via ElevenLabs, Silero, your system TTS, **AllTalk**, **XTTS**, and more
 
-**Callout:** **Quick Reply**
+**Callout:**
+
+**Quick Reply**
+
 Reply to chat messages with a single click, run commands and STscripts, and more
 
-**Callout:** **Token Counter**
+**Callout:**
+
+**Token Counter**
+
 Converts text into tokens and counts the number of tokens
 
 ---
 
 ## Installable extensions
 
-You **must** have git installed to download extensions. Follow the instructions on the Git installation page (https://git-scm.com/downloads) if you don't have it installed.
+**Tip:** You **must** have git installed to download extensions. Follow the instructions on the Git installation page (https://git-scm.com/downloads) if you don't have it installed.
+
 You can browse a list of all available extensions directly from the app by going to the **<i class="fa-solid fa-cubes"></i> Extensions** => **Download Extensions & Assets** menu and clicking the **<i class="fa-solid fa-plug-circle-exclamation"></i> Load Asset List** button. To install an extension, click the **<i class="fa-solid fa-download"></i> Download** button. To read more about an extension, click the **<i class="fa-solid fa-arrow-up-right-from-square"></i> Link** button next to its name to open its GitHub page.
 
-!!!info Extensions are not Extras
-The Extras project was discontinued in April 2024. You do not need to install Extras to use extensions.
+**Info Extensions are not Extras:** The Extras project was discontinued in April 2024. You do not need to install Extras to use extensions.
 
-**Callout:** **Blip**
+**Callout:**
+
+**Blip**
+
 Animate the text of character messages with variable speed and play sound along the animation.
 
-**Callout:** **Dynamic Audio**
+**Callout:**
+
+**Dynamic Audio**
+
 Adds immersive background music and ambient sounds to your chats.
 
-**Callout:** **EmulatorJS**
+**Callout:**
+
+**EmulatorJS**
+
 Play retro console games directly in SillyTavern chats.
 
-**Callout:** **Live2d**
+**Callout:**
+
+**Live2d**
+
 Adds support for live2d models. Customizable expressions, animations and interactions.
 
-**Callout:** **Objective**
+**Callout:**
+
+**Objective**
+
 Set an Objective for the AI to aim for during the chat.
 
-**Callout:** **RVC**
+**Callout:**
+
+**RVC**
+
 Adds Realtime Voice Cloning capabilities to the Text-to-Speech module.
 
-**Callout:** **Speech Recognition**
+**Callout:**
+
+**Speech Recognition**
+
 Convert your speech to text using browser or extras.
 
-**Callout:** **VRM**
+**Callout:**
+
+**VRM**
+
 Adds support for VRM models. Customizable expressions, animations and interactions.
 
-**Callout:** **Web Search**
+**Callout:**
+
+**Web Search**
+
 Adds web search results to LLM prompts.
 
-**Callout:** **Weather (https://github.com/SillyTavern/Extension-Weather)**
+**Callout:**
+
+**Weather (https://github.com/SillyTavern/Extension-Weather)**
+
 Provides weather information using one of the available weather APIs as a slash command or a function tool.
 
-**Callout:** **Chat Top Bar (https://github.com/SillyTavern/Extension-TopInfoBar)**
+**Callout:**
+
+**Chat Top Bar (https://github.com/SillyTavern/Extension-TopInfoBar)**
+
 Adds a top bar to the chat window with shortcuts to quick actions.
 
-**Callout:** **Chess (https://github.com/SillyTavern/SillyTavern-Chess)**
+**Callout:**
+
+**Chess (https://github.com/SillyTavern/SillyTavern-Chess)**
+
 Play the game of chess with the LLM.
 
-**Callout:** **Code Runner (https://github.com/SillyTavern/Extension-CodeRunner)**
+**Callout:**
+
+**Code Runner (https://github.com/SillyTavern/Extension-CodeRunner)**
+
 Allows running JavaScript and STscript code from code blocks in chat.
 
-**Callout:** **D&D Dice (https://github.com/SillyTavern/Extension-Dice)**
+**Callout:**
+
+**D&D Dice (https://github.com/SillyTavern/Extension-Dice)**
+
 A set of 7 classic D&D dice for all your dice rolling needs.
 
-**Callout:** **Duplicate Finder (https://github.com/SillyTavern/Extension-DupeFinder)**
+**Callout:**
+
+**Duplicate Finder (https://github.com/SillyTavern/Extension-DupeFinder)**
+
 Adds an ability to cluster characters by similarity groups to easily find duplicates.
 
-**Callout:** **Emoji Picker (https://github.com/SillyTavern/Extension-EmojiPicker)**
+**Callout:**
+
+**Emoji Picker (https://github.com/SillyTavern/Extension-EmojiPicker)**
+
 Adds a button to quickly insert emojis into a chat message.
 
-**Callout:** **Group Greetings (https://github.com/SillyTavern/Extension-GroupGreetings)**
+**Callout:**
+
+**Group Greetings (https://github.com/SillyTavern/Extension-GroupGreetings)**
+
 Allows setting alternate greetings that are specific to group chats.
 
-**Callout:** **Group SendAs (https://github.com/SillyTavern/SillyTavern-GroupSendAs)**
+**Callout:**
+
+**Group SendAs (https://github.com/SillyTavern/SillyTavern-GroupSendAs)**
+
 Adds a button to quickly insert a /sendas command template for the selected group member.
 
-**Callout:** **HypeBot (https://github.com/SillyTavern/Extension-HypeBot)**
+**Callout:**
+
+**HypeBot (https://github.com/SillyTavern/Extension-HypeBot)**
+
 Show personalized suggestions based on your recent chats using the NovelAI's HypeBot engine. Requires an active NovelAI subscription.
 
-**Callout:** **Idle (https://github.com/SillyTavern/Extension-Idle)**
+**Callout:**
+
+**Idle (https://github.com/SillyTavern/Extension-Idle)**
+
 Adds "idle prompting" after the user has been idle for some time to organically continue the conversation.
 
-**Callout:** **Image Metadata Viewer (https://github.com/SillyTavern/Extension-ImageMetadataViewer)**
+**Callout:**
+
+**Image Metadata Viewer (https://github.com/SillyTavern/Extension-ImageMetadataViewer)**
+
 View metadata of enlarged images attached to a chat.
 
-**Callout:** **LaTeX (https://github.com/SillyTavern/Extension-LaTeX)**
+**Callout:**
+
+**LaTeX (https://github.com/SillyTavern/Extension-LaTeX)**
+
 Render LaTeX and AsciiMath formulas in chat messages.
 
-**Callout:** **Mermaid (https://github.com/SillyTavern/Extension-Mermaid)**
+**Callout:**
+
+**Mermaid (https://github.com/SillyTavern/Extension-Mermaid)**
+
 Adds Mermaid diagrams & flowcharts rendering to SillyTavern chats.
 
-**Callout:** **Notebook (https://github.com/SillyTavern/Extension-Notebook)**
+**Callout:**
+
+**Notebook (https://github.com/SillyTavern/Extension-Notebook)**
+
 Adds a place to store your notes. Supports rich text formatting.
 
-**Callout:** **Parameter Randomizer (https://github.com/SillyTavern/Extension-Randomizer)**
+**Callout:**
+
+**Parameter Randomizer (https://github.com/SillyTavern/Extension-Randomizer)**
+
 Adds ability to randomize API settings sliders with every generation.
 
-**Callout:** **Prome Visual Novel Extension (https://github.com/Bronya-Rand/Prome-VN-Extension)**
+**Callout:**
+
+**Prome Visual Novel Extension (https://github.com/Bronya-Rand/Prome-VN-Extension)**
+
 Enhances the current visual novel experience with more features (Focus Mode, Letterbox Mode, and more)!
 
-**Callout:** **Prompt Inspector (https://github.com/SillyTavern/Extension-PromptInspector)**
+**Callout:**
+
+**Prompt Inspector (https://github.com/SillyTavern/Extension-PromptInspector)**
+
 Adds an option to inspect and edit output prompts before sending them to the server.
 
-**Callout:** **Push Notifications (https://github.com/SillyTavern/SillyTavern-PushNotifications)**
+**Callout:**
+
+**Push Notifications (https://github.com/SillyTavern/SillyTavern-PushNotifications)**
+
 Allows to receive push notifications for incoming chat messages.
 
-**Callout:** **Quick Persona (https://github.com/SillyTavern/Extension-QuickPersona)**
+**Callout:**
+
+**Quick Persona (https://github.com/SillyTavern/Extension-QuickPersona)**
+
 Adds a dropdown menu for selecting user personas from the chat bar.
 
-**Callout:** **RSS (https://github.com/SillyTavern/Extension-RSS)**
+**Callout:**
+
+**RSS (https://github.com/SillyTavern/Extension-RSS)**
+
 Gets the latest news from RSS feeds as a slash command or a function tool.
 
-**Callout:** **Screen Share (https://github.com/SillyTavern/Extension-ScreenShare)**
+**Callout:**
+
+**Screen Share (https://github.com/SillyTavern/Extension-ScreenShare)**
+
 Provides the screen image for multimodal models when you send a message.
 
-**Callout:** **Silence Player (https://github.com/SillyTavern/Extension-Silence)**
+**Callout:**
+
+**Silence Player (https://github.com/SillyTavern/Extension-Silence)**
+
 Adds a silence audio player to the extensions menu. Can help if the browser tab is being killed in a background.
 
-**Callout:** **Timelines (https://github.com/SillyTavern/SillyTavern-Timelines)**
+**Callout:**
+
+**Timelines (https://github.com/SillyTavern/SillyTavern-Timelines)**
+
 Adds a timeline navigation to the chat history.
 
-**Callout:** **Variable Viewer (https://github.com/LenAnderson/SillyTavern-Variable-Viewer)**
+**Callout:**
+
+**Variable Viewer (https://github.com/LenAnderson/SillyTavern-Variable-Viewer)**
+
 Easy way to view and modify variables.
 
-**Callout:** **WebLLM (https://github.com/SillyTavern/Extension-WebLLM)**
+**Callout:**
+
+**WebLLM (https://github.com/SillyTavern/Extension-WebLLM)**
+
 Provides an interface for extensions to use language models directly in the browser.
 
 ## Third-party extensions
 
-Using third-party extensions can have unintended side effects and may pose security risks. 
+**Danger:** Using third-party extensions can have unintended side effects and may pose security risks. 
 Always make sure you trust the source before importing an extension via **<i class="fa-solid fa-cloud-arrow-down"></i> Install extension**. 
 We are not responsible for any damage caused by third-party extensions.
+
 To install a third-party extension, go to the **<i class="fa-solid fa-cubes"></i> Extensions** => **<i class="fa-solid fa-cloud-arrow-down"></i> Install Extension** menu and paste the URL of the extension repository. Optionally, specify the branch and (in multi-user scenarios) the installation target: all users or just the current user. The extension will be downloaded and loaded automatically.
 
 # SECTION: SillyTavern_extensions_Live2d
@@ -10078,10 +10419,10 @@ This page will teach you how to properly use the MiniMax TTS provider.
 2. Click "Sign Up" or "Login"
 3. Complete the account registration process
 
-!!!warning Regional Differences
-MiniMax has separate Chinese and International versions. Please note:
+**Warning Regional Differences:** MiniMax has separate Chinese and International versions. Please note:
 - The Chinese version does not support voice cloning features
 - The Chinese version only supports the `api.minimax.chat` API host
+
 ### 2. Obtain API Key and Group ID
 
 1. Log into the MiniMax console (International) (https://www.minimax.io/platform/user-center/basic-information)
@@ -10686,6 +11027,7 @@ To set up:
 ## Speech Recognition Setup (Extras) - Deprecated
 
 Requires ffmpeg binary installed. See RVC setup for more details.
+
 1. **Enable Provider**:
    - Enable the desired speech recognition provider on the extras server using the following command:
      ```shell
@@ -10705,6 +11047,7 @@ Requires ffmpeg binary installed. See RVC setup for more details.
 ## Speech Recognition Setup (Streaming) - Deprecated
 
 Requires ffmpeg binary installed. See RVC setup for more details.
+
 1. **Enable Provider**:
    - Enable the streaming speech recognition module on Sillytavern-extras with the following command:
      ```shell
@@ -10851,7 +11194,8 @@ Uses function calling to automatically detect the intention to generate an image
 3. The "Use function tool" option must be enabled in the Image Generation settings.
 4. The user should express an intent to generate an image in the chat message, e.g. "Send me a picture of a cat".
 
-The interactive mode will not trigger when the function tool is enabled.
+**Warning:** The interactive mode will not trigger when the function tool is enabled.
+
 ### Use interactive mode
 
 Allows you to trigger an image generation instead of text as a reply to a user message that follows the special pattern:
@@ -10891,8 +11235,8 @@ Snap image generation requests with a forced aspect ratio (portraits, background
 
 ## Common prompt prefix
 
-!!!tip Pro Tip
-Use `{prompt}` macro to specify where exactly the generated prompt will be inserted.
+**Tip Pro Tip:** Use `{prompt}` macro to specify where exactly the generated prompt will be inserted.
+
 Added before every generated or free-mode prompt. Commonly used for setting the overall style of the picture.
 
 Example: `best quality, anime lineart`.
@@ -10905,8 +11249,8 @@ Example: `bad quality, watermark`.
 
 ## Character-specific prompt prefix
 
-!!!tip Pro Tip
-If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
+**Tip Pro Tip:** If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
+
 Any characteristics that describe the currently selected character. Will be added after a common prefix.
 
 Example: `female, green eyes, brown hair, pink shirt`.
@@ -10917,7 +11261,8 @@ Limitations:
 1. Works only in 1-to-1 chats. Will not be used in groups.
 2. Won't be used for backgrounds and free mode generations.
 
-To force include a character prefix into a free mode prompt, use the `{{charPrefix}}` macro anywhere in the prompt.
+**Note:** To force include a character prefix into a free mode prompt, use the `{{charPrefix}}` macro anywhere in the prompt.
+
 If you want to share the prefixes with others, tick the "Shareable" checkbox. This will save them with the character data, rather than your local settings. 
 
 ## Styles
@@ -10978,8 +11323,8 @@ After entering the URL, choose <i class="fa-solid fa-check"></i> **Connect** to 
   * Model, samplers, VAE, etc cannot be determined dynamically so your workflow needs to have these hard coded (no `%model%` substitution).
   * Other substitutions should work the same as local.
 
-!!!info Note
-The serverless configuration does not currently embed the workflow into the output image. i.e., you won't be able to drag/drop the image into local ComfyUI to see the seed or prompt. This is just a limitation of the RunPod handler and is a capability that could be added on that side.
+**Info Note:** The serverless configuration does not currently embed the workflow into the output image. i.e., you won't be able to drag/drop the image into local ComfyUI to see the seed or prompt. This is just a limitation of the RunPod handler and is a capability that could be added on that side.
+
 ### Workflow Management
 
 Select a ComfyUI workflow from the dropdown menu. Two default workflows are provided:
@@ -11007,10 +11352,12 @@ To add a ComfyUI workflow to the editor, follow these steps:
 4. Paste the downloaded JSON data into the text area.
 5. Replace specific values with placeholders as needed for your use case.
 
-!!!tip Tips
+**Tip Tips:**
+
 You can add the API-format JSON file directly to the `data/default-user/user/workflows` directory in your SillyTavern installation. This will save you from steps 3 and 4.
 
 Retain the original JSON file. If you need to open the workflow again in ComfyUI to make changes, it is much more convenient to edit the original file than the one with all the placeholders.
+
 ### Placeholders
 
 The editor provides a list of predefined placeholders that can be used in your workflow JSON. These placeholders are replaced with dynamic values when the workflow is executed in SillyTavern.
@@ -11136,10 +11483,10 @@ choose a `GGUF` model in the SillyTavern model dropdown, and use the `%model%` p
 ```
 +++
 
-!!!info If you have model types other than the usual SD checkpoints in ComfyUI
-Stable Diffusion checkpoints, SD UNets, and GGUF-quantized UNets all appear in the Model dropdown.
+**Info If you have model types other than the usual SD checkpoints in ComfyUI:** Stable Diffusion checkpoints, SD UNets, and GGUF-quantized UNets all appear in the Model dropdown.
 Models of one type will not work with workflows/loader nodes expecting another type.
 If you choose an incompatible model type in ST, ComfyUI will report a problem with the loader node.
+
 #### Avatar images
 
 Use the `%user_avatar%` and `%char_avatar%` placeholders to include the user and character avatars in the workflow. These placeholders are replaced with the PNG data of the avatars when the workflow is executed. The image data is encoded in base64 format, so you must decode it in your workflow. A popular choice for this task is the Load image (Base64) (https://github.com/Acly/comfyui-tooling-nodes) node.
@@ -11837,7 +12184,8 @@ Thank you for following this guide! Your SillyTavern experience is now enriched 
 
 Adds web search results to LLM prompts.
 
-Some Chat Completion sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, OpenRouter, Chutes, and other backends.
+**Note:** Some Chat Completion sources provide built-in web search functionality. In this case, this extension will be largely redundant. Check the **<i class="fa-solid fa-sliders"></i> AI Response Configuration** panel for the "Enable web search" toggle. For example, this is available for Claude, Google AI Studio / Vertex AI, OpenRouter, Chutes, and other backends.
+
 ## Available sources
 
 ### Selenium Plugin
@@ -11941,7 +12289,8 @@ Docs: <https://docs.z.ai/api-reference/tools/web-search>
 Search results from the latest query will stay included in the prompt until the next valid query is found.
 If you want to ask additional questions without accidentally triggering the search, start your message with a period.
 
-Web Search function tool always overrides other triggers if enabled and available.
+**Info:** Web Search function tool always overrides other triggers if enabled and available.
+
 Priority of triggers (if multiple are enabled):
 
 1. Backticks.
@@ -12143,8 +12492,8 @@ Your best solution is to host the TTS API on your PC over the local network, jus
 
 UI extensions expand SillyTavern's functionality by hooking into its events and API. They run in a browser context and have practically unrestricted access to the DOM, JavaScript APIs, and the SillyTavern context. Extensions can modify the UI, call internal APIs, and interact with chat data. This guide explains how to create your own extensions (JavaScript knowledge is required).
 
-!!!tip Just want to install extensions?
-Go here: Extensions.
+**Tip Just want to install extensions?:** Go here: Extensions.
+
 To extend the functionality of the Node.js server, see the Server Plugins page.
 
 **Can't write JavaScript?**
@@ -12295,6 +12644,7 @@ context.groupId; // ID of the current group
 You can find the full list of available properties and functions in the SillyTavern source code (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/st-context.js).
 
 If you're missing any of the functions/properties in `getContext`, please get in touch with the developers or send us a pull request!
+
 ### Shared libraries
 
 Most of the npm libraries used internally by the SillyTavern frontend are shared in the `libs` property of the `SillyTavern` global object.
@@ -12391,10 +12741,12 @@ $('#extensions_settings2').append(settingsHtml);
 </div>
 ```
 
-`renderExtensionTemplate()` (synchronous) is deprecated. Always use `renderExtensionTemplateAsync()` instead.
+**Warning:** `renderExtensionTemplate()` (synchronous) is deprecated. Always use `renderExtensionTemplateAsync()` instead.
+
 ### Importing from other files
 
-Using imports from SillyTavern code is unreliable and can break at any time if the internal structure of ST's modules changes. `getContext` provides a more stable API.
+**Warning:** Using imports from SillyTavern code is unreliable and can break at any time if the internal structure of ST's modules changes. `getContext` provides a more stable API.
+
 Unless you're building a bundled extension, you can import variables and functions from other JS files.
 
 For example, this code snippet will generate a reply from the currently selected API in the background:
@@ -12461,7 +12813,8 @@ To bind some data to a specific chat, you can use the `chatMetadata` object from
 
 To persist the metadata, use the `saveMetadata()` function, which will save the metadata to the server.
 
-Do not save the reference to `chatMetadata` in a long-lived variable, as the reference will change when the chat is switched. Always use `SillyTavern.getContext().chatMetadata` to access the current chat metadata.
+**Warning:** Do not save the reference to `chatMetadata` in a long-lived variable, as the reference will change when the chat is switched. Always use `SillyTavern.getContext().chatMetadata` to access the current chat metadata.
+
 ```js
 const { chatMetadata, saveMetadata } = SillyTavern.getContext();
 
@@ -12475,7 +12828,8 @@ const value = chatMetadata['my_key'];
 await saveMetadata();
 ```
 
-The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen to this event to update your extension's state accordingly. See more in the Listening to events section.
+**Tip:** The `CHAT_CHANGED` event is emitted when the chat is switched, so you can listen to this event to update your extension's state accordingly. See more in the Listening to events section.
+
 ### Character cards
 
 SillyTavern fully supports Character Cards V2 Specification (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md), which allows to store arbitrary data in the character card JSON data.
@@ -12484,12 +12838,14 @@ This is useful for extensions that need to store additional data associated with
 
 To write data to the character card extensions (https://github.com/malfoyslastname/character-card-spec-v2/blob/main/spec_v2.md#extensions) data field, use the `writeExtensionField` function from the `getContext()` function. This function takes a character ID, a string key, and a value to write. The value must be JSON-serializable.
 
-!!!warning Weirdness Ahead
+**Warning Weirdness Ahead:**
+
 Despite being called `characterId`, it's not a "real" unique identifier but rather an index of the character in the `characters` array.
 
 The index of the current character is provided by the `characterId` property in the context. If you want to write data to the currently selected character, use `SillyTavern.getContext().characterId`. If you need to store data for another character, find the index by searching for the character in the `characters` array.
 
 **Caution: `characterId` is `undefined` in group chats or when no character is selected!**
+
 ```js
 const { writeExtensionField, characterId } = SillyTavern.getContext();
 
@@ -12534,10 +12890,12 @@ await pm.writePresetExtensionField({ path: 'hello', value: 'world' });
 const value = pm.readPresetExtensionField({ path: 'hello' });
 ```
 
-The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset is changed or the main API is switched, so you can listen to these events to update your extension's state accordingly. See more in the Listening to events section.
+**Tip:** The `PRESET_CHANGED` and `MAIN_API_CHANGED` events are emitted when the preset is changed or the main API is switched, so you can listen to these events to update your extension's state accordingly. See more in the Listening to events section.
+
 ## Internationalization
 
 For general information on providing translations, see the Internationalization page.
+
 Extensions can provide additional localized strings for use with the `t`, `translate` functions and the `data-i18n` attribute in HTML templates.
 
 See the list of supported locales here (`lang` key): <https://github.com/SillyTavern/SillyTavern/blob/release/public/locales/lang.json>
@@ -12711,8 +13069,8 @@ The main event types are:
 
 The full list of event types can be found in the source (https://github.com/SillyTavern/SillyTavern/blob/staging/public/scripts/events.js).
 
-!!!info Event data
-The way each event passes its data to the listener is not uniform. Some events don't emit any data; some pass an object or a primitive value. Please refer to the source code where the event is emitted to see what data it passes, or check with the debugger.
+**Info Event data:** The way each event passes its data to the listener is not uniform. Some events don't emit any data; some pass an object or a primitive value. Please refer to the source code where the event is emitted to see what data it passes, or check with the debugger.
+
 ### Emitting events
 
 You can produce any application events from extensions, including custom events, by calling `eventSource.emit(eventType, ...eventData)`:
@@ -12857,7 +13215,8 @@ export async function onClean() {
 }
 ```
 
-Hook functions have a **5-second timeout**. If your hook takes longer, execution will continue and a warning will be logged. Keep hook logic fast and lightweight.
+**Warning:** Hook functions have a **5-second timeout**. If your hook takes longer, execution will continue and a warning will be logged. Keep hook logic fast and lightweight.
+
 ## Generating text
 
 SillyTavern provides several functions to generate text in different contexts using the currently chosen LLM API. These functions allow you to generate text in the context of a chat, raw generation without any context, or with structured outputs.
@@ -12912,14 +13271,18 @@ const result = await generateRaw({
 
 ### Structured Outputs
 
-Currently only supported by the Chat Completion API. The availability varies based on the selected source and model. If the selected model does not support structured outputs, the generation will either fail or will return an empty object (`'{}'`). Check the documentation for the specific API you are using to see if structured outputs are supported.
+**Info:** Currently only supported by the Chat Completion API. The availability varies based on the selected source and model. If the selected model does not support structured outputs, the generation will either fail or will return an empty object (`'{}'`). Check the documentation for the specific API you are using to see if structured outputs are supported.
+
 You can use the structured outputs feature to ensure the model produces a valid JSON object that adheres to a provided JSON Schema (https://json-schema.org/learn). This is useful for extensions that require structured data, such as state tracking, data classification, etc.
 
 To use structured outputs, you must pass a JSON schema object to `generateRaw()` or `generateQuietPrompt()`. The model will then generate a response that matches the schema, and it will be returned as a stringified JSON object.
 
+**Warning:**
+
 The outputs are not validated against the schema, you must handle the parsing and validation of the generated output yourself. If the model fails to generate a valid JSON object, the function will return an empty object (`'{}'`).
 
 Zod (https://zod.dev/json-schema) is a popular library to generate and validate JSON schemas. Its use will not be covered here.
+
 ```js
 const { generateRaw, generateQuietPrompt } = SillyTavern.getContext();
 
@@ -13030,7 +13393,8 @@ macros.registerAlias('greet', 'hello', { visible: true });
 
 ### Legacy macro system (deprecated)
 
-`registerMacro()` and `unregisterMacro()` from `getContext()` are **deprecated**. Use `macros.register()` and `macros.registry.unregisterMacro()` instead.
+**Warning:** `registerMacro()` and `unregisterMacro()` from `getContext()` are **deprecated**. Use `macros.register()` and `macros.registry.unregisterMacro()` instead.
+
 The legacy API is still available for backward compatibility, but will be removed in a future release:
 
 ```js
@@ -13049,11 +13413,12 @@ unregisterMacro('fizz');
 
 ## Message formatting hooks
 
-!!!warning Staging Feature
-This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
+**Warning Staging Feature:** This is currently only available on the `staging` branch of SillyTavern, and not part of the latest release.
+
 Extensions can hook into the message formatting pipeline to transform message text before it reaches the DOM. This is useful for adding annotations (ruby tags, tooltips), highlighting, or custom text transformations.
 
-Hooks run synchronously and **must return a string**. Async functions and non-string returns will throw a `TypeError` at registration time or be silently ignored at runtime with a console warning. Do not perform expensive operations in these hooks — they run on every message render.
+**Warning:** Hooks run synchronously and **must return a string**. Async functions and non-string returns will throw a `TypeError` at registration time or be silently ignored at runtime with a console warning. Do not perform expensive operations in these hooks — they run on every message render.
+
 ### Pipeline stages
 
 Hooks can be registered for three pipeline stages. All stages run **before** DOMPurify sanitization, so output is always safe:
@@ -13368,7 +13733,8 @@ registerDebugFunction(
 
 ## Do Extras request
 
-The Extras API is deprecated. It's not recommended to use it in new extensions.
+**Warning:** The Extras API is deprecated. It's not recommended to use it in new extensions.
+
 The `doExtrasFetch()` function allows you to make requests to your SillyTavern Extras API server.
 
 For example, to call the `/api/summarize` endpoint:
@@ -13727,10 +14093,11 @@ Nobody knows 15 languages by themselves. We work together to make SillyTavern ac
 
 ## Let's fix some missing translations!
 
-All 3 of these issues required code changes to fix. If you're adding a new translation, you might not need to touch
+**Info:** All 3 of these issues required code changes to fix. If you're adding a new translation, you might not need to touch
 the code at all. Just add the translation to the JSON file. It just so happens that somebody recently added a large number
 of missing translations to the Chinese (Traditional) JSON file, so the remaining issues were all in the code. In other locales
 there are plenty of missing translations you can fix without touching the code.
+
 ### `Generate Image`
 
 The text "Generate Image" is untranslated in the Chinese (Traditional) locale. Why?
@@ -14200,11 +14567,12 @@ The console will show a table of missing translations with:
 
 Reapplies the currently selected locale to the page
 
-!!!warning Neither of these tools are perfect
+**Warning Neither of these tools are perfect:**
 
 - they don't catch missing translations in JavaScript code
 - they don't catch missing data-i18n attributes in HTML, they just catch untranslated keys
 - there are bugs in the code for `getMissingTranslations`: keys should not be prefixed with `[title]` or `[placeholder]`
+
 ## Adding a new language
 
 To add support for a new language:
@@ -14234,22 +14602,40 @@ When your translations are ready:
 
 SillyTavern's default package only provides a barebones platform that can be extended in a multitude of ways.
 
-**Callout:** **STscript**
+**Callout:**
+
+**STscript**
+
 STscript is a powerful scripting language based on batched chat commands that can be approached without any prior coding knowledge.
 
-**Callout:** **Function Calling**
+**Callout:**
+
+**Function Calling**
+
 Add more dynamic capabilities by letting the LLM use external sources of data or trigger specific functionality of the extension.
 
-**Callout:** **External Provider Integrations**
+**Callout:**
+
+**External Provider Integrations**
+
 Choose between Custom OpenAI-compatible setup, a UI extension, a server plugin, or prior discussion for an official integration.
 
-**Callout:** **UI Extensions**
+**Callout:**
+
+**UI Extensions**
+
 UI extensions run in a browser environment and expand the functionality of SillyTavern by hooking into its events and API.
 
-**Callout:** **Server Plugins**
+**Callout:**
+
+**Server Plugins**
+
 Server plugins allow adding functionality such as new API endpoints by running code in the NodeJS environment.
 
-**Callout:** **Internationalization (i18n)**
+**Callout:**
+
+**Internationalization (i18n)**
+
 Learn how to translate SillyTavern's UI into your language.
 
 # SECTION: SillyTavern_For_Contributors_Provider-Integrations
@@ -14258,7 +14644,8 @@ Learn how to translate SillyTavern's UI into your language.
 
 SillyTavern supports external services through several different integration routes. Choose the route before implementing a named provider so the result has an appropriate maintenance owner and does not add permanent core surface where the existing generic interfaces are sufficient.
 
-Do not use a completed pull request as the first product discussion for a new named provider or service. A working implementation does not by itself establish that SillyTavern should maintain the integration.
+**Warning:** Do not use a completed pull request as the first product discussion for a new named provider or service. A working implementation does not by itself establish that SillyTavern should maintain the integration.
+
 ## Choose the integration route
 
 | Proposal | Recommended route |
@@ -14412,8 +14799,8 @@ These plugins allow for adding functionality that is impossible to achieve using
 
 Plugins are contained in the `plugins` directory of SillyTavern and are loaded on server startup, but *only* if `enableServerPlugins` is set to `true` in the `config.yaml` file.
 
-!!!warning Warning
- **Server Plugins are not sandboxed. This means they can potentially gain access to your entire file system, or introduce a wide range of security vulnerabilities in a way that normal UI extensions cannot. Only install server plugins from developers you trust!**
+**Warning:** **Server Plugins are not sandboxed. This means they can potentially gain access to your entire file system, or introduce a wide range of security vulnerabilities in a way that normal UI extensions cannot. Only install server plugins from developers you trust!**
+
 For a list of all official server plugins, see the GitHub organization list: <https://github.com/search?q=topic%3Aplugin+org%3ASillyTavern&type=Repositories>
 
 ## Types of plugins
@@ -14533,7 +14920,8 @@ Commands are executed sequentially, one after another, and transfer data between
 1. The `/pass` command accepts a constant value of "Hello, World!" as an unnamed argument and writes it to the pipe.
 2. The `/echo` command receives the value through the pipe from the previous command and displays it as a toast notification.
 
-**Hint:** To see a list of all available commands, type `/help slash` into the chat.
+**Tip:** **Hint:** To see a list of all available commands, type `/help slash` into the chat.
+
 As constant unnamed arguments and pipes are interchangeable, we could rewrite this script simply as:
 
 ```stscript
@@ -15760,7 +16148,8 @@ Scripts can also interact with SillyTavern's UI: navigate through the chats or c
 
 ### Get Nth Fibonacci's number (using Binet's formula)
 
-**Hint**: Set value of `fib_no` to the desired number
+**Tip:** **Hint**: Set value of `fib_no` to the desired number
+
 ```stscript
 /setvar key=fib_no 5 |
 /pow 5 0.5 | /setglobalvar key=SQRT5 |

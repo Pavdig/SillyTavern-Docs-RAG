@@ -1,10 +1,11 @@
 # Configuration File
 
-!!!warning Disclaimer
+**Warning Disclaimer:**
 
 This documentation may be obsolete, incomplete, or incorrect. Please refer to the default config.yaml (https://github.com/SillyTavern/SillyTavern/blob/release/default/config.yaml) in your installation for the most up-to-date list of settings.
 
 **WARNING: DO NOT EDIT THE DEFAULT CONFIG DIRECTLY. THIS WON'T HAVE ANY POSITIVE EFFECT. EDIT ITS COPY IN THE REPOSITORY ROOT INSTEAD.**
+
 `config.yaml` is the main configuration file for the SillyTavern server which you can find in the repository root directory after [completing the installation](SillyTavern_Installation_index.md) and running the server for the first time. It is a YAML file that contains various settings, such as network, security, and backend-specific options. **The changes made to this file will take effect after restarting the server.**
 
 New settings that are added upstream are automatically populated with default values when restarting the server after [updating the repository](SillyTavern_Installation_Updating_index.md). You can then modify these settings as needed. To add missing settings before startup, run the `npm run init` script.
@@ -32,7 +33,8 @@ Start.bat --port 8000 --listen false
 
 ### Supported arguments
 
-None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
+**Tip:** None of the arguments are required. If you don't provide them, SillyTavern will use the settings in `config.yaml`.
+
 | Option                          | Description                                                          | Type     |
 |---------------------------------|----------------------------------------------------------------------|----------|
 | `--version`                     | Shows the version number                                             | boolean  |
@@ -69,7 +71,8 @@ The environment variables should be prefixed with `SILLYTAVERN_` and use upperca
 
 The nested settings should be separated by underscores. For example, `protocol.ipv6` can be overridden with the `SILLYTAVERN_PROTOCOL_IPV6` environment variable.
 
-Configurations that expect arrays or objects should be JSON-stringified. For example, to override the `whitelist` setting with the `SILLYTAVERN_WHITELIST` environment variable, you should set it as a JSON string: `SILLYTAVERN_WHITELIST='["127.0.0.1", "::1"]'`.
+**Warning:** Configurations that expect arrays or objects should be JSON-stringified. For example, to override the `whitelist` setting with the `SILLYTAVERN_WHITELIST` environment variable, you should set it as a JSON string: `SILLYTAVERN_WHITELIST='["127.0.0.1", "::1"]'`.
+
 If you are using Node.js v20 or later, you can also store environment variables in a `.env` file and pass it to the server with the `--env-file` flag. For example, to use the `.env` file located in the repository root, you can start the server with the following command:
 
 ```bash
@@ -139,6 +142,7 @@ See more about using environment variables in the Node.js documentation (https:/
 Adjust which headers are used to determine the real IPs for features like IP whitelisting, rate limiting and access logging.
 
 Only change if you are sure that you use a correctly configured [reverse proxy](SillyTavern_Administration_reverse-proxying.md), otherwise this may lead to IP spoofing.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `forwardedHeaders.xRealIp` | Use the `X-Real-IP` header for client IP detection | `true` | `true`, `false` |
@@ -150,6 +154,7 @@ Only change if you are sure that you use a correctly configured [reverse proxy](
 This is an additional layer of security to prevent Server-Side Request Forgery (SSRF) attacks, performing whitelist checks against server-side HTTP requests that resolve to private IP addresses. When enabled, [private network ranges](SillyTavern_Administration_remote-connections.md) will be blocked, unless explicitly allowed in the `privateAddressWhitelist.allowedRanges` setting.
 
 **This is disabled by default, but recommended when listen mode is enabled, or if your server is accessible by untrusted users.**
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `privateAddressWhitelist.enabled` | Enable private address whitelisting | `false` | `true`, `false` |
@@ -168,7 +173,8 @@ This is an additional layer of security to prevent Server-Side Request Forgery (
 
 ### Security Overrides
 
-**DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
+**Danger:** **DISABLING SECURITY MEASURES IS HIGHLY DISCOURAGED. PLEASE MAKE SURE YOU UNDERSTAND WHAT YOU ARE DOING BEFORE MAKING CHANGES.**
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `allowKeysExposure` | Allow unmasked API key exposure in the UI | `false` | `true`, `false` |
@@ -177,9 +183,12 @@ This is an additional layer of security to prevent Server-Side Request Forgery (
 
 ## [User Authentication](SillyTavern_Administration_multi-user.md)
 
+**Tip:**
+
 Rate limiting is applied by default to both basic auth and user account login attempts. You can adjust the limits in the Rate Limiting Configuration section.
 
 If using basic auth behind a tunneled connection (e.g., Cloudflare Tunnel), make sure to adjust the rate limiting settings and IP address detection accordingly to prevent lockouts.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `basicAuthMode` | Enable basic authentication | `false` | `true`, `false` |
@@ -192,7 +201,8 @@ If using basic auth behind a tunneled connection (e.g., Cloudflare Tunnel), make
 
 ### SSO Auto-Login
 
-Inadequately securing an SSO flow can lead to unauthorized access. Make sure to properly configure trusted proxies and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
+**Warning:** Inadequately securing an SSO flow can lead to unauthorized access. Make sure to properly configure trusted proxies and test your setup before enabling SSO. If you are unsure about the security implications, it is recommended to keep SSO auto-login disabled and resort to other authentication methods instead.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `sso.trustedProxies` | List of trusted proxy IPs for SSO authentication | `["::1", "127.0.0.1"]` | Array of valid IP addresses, CIDR ranges, or wildcard patterns |
@@ -201,9 +211,12 @@ Inadequately securing an SSO flow can lead to unauthorized access. Make sure to 
 
 ## Rate Limiting Configuration
 
+**Tip:**
+
 To disable rate limiting for a specific route, set the limit to `0`.
 
 For example, to disable login rate limiting, set `rateLimiting.accountsLoginMaxAttempts` to `0`.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `rateLimiting.preferRealIpHeader` | Use IP from headers configured in the Forwarded Headers Configuration instead of the socket IP for rate limiting | `false` | `true`, `false` |
@@ -213,7 +226,8 @@ For example, to disable login rate limiting, set `rateLimiting.accountsLoginMaxA
 
 ## Request Proxy Configuration
 
-Request proxying conflicts with the private address whitelist feature. If you enable both, only the requests that bypass the proxy will be checked against the private address whitelist, while the proxied requests will not be checked at all. If unsure, disabling the request proxy is recommended.
+**Warning:** Request proxying conflicts with the private address whitelist feature. If you enable both, only the requests that bypass the proxy will be checked against the private address whitelist, while the proxied requests will not be checked at all. If unsure, disabling the request proxy is recommended.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `requestProxy.enabled` | Enable proxy for outgoing requests | `false` | `true`, `false` |
@@ -222,9 +236,12 @@ Request proxying conflicts with the private address whitelist feature. If you en
 
 ## CORS Proxy Configuration
 
+**Warning:**
+
 An enabled CORS proxy may be required by some extensions. It is not required by any built-in features.
 
 Enabling a CORS proxy without proper security measures (e.g., IP, host, and private address whitelists) can lead to SSRF vulnerabilities. Make sure to configure the whitelists accordingly if you enable this feature, and only enable it if you trust the extensions that require it.
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `enableCorsProxy` | Enable CORS proxy middleware | `false` | `true`, `false` |
@@ -267,7 +284,8 @@ Enabling a CORS proxy without proper security measures (e.g., IP, host, and priv
 
 ## Cache Buster Configuration
 
-Requires localhost or a domain with HTTPS, otherwise will not work!
+**Warning:** Requires localhost or a domain with HTTPS, otherwise will not work!
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|------------------|
 | `cacheBuster.enabled` | Clear browser cache on first load or after uploading image files | `false` | `true`, `false` |
@@ -317,11 +335,12 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ## Git Configuration
 
-!!! Git backends explained
+**Git backends explained:**
 
 1. `auto` - prefer system binary, falling back to integrated
 2. `system` - system git binary using simple-git (https://www.npmjs.com/package/simple-git)
 3. `builtin` - integrated engine using isomorphic-git (https://www.npmjs.com/package/isomorphic-git)
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `git.backend` | Git backend for plugin/extension repository operations | `auto` | `auto`, `system`, `builtin` |
@@ -351,11 +370,12 @@ Requires localhost or a domain with HTTPS, otherwise will not work!
 
 ### Claude Configuration
 
-!!!warning **IMPORTANT!**
+**Warning IMPORTANT!:**
 
 Use with caution and only when the prompt prefix is static and doesn't change between requests. \{\{random\}\} macro, lorebooks, vectors, summaries, etc. will likely invalidate the cache and you'll just waste money on cache misses. The provider may have a minimum prompt size requirement for caching. Behavior may be unpredictable and no guarantees can or will be made, please review the API documentation.
 
 See: Prompt Caching (https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+
 | Setting | Description | Default | Permitted Values |
 |---------|-------------|---------|-----------------|
 | `claude.enableSystemPromptCache` | Enable system prompt caching | `false` | `true`, `false` |

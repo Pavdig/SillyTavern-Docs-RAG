@@ -25,10 +25,11 @@ Nobody knows 15 languages by themselves. We work together to make SillyTavern ac
 
 ## Let's fix some missing translations!
 
-All 3 of these issues required code changes to fix. If you're adding a new translation, you might not need to touch
+**Info:** All 3 of these issues required code changes to fix. If you're adding a new translation, you might not need to touch
 the code at all. Just add the translation to the JSON file. It just so happens that somebody recently added a large number
 of missing translations to the Chinese (Traditional) JSON file, so the remaining issues were all in the code. In other locales
 there are plenty of missing translations you can fix without touching the code.
+
 ### `Generate Image`
 
 The text "Generate Image" is untranslated in the Chinese (Traditional) locale. Why?
@@ -498,11 +499,12 @@ The console will show a table of missing translations with:
 
 Reapplies the currently selected locale to the page
 
-!!!warning Neither of these tools are perfect
+**Warning Neither of these tools are perfect:**
 
 - they don't catch missing translations in JavaScript code
 - they don't catch missing data-i18n attributes in HTML, they just catch untranslated keys
 - there are bugs in the code for `getMissingTranslations`: keys should not be prefixed with `[title]` or `[placeholder]`
+
 ## Adding a new language
 
 To add support for a new language:

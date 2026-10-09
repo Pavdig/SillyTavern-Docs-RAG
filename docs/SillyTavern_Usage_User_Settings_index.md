@@ -1,9 +1,15 @@
 # User Settings
 
-**Callout:** **[UI Customization](SillyTavern_Usage_User_Settings_uicustomization.md)**
+**Callout:**
+
+**[UI Customization](SillyTavern_Usage_User_Settings_uicustomization.md)**
+
 Change the theme, look and feel of the chat interface to suit your preferences.
 
-**Callout:** **[Visual Novel mode](SillyTavern_Usage_User_Settings_Visual-Novel.md)**
+**Callout:**
+
+**[Visual Novel mode](SillyTavern_Usage_User_Settings_Visual-Novel.md)**
+
 Chat to characters with sprites, like in visual novels such as Doki Doki Literature Club and other famous VN games.
 
 ## General Settings
@@ -59,9 +65,8 @@ Critical account operations that should be used with caution:
 
 #### <i class="fa-fw fa-solid fa-user-tie"></i> Admin Panel
 
-!!! Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)
+**Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md):** Multi-account features require `enableUserAccounts` to be set to true in config.yaml.
 
-Multi-account features require `enableUserAccounts` to be set to true in config.yaml. 
 Select **Manage Users** to view and manage existing user accounts.
 
 ##### User Profile
@@ -99,7 +104,8 @@ Creating a new user automatically generates a subfolder in the /data/ directory 
 
 #### <i class="fa-fw fa-solid fa-right-from-bracket"></i> Logout
 
-!!! Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)
+**Applies to: [multi-user mode](SillyTavern_Administration_multi-user.md)**
+
 Sign out of your current session.
 
 ### Settings Search
@@ -250,11 +256,14 @@ See [Replace Variable Macros](SillyTavern_For_Contributors_st-script.md) for mor
 
 The Clean-Up menu provides a data maintenance tool that helps you identify and remove unnecessary files from your SillyTavern installation. This feature helps keep your data directory organized and can free up significant disk space.
 
+**Warning Important Warning:**
+
 The Clean-up tool will permanently delete files. **This action cannot be undone!**
 
 Manual uploads to the `/data/user/files/` and `/data/user/images/` directories will be deleted if they are not associated with chat messages or Data Bank entries.
 
 If unsure, make a backup of your data before using the Clean-up menu.
+
 ### How to Use Clean-Up
 
 1. Click the **Clean-Up** button under the **Miscellaneous** section
@@ -326,9 +335,8 @@ The Clean-Up tool scans for loose files into the following categories:
 
 ## Debug menu
 
-!!!warning These functions are intended for advanced users only.
+**Warning These functions are intended for advanced users only.:** Do not use them unless you fully understand their consequences.
 
-Do not use them unless you fully understand their consequences.
 The Debug Menu provides functionality for troubleshooting, maintenance, and development purposes. These functions should be used with caution as they can significantly impact your SillyTavern installation.
 
 Because extensions can add debug functions, the available options will vary depending on the extensions you have installed.

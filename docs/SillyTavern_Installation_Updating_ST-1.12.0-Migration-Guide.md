@@ -36,8 +36,8 @@ npm run start -- --dataRoot="/Users/harry/ST-Data"
 
 The default data root path is `./data`, which means the `data` directory in SillyTavern's repository.
 
-!!!info Note
-The data root path should be either a **full absolute** or a **full relative** path. You _can't_ use path shortcuts like `~` or `%APP_DATA%`, as these are resolved by a shell, not the operating system.
+**Info Note:** The data root path should be either a **full absolute** or a **full relative** path. You _can't_ use path shortcuts like `~` or `%APP_DATA%`, as these are resolved by a shell, not the operating system.
+
 ### Migration
 
 #### **IMPORTANT!** Before we begin
@@ -67,8 +67,8 @@ volumes:
 
 **Step 3.** Rebuild the container and start it up.
 
-!!!info Note
-Soft links between the `/public` directory and the `config` volume are no longer needed and are not built into the Docker container!
+**Info Note:** Soft links between the `/public` directory and the `config` volume are no longer needed and are not built into the Docker container!
+
 #### What to migrate?
 
 The following files and directories are subject to the data migration. Assuming the default configuration, the before and after paths are provided in the table below.

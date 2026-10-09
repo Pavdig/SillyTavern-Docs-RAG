@@ -2,8 +2,8 @@
 
 This page describes the ways you can manage your AI chat files.
 
-!!!info Note
-Some of these options are available in the "Manage chat files" dialog that opens from the bottom left options menu.
+**Info Note:** Some of these options are available in the "Manage chat files" dialog that opens from the bottom left options menu.
+
 ## Solo Chats vs Group Chats
 
 The simplest way to use a character card is a Solo chat; just click on their card and start chatting.

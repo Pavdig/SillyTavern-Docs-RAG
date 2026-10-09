@@ -21,7 +21,8 @@ There are two modes of running SillyTavern that differ in how they handle the co
 * **Standalone mode** (default) - uses the `config.yaml` file and `data` directory in the server directory. All data will be constrained to the installation path. This is the recommended mode for most users.
 * **Global mode** - uses the system-wide paths for configuration and data. This is useful for installing SillyTavern as a package or when you want to share the same configuration and data across multiple installations.
 
-Installations made by using the official npm package (https://www.npmjs.com/package/sillytavern) (e.g. `npx sillytavern@latest`) will run in global mode by default.
+**Info:** Installations made by using the official npm package (https://www.npmjs.com/package/sillytavern) (e.g. `npx sillytavern@latest`) will run in global mode by default.
+
 ### Data paths
 
 **Standalone mode** paths are relative to the SillyTavern installation directory:
@@ -37,7 +38,8 @@ Installations made by using the official npm package (https://www.npmjs.com/pack
 
 ### How to run in global mode
 
-`dataRoot` and `configPath` can't be overridden with [CLI arguments](SillyTavern_Administration_config-yaml.md) or [config.yaml](SillyTavern_Administration_config-yaml.md) when running in global mode.
+**Warning:** `dataRoot` and `configPath` can't be overridden with [CLI arguments](SillyTavern_Administration_config-yaml.md) or [config.yaml](SillyTavern_Administration_config-yaml.md) when running in global mode.
+
 1. Pass the `--global` argument to the server startup command (e.g. `node server.js --global`).
 2. Pass the `--global` argument to the shell startup script (e.g. `Start.bat --global` or `./start.sh --global`).
 3. Use the `start:global` script in the `package.json` file (e.g. `npm run start:global`).

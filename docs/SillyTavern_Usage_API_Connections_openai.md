@@ -2,8 +2,8 @@
 
 ## Source-specific instructions
 
-!!!warning **Important!**
-Most API platforms allow you to view the generated API key only once, at the time of its creation. If you lose it, you will need to generate a new key. Make sure to keep it safe!
+**Warning Important!:** Most API platforms allow you to view the generated API key only once, at the time of its creation. If you lose it, you will need to generate a new key. Make sure to keep it safe!
+
 ### OpenAI
 
 Use OpenAI's developer platform to access various OpenAI models, including gpt-4o, gpt-4.1, o3, etc.
@@ -92,11 +92,13 @@ Electron Hub is a unified OpenAI-compatible platform that provides access to mod
 
 ## Custom OpenAI-compatible endpoint
 
-It is important to note that we do not provide support for possible issues that you may have!
+**Warning:** It is important to note that we do not provide support for possible issues that you may have!
 We do not guarantee compatibility with every possible API endpoint!
+
 If you intend to use this feature to use a local endpoint, like TabbyAPI, Oobabooga, Aphrodite, or any like those, you might want to check out the [built-in compatibility for those](SillyTavern_Usage_API_Connections_index.md) instead. The custom endpoint feature is mainly intended for use with other services and programs that expose an OpenAI-compatible API Chat Completion endpoint.
 
 Most Text Completion APIs support far greater customization options than OpenAI's standards allow for. These greater customization options, such as the Min-P sampler, may be worthwhile for SillyTavern users to check out, which can greatly improve the quality of generations.
+
 You can configure an alternative endpoint for the Chat Completions backend. This custom endpoint can connect to any server that supports the generic OpenAI API schema.
 
 Examples of compatible backends include:
@@ -114,7 +116,8 @@ To access this feature:
 
 Enter the custom endpoint URL and an API key if required. For example, TabbyAPI requires an API key for authentication.
 
-**Hint:** If you experience connection issues, try adding `/v1` to the end of the endpoint URL. Do NOT add the `/chat/completions` suffix.
+**Tip:** **Hint:** If you experience connection issues, try adding `/v1` to the end of the endpoint URL. Do NOT add the `/chat/completions` suffix.
+
 ### Selecting a Model
 
 If the custom API implements the `/v1/models` endpoint to provide a list of available models, you can choose from a dropdown list. Otherwise, use the text field to manually input a model ID.
@@ -123,11 +126,12 @@ Check 'Bypass API status check' to prevent SillyTavern from alerting you about a
 
 Click "Test Message" to verify connectivity by sending a simple prompt to the model.
 
-!!!info Documenting an external provider?
-Provider developers should read [Integrating an External Provider](SillyTavern_for-contributors_provider-integrations.md) for the provider-owned setup-guide template and the UI extension, server plugin, and official-integration routes.
+**Info Documenting an external provider?:** Provider developers should read [Integrating an External Provider](SillyTavern_for-contributors_provider-integrations.md) for the provider-owned setup-guide template and the UI extension, server plugin, and official-integration routes.
+
 ## Prompt Post-Processing
 
-**Note:** Tool Calling is not supported when Post-Processing option with "no tools" is used!
+**Warning:** **Note:** Tool Calling is not supported when Post-Processing option with "no tools" is used!
+
 Some endpoints may impose specific restrictions on the format of incoming prompts, such as requiring only one system message or strictly alternating roles.
 
 SillyTavern provides built-in prompt converters to help meet these requirements (from least to most restrictive):

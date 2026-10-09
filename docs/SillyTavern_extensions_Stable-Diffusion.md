@@ -129,7 +129,8 @@ Uses [function calling](SillyTavern_extensions_Stable-Diffusion.md) to automatic
 3. The "Use function tool" option must be enabled in the Image Generation settings.
 4. The user should express an intent to generate an image in the chat message, e.g. "Send me a picture of a cat".
 
-The interactive mode will not trigger when the function tool is enabled.
+**Warning:** The interactive mode will not trigger when the function tool is enabled.
+
 ### Use interactive mode
 
 Allows you to trigger an image generation instead of text as a reply to a user message that follows the special pattern:
@@ -169,8 +170,8 @@ Snap image generation requests with a forced aspect ratio (portraits, background
 
 ## Common prompt prefix
 
-!!!tip Pro Tip
-Use `{prompt}` macro to specify where exactly the generated prompt will be inserted.
+**Tip Pro Tip:** Use `{prompt}` macro to specify where exactly the generated prompt will be inserted.
+
 Added before every generated or free-mode prompt. Commonly used for setting the overall style of the picture.
 
 Example: `best quality, anime lineart`.
@@ -183,8 +184,8 @@ Example: `bad quality, watermark`.
 
 ## Character-specific prompt prefix
 
-!!!tip Pro Tip
-If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
+**Tip Pro Tip:** If supported by the generation source, you can also use LoRAs/embeddings here, for example: `<lora:DonaldDuck:1>`.
+
 Any characteristics that describe the currently selected character. Will be added after a common prefix.
 
 Example: `female, green eyes, brown hair, pink shirt`.
@@ -195,7 +196,8 @@ Limitations:
 1. Works only in 1-to-1 chats. Will not be used in groups.
 2. Won't be used for backgrounds and free mode generations.
 
-To force include a character prefix into a free mode prompt, use the `{{charPrefix}}` macro anywhere in the prompt.
+**Note:** To force include a character prefix into a free mode prompt, use the `{{charPrefix}}` macro anywhere in the prompt.
+
 If you want to share the prefixes with others, tick the "Shareable" checkbox. This will save them with the character data, rather than your local settings. 
 
 ## Styles
@@ -256,8 +258,8 @@ After entering the URL, choose <i class="fa-solid fa-check"></i> **Connect** to 
   * Model, samplers, VAE, etc cannot be determined dynamically so your workflow needs to have these hard coded (no `%model%` substitution).
   * Other substitutions should work the same as local.
 
-!!!info Note
-The serverless configuration does not currently embed the workflow into the output image. i.e., you won't be able to drag/drop the image into local ComfyUI to see the seed or prompt. This is just a limitation of the RunPod handler and is a capability that could be added on that side.
+**Info Note:** The serverless configuration does not currently embed the workflow into the output image. i.e., you won't be able to drag/drop the image into local ComfyUI to see the seed or prompt. This is just a limitation of the RunPod handler and is a capability that could be added on that side.
+
 ### Workflow Management
 
 Select a ComfyUI workflow from the dropdown menu. Two default workflows are provided:
@@ -285,10 +287,12 @@ To add a ComfyUI workflow to the editor, follow these steps:
 4. Paste the downloaded JSON data into the text area.
 5. Replace specific values with placeholders as needed for your use case.
 
-!!!tip Tips
+**Tip Tips:**
+
 You can add the API-format JSON file directly to the `data/default-user/user/workflows` directory in your SillyTavern installation. This will save you from steps 3 and 4.
 
 Retain the original JSON file. If you need to open the workflow again in ComfyUI to make changes, it is much more convenient to edit the original file than the one with all the placeholders.
+
 ### Placeholders
 
 The editor provides a list of predefined placeholders that can be used in your workflow JSON. These placeholders are replaced with dynamic values when the workflow is executed in SillyTavern.
@@ -414,10 +418,10 @@ choose a `GGUF` model in the SillyTavern model dropdown, and use the `%model%` p
 ```
 +++
 
-!!!info If you have model types other than the usual SD checkpoints in ComfyUI
-Stable Diffusion checkpoints, SD UNets, and GGUF-quantized UNets all appear in the Model dropdown.
+**Info If you have model types other than the usual SD checkpoints in ComfyUI:** Stable Diffusion checkpoints, SD UNets, and GGUF-quantized UNets all appear in the Model dropdown.
 Models of one type will not work with workflows/loader nodes expecting another type.
 If you choose an incompatible model type in ST, ComfyUI will report a problem with the loader node.
+
 #### Avatar images
 
 Use the `%user_avatar%` and `%char_avatar%` placeholders to include the user and character avatars in the workflow. These placeholders are replaced with the PNG data of the avatars when the workflow is executed. The image data is encoded in base64 format, so you must decode it in your workflow. A popular choice for this task is the Load image (Base64) (https://github.com/Acly/comfyui-tooling-nodes) node.

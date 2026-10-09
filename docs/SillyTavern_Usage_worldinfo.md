@@ -42,6 +42,7 @@ A World Info file can be assigned to the currently active [persona](SillyTavern_
 To assign a lorebook to a persona, open the **Persona Management** panel and click the <i class="fa-solid fa-globe"></i> **Persona Lore** button. Pick a World Info file from the dropdown list. If a lorebook is already bound, clicking the button opens the lorebook editor directly.
 
 To reopen the assignment popup when a lorebook is already bound, use a **long press** (on mobile) or **Shift+Click / Alt+Click** (on desktop) on the Persona Lore button.
+
 ### Chat Lorebook
 
 A World Info file can also be assigned to an individual chat. Entries from a chat-bound lorebook are only active in that specific conversation and will not carry over to other chats with the same character.
@@ -49,6 +50,7 @@ A World Info file can also be assigned to an individual chat. Entries from a cha
 To assign a lorebook to a chat, click the <i class="fa-solid fa-passport"></i> **Chat Lore** button in the Character Management panel. Pick a World Info file from the dropdown list. If a lorebook is already bound, clicking the button opens the lorebook editor directly.
 
 To reopen the assignment popup when a lorebook is already bound, use a **long press** (on mobile) or **Shift+Click / Alt+Click** (on desktop) on the Chat Lore button.
+
 ### Lore Insertion Strategy
 
 When generating an AI reply, entries from the character World Info and other auxiliary sources will be combined with the entries from a global World Info selector. By default the entries will be inserted in the following order:
@@ -246,6 +248,7 @@ The generation types for which this World Info entry can be activated. If nothin
 * **Quiet:** Background generation requests, usually triggered by [extensions](SillyTavern_extensions_index.md) or [STscript](SillyTavern_For_Contributors_st-script.md) commands.
 
 The "Regenerate" trigger is not available in group chats as it uses different regeneration logic: all messages from the last reply are deleted, and messages are queued using the "Normal" generation type according to the chosen [Group reply strategy](SillyTavern_Usage_Characters_groupchats.md).
+
 ### Additional matching sources
 
 By default World Info Entries are matched only against content from the current conversation. These options allow you to match the entry against different character information that does not show up in the chat, or even persona information. This is useful when you want to have a wide range of entries that are to be used between several characters but don't want to have to manage large lists of tags, or don't want to have to update character filter lists every time you create a new one. This also allows you to match entries based on the persona you have active.
@@ -276,8 +279,8 @@ Vector Storage matching adheres to this set of rules:
 * The "Scan Depth" setting from Activation Settings or entry overrides is not used. The Vector Storage "Query messages" value is utilized instead to get the text to match against. This allows for a configuration like "Scan Depth" set to 0, so no regular keyword matches will be made, but entries still can be activated by vectors.
 * A "Vectorized" status is only an additional marker. The entry would still behave like a normal, enabled, non-constant record that will be activated by keywords if they are set. Remove the keywords if you want them to be activated only by vectors.
 
-!!!info Note
-Since the retrieval quality depends entirely on the outputs of the embedding model, it's impossible to predict exactly what entries will be inserted. If you want deterministic and predictable results, stick to keyword matching.
+**Info Note:** Since the retrieval quality depends entirely on the outputs of the embedding model, it's impossible to predict exactly what entries will be inserted. If you want deterministic and predictable results, stick to keyword matching.
+
 ## Timed Effects
 
 Usually, World Info evaluation is stateless, meaning that the result of the evaluation is the same, only depending on the current chat context. However, with the introduction of Timed Effects, you can create entries that have an activation delay, stay active after being triggered, or can't be triggered after the activation.

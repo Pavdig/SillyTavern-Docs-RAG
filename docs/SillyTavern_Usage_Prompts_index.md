@@ -74,8 +74,8 @@ However, you can adjust the main prompt to better suit your needs. Here are some
 * **Clarify the role of the AI**: for example, you want the AI to act as a narrator, a storyteller, or a guide
 * **Change the context of the conversation**: for example, you want the AI to respond as if it were an AI assistant, text adventure game, or a writing partner
 
-!!! Try things out and see what works best for you
-All the examples in this guide have worked well for other users, but the prompt that works for your needs and the model you're using might be different. Experiment with different instructions and prompting styles to see what works best for you. If you're not sure what to try, you can always ask for help in the SillyTavern Discord (https://discord.gg/sillytavern).
+**Try things out and see what works best for you:** All the examples in this guide have worked well for other users, but the prompt that works for your needs and the model you're using might be different. Experiment with different instructions and prompting styles to see what works best for you. If you're not sure what to try, you can always ask for help in the SillyTavern Discord (https://discord.gg/sillytavern).
+
 Giving the AI additional instructions in the Main Prompt can help it understand what you want from the conversation.
 
 > Write one reply only. Write at least one paragraph, up to four.
@@ -105,8 +105,8 @@ When your conversation already has history, changing the main prompt has a limit
 * edit the message history to remove or correct examples of unwanted behavior
 * use the Post-History Instructions to provide final instructions to the AI
 
-!!! Get it right the first time!
-Never let the AI "get away" with something you don't want it to do. If you don't like the AI's response, don't continue the conversation as if it was correct. Instead, modify the prompts, regenerate the message, and continue from there. This will help the AI learn what you want.
+**Get it right the first time!:** Never let the AI "get away" with something you don't want it to do. If you don't like the AI's response, don't continue the conversation as if it was correct. Instead, modify the prompts, regenerate the message, and continue from there. This will help the AI learn what you want.
+
 ### Removing the "Fictional Chat" Context
 
 There are situations where "fictional chat" might not be the right context for your conversation. 

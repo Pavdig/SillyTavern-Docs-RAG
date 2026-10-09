@@ -12,10 +12,10 @@ You can now:
 * **Message actions**: Click the <i class="fa-solid fa-ellipsis"></i> **Message actions** button on a message for more message options like [translation](SillyTavern_extensions_Translation.md), image generation, and story branching.
 * **Chat options**: Click the <i class="fa-solid fa-bars"></i> **Options** button next to the chat bar for more chat options like author's notes and chat file management.
 
-!!! Edit and swipe
-If you wish you'd said something different, you can edit your message and then swipe the AI's response to get a new one.
-!!! Keyboard shortcuts
-You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` [slash command](SillyTavern_Usage_Chatting_slashcommands.md) in the chat or check the [HotKeys](SillyTavern_Usage_Chatting_hotkeys.md) page.
+**Edit and swipe:** If you wish you'd said something different, you can edit your message and then swipe the AI's response to get a new one.
+
+**Keyboard shortcuts:** You can also use the **Right** arrow key to swipe, and the **Up** arrow key to edit the last message in the chat. For more hotkeys, use the `/help hotkeys` [slash command](SillyTavern_Usage_Chatting_slashcommands.md) in the chat or check the [HotKeys](SillyTavern_Usage_Chatting_hotkeys.md) page.
+
 ## Message actions panel
 
 Manage individual chat messages via the ellipsis (•••) button on the message.

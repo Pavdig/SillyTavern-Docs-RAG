@@ -2,9 +2,8 @@
 
 Find your OS below and follow the instructions to update ST.
 
-!!! For installation instructions, see the [Installation](SillyTavern_Installation_index.md) page.
+**For installation instructions, see the [Installation](SillyTavern_Installation_index.md) page.:** This guide assumes you have already installed and run SillyTavern at least once.
 
-This guide assumes you have already installed and run SillyTavern at least once.
 ----
 
 ## Linux/Termux or MacOS

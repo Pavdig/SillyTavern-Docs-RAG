@@ -17,151 +17,284 @@ To open or close the Extensions panel, choose **<i class="fa-solid fa-cubes fa-f
 
 These extensions are built into SillyTavern and do not need to be installed. They can be enabled or disabled in the Extensions panel.
 
-**Callout:** **[Chat Translation](SillyTavern_extensions_Translation.md)**
+**Callout:**
+
+**[Chat Translation](SillyTavern_extensions_Translation.md)**
+
 Translate chat messages to a different language
 
-**Callout:** **[Image Captioning](SillyTavern_extensions_captioning.md)**
+**Callout:**
+
+**[Image Captioning](SillyTavern_extensions_captioning.md)**
+
 Generates text from images so your AI can "see" and respond to visual content in your conversations
 
-**Callout:** **[Image Generation](SillyTavern_extensions_Stable-Diffusion.md)**
+**Callout:**
+
+**[Image Generation](SillyTavern_extensions_Stable-Diffusion.md)**
+
 Use local or cloud-based Stable Diffusion, FLUX or DALL-E APIs to generate images
 
-**Callout:** **[Expression Images](SillyTavern_extensions_Expression-Images.md)**
+**Callout:**
+
+**[Expression Images](SillyTavern_extensions_Expression-Images.md)**
+
 Images (aka 'sprites') of your AI character, shown next to or behind the chat window
 
-**Callout:** **[Summarize](SillyTavern_extensions_Summarize.md)**
+**Callout:**
+
+**[Summarize](SillyTavern_extensions_Summarize.md)**
+
 Auto-summary of the chat history
 
-**Callout:** **[Chat Vectorization](SillyTavern_extensions_Chat-vectorization.md)**
+**Callout:**
+
+**[Chat Vectorization](SillyTavern_extensions_Chat-vectorization.md)**
+
 Finds relevant messages from chat history and adds them into the context
 
-**Callout:** **[Text To Speech](SillyTavern_extensions_TTS.md)**
+**Callout:**
+
+**[Text To Speech](SillyTavern_extensions_TTS.md)**
+
 Voice narration for your chat messages via ElevenLabs, Silero, your system TTS, **[AllTalk](SillyTavern_extensions_AllTalk.md)**, **[XTTS](SillyTavern_extensions_XTTS.md)**, and more
 
-**Callout:** **[Quick Reply](SillyTavern_For_Contributors_st-script.md)**
+**Callout:**
+
+**[Quick Reply](SillyTavern_For_Contributors_st-script.md)**
+
 Reply to chat messages with a single click, run commands and STscripts, and more
 
-**Callout:** **Token Counter**
+**Callout:**
+
+**Token Counter**
+
 Converts text into tokens and counts the number of tokens
 
 ---
 
 ## Installable extensions
 
-You **must** have git installed to download extensions. Follow the instructions on the Git installation page (https://git-scm.com/downloads) if you don't have it installed.
+**Tip:** You **must** have git installed to download extensions. Follow the instructions on the Git installation page (https://git-scm.com/downloads) if you don't have it installed.
+
 You can browse a list of all available extensions directly from the app by going to the **<i class="fa-solid fa-cubes"></i> Extensions** => **Download Extensions & Assets** menu and clicking the **<i class="fa-solid fa-plug-circle-exclamation"></i> Load Asset List** button. To install an extension, click the **<i class="fa-solid fa-download"></i> Download** button. To read more about an extension, click the **<i class="fa-solid fa-arrow-up-right-from-square"></i> Link** button next to its name to open its GitHub page.
 
-!!!info Extensions are not Extras
-The Extras project was discontinued in April 2024. You do not need to install Extras to use extensions.
+**Info Extensions are not Extras:** The Extras project was discontinued in April 2024. You do not need to install Extras to use extensions.
 
-**Callout:** **[Blip](SillyTavern_extensions_Blip.md)**
+**Callout:**
+
+**[Blip](SillyTavern_extensions_Blip.md)**
+
 Animate the text of character messages with variable speed and play sound along the animation.
 
-**Callout:** **[Dynamic Audio](SillyTavern_extensions_Dynamic-Audio.md)**
+**Callout:**
+
+**[Dynamic Audio](SillyTavern_extensions_Dynamic-Audio.md)**
+
 Adds immersive background music and ambient sounds to your chats.
 
-**Callout:** **[EmulatorJS](SillyTavern_extensions_EmulatorJS.md)**
+**Callout:**
+
+**[EmulatorJS](SillyTavern_extensions_EmulatorJS.md)**
+
 Play retro console games directly in SillyTavern chats.
 
-**Callout:** **[Live2d](SillyTavern_extensions_Live2d.md)**
+**Callout:**
+
+**[Live2d](SillyTavern_extensions_Live2d.md)**
+
 Adds support for live2d models. Customizable expressions, animations and interactions.
 
-**Callout:** **[Objective](SillyTavern_extensions_Objective.md)**
+**Callout:**
+
+**[Objective](SillyTavern_extensions_Objective.md)**
+
 Set an Objective for the AI to aim for during the chat.
 
-**Callout:** **[RVC](SillyTavern_extensions_RVC.md)**
+**Callout:**
+
+**[RVC](SillyTavern_extensions_RVC.md)**
+
 Adds Realtime Voice Cloning capabilities to the Text-to-Speech module.
 
-**Callout:** **[Speech Recognition](SillyTavern_extensions_Speech-Recognition.md)**
+**Callout:**
+
+**[Speech Recognition](SillyTavern_extensions_Speech-Recognition.md)**
+
 Convert your speech to text using browser or extras.
 
-**Callout:** **[VRM](SillyTavern_extensions_VRM.md)**
+**Callout:**
+
+**[VRM](SillyTavern_extensions_VRM.md)**
+
 Adds support for VRM models. Customizable expressions, animations and interactions.
 
-**Callout:** **[Web Search](SillyTavern_extensions_WebSearch.md)**
+**Callout:**
+
+**[Web Search](SillyTavern_extensions_WebSearch.md)**
+
 Adds web search results to LLM prompts.
 
-**Callout:** **Weather (https://github.com/SillyTavern/Extension-Weather)**
+**Callout:**
+
+**Weather (https://github.com/SillyTavern/Extension-Weather)**
+
 Provides weather information using one of the available weather APIs as a slash command or a function tool.
 
-**Callout:** **Chat Top Bar (https://github.com/SillyTavern/Extension-TopInfoBar)**
+**Callout:**
+
+**Chat Top Bar (https://github.com/SillyTavern/Extension-TopInfoBar)**
+
 Adds a top bar to the chat window with shortcuts to quick actions.
 
-**Callout:** **Chess (https://github.com/SillyTavern/SillyTavern-Chess)**
+**Callout:**
+
+**Chess (https://github.com/SillyTavern/SillyTavern-Chess)**
+
 Play the game of chess with the LLM.
 
-**Callout:** **Code Runner (https://github.com/SillyTavern/Extension-CodeRunner)**
+**Callout:**
+
+**Code Runner (https://github.com/SillyTavern/Extension-CodeRunner)**
+
 Allows running JavaScript and STscript code from code blocks in chat.
 
-**Callout:** **D&D Dice (https://github.com/SillyTavern/Extension-Dice)**
+**Callout:**
+
+**D&D Dice (https://github.com/SillyTavern/Extension-Dice)**
+
 A set of 7 classic D&D dice for all your dice rolling needs.
 
-**Callout:** **Duplicate Finder (https://github.com/SillyTavern/Extension-DupeFinder)**
+**Callout:**
+
+**Duplicate Finder (https://github.com/SillyTavern/Extension-DupeFinder)**
+
 Adds an ability to cluster characters by similarity groups to easily find duplicates.
 
-**Callout:** **Emoji Picker (https://github.com/SillyTavern/Extension-EmojiPicker)**
+**Callout:**
+
+**Emoji Picker (https://github.com/SillyTavern/Extension-EmojiPicker)**
+
 Adds a button to quickly insert emojis into a chat message.
 
-**Callout:** **Group Greetings (https://github.com/SillyTavern/Extension-GroupGreetings)**
+**Callout:**
+
+**Group Greetings (https://github.com/SillyTavern/Extension-GroupGreetings)**
+
 Allows setting alternate greetings that are specific to group chats.
 
-**Callout:** **Group SendAs (https://github.com/SillyTavern/SillyTavern-GroupSendAs)**
+**Callout:**
+
+**Group SendAs (https://github.com/SillyTavern/SillyTavern-GroupSendAs)**
+
 Adds a button to quickly insert a /sendas command template for the selected group member.
 
-**Callout:** **HypeBot (https://github.com/SillyTavern/Extension-HypeBot)**
+**Callout:**
+
+**HypeBot (https://github.com/SillyTavern/Extension-HypeBot)**
+
 Show personalized suggestions based on your recent chats using the NovelAI's HypeBot engine. Requires an active NovelAI subscription.
 
-**Callout:** **Idle (https://github.com/SillyTavern/Extension-Idle)**
+**Callout:**
+
+**Idle (https://github.com/SillyTavern/Extension-Idle)**
+
 Adds "idle prompting" after the user has been idle for some time to organically continue the conversation.
 
-**Callout:** **Image Metadata Viewer (https://github.com/SillyTavern/Extension-ImageMetadataViewer)**
+**Callout:**
+
+**Image Metadata Viewer (https://github.com/SillyTavern/Extension-ImageMetadataViewer)**
+
 View metadata of enlarged images attached to a chat.
 
-**Callout:** **LaTeX (https://github.com/SillyTavern/Extension-LaTeX)**
+**Callout:**
+
+**LaTeX (https://github.com/SillyTavern/Extension-LaTeX)**
+
 Render LaTeX and AsciiMath formulas in chat messages.
 
-**Callout:** **Mermaid (https://github.com/SillyTavern/Extension-Mermaid)**
+**Callout:**
+
+**Mermaid (https://github.com/SillyTavern/Extension-Mermaid)**
+
 Adds Mermaid diagrams & flowcharts rendering to SillyTavern chats.
 
-**Callout:** **Notebook (https://github.com/SillyTavern/Extension-Notebook)**
+**Callout:**
+
+**Notebook (https://github.com/SillyTavern/Extension-Notebook)**
+
 Adds a place to store your notes. Supports rich text formatting.
 
-**Callout:** **Parameter Randomizer (https://github.com/SillyTavern/Extension-Randomizer)**
+**Callout:**
+
+**Parameter Randomizer (https://github.com/SillyTavern/Extension-Randomizer)**
+
 Adds ability to randomize API settings sliders with every generation.
 
-**Callout:** **Prome Visual Novel Extension (https://github.com/Bronya-Rand/Prome-VN-Extension)**
+**Callout:**
+
+**Prome Visual Novel Extension (https://github.com/Bronya-Rand/Prome-VN-Extension)**
+
 Enhances the current visual novel experience with more features (Focus Mode, Letterbox Mode, and more)!
 
-**Callout:** **Prompt Inspector (https://github.com/SillyTavern/Extension-PromptInspector)**
+**Callout:**
+
+**Prompt Inspector (https://github.com/SillyTavern/Extension-PromptInspector)**
+
 Adds an option to inspect and edit output prompts before sending them to the server.
 
-**Callout:** **Push Notifications (https://github.com/SillyTavern/SillyTavern-PushNotifications)**
+**Callout:**
+
+**Push Notifications (https://github.com/SillyTavern/SillyTavern-PushNotifications)**
+
 Allows to receive push notifications for incoming chat messages.
 
-**Callout:** **Quick Persona (https://github.com/SillyTavern/Extension-QuickPersona)**
+**Callout:**
+
+**Quick Persona (https://github.com/SillyTavern/Extension-QuickPersona)**
+
 Adds a dropdown menu for selecting user personas from the chat bar.
 
-**Callout:** **RSS (https://github.com/SillyTavern/Extension-RSS)**
+**Callout:**
+
+**RSS (https://github.com/SillyTavern/Extension-RSS)**
+
 Gets the latest news from RSS feeds as a slash command or a function tool.
 
-**Callout:** **Screen Share (https://github.com/SillyTavern/Extension-ScreenShare)**
+**Callout:**
+
+**Screen Share (https://github.com/SillyTavern/Extension-ScreenShare)**
+
 Provides the screen image for multimodal models when you send a message.
 
-**Callout:** **Silence Player (https://github.com/SillyTavern/Extension-Silence)**
+**Callout:**
+
+**Silence Player (https://github.com/SillyTavern/Extension-Silence)**
+
 Adds a silence audio player to the extensions menu. Can help if the browser tab is being killed in a background.
 
-**Callout:** **Timelines (https://github.com/SillyTavern/SillyTavern-Timelines)**
+**Callout:**
+
+**Timelines (https://github.com/SillyTavern/SillyTavern-Timelines)**
+
 Adds a timeline navigation to the chat history.
 
-**Callout:** **Variable Viewer (https://github.com/LenAnderson/SillyTavern-Variable-Viewer)**
+**Callout:**
+
+**Variable Viewer (https://github.com/LenAnderson/SillyTavern-Variable-Viewer)**
+
 Easy way to view and modify variables.
 
-**Callout:** **WebLLM (https://github.com/SillyTavern/Extension-WebLLM)**
+**Callout:**
+
+**WebLLM (https://github.com/SillyTavern/Extension-WebLLM)**
+
 Provides an interface for extensions to use language models directly in the browser.
 
 ## Third-party extensions
 
-Using third-party extensions can have unintended side effects and may pose security risks. 
+**Danger:** Using third-party extensions can have unintended side effects and may pose security risks. 
 Always make sure you trust the source before importing an extension via **<i class="fa-solid fa-cloud-arrow-down"></i> Install extension**. 
 We are not responsible for any damage caused by third-party extensions.
+
 To install a third-party extension, go to the **<i class="fa-solid fa-cubes"></i> Extensions** => **<i class="fa-solid fa-cloud-arrow-down"></i> Install Extension** menu and paste the URL of the extension repository. Optionally, specify the branch and (in [multi-user](SillyTavern_Administration_multi-user.md) scenarios) the installation target: all users or just the current user. The extension will be downloaded and loaded automatically.

@@ -48,6 +48,7 @@ Default display style for media attachments (images, audio, video) in chat messa
 * **Gallery**: Display media attachments in a carousel-style gallery.
 
 This setting also affects how the inline media attachments are sent to supported Chat Completion sources: list sends all attachments at once, while gallery sends the selected attachment.
+
 ### Theme Colors
 
 Customize the color scheme of every UI element to create your perfect theme. Colors can be selected using a color picker, and include transparency options where applicable.
@@ -132,7 +133,8 @@ Type your formulas in code blocks with `latex` or `asciimath` language identifie
 int_{-oo}^{oo} e^{-x^2} dx = sqrt{pi}
 ```</code></pre>
 
-!!!info Deprecation notice
+**Info Deprecation notice:**
+
 The legacy `$` and `$$` wrapper syntax is no longer supported. Please use the following regex scripts to polyfill the old syntax:
 
 * $$ - LaTeX (https://github.com/SillyTavern/Extension-LaTeX/raw/refs/heads/main/assets/$$_-_latex.json)

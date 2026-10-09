@@ -1,6 +1,7 @@
 # Quick Start
 
-I'm clueless. Just spoonfeed me the easiest and fastest way I can start using SillyTavern. -- *Anonymous*
+**Light:** I'm clueless. Just spoonfeed me the easiest and fastest way I can start using SillyTavern. -- *Anonymous*
+
 You can get started with SillyTavern in just a few minutes. Here are two easy ways to get started:
 
 * You can use AI Horde for free. AI Horde is a community-driven AI service that provides access to a variety of AI models.

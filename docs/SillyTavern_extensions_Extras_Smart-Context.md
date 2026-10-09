@@ -2,8 +2,8 @@
 
 ## **THIS EXTENSION IS NO LONGER MAINTAINED AND NOT RECOMMENDED TO USE. CONSIDER [CHAT VECTORIZATION](SillyTavern_extensions_Chat-vectorization.md) AS A POSSIBLE ALTERNATIVE.**
 
-!!!warning Disclaimer
-The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
+**Warning Disclaimer:** The use of this extension does not guarantee a better chatting experience or improved memory of any sort. Only use if you understand all the implications of vector database utilization.
+
 ### What is it?
 
 Smart Context is a SillyTavern extension that uses the ChromaDB library (https://www.trychroma.com) to give your AI characters access to information that exists outside the normal chat history context limit.

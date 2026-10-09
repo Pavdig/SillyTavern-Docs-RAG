@@ -2,7 +2,8 @@
 
 SillyTavern supports external services through several different integration routes. Choose the route before implementing a named provider so the result has an appropriate maintenance owner and does not add permanent core surface where the existing generic interfaces are sufficient.
 
-Do not use a completed pull request as the first product discussion for a new named provider or service. A working implementation does not by itself establish that SillyTavern should maintain the integration.
+**Warning:** Do not use a completed pull request as the first product discussion for a new named provider or service. A working implementation does not by itself establish that SillyTavern should maintain the integration.
+
 ## Choose the integration route
 
 | Proposal | Recommended route |

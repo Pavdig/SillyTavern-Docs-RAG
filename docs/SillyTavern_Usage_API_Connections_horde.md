@@ -8,7 +8,8 @@
   - log your activity (input prompts, AI responses).
   - produce bad or offensive responses.
 
-When using Horde **never send** any personal information such as names, email addresses, etc.
+**Warning:** When using Horde **never send** any personal information such as names, email addresses, etc.
+
 Switching on the "Trusted Workers Only" checkbox will limit the selection of available workers to only those who have been hosting on Horde for a while and are generally considered trusted. But they could still be seeing prompts, for example by hosting using unaccounted software.
 
 To help reduce this problem, SillyTavern has built in the following feature:
@@ -24,9 +25,10 @@ To help reduce this problem, SillyTavern has built in the following feature:
 - Select one or more Models ('AI brains' for the characters) from the Model Selector at the bottom of the panel.
 - Select a character and begin chatting.
 
-By default, your SillyTavern instance connects to the Horde's low priority 'guest account'.
+**Warning:** By default, your SillyTavern instance connects to the Horde's low priority 'guest account'.
 This means you may have to wait a long time for a reply.
 To reduce wait times, follow the tips down below.
+
 ## Tips
 
 - Register an account on the Horde website (https://aihorde.net/register) then add your Horde key into the SillyTavern Horde API Key box.
