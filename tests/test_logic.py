@@ -1,147 +1,42 @@
 #!/usr/bin/env python3
-import os
-import re
+"""Local comparison helper: sanitize comparison/raw_source into comparison/sanitized_test.
+
+Uses the real logic from scripts/sanitize_docs.py (no pasted copy), so results
+always match what the CI pipeline produces. Use debug_diff.py afterwards to
+inspect before/after changes.
+"""
+import argparse
+import logging
 import shutil
+import sys
 from pathlib import Path
-from urllib.parse import urlparse, urldefrag
+
+# Find the repo root (the folder that contains scripts/sanitize_docs.py),
+# so this file works from the repo root or from a subfolder like tests/.
+ROOT = Path(__file__).resolve().parent
+while not (ROOT / "scripts" / "sanitize_docs.py").exists():
+    if ROOT == ROOT.parent:
+        raise SystemExit("Could not find scripts/sanitize_docs.py above this file.")
+    ROOT = ROOT.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from sanitize_docs import make_flat_output_name, sanitize_text  # noqa: E402
 
 # === CONFIGURATION ===
-SOURCE_DIR = Path("comparison/raw_source")
-OUTPUT_DIR = Path("comparison/sanitized_test")
-ROOT_DIR = SOURCE_DIR
+# Paths are relative to the folder you run the script from (same as the old version).
+DEFAULT_SOURCE = "comparison/raw_source"
+DEFAULT_OUTPUT = "comparison/sanitized_test"
 
-MD_LINK_RE = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
-MD_IMAGE_RE = re.compile(r'!\[([^\]]*)\]\(([^)]+)\)')
-FRONT_MATTER_RE = re.compile(r'\A---\s*\n.*?\n---\s*(?:\n|$)', flags=re.DOTALL)
-SCREENSHOTS_RE = re.compile(r'(?ms)^##\s*Screenshots\b.*?(?=^##\s*|\Z)')
-EMPTY_TABLE_ROW_RE = re.compile(r'^\s*\|(?:\s*\|)+\s*$', flags=re.MULTILINE)
-BR_RE = re.compile(r'<br\s*/?>', flags=re.IGNORECASE)
-BLANK_LINES_RE = re.compile(r'\n{3,}')
-ADMONITION_OPEN_RE = re.compile(
-    r'^\s*(:::|!!!)\s*([A-Za-z0-9_-]+)?(?:\s+["\'](.+?)["\'])?\s*$'
-)
 
-def is_external_link(url: str) -> bool:
-    parsed = urlparse(url)
-    return bool(parsed.scheme) or url.startswith('www.') or url.startswith('//')
+def process_files(source_dir: Path, output_dir: Path) -> int:
+    global SOURCE_DIR, OUTPUT_DIR
+    SOURCE_DIR, OUTPUT_DIR = source_dir.resolve(), output_dir.resolve()
 
-def normalize_url(url: str) -> str:
-    url = url.strip()
-    url, _ = urldefrag(url)
-    url = url.split('?', 1)[0]
-    return url.strip()
+    if not SOURCE_DIR.is_dir():
+        print(f"Source folder not found: {SOURCE_DIR}")
+        print("Run this from the folder that contains comparison/raw_source, or pass --source.")
+        return 1
 
-def make_flat_output_name(rel_path: Path) -> str:
-    rel_text = '_'.join(rel_path.parts)
-    suffix = rel_path.suffix.lower()
-    if suffix in {'.md', '.markdown'}:
-        return rel_text if rel_text.endswith('.md') else f'{rel_text[:-len(suffix)]}.md'
-    if suffix == '.yaml':
-        return f'{rel_text[:-len(suffix)]}-yaml.md'
-    if suffix == '.yml':
-        return f'{rel_text[:-len(suffix)]}-yml.md'
-    if suffix == '.json':
-        return rel_text
-    if not suffix:
-        return f'{rel_text}.md'
-    return rel_text
-
-def resolve_relative_link(url: str, file_path: Path, root: Path) -> str | None:
-    url = normalize_url(url)
-    if not url or url.startswith('#') or is_external_link(url):
-        return None
-    if url.startswith('/'):
-        target = root / url.lstrip('/\\')
-    else:
-        target = file_path.parent / url
-    normalized = target.resolve(strict=False)
-    root_abs = root.resolve(strict=False)
-    try:
-        rel_target = normalized.relative_to(root_abs)
-    except ValueError:
-        return None
-    return make_flat_output_name(rel_target)
-
-def replace_link(match: re.Match, file_path: Path) -> str:
-    anchor_text = match.group(1).strip()
-    url = match.group(2).strip()
-    if is_external_link(url):
-        return f'{anchor_text} ({url})'
-    resolved = resolve_relative_link(url, file_path, ROOT_DIR)
-    if resolved:
-        return f'[{anchor_text}](SillyTavern_{resolved})'
-    return anchor_text
-
-def replace_image(match: re.Match) -> str:
-    return ''
-
-def normalize_admonition_block(block_type: str | None, title: str | None, lines: list[str]) -> str:
-    content_lines = []
-    for line in lines:
-        if line.startswith('    '):
-            content_lines.append(line[4:])
-        elif line.startswith('\t'):
-            content_lines.append(line[1:])
-        else:
-            content_lines.append(line.lstrip())
-    inner = ''.join(content_lines).strip()
-    if not inner:
-        return ''
-    if inner.startswith('|') or inner.startswith('```'):
-        return f'\n{inner}\n'
-    title_prefix = ''
-    if block_type:
-        title_prefix = block_type.title()
-    if title:
-        title_prefix = f'{title_prefix} {title}'.strip()
-    if title_prefix:
-        title_prefix = f'**{title_prefix}:** '
-    return f'\n{title_prefix}{inner}\n'
-
-def sanitize_admonitions(text: str) -> str:
-    lines = text.splitlines(keepends=True)
-    output = []
-    idx = 0
-    while idx < len(lines):
-        open_match = ADMONITION_OPEN_RE.match(lines[idx])
-        if open_match:
-            marker = open_match.group(1)
-            block_type = open_match.group(2).lower() if open_match.group(2) else None
-            title = open_match.group(3)
-            idx += 1
-            block_lines = []
-            if marker == ':::':
-                while idx < len(lines) and not re.match(r'^\s*:::\s*$', lines[idx]):
-                    block_lines.append(lines[idx])
-                    idx += 1
-                if idx < len(lines) and re.match(r'^\s*:::\s*$', lines[idx]):
-                    idx += 1
-            else:
-                while idx < len(lines) and (
-                    lines[idx].strip() == ''
-                    or lines[idx].startswith('    ')
-                    or lines[idx].startswith('\t')
-                ):
-                    block_lines.append(lines[idx])
-                    idx += 1
-            output.append(normalize_admonition_block(block_type, title, block_lines))
-            continue
-        output.append(lines[idx])
-        idx += 1
-    return ''.join(output)
-
-def sanitize_text(content: str, file_path: Path) -> str:
-    content = FRONT_MATTER_RE.sub('', content)
-    content = SCREENSHOTS_RE.sub('', content)
-    content = MD_IMAGE_RE.sub(replace_image, content)
-    content = MD_LINK_RE.sub(lambda m: replace_link(m, file_path), content)
-    content = sanitize_admonitions(content)
-    content = EMPTY_TABLE_ROW_RE.sub('', content)
-    content = BR_RE.sub('', content)
-    content = BLANK_LINES_RE.sub('\n\n', content)
-    return content.strip() + '\n'
-
-def process_files():
     if OUTPUT_DIR.exists():
         for item in OUTPUT_DIR.iterdir():
             if item.name == ".gitkeep":
@@ -156,27 +51,32 @@ def process_files():
     processed_count = 0
     skipped_count = 0
 
-    for root, _, files in os.walk(SOURCE_DIR):
-        for filename in files:
-            if filename == ".gitkeep" or not filename.endswith(".md"):
-                continue
+    for file_path in sorted(SOURCE_DIR.rglob("*.md")):
+        content = file_path.read_text(encoding="utf-8")
 
-            file_path = Path(root) / filename
-            with file_path.open("r", encoding="utf-8") as f:
-                content = f.read()
+        if "This page has been moved to" in content:
+            skipped_count += 1
+            continue
 
-            if "This page has been moved to" in content:
-                skipped_count += 1
-                continue
+        sanitized = sanitize_text(content, file_path, SOURCE_DIR)
+        rel_path = file_path.relative_to(SOURCE_DIR)
+        output_path = OUTPUT_DIR / f"SillyTavern_{make_flat_output_name(rel_path)}"
+        output_path.write_text(sanitized, encoding="utf-8")
+        processed_count += 1
 
-            sanitized = sanitize_text(content, file_path)
-            rel_path = file_path.relative_to(SOURCE_DIR)
-            output_filename = f"SillyTavern_{make_flat_output_name(rel_path)}"
-            output_path = OUTPUT_DIR / output_filename
-            output_path.write_text(sanitized, encoding="utf-8")
-            processed_count += 1
+    if processed_count == 0 and skipped_count == 0:
+        print(f"No .md files found under {SOURCE_DIR}")
+        return 1
 
     print(f"Done. Processed {processed_count} files. Skipped {skipped_count} redirects.")
+    print(f"Output: {OUTPUT_DIR}")
+    return 0
+
 
 if __name__ == "__main__":
-    process_files()
+    parser = argparse.ArgumentParser(description="Sanitize a raw docs copy for before/after comparison.")
+    parser.add_argument("--source", default=DEFAULT_SOURCE, help="Folder with the raw upstream docs")
+    parser.add_argument("--output", default=DEFAULT_OUTPUT, help="Folder for the sanitized result")
+    args = parser.parse_args()
+    logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
+    raise SystemExit(process_files(Path(args.source), Path(args.output)))
