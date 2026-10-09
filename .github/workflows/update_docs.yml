@@ -14,13 +14,13 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout your repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: Checkout Source Docs (SillyTavern-Docs)
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: SillyTavern/SillyTavern-Docs
           path: temp_source
